@@ -676,12 +676,17 @@ features
 }
 
 .feature-item .left-icon img {
-  float: left;
-  margin-right: 30px;
+  float: center;
+}
+.feature-item .left-icon h4 {
+  float: right;
+  margin-top: 40px;
+  margin-left:40px;
 }
 
 .feature-item .right-content {
   display: inline;
+  float:left;
 }
 
 .feature-item .right-content h4 {
