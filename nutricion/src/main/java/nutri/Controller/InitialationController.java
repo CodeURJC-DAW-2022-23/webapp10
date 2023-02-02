@@ -11,8 +11,8 @@ public class InitialationController {
     }
 
 
-    @GetMapping("/login")
+    @GetMapping("/admin")
     public String log(Model model){
-        return "login";
+        return "admin";
     }
 }
