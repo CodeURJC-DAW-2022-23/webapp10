@@ -9,4 +9,10 @@ public class InitialationController {
     public String page(Model model){
     return "index";
     }
+
+
+    @GetMapping("/login")
+    public String log(Model model){
+        return "login";
+    }
 }
