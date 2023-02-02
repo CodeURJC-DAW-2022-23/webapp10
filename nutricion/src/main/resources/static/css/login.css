@@ -39,7 +39,8 @@ a {
 }
 
 .form {
-  background:rgba($form-bg,.9);
+  background-color:white;
+  opacity:0.9;
   padding: 40px;
   max-width:600px;
   margin:40px auto;
