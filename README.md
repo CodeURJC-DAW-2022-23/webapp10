@@ -26,13 +26,13 @@ La relación se establece cuando un usuario ve unas recetas recomendadas según 
 ## Tipos de usuarios y sus permisos correspondientes
 La aplicación web deberá considerar tres tipos de usuarios:
 
-+ Usuario anónimo: Aquél usuario que visita la web y no introduce ningún tipo de credenciales para consultar contenido y realizar búsquedas. 
++ Usuario anónimo: Aquel usuario que visita la web y no introduce ningún tipo de credenciales para consultar contenido y realizar búsquedas. 
 
   - Permisos: En nuestro caso tendrá acceso a la parte gratuita y sin registro de la web. Podrá ver la web en su totalidad, realizar el cuestionario de dieta recomendada (sin acceder al resultado), y utilizar la calculadora de IMC (Índice de masa corporal). No podrá acceder a las dietas, recetas o nutricionistas
 
 
 
-+ Usuario registrado: Aquél usuario que tiene que usar sus credenciales para acceder a la web.  Hay dos tipos de usuarios registrados, el trabajador y el cliente.
++ Usuario registrado: Aquel usuario que tiene que usar sus credenciales para acceder a la web.  Hay dos tipos de usuarios registrados, el trabajador y el cliente.
 Ambos usuarios tendrán datos personalizados como su nombre y una imagen. En el caso del trabajador, habrá también información sobre su formación profesional y su puesto de trabajo. La web deberá permitir el registro de nuevos usuarios. 
 
   - Permisos:
@@ -41,7 +41,7 @@ Ambos usuarios tendrán datos personalizados como su nombre y una imagen. En el 
 
     + Trabajador: aparte de tener sus datos personales con foto y cargo. Tendrán acceso a la página completa y permiso para gestionar las dietas y las recetas. Podrán modificar, añadir y editar dietas y recetas, así como acceder al perfil de sus clientes y al gestor de mensajes con ellos.
 
-+ Usuario administrador: Aquél usuario que tiene control total sobre la información de la web. Este usuario será único y capaz de gestionar la página web.
++ Usuario administrador: Aquel usuario que tiene control total sobre la información de la web. Este usuario será único y capaz de gestionar la página web.
 
   - Permisos: Puede dar el alta y la baja de nuevos usuarios, y aprobar los cambios de la web (dietas u otros que acepten al aspecto general). También lleva un registro con estadísticas de la web.
 
@@ -56,5 +56,5 @@ Además, se generarán gráficos a nivel de administrador con los porcentajes de
 ## Tecnología complementaria
 Se hará uso de la generación de PDFs para que el usuario pueda guardar o imprimir las dietas que se le planteen y las recetas que guste.
 
-## Algoritmo o consulta avanzada
+## Algoritmo de consulta avanzada
 Se utilizará un algoritmo que permita establecer una dieta personalizada para cada cliente en base a las respuestas que le proporcione al cuestionario. Con ello también se le actualizarán las recetas recomendadas para su tipo de dieta.
