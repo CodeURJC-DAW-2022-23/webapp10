@@ -8,5 +8,4 @@ public class NutricionApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(NutricionApplication.class, args);
 	}
-
 }
