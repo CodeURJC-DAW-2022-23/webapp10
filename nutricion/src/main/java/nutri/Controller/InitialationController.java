@@ -10,11 +10,6 @@ public class InitialationController {
     return "index";
     }
 
-    @GetMapping("/admin")
-    public String log(Model model){
-        return "admin";
-    }
-
     @GetMapping("/loginTem")
     public String loggingTem(Model model){
         return "loginTem";
