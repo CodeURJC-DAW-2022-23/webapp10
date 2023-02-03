@@ -1,6 +1,12 @@
 
-function cambiar() {
-  var element = document.getElementById("login");
-  var currentZIndex = element.style.zIndex;
-  element.style.display='block';
+function myFunction() {
+  var x = document.getElementById("loginTem");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
 }
+
+
+
