@@ -9,17 +9,17 @@ public class AdminController {
 
 @GetMapping("/admin")
 public String mostrarAdmin(){
-    return "admin";
+    return "USR_Admin";
 }
 @GetMapping("/buttons")
 public String mostrarBotones(){
     return "buttons";
 }
-@GetMapping("/admin/cards")
+@GetMapping("/cards")
 public String mostrarCartas(){
     return "charts";
 }
-@GetMapping("/admin/colors")
+@GetMapping("/colors")
 public String mostrarColores(){
     return "colors";
 }

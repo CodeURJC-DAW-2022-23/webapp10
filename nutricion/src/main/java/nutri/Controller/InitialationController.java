@@ -6,12 +6,17 @@ import org.springframework.ui.Model;
 @Controller
 public class InitialationController {
     @GetMapping("/")
-    public String page(Model model){
-    return "index";
+    public String page(){
+    return "USR_NonReg";
     }
 
-    @GetMapping("/loginTem")
-    public String loggingTem(Model model){
-        return "loginTem";
+    @GetMapping("/login")
+    public String loggingTem(){
+        return "LoginTMP";
     }
+
+    @GetMapping("/register")
+    public String registerTem(){return "register";}
+
+
 }
