@@ -11,7 +11,7 @@ public class AdminController {
 public String mostrarAdmin(){
     return "admin";
 }
-@GetMapping("/admin/buttons")
+@GetMapping("/buttons")
 public String mostrarBotones(){
     return "buttons";
 }
