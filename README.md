@@ -2,7 +2,7 @@
 ## Funcionalidades
 1. Log-In: El usuario suscrito ha de poder hacer log in para poder acceder a la información de su cuenta y su dieta.
 2. Suscribirse: El usuario nuevo tiene que poder suscribirse a un plan de los posibles para acceder a todas las funcionalidades de la aplicación.
-3. Período de prueba: Todo usuario suscrito va a tener la posibilidad de contar con un periodo de prueba de tal forma que pasarán ciertos días desde el registro hasta su primer cobro.
+3. Período de prueba: Todo usuario suscrito va a tener la posibilidad de c ontar con un periodo de prueba de tal forma que pasarán ciertos días desde el registro hasta su primer cobro.
 4. Cuestionario: Cualquier usuario debe poder acceder a un cuestionario que le muestre su índice de masa corporal y el tipo de dieta indicado según sus necesidades. Si es un usuario anónimo sólo se le mostrará la información esencial del resultado, mientras que si es un usuario suscrito tendrá acceso a toda la información de esa nueva dieta.
 5. Perfil: El usuario registrado podrá tener acceso a una parte privada y personal que contendrá sus datos, un gestor de mensajes y, en caso de ser usuario suscrito, su dieta y análisis. En caso de usuario trabajador, las recetas y dietas que quiere añadir y los datos de los clientes a su cargo. Podrá gestionar estos aspectos.
 6. Seguimiento específico: El usuario suscrito tendrá acceso a gráficos que le permitan observar su progreso con las dietas, además de poder pedir ayuda a un profesional nutricionista.
