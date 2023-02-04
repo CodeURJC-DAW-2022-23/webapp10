@@ -60,7 +60,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 
 body {
   margin: 0;
-  font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: 'Poppins', sans-serif;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -2357,14 +2357,14 @@ fieldset:disabled a.btn {
 
 .btn-primary {
   color: #fff;
-  background-color: #4e73df;
-  border-color: #4e73df;
+  background-color: #5AF499;
+  border-color: #5AF499;
 }
 
 .btn-primary:hover {
   color: #fff;
-  background-color: #2e59d9;
-  border-color: #2653d4;
+  background-color: #30af60;
+  border-color: #30af60;
 }
 
 .btn-primary:focus, .btn-primary.focus {
@@ -9592,11 +9592,11 @@ button.bg-dark:focus {
 }
 
 .text-primary {
-  color: #4e73df !important;
+  color: #30af60 !important;
 }
 
 a.text-primary:hover, a.text-primary:focus {
-  color: #224abe !important;
+  color: #30af60 !important;
 }
 
 .text-secondary {
@@ -9900,8 +9900,8 @@ a:focus {
 }
 
 .bg-gradient-primary {
-  background-color: #4e73df;
-  background-image: linear-gradient(180deg, #4e73df 10%, #224abe 100%);
+  background-color: #5AF499;
+  background-image: linear-gradient(180deg, #5AF499 10%, #30af60 100%);
   background-size: cover;
 }
 
@@ -10041,7 +10041,7 @@ a:focus {
 }
 
 .border-left-primary {
-  border-left: 0.25rem solid #4e73df !important;
+  border-left: 0.25rem solid #30af60 !important;
 }
 
 .border-bottom-primary {
@@ -10139,7 +10139,7 @@ a:focus {
   border: 0;
   font-weight: 900;
   content: '\f105';
-  font-family: 'Font Awesome 5 Free';
+  font-family: 'Poppins', sans-serif;
 }
 
 .sidebar .nav-item.dropdown.show .dropdown-toggle::after,
@@ -10231,8 +10231,8 @@ a:focus {
 }
 
 .topbar .dropdown-list .dropdown-header {
-  background-color: #4e73df;
-  border: 1px solid #4e73df;
+  background-color: #5AF499;
+  border: 1px solid #5AF499;
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
   color: #fff;
@@ -10421,7 +10421,7 @@ a:focus {
 .sidebar #sidebarToggle::after {
   font-weight: 900;
   content: '\f104';
-  font-family: 'Font Awesome 5 Free';
+  font-family: 'Poppins', sans-serif;
   margin-right: 0.1rem;
 }
 
@@ -10440,7 +10440,7 @@ a:focus {
 
 .sidebar.toggled #sidebarToggle::after {
   content: '\f105';
-  font-family: 'Font Awesome 5 Free';
+  font-family: 'Poppins', sans-serif;
   margin-left: 0.25rem;
 }
 
@@ -10554,7 +10554,7 @@ a:focus {
     border: 0;
     font-weight: 900;
     content: '\f107';
-    font-family: 'Font Awesome 5 Free';
+    font-family: 'Poppins', sans-serif;
   }
   .sidebar .nav-item .nav-link[data-toggle="collapse"].collapsed::after {
     content: '\f105';
@@ -10686,7 +10686,7 @@ a:focus {
 }
 
 .sidebar-dark .sidebar-heading {
-  color: rgba(255, 255, 255, 0.4);
+  color: rgb(255, 255, 255);
 }
 
 .sidebar-dark .nav-item .nav-link {
@@ -10812,7 +10812,7 @@ a:focus {
   line-height: 51px;
   font-weight: 900;
   content: '\f107';
-  font-family: 'Font Awesome 5 Free';
+  font-family: 'Poppins', sans-serif;
   color: #d1d3e2;
 }
 
