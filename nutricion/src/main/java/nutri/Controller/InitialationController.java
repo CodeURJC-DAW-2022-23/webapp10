@@ -21,4 +21,7 @@ public class InitialationController {
     @GetMapping("/cliente")
     public String client(){return "USR_ClientDiets";}
 
+    @GetMapping("/test")
+    public String testTem(){return "questionnaire";}
+
 }
