@@ -18,5 +18,7 @@ public class InitialationController {
     @GetMapping("/register")
     public String registerTem(){return "USR_NonRegRegister";}
 
+    @GetMapping("/cliente")
+    public String client(){return "USR_ClientDiets";}
 
 }
