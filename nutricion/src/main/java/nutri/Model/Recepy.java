@@ -1,13 +1,13 @@
 package nutri.Model;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonView;
 import com.sun.istack.NotNull;
+
 import javax.persistence.*;
 import java.sql.Blob;
-import java.util.ArrayList;
 
 @Entity
-public class UserDiet {
+public class Recepy {
     //Columns
     //ID
     @Id
@@ -30,7 +30,14 @@ public class UserDiet {
     @JsonIgnore
     private Blob image;
 
-    public UserDiet(){}
+    public Recepy(){}
+
+    public Recepy(long id, String name, String description, Blob image){
+        this.description=description;
+        this.id=id;
+        this.image=image;
+        this.name=name;
+    }
 
     public long getId() {
         return id;
@@ -63,13 +70,4 @@ public class UserDiet {
     public void setImage(Blob image) {
         this.image = image;
     }
-
-    public UserDiet(long id, String name, String description, Blob image){
-       this.id=id;
-       this.name=name;
-       this.description=description;
-       this.image=image;
-
-    }
-
 }

@@ -12,11 +12,11 @@ public class InitialationController {
 
     @GetMapping("/login")
     public String loggingTem(){
-        return "LoginTMP";
+        return "USR_NonRegLogin";
     }
 
     @GetMapping("/register")
-    public String registerTem(){return "register";}
+    public String registerTem(){return "USR_NonRegRegister";}
 
 
 }

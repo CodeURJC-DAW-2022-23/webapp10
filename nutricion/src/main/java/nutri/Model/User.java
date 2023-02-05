@@ -129,11 +129,11 @@ public class User {
         this.userType = userType;
     }
 
-    public List<UserDiet> getDietTables() {
+    public List<Diet> getDietTables() {
         return exerciseTables;
     }
 
-    public void setExerciseTables(List<UserDiet> exerciseTables) {
+    public void setExerciseTables(List<Diet> exerciseTables) {
         this.exerciseTables = exerciseTables;
     }
 
@@ -157,7 +157,7 @@ public class User {
     //DietTables
     @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "user")
     @JsonIgnore
-    private List<UserDiet> exerciseTables = new ArrayList<>();
+    private List<Diet> exerciseTables = new ArrayList<>();
 
     public User() {}
 
