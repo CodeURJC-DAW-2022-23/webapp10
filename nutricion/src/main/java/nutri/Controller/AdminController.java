@@ -27,5 +27,9 @@ public class AdminController {
     public String errorPage(){
         return "404";
     }
+    @GetMapping("/tables")
+    public String adminTable(){
+        return "USR_AdminClientTable";
+    }
 
 }
