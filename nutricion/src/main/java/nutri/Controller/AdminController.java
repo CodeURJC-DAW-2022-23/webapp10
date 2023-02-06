@@ -19,5 +19,7 @@ public class AdminController {
     public String showClients(){
         return "USR_AdminClientTable";
     }
+    @GetMapping("/profileInfo")
+    public String showProfile(){return "USR_ProfileInfoAdmin";}
 
 }
