@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class AdminController {
 
 
+
     @GetMapping("/admin")
     public String showAdmin(){
         return "USR_Admin";
@@ -21,5 +22,7 @@ public class AdminController {
     }
     @GetMapping("/profileInfo")
     public String showProfile(){return "USR_ProfileInfoAdmin";}
+
+
 
 }
