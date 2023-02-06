@@ -22,6 +22,6 @@ public class InitialationController {
     public String client(){return "USR_ClientDiets";}
 
     @GetMapping("/test")
-    public String testTem(){return "questionnaire";}
+    public String testTem(){return "USR_NonRegForm";}
 
 }

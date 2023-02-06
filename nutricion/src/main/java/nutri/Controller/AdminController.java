@@ -8,28 +8,18 @@ public class AdminController {
 
 
     @GetMapping("/admin")
-    public String mostrarAdmin(){
+    public String showAdmin(){
         return "USR_Admin";
     }
-    @GetMapping("/buttons")
-    public String mostrarBotones(){
-        return "buttons";
+    @GetMapping("/adminCharts")
+    public String showCharts(){
+        return "USR_AdminCharts";
     }
-    @GetMapping("/cards")
-    public String mostrarCartas(){
-        return "charts";
-    }
-    @GetMapping("/colors")
-    public String mostrarColores(){
-        return "colors";
-    }
-    @GetMapping("/error")
-    public String errorPage(){
-        return "404";
-    }
-    @GetMapping("/tables")
-    public String adminTable(){
+    @GetMapping("/tablesClient")
+    public String showClients(){
         return "USR_AdminClientTable";
     }
+    @GetMapping("/profileInfo")
+    public String showProfile(){return "USR_ProfileInfoAdmin";}
 
 }
