@@ -17,7 +17,7 @@ public class AdminController {
     }
     @GetMapping("/tables")
     public String showClients(){
-        return "USR_AdminClientsTable";
+        return "USR_AdminClientTable";
     }
 
 }
