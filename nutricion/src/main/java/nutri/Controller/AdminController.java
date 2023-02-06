@@ -1,12 +1,20 @@
 package nutri.Controller;
 
+import nutri.Model.User;
+import nutri.Repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class AdminController {
 
+    @Autowired
+    private UserRepository userRepository;
 
+    public void addAdmin(){
+        userRepository.save(new User("ejemplo@yahoo.es","1234"));
+    }
 
     @GetMapping("/admin")
     public String showAdmin(){

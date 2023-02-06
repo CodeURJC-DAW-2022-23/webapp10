@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name="userTable")
 public class User {
     //Interface for client columns: id and name and NIF
     public interface ClientBasic{}
@@ -162,6 +163,12 @@ public class User {
     public User() {}
 
     public User(String name, String surname, String NIF, String email, String encodedPassword,String member){
+    }
+    //admin constructor
+    public User( String email,String password) {
+        this.email = email;
+        this.userType = "admin";
+        this.encodedPassword = password;
     }
 
     //worker constructor
