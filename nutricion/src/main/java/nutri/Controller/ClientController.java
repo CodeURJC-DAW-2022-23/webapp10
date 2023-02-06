@@ -26,4 +26,13 @@ public class ClientController {
         return "USR_ClientCharts";
     }
 
+    @GetMapping("/clientInfo")
+    public String showInfo(){
+        return "USR_ProfileInfoClient";
+    }
+
+    @GetMapping("/clientInfoSetting")
+    public String editInfo(){
+        return "USR_ProfileClientEdit";
+    }
 }
