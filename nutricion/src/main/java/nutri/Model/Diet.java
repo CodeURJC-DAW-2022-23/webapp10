@@ -2,6 +2,7 @@ package nutri.Model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.sun.istack.NotNull;
+
 import javax.persistence.*;
 import java.sql.Blob;
 import java.util.ArrayList;
