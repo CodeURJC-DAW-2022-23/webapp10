@@ -24,6 +24,10 @@ public class AdminController {
     }
     @GetMapping("/profileInfo")
     public String showProfile(){return "USR_ProfileInfoAdmin";}
+    @GetMapping("/workerTable")
+    public String workers(){return "USR_AdminWorkerTable";}
+    @GetMapping("/addWorker")
+    public String addWorkers(){return "USR_AdminAddWorker";}
 
 
 
