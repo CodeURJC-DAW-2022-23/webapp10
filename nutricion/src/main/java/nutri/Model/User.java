@@ -11,7 +11,7 @@ import java.util.List;
 
 @Entity
 @Table(name="userTable")
-public class User {
+public class User{
     //Interface for client columns: id and name and NIF
     public interface ClientBasic{}
     //Interface for client columns: id, name, surname, NIF, email.
