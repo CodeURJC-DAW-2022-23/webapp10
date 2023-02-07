@@ -1,11 +1,14 @@
 package nutri.Model;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonView;
-import com.sun.istack.NotNull;
 
-import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Column;
+import javax.persistence.GenerationType;
+import javax.persistence.Lob;
 import java.sql.Blob;
-import java.util.ArrayList;
 
 @Entity
 public class Diet {
@@ -18,13 +21,11 @@ public class Diet {
 
     //name
     @Column(nullable = false)
-    @NotNull
-    private String name = "";
+    private String name;
 
     //description
     @Column(nullable=false)
-    @NotNull
-    private String description="";
+    private String description;
 
     //image
     @Lob

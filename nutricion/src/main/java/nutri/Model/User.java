@@ -3,8 +3,15 @@ package nutri.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
-import com.sun.istack.NotNull;
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Column;
+import javax.persistence.GenerationType;
+import javax.persistence.Lob;
+import javax.persistence.Table;
+import javax.persistence.OneToMany;
+import javax.persistence.CascadeType;
 import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,31 +38,26 @@ public class User{
 
     //name
     @Column(nullable = false)
-    @NotNull
     @JsonView({WorkerBasic.class, WorkerLog.class, ClientBasic.class, ClientLog.class})
     private String name = "";
 
     //surmane
     @Column(nullable = false)
-    @NotNull
     @JsonView({ClientLog.class, WorkerLog.class})
     private String surname = "";
 
     //NIF
     @Column(nullable = false)
-    @NotNull
     @JsonView({ClientBasic.class, ClientLog.class, WorkerLog.class})
     private String NIF = "";
 
     //email
     @Column(nullable = false)
-    @NotNull
     @JsonView({ClientLog.class, WorkerLog.class})
     private String email = "";
 
     //password
     @Column(nullable = false)
-    @NotNull
     private String encodedPassword = "";
 
     public long getId() {
@@ -139,7 +141,6 @@ public class User{
     }
 
     //description
-    @NotNull
     @Column(columnDefinition = "TEXT", nullable = false)
     @JsonView(WorkerLog.class)
     private String description = "";
@@ -151,7 +152,6 @@ public class User{
 
     //type
     @Column(nullable = false)
-    @NotNull
     @JsonView({ClientLog.class, WorkerLog.class, ClientBasic.class, WorkerBasic.class})
     private String userType = "";
 
