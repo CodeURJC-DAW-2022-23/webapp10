@@ -11,6 +11,7 @@ public class AdminController {
 
     @GetMapping("/admin")
     public String showAdmin(){
+        System.out.println();
         return "USR_Admin";
     }
     @GetMapping("/adminCharts")
