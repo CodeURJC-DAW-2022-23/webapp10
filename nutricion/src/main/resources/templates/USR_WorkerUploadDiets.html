@@ -1,10 +1,193 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{{>USR_WorkerHeader}}
+<!-- ***** Header Area End ***** -->
+<!-- Begin Page Content -->
+<div class="container-fluid">
+    <div class="row">
 
-</body>
-</html>
+        <!-- Area Chart -->
+        <div class="col-xl-12 col-lg-7">
+            <div class="card shadow mb-4">
+                <div class="col-lg-12 " style="padding: 40px;">
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">New Diet</h1>
+                    </div>
+                    <!-- tabla-->
+                    <form style=" margin-top: 40px; margin-bottom: 60px; text-align: justify;">
+                        <table style="margin-bottom: 40px; table-layout: auto;width: 100%; border: 1px solid #5AF499; ">
+                            <tbody>
+                            <tr>
+                                <td>Time</td>
+                                <td>Monday</td>
+                                <td>Tuesday</td>
+                                <td>Wednesday</td>
+                                <td>Thursday</td>
+                                <td>Friday</td>
+                                <td>Saturday</td>
+                                <td>Sunday</td>
+                            </tr>
+                            <tr>
+                                <td class="day-time">Breakfast</td>
+                                <td>
+                                    <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" id="brmon"
+                                            name="brmon">
+                                        <option value="fem">option</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" id="brtue"
+                                            name="brtue">
+                                        <option value="fem">option</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" id="brwed"
+                                            name="brwed">
+                                        <option value="fem">option</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" id="brthr"
+                                            name="brthr">
+                                        <option value="fem">option</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" id="brfri"
+                                            name="brfri">
+                                        <option value="fem">option</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" id="brsat"
+                                            name="brsat">
+                                        <option value="fem">option</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" id="brsun"
+                                            name="brsun">
+                                        <option value="fem">option</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="day-time">Lunch</td>
+                                <td>
+                                    <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                                            id="lunmon"
+                                            name="lunmon">
+                                        <option value="fem">option</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                                            id="luntue"
+                                            name="luntue">
+                                        <option value="fem">option</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                                            id="lunwed"
+                                            name="lunwed">
+                                        <option value="fem">option</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                                            id="lunthr"
+                                            name="lunthr">
+                                        <option value="fem">option</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                                            id="lunfri"
+                                            name="lunfri">
+                                        <option value="fem">option</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                                            id="lunsat"
+                                            name="lunsat">
+                                        <option value="fem">option</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                                            id="lunsun"
+                                            name="lunsun">
+                                        <option value="fem">option</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="day-time">Dinner</td>
+                                <td>
+                                    <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                                            id="dinmon"
+                                            name="dinmon">
+                                        <option value="fem">option</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                                            id="dintue"
+                                            name="dintue">
+                                        <option value="fem">option</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                                            id="dinwed"
+                                            name="dinwed">
+                                        <option value="fem">option</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                                            id="dinthr"
+                                            name="dinthr">
+                                        <option value="fem">option</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                                            id="dinfri"
+                                            name="dinfri">
+                                        <option value="fem">option</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                                            id="dinsat"
+                                            name="dinsat">
+                                        <option value="fem">option</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                                            id="dinsun"
+                                            name="dinsun">
+                                        <option value="fem">option</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div class="row" style="justify-content:center; text-align: center;">
+                            <input class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" type="submit"
+                                   value="Submit">
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Footer -->
+{{>USR_AdminFooter}}
