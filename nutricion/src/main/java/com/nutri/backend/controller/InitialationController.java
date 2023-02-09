@@ -48,16 +48,13 @@ public class InitialationController {
 		return "USR_NonRegForm";
 	}
 
-	@GetMapping("/newUser")
-	public String signin(Model model){return "USR_NonRegRegister";}
-
 	@PostMapping("/newUser")
 	public String addNewUser(@RequestParam String name,@RequestParam String lastName,@RequestParam String email,
 							 @RequestParam String password){
 		User user= new User(name,lastName,email,passwordEncoder.encode(password));
 		userRepository.save(user);
 
-		return "USR_NonRegLogin";
+		return "redirect:/login";
 	}
 
 }
