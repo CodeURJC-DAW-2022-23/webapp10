@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Collections;
+import java.util.List;
 
 
 @Controller
@@ -44,7 +46,7 @@ public class InitialationController {
 		String name = request.getUserPrincipal().getName();
 		User user = userRepository.findByName(name).orElseThrow();
 		model.addAttribute("username", user.getName());
-		model.addAttribute("admin", request.isUserInRole("ADMIN"));
+		model.addAttribute("admin", request.isUserInRole("admin"));
 		return "private";
 	}
 

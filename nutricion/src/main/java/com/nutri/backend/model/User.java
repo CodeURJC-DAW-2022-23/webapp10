@@ -3,6 +3,8 @@ package com.nutri.backend.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
+import org.springframework.security.core.GrantedAuthority;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -167,8 +169,8 @@ public class User{
     //admin constructor
     public User( String email,String password) {
         this.email = email;
-        this.userType = Collections.singletonList("admin");
         this.encodedPassword = password;
+        this.userType = Collections.singletonList("admin");
     }
 
     //worker constructor

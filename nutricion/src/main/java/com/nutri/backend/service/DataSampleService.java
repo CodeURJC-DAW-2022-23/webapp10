@@ -27,22 +27,9 @@ public class DataSampleService {
 
     @PostConstruct
     public void init() {
-
+        //admin
         this.userRepository.save(new User("ejemplo@yahoo.es",passwordEncoder.encode("1234")));
+        //cliente
         this.userRepository.save(new User("Juan","Perez","5212323Q","ejemploworker@yahoo.es",passwordEncoder.encode("1234")));
     }
-
-    public UserDetails loadUserByUsername(String username)
-            throws UsernameNotFoundException {
-        User user = userRepository.findByName(username)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
-        List<GrantedAuthority> roles = new ArrayList<>();
-        for (String role : user.getUserType()) {
-            roles.add(new SimpleGrantedAuthority("ROLE_" + role));
-        }
-        return new org.springframework.security.core.userdetails.User(user.getName(),
-                user.getEncodedPassword(), roles);
-    }
-
-
 }
