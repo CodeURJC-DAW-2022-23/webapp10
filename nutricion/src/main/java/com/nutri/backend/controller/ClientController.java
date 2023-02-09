@@ -1,7 +1,9 @@
 package com.nutri.backend.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ClientController {
@@ -15,7 +17,6 @@ public class ClientController {
 	public String forms() {
 		return "USR_ClientForm";
 	}
-
 	@GetMapping("/clientRecipes")
 	public String recipes() {
 		return "USR_ClientRecepies";

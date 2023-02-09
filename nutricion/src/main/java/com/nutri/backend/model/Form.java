@@ -1,44 +1,52 @@
 package com.nutri.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import javax.persistence.*;
+
+@Entity
 public class Form {
-	// Interface for client columns: all
-	public interface ClientBasic {
-	}
-
-	// Interface for worker columns: all
-	public interface WorkerBasic {
-	}
-
+	//Columns
+	//ID
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "ID")
 	private long id;
+
+	@Column
 	private String sex;
+
+	@Column
 	private String activity;
+
+	@Column
 	private String interes;
-	private String diet = "";
-	private Integer age = 0;
-	private Integer weight = 0;
-	private Integer height = 0;
+
+	@Column
+	private String diet;
+
+	@Column
+	private String age;
+
+	@Column
+	private  int weight;
+
+	@Column
+	private  int height;
 
 	public Form() {
 	}
 
-	public Form(long id, String sexo, Integer edad, String actividad, Integer peso, Integer altura, String servicio,
-	        String dieta) {
-		this.id = id;
-		this.sex = sexo;
-		this.age = edad;
-		this.activity = actividad;
-		this.weight = peso;
-		this.height = altura;
-		this.interes = servicio;
-		this.diet = dieta;
-	}
+	public Form(String sex, String age, String activity, int weight,int height, String service,
+	        String diet) {
 
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
+		this.sex = sex;
+		this.age = age;
+		this.activity = activity;
+		this.weight = weight;
+		this.height = height;
+		this.interes = service;
+		this.diet = diet;
 	}
 
 	public String getSex() {
@@ -73,11 +81,11 @@ public class Form {
 		this.diet = diet;
 	}
 
-	public Integer getAge() {
+	public String getAge() {
 		return age;
 	}
 
-	public void setAge(Integer age) {
+	public void setAge(String age) {
 		this.age = age;
 	}
 
