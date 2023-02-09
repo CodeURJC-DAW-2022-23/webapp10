@@ -14,6 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.CascadeType;
 import java.sql.Blob;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Entity
@@ -124,14 +125,6 @@ public class User{
         this.image = image;
     }
 
-    public String getUserType() {
-        return userType;
-    }
-
-    public void setUserType(String userType) {
-        this.userType = userType;
-    }
-
     public List<Diet> getDietTables() {
         return exerciseTables;
     }
@@ -150,10 +143,18 @@ public class User{
     @JsonIgnore
     private Blob image;
 
+    public List<String> getUserType() {
+        return userType;
+    }
+
+    public void setUserType(List<String> userType) {
+        this.userType = userType;
+    }
+
     //type
     @Column(nullable = false)
     @JsonView({ClientLog.class, WorkerLog.class, ClientBasic.class, WorkerBasic.class})
-    private String userType = "";
+    private List<String> userType;
 
     //DietTables
     @OneToMany(cascade = CascadeType.REMOVE)
@@ -166,7 +167,7 @@ public class User{
     //admin constructor
     public User( String email,String password) {
         this.email = email;
-        this.userType = "admin";
+        this.userType = Collections.singletonList("admin");
         this.encodedPassword = password;
     }
 
@@ -177,7 +178,7 @@ public class User{
         this.NIF = NIF;
         this.email = email;
         this.description = description;
-        this.userType = "worker";
+        this.userType = Collections.singletonList("worker");
         this.encodedPassword = password;
     }
     //client constructor
@@ -186,7 +187,7 @@ public class User{
         this.surname = surname;
         this.NIF = NIF;
         this.email = email;
-        this.userType = "client";
+        this.userType = Collections.singletonList("client");
         this.encodedPassword = password;
     }
 }
