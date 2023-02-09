@@ -1,5 +1,9 @@
 package com.nutri.backend.model;
 
+
+import javax.persistence.*;
+
+@Entity
 public class Form {
 	// Interface for client columns: all
 	public interface ClientBasic {
@@ -8,14 +12,29 @@ public class Form {
 	// Interface for worker columns: all
 	public interface WorkerBasic {
 	}
-
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
+
+	@Column
 	private String sex;
+
+	@Column
 	private String activity;
+
+	@Column
 	private String interes;
+
+	@Column
 	private String diet = "";
+
+	@Column
 	private Integer age = 0;
+
+	@Column
 	private Integer weight = 0;
+
+	@Column
 	private Integer height = 0;
 
 	public Form() {

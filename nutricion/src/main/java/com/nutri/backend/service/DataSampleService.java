@@ -29,7 +29,7 @@ public class DataSampleService {
     public void init() {
 
         this.userRepository.save(new User("ejemplo@yahoo.es",passwordEncoder.encode("1234")));
-        this.userRepository.save(new User("Juan","Perez","5212323Q","ejemploworker@yahoo.es",passwordEncoder.encode("1234")));
+        this.userRepository.save(new User("Juan","Perez","ejemploworker@yahoo.es",passwordEncoder.encode("1234")));
     }
 
  

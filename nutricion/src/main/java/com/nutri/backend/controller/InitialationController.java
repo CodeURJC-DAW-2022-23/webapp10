@@ -3,9 +3,12 @@ package com.nutri.backend.controller;
 import com.nutri.backend.model.User;
 import com.nutri.backend.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Collections;
@@ -16,6 +19,10 @@ import java.util.List;
 public class InitialationController {
 	@Autowired
 	private UserRepository userRepository;
+
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+
 	@GetMapping("/")
 	public String page() {
 		return "USR_NonReg";
@@ -41,13 +48,16 @@ public class InitialationController {
 		return "USR_NonRegForm";
 	}
 
-	@GetMapping("/private")
-	public String privatePage(Model model, HttpServletRequest request) {
-		String name = request.getUserPrincipal().getName();
-		User user = userRepository.findByName(name).orElseThrow();
-		model.addAttribute("username", user.getName());
-		model.addAttribute("admin", request.isUserInRole("admin"));
-		return "private";
+	@GetMapping("/newUser")
+	public String signin(Model model){return "USR_NonRegRegister";}
+
+	@PostMapping("/newUser")
+	public String addNewUser(@RequestParam String name,@RequestParam String lastName,@RequestParam String email,
+							 @RequestParam String password){
+		User user= new User(name,lastName,email,passwordEncoder.encode(password));
+		userRepository.save(user);
+
+		return "USR_NonRegLogin";
 	}
 
 }
