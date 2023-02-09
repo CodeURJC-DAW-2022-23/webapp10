@@ -14,7 +14,6 @@ import com.nutri.backend.repositories.UserRepository;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -28,9 +27,11 @@ public class DataSampleService {
 
     @PostConstruct
     public void init() {
-        //admin
-        this.userRepository.save(new User("ejemplo@yahoo.es",passwordEncoder.encode("1234"), Collections.singletonList("admin")));
-        //cliente
-        this.userRepository.save(new User("Juan","Perez","5212323Q","ejemploworker@yahoo.es",passwordEncoder.encode("1234"), Collections.singletonList("admin")));
+
+        this.userRepository.save(new User("ejemplo@yahoo.es",passwordEncoder.encode("1234")));
+        this.userRepository.save(new User("Juan","Perez","5212323Q","ejemploworker@yahoo.es",passwordEncoder.encode("1234")));
     }
+
+ 
+
 }

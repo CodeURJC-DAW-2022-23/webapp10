@@ -3,9 +3,15 @@ package com.nutri.backend.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
-import org.springframework.security.core.GrantedAuthority;
-
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Column;
+import javax.persistence.GenerationType;
+import javax.persistence.Lob;
+import javax.persistence.Table;
+import javax.persistence.OneToMany;
+import javax.persistence.CascadeType;
 import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -50,6 +56,8 @@ public class User{
     @Column(nullable = false)
     @JsonView({ClientLog.class, WorkerLog.class})
     private String email = "";
+
+
 
     //password
     @Column(nullable = false)
@@ -137,18 +145,18 @@ public class User{
     @JsonIgnore
     private Blob image;
 
-    public List<String> getUserType() {
+    public  String getUserType() {
         return userType;
     }
 
-    public void setUserType(List<String> userType) {
+    public void setUserType(String userType) {
         this.userType = userType;
     }
 
     //type
-    //@JsonView({ClientLog.class, WorkerLog.class, ClientBasic.class, WorkerBasic.class})
-    @ElementCollection(fetch = FetchType.EAGER)
-    private List<String> userType;
+    @Column(nullable = false)
+    @JsonView({ClientLog.class, WorkerLog.class, ClientBasic.class, WorkerBasic.class})
+    private String userType;
 
     //DietTables
     @OneToMany(cascade = CascadeType.REMOVE)
@@ -159,29 +167,29 @@ public class User{
     public User(String name, String surname, String NIF, String email, String encodedPassword,String member){
     }
     //admin constructor
-    public User( String email,String password,List<String> usertype) {
+    public User( String email,String password) {
         this.email = email;
+        this.userType = "admin";
         this.encodedPassword = password;
-        this.userType = usertype;
     }
 
     //worker constructor
-    public User(String name, String surname, String NIF, String email, String address, String description, String phone,String password,List<String> usertype) {
+    public User(String name, String surname, String NIF, String email, String address, String postalCode, String phone,String password) {
         this.name = name;
         this.surname = surname;
         this.NIF = NIF;
         this.email = email;
         this.description = description;
-        this.userType = usertype;
+        this.userType ="worker";
         this.encodedPassword = password;
     }
     //client constructor
-    public User(String name, String surname, String NIF, String email,String password,List<String> usertype){
+    public User(String name, String surname, String NIF, String email,String password){
         this.name = name;
         this.surname = surname;
         this.NIF = NIF;
         this.email = email;
-        this.userType = usertype;
+        this.userType ="client";
         this.encodedPassword = password;
     }
 }

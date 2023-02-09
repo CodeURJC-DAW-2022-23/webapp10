@@ -3,12 +3,13 @@ package com.nutri.backend.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 public class AdminController {
 
 	@GetMapping("/admin")
-	public String showAdmin() {
-		System.out.println();
+	public String showAdmin( HttpServletRequest request) {
 		return "USR_Admin";
 	}
 
