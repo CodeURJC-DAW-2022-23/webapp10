@@ -46,10 +46,6 @@ public class User{
     @JsonView({ClientLog.class, WorkerLog.class})
     private String surname = "";
 
-    //NIF
-    @Column(nullable = false)
-    @JsonView({ClientBasic.class, ClientLog.class, WorkerLog.class})
-    private String NIF = "";
 
     //email
     @Column(nullable = false)
@@ -84,13 +80,7 @@ public class User{
         this.surname = surname;
     }
 
-    public String getNIF() {
-        return NIF;
-    }
 
-    public void setNIF(String NIF) {
-        this.NIF = NIF;
-    }
 
     public String getEmail() {
         return email;
@@ -174,17 +164,15 @@ public class User{
     public User(String name, String surname, String NIF, String email, String address, String postalCode, String phone,String password) {
         this.name = name;
         this.surname = surname;
-        this.NIF = NIF;
         this.email = email;
         this.description = description;
         this.userType = "worker";
         this.encodedPassword = password;
     }
     //client constructor
-    public User(String name, String surname, String NIF, String email,String password){
+    public User(String name, String surname, String email,String password){
         this.name = name;
         this.surname = surname;
-        this.NIF = NIF;
         this.email = email;
         this.userType = "client";
         this.encodedPassword = password;

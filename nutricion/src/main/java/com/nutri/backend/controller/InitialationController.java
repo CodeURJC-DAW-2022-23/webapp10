@@ -1,7 +1,9 @@
 package com.nutri.backend.controller;
 
 import com.nutri.backend.model.Form;
+import com.nutri.backend.model.User;
 import com.nutri.backend.repositories.FormRepository;
+import com.nutri.backend.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +18,9 @@ public class InitialationController {
 
 	@Autowired
 	private FormRepository formRep;
+
+	@Autowired
+	private UserRepository userRepository;
 
 	@GetMapping("/")
 	public String page() {
@@ -50,4 +55,12 @@ public class InitialationController {
 		formRep.save(newForm);
 		return "redirect:/login";
 	}
+	@PostMapping("/addUser")
+	public String newUser(@RequestParam String name,@RequestParam String lastName, @RequestParam String email,
+						  @RequestParam String password){
+		User user = new User(name,lastName,email,password);
+		userRepository.save(user);
+		return "redirect:/login";
+	}
+
 }
