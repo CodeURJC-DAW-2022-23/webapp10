@@ -5,15 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.security.core.GrantedAuthority;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Column;
-import javax.persistence.GenerationType;
-import javax.persistence.Lob;
-import javax.persistence.Table;
-import javax.persistence.OneToMany;
-import javax.persistence.CascadeType;
+import javax.persistence.*;
 import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -154,8 +146,8 @@ public class User{
     }
 
     //type
-    @Column(nullable = false)
-    @JsonView({ClientLog.class, WorkerLog.class, ClientBasic.class, WorkerBasic.class})
+    //@JsonView({ClientLog.class, WorkerLog.class, ClientBasic.class, WorkerBasic.class})
+    @ElementCollection(fetch = FetchType.EAGER)
     private List<String> userType;
 
     //DietTables
@@ -167,29 +159,29 @@ public class User{
     public User(String name, String surname, String NIF, String email, String encodedPassword,String member){
     }
     //admin constructor
-    public User( String email,String password) {
+    public User( String email,String password,List<String> usertype) {
         this.email = email;
         this.encodedPassword = password;
-        this.userType = Collections.singletonList("admin");
+        this.userType = usertype;
     }
 
     //worker constructor
-    public User(String name, String surname, String NIF, String email, String address, String postalCode, String phone,String password) {
+    public User(String name, String surname, String NIF, String email, String address, String description, String phone,String password,List<String> usertype) {
         this.name = name;
         this.surname = surname;
         this.NIF = NIF;
         this.email = email;
         this.description = description;
-        this.userType = Collections.singletonList("worker");
+        this.userType = usertype;
         this.encodedPassword = password;
     }
     //client constructor
-    public User(String name, String surname, String NIF, String email,String password){
+    public User(String name, String surname, String NIF, String email,String password,List<String> usertype){
         this.name = name;
         this.surname = surname;
         this.NIF = NIF;
         this.email = email;
-        this.userType = Collections.singletonList("client");
+        this.userType = usertype;
         this.encodedPassword = password;
     }
 }
