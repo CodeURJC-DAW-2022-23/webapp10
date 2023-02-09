@@ -2,12 +2,7 @@ package com.nutri.backend.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Column;
-import javax.persistence.GenerationType;
-import javax.persistence.Lob;
+import javax.persistence.*;
 import java.sql.Blob;
 
 @Entity
@@ -32,6 +27,10 @@ public class Recepy {
     @JsonIgnore
     private Blob image;
 
+    @ManyToOne
+    private Diet dietRecepy;
+
+
     public Recepy(){}
 
     public Recepy(long id, String name, String description, Blob image){
@@ -39,6 +38,14 @@ public class Recepy {
         this.id=id;
         this.image=image;
         this.name=name;
+    }
+
+    public Diet getDiet() {
+        return dietRecepy;
+    }
+
+    public void setDiet(Diet diet) {
+        this.dietRecepy = dietRecepy;
     }
 
     public long getId() {

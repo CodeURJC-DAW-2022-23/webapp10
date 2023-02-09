@@ -2,13 +2,9 @@ package com.nutri.backend.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Column;
-import javax.persistence.GenerationType;
-import javax.persistence.Lob;
+import javax.persistence.*;
 import java.sql.Blob;
+import java.util.List;
 
 @Entity
 public class Diet {
@@ -31,6 +27,33 @@ public class Diet {
     @Lob
     @JsonIgnore
     private Blob image;
+
+    //Users List
+    @OneToMany(mappedBy = "diet")
+    private List<User> users;
+
+    //Recepies List
+    @OneToMany(mappedBy = "dietRecepy")
+    private List<Recepy> recepies;
+
+    public List<Recepy> getRecepies() {
+        return recepies;
+    }
+
+    public void setRecepies(List<Recepy> recepies) {
+        this.recepies = recepies;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+
+
+
 
     public Diet(){}
 

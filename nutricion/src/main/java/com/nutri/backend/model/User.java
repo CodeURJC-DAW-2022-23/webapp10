@@ -3,15 +3,8 @@ package com.nutri.backend.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Column;
-import javax.persistence.GenerationType;
-import javax.persistence.Lob;
-import javax.persistence.Table;
-import javax.persistence.OneToMany;
-import javax.persistence.CascadeType;
+
+import javax.persistence.*;
 import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.List;
@@ -55,6 +48,9 @@ public class User{
     //password
     @Column(nullable = false)
     private String encodedPassword = "";
+
+    @OneToOne(cascade=CascadeType.ALL)
+    private Form form;
 
     public long getId() {
         return id;
@@ -122,12 +118,12 @@ public class User{
         this.userType = userType;
     }
 
-    public List<Diet> getDietTables() {
-        return exerciseTables;
+    public Diet getDiet() {
+        return diet;
     }
 
-    public void setExerciseTables(List<Diet> exerciseTables) {
-        this.exerciseTables = exerciseTables;
+    public void setDiet(Diet diet) {
+        this.diet = diet;
     }
 
     //description
@@ -146,8 +142,8 @@ public class User{
     private String userType = "";
 
     //DietTables
-    @OneToMany(cascade = CascadeType.REMOVE)
-    private List<Diet> exerciseTables = new ArrayList<>();
+    @ManyToOne
+    private Diet diet;
 
     public User() {}
 

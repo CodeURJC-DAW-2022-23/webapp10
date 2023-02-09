@@ -34,6 +34,9 @@ public class Form {
 	@Column
 	private  int height;
 
+	@OneToOne(mappedBy = "form")
+	private User user;
+
 	public Form() {
 	}
 
