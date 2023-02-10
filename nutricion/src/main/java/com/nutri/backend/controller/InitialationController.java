@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 import java.util.Collections;
 import java.util.List;
 
@@ -25,8 +26,16 @@ public class InitialationController {
 	private PasswordEncoder passwordEncoder;
 
 	@GetMapping("/")
-	public String page() {
-		return "USR_NonReg";
+	public String page(HttpServletRequest request) {
+		Principal principal= request.getUserPrincipal();
+		if (principal!=null){
+			if (request.isUserInRole("ADMIN")){
+				return "redirect:/admin";
+			}else if (request.isUserInRole("CLIENT")){
+				return "redirect:/clientChart";
+			}else{return "redirect:/worker";}
+		}else
+			return "USR_NonReg";
 	}
 
 	@GetMapping("/login")
