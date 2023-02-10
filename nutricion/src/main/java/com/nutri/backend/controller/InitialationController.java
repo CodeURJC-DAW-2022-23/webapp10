@@ -56,5 +56,13 @@ public class InitialationController {
 
 		return "redirect:/login";
 	}
+	@GetMapping("/private")
+	public String redirect(HttpServletRequest request){
+		String name = request.getUserPrincipal().getName();
+		User user = userRepository.findByName(name).orElseThrow();
+		if (request.isUserInRole("admin")){return "redirect:/admin";}
+		else
+			return "redirect:/";
+	}
 
 }

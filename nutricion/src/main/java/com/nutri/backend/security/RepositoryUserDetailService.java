@@ -1,4 +1,4 @@
-package com.nutri.backend.service;
+package com.nutri.backend.security;
 
 
 import com.nutri.backend.model.User;
