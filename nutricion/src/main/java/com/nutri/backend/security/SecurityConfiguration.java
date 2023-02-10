@@ -34,37 +34,37 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
             // Private pages
             //administrator
-            http.authorizeRequests().antMatchers("/admin").hasAnyRole("administrator");
+            http.authorizeRequests().antMatchers("/admin").hasAnyRole("admin");
 
-            http.authorizeRequests().antMatchers("/adminCharts").hasAnyRole("administrator");
-            http.authorizeRequests().antMatchers("/tablesClient").hasAnyRole("administrator");
-            http.authorizeRequests().antMatchers("/workerTable").hasAnyRole("administrator");
-            http.authorizeRequests().antMatchers("/addWorker").hasAnyRole("administrator");
-            http.authorizeRequests().antMatchers("/workerTable/{id}").hasAnyRole("administrator");
-            http.authorizeRequests().antMatchers("/workerTable/{id}/delete").hasAnyRole("administrator");
+            http.authorizeRequests().antMatchers("/adminCharts").hasAnyRole("admin");
+            http.authorizeRequests().antMatchers("/tablesClient").hasAnyRole("admin");
+            http.authorizeRequests().antMatchers("/workerTable").hasAnyRole("admin");
+            http.authorizeRequests().antMatchers("/addWorker").hasAnyRole("admin");
+            http.authorizeRequests().antMatchers("/workerTable/{id}").hasAnyRole("admin");
+            http.authorizeRequests().antMatchers("/workerTable/{id}/delete").hasAnyRole("admin");
 
-            http.authorizeRequests().antMatchers("/tablesClient/{id}").hasAnyRole("administrator");
-            http.authorizeRequests().antMatchers("/tablesClient/{id}/delete").hasAnyRole("administrator");
+            http.authorizeRequests().antMatchers("/tablesClient/{id}").hasAnyRole("admin");
+            http.authorizeRequests().antMatchers("/tablesClient/{id}/delete").hasAnyRole("admin");
 
-            //monitor
-            http.authorizeRequests().antMatchers("/MONschedule{id}").hasAnyRole("monitor");
+            //worker
+            http.authorizeRequests().antMatchers("/MONschedule{id}").hasAnyRole("worker");
 
-            http.authorizeRequests().antMatchers("/MONprofile/{id}").hasAnyRole("monitor");
-            http.authorizeRequests().antMatchers("/MONeditProfile").hasAnyRole("monitor");
-            http.authorizeRequests().antMatchers("/MONeditProfile/{id}").hasAnyRole("monitor");
+            http.authorizeRequests().antMatchers("/MONprofile/{id}").hasAnyRole("worker");
+            http.authorizeRequests().antMatchers("/MONeditProfile").hasAnyRole("worker");
+            http.authorizeRequests().antMatchers("/MONeditProfile/{id}").hasAnyRole("worker");
 
-            http.authorizeRequests().antMatchers("/MONexerciseTable").hasAnyRole("monitor");
-            http.authorizeRequests().antMatchers("/MONexerciseTable/{id}").hasAnyRole("monitor");
+            http.authorizeRequests().antMatchers("/MONexerciseTable").hasAnyRole("worker");
+            http.authorizeRequests().antMatchers("/MONexerciseTable/{id}").hasAnyRole("worker");
 
-            http.authorizeRequests().antMatchers("/MONaddNewExerciseTable").hasAnyRole("monitor");
-            http.authorizeRequests().antMatchers("/MONeditExerciseTable/{id}").hasAnyRole("monitor");
+            http.authorizeRequests().antMatchers("/MONaddNewExerciseTable").hasAnyRole("worker");
+            http.authorizeRequests().antMatchers("/MONeditExerciseTable/{id}").hasAnyRole("worker");
 
-            http.authorizeRequests().antMatchers("/MONeditActivity/{id}").hasAnyRole("monitor");
-            http.authorizeRequests().antMatchers("/MONexerciseTable/delete/{id}").hasAnyRole("monitor");
+            http.authorizeRequests().antMatchers("/MONeditActivity/{id}").hasAnyRole("worker");
+            http.authorizeRequests().antMatchers("/MONexerciseTable/delete/{id}").hasAnyRole("worker");
 
-            http.authorizeRequests().antMatchers("/MONactivities").hasAnyRole("monitor");
-            http.authorizeRequests().antMatchers("/MONactivity/{id}").hasAnyRole("monitor");
-            http.authorizeRequests().antMatchers("/MONactivity/{id}/image").hasAnyRole("monitor");
+            http.authorizeRequests().antMatchers("/MONactivities").hasAnyRole("worker");
+            http.authorizeRequests().antMatchers("/MONactivity/{id}").hasAnyRole("worker");
+            http.authorizeRequests().antMatchers("/MONactivity/{id}/image").hasAnyRole("worker");
 
             //client
             http.authorizeRequests().antMatchers("/clientDiets").hasAnyRole("client");
@@ -80,10 +80,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
             // Login form
             http.formLogin().loginPage("/login");
-            http.formLogin().usernameParameter("email");
+            http.formLogin().usernameParameter("username");
             http.formLogin().passwordParameter("password");
-            http.formLogin().defaultSuccessUrl("/private");
-            http.formLogin().failureUrl("/login");
+            http.formLogin().defaultSuccessUrl("/admin");
+            http.formLogin().failureUrl("/");
 
             // Logout
             http.logout().logoutUrl("/logout");
