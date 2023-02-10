@@ -1,5 +1,6 @@
 package com.nutri.backend.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -14,11 +15,19 @@ import java.security.SecureRandom;
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
+    @Autowired
+    private RepositoryUserDetailService userDetailService;
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder(10, new SecureRandom());
     }
 
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailService)
+                .passwordEncoder(passwordEncoder());
+    }
 
 
     @Override
@@ -34,53 +43,53 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
             // Private pages
             //administrator
-            http.authorizeRequests().antMatchers("/admin").hasAnyRole("admin");
+            http.authorizeRequests().antMatchers("/admin").authenticated();
 
-            http.authorizeRequests().antMatchers("/adminCharts").hasAnyRole("admin");
-            http.authorizeRequests().antMatchers("/tablesClient").hasAnyRole("admin");
-            http.authorizeRequests().antMatchers("/workerTable").hasAnyRole("admin");
-            http.authorizeRequests().antMatchers("/addWorker").hasAnyRole("admin");
-            http.authorizeRequests().antMatchers("/workerTable/{id}").hasAnyRole("admin");
-            http.authorizeRequests().antMatchers("/workerTable/{id}/delete").hasAnyRole("admin");
+            http.authorizeRequests().antMatchers("/adminCharts").hasAnyRole("ADMIN");
+            http.authorizeRequests().antMatchers("/tablesClient").hasAnyRole("ADMIN");
+            http.authorizeRequests().antMatchers("/workerTable").hasAnyRole("ADMIN");
+            http.authorizeRequests().antMatchers("/addWorker").hasAnyRole("ADMIN");
+            http.authorizeRequests().antMatchers("/workerTable/{id}").hasAnyRole("ADMIN");
+            http.authorizeRequests().antMatchers("/workerTable/{id}/delete").hasAnyRole("ADMIN");
 
-            http.authorizeRequests().antMatchers("/tablesClient/{id}").hasAnyRole("admin");
-            http.authorizeRequests().antMatchers("/tablesClient/{id}/delete").hasAnyRole("admin");
+            http.authorizeRequests().antMatchers("/tablesClient/{id}").hasAnyRole("ADMIN");
+            http.authorizeRequests().antMatchers("/tablesClient/{id}/delete").hasAnyRole("ADMIN");
 
             //worker
-            http.authorizeRequests().antMatchers("/MONschedule{id}").hasAnyRole("worker");
+            http.authorizeRequests().antMatchers("/MONschedule{id}").hasAnyRole("WORKER");
 
-            http.authorizeRequests().antMatchers("/MONprofile/{id}").hasAnyRole("worker");
-            http.authorizeRequests().antMatchers("/MONeditProfile").hasAnyRole("worker");
-            http.authorizeRequests().antMatchers("/MONeditProfile/{id}").hasAnyRole("worker");
+            http.authorizeRequests().antMatchers("/MONprofile/{id}").hasAnyRole("WORKER");
+            http.authorizeRequests().antMatchers("/MONeditProfile").hasAnyRole("WORKER");
+            http.authorizeRequests().antMatchers("/MONeditProfile/{id}").hasAnyRole("WORKER");
 
-            http.authorizeRequests().antMatchers("/MONexerciseTable").hasAnyRole("worker");
-            http.authorizeRequests().antMatchers("/MONexerciseTable/{id}").hasAnyRole("worker");
+            http.authorizeRequests().antMatchers("/MONexerciseTable").hasAnyRole("WORKER");
+            http.authorizeRequests().antMatchers("/MONexerciseTable/{id}").hasAnyRole("WORKER");
 
-            http.authorizeRequests().antMatchers("/MONaddNewExerciseTable").hasAnyRole("worker");
-            http.authorizeRequests().antMatchers("/MONeditExerciseTable/{id}").hasAnyRole("worker");
+            http.authorizeRequests().antMatchers("/MONaddNewExerciseTable").hasAnyRole("WORKER");
+            http.authorizeRequests().antMatchers("/MONeditExerciseTable/{id}").hasAnyRole("WORKER");
 
-            http.authorizeRequests().antMatchers("/MONeditActivity/{id}").hasAnyRole("worker");
-            http.authorizeRequests().antMatchers("/MONexerciseTable/delete/{id}").hasAnyRole("worker");
+            http.authorizeRequests().antMatchers("/MONeditActivity/{id}").hasAnyRole("WORKER");
+            http.authorizeRequests().antMatchers("/MONexerciseTable/delete/{id}").hasAnyRole("WORKER");
 
-            http.authorizeRequests().antMatchers("/MONactivities").hasAnyRole("worker");
-            http.authorizeRequests().antMatchers("/MONactivity/{id}").hasAnyRole("worker");
-            http.authorizeRequests().antMatchers("/MONactivity/{id}/image").hasAnyRole("worker");
+            http.authorizeRequests().antMatchers("/MONactivities").hasAnyRole("WORKER");
+            http.authorizeRequests().antMatchers("/MONactivity/{id}").hasAnyRole("WORKER");
+            http.authorizeRequests().antMatchers("/MONactivity/{id}/image").hasAnyRole("WORKER");
 
             //client
-            http.authorizeRequests().antMatchers("/clientDiets").hasAnyRole("client");
-            http.authorizeRequests().antMatchers("/clientForm").hasAnyRole("client");
-            http.authorizeRequests().antMatchers("/clientRecepies").hasAnyRole("client");
+            http.authorizeRequests().antMatchers("/clientDiets").hasAnyRole("CLIENT");
+            http.authorizeRequests().antMatchers("/clientForm").hasAnyRole("CLIENT");
+            http.authorizeRequests().antMatchers("/clientRecepies").hasAnyRole("CLIENT");
 
-            http.authorizeRequests().antMatchers("/clientChart").hasAnyRole("client");
-            http.authorizeRequests().antMatchers("/clientInfo").hasAnyRole("client");
-            http.authorizeRequests().antMatchers("/clientInfoSettings").hasAnyRole("client");
+            http.authorizeRequests().antMatchers("/clientChart").hasAnyRole("CLIENT");
+            http.authorizeRequests().antMatchers("/clientInfo").hasAnyRole("CLIENT");
+            http.authorizeRequests().antMatchers("/clientInfoSettings").hasAnyRole("CLIENT");
 
 
 
 
             // Login form
             http.formLogin().loginPage("/login");
-            http.formLogin().usernameParameter("username");
+            http.formLogin().usernameParameter("email");
             http.formLogin().passwordParameter("password");
             http.formLogin().defaultSuccessUrl("/admin");
             http.formLogin().failureUrl("/");
@@ -97,9 +106,5 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .ignoring()
                 .antMatchers("/h2-console/**");
     }
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
-
-    }
 }

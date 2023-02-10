@@ -156,7 +156,7 @@ public class User{
     //admin constructor
     public User( String email,String password) {
         this.email = email;
-        this.userType = "admin";
+        this.userType = "ADMIN";
         this.encodedPassword = password;
     }
 
@@ -166,7 +166,7 @@ public class User{
         this.surname = surname;
         this.email = email;
         this.description = description;
-        this.userType ="worker";
+        this.userType ="WORKER";
         this.encodedPassword = password;
     }
     //client constructor
@@ -174,7 +174,7 @@ public class User{
         this.name = name;
         this.surname = surname;
         this.email = email;
-        this.userType ="client";
+        this.userType ="CLIENT";
         this.encodedPassword = password;
     }
 }
