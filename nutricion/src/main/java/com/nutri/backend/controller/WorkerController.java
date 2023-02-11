@@ -20,4 +20,14 @@ public class WorkerController {
 		return "USR_WorkerUploadRecipes";
 	}
 
+	@GetMapping("/viewRecipe")
+	public String viewRecipe() {
+		return "USR_WorkerViewRecipe";
+	}
+
+	@GetMapping("/viewDiet")
+	public String viewDiet() {
+		return "USR_WorkerViewDiet";
+	}
+
 }
