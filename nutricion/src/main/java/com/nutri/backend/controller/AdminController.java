@@ -36,5 +36,13 @@ public class AdminController {
 	public String addWorkers() {
 		return "USR_AdminAddWorker";
 	}
+	@GetMapping("/dietTable")
+	public String dietTable() {
+		return "USR_AdminDietTable";
+	}
+	@GetMapping("/editDiet")
+	public String editDiet() {
+		return "USR_AdminEditDiet";
+	}
 
 }
