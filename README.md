@@ -64,7 +64,58 @@ The generation of PDFs will be used so that the user can save or print the diets
 ## Advanced Query Algorithm
 An algorithm will be used that allows establishing a personalized diet for each client based on the answers provided in the questionnaire. With this, the recommended recipes for their type of diet will also be updated.
 
+## Screens
+Screens have been added for the largest and most important functionalities. The application consists of the following screens:
+
++ MainPage_startScreen: Main page that all users will see upon entering.
+![startScreen](https://user-images.githubusercontent.com/80918513/218333005-14b79d19-d16a-4e4e-83e1-eec2912ad3d3.png)
+
++ MainPage_possibleDiets: Scrolling through the main page, you can see a section with the available diets.
+![posibleDiets](https://user-images.githubusercontent.com/80918513/218333210-9c0b4632-2ae0-4fa5-9fc4-45ca86af883c.png)
+
++ MainPage_form: There is a special section for the questionnaire on the main page.
+![form](https://user-images.githubusercontent.com/80918513/218333303-199e3426-7aab-4002-a3fa-6cf51c74564a.png)
+
++ MainPage_nutritionist: Additionally, there is a section dedicated to nutritionists.
+![form](https://user-images.githubusercontent.com/80918513/218333396-791cd5fd-dc29-4a29-a3ec-a32bd2dfc49b.png)
+
++ MainPage_howWeWork: Small part of the main page, dedicated to explaining how the app works.
+![howWeWork](https://user-images.githubusercontent.com/80918513/218333555-d5f917a8-04ca-46c8-92f8-a8f032361dcc.png)
+
++ MainPage_contactUS: As in every web page, there is a Contact Us section.
+![contactUs](https://user-images.githubusercontent.com/80918513/218333649-85a7d46e-b1ab-40f9-9e0e-a5fa6356f13b.png)
+
++ Test_FormToDo: Once you click on the "take test" button, it takes you to another page where you can fill out and submit the test.
+![formToDo](https://user-images.githubusercontent.com/80918513/218333743-6637170d-68ce-4181-967c-e6d90b804dab.png)
+
++ USR_login: Also, on the main page and on the test page, there is a Login button that takes you to a new login screen.
+![login](https://user-images.githubusercontent.com/80918513/218334033-c4a8ac81-3394-4679-aa2f-58f16e1ff4ac.png)
+
++ USR_adminDashboard: This page shows the different statistics the administrator is able to see.
+![adminDashboard](https://user-images.githubusercontent.com/80918513/218334112-a53ebfde-1e49-47f9-9701-46e67c2ac37d.png)
+
++ USR_adminStats: Shows only Activity charts and other kind of graphs in-depth.
+![adminStats](https://user-images.githubusercontent.com/80918513/218334348-60ad2160-66bd-4151-a784-62bb7e8cc253.png)
+
++ USR_adminWorkers: On this page, the admin can see all the workers on the page.
+![adminWorkers](https://user-images.githubusercontent.com/80918513/218334813-824bc3ca-95bc-4d0b-9c14-0dc189bdc7e4.png)
+
++ USR_clientDiets: Each client can view their specific diet with all breakfast, lunch, and dinner recipes.
+![clientDiets](https://user-images.githubusercontent.com/80918513/218334967-da45e016-1b03-43f6-ac30-aff1373e7ff2.png)
+
++ USR_clientStats:Each client has a section with goal compliance charts such as diet progress and weight.
+![clientStats](https://user-images.githubusercontent.com/80918513/218335090-d0b6c542-f025-404f-8a28-eda58da13379.png)
+
++ USR_workerClients:Each nutritionist has a table with all the clients they are responsible for.
+![workerClients](https://user-images.githubusercontent.com/80918513/218335214-19ed31c1-5ec7-463c-9733-99bd5b23a766.png)
+
++ USR_workerNewDiet:Workers can create a new specific diet based on the client's needs and add available recipes to those diets.
+![workerNewDiet](https://user-images.githubusercontent.com/80918513/218335320-34a75f07-4299-41cb-8044-ab9e18fa5f3d.png)
+
++ USR_workerNewRecipe:Workers can upload a new recipe.
+![workerNewRecipe](https://user-images.githubusercontent.com/80918513/218335264-8c2aa7bf-b78c-4c4b-b843-db8ffd6eddaf.png)
+
 ## Navegation Diagram
+The following diagram shows how users can navigate through the different pages of the application according to their role. 
 ![Diagrama DAW F1](https://user-images.githubusercontent.com/61882490/218329039-56531846-79cf-4365-9ecf-caeb05a4530f.jpg)
 
-![image](https://user-images.githubusercontent.com/80918478/218331786-d4fdb575-c4ba-4072-bff0-9fcaea8667e7.png)
