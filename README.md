@@ -77,7 +77,8 @@ Screens have been added for the largest and most important functionalities. The 
 ![form](https://user-images.githubusercontent.com/80918513/218333303-199e3426-7aab-4002-a3fa-6cf51c74564a.png)
 
 + MainPage_nutritionist: Additionally, there is a section dedicated to nutritionists.
-![form](https://user-images.githubusercontent.com/80918513/218333396-791cd5fd-dc29-4a29-a3ec-a32bd2dfc49b.png)
+![nutritionist](https://user-images.githubusercontent.com/80918513/218335474-f972f0b1-a41c-4ddf-904d-986b32c4f926.png)
+
 
 + MainPage_howWeWork: Small part of the main page, dedicated to explaining how the app works.
 ![howWeWork](https://user-images.githubusercontent.com/80918513/218333555-d5f917a8-04ca-46c8-92f8-a8f032361dcc.png)
