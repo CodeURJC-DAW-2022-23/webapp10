@@ -64,10 +64,7 @@ The generation of PDFs will be used so that the user can save or print the diets
 ## Advanced Query Algorithm
 An algorithm will be used that allows establishing a personalized diet for each client based on the answers provided in the questionnaire. With this, the recommended recipes for their type of diet will also be updated.
 
-## Screens
-
-
 ## Navegation Diagram
-The following diagram shows how users can navigate through the different pages of the application according to their role. 
 ![Diagrama DAW F1](https://user-images.githubusercontent.com/61882490/218329039-56531846-79cf-4365-9ecf-caeb05a4530f.jpg)
 
+![image](https://user-images.githubusercontent.com/80918478/218331786-d4fdb575-c4ba-4072-bff0-9fcaea8667e7.png)
