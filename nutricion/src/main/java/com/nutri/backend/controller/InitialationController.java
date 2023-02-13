@@ -32,6 +32,11 @@ public class InitialationController {
 		return "USR_NonRegLogin";
 	}
 
+	@GetMapping("/loginError")
+	public String loggingErrorTem() {
+		return "USR_NonRegLoginError";
+	}
+
 	@GetMapping("/register")
 	public String registerTem() {
 		return "USR_NonRegRegister";
