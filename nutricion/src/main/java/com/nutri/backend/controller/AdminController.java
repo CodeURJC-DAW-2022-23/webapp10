@@ -44,10 +44,6 @@ public class AdminController {
 	public String editDiet() {
 		return "USR_AdminEditDiet";
 	}
-	@GetMapping("/profile")
-	public String profile() {
-		return "USR_Profile";
-	}
 	@GetMapping("/editProfile")
 	public String editProfile() {
 		return "USR_editProfile";
