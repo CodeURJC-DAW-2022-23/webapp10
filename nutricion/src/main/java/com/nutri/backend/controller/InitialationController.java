@@ -25,19 +25,6 @@ public class InitialationController {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
-	@GetMapping("/")
-	public String page(HttpServletRequest request) {
-		Principal principal= request.getUserPrincipal();
-		if (principal!=null){
-			if (request.isUserInRole("ADMIN")){
-				return "redirect:/admin";
-			}else if (request.isUserInRole("CLIENT")){
-				return "redirect:/clientChart";
-			}else{return "redirect:/worker";}
-		}else
-			return "USR_NonReg";
-	}
-
 	@GetMapping("/login")
 	public String loggingTem() {
 		return "USR_NonRegLogin";
