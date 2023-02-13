@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
@@ -68,18 +69,14 @@ public class ClientController {
 		return "USR_ProfileClientEdit";
 	}
 
-
-
-	@GetMapping("/clientFormUpdate")
-	public String clientForm(Model model, HttpServletRequest request,@RequestParam String gensex, @RequestParam String age,@RequestParam String phactivity,
-							 @RequestParam int weight,@RequestParam int height, @RequestParam String interest,
-							 @RequestParam String aspiration){
-		String name = request.getUserPrincipal().getName();
-		User user = userRepository.findByEmail(name).orElseThrow();
+	@PostMapping("/clientFormUpdate")
+	public String updateForm(@RequestParam String gensex, @RequestParam String age,@RequestParam String phactivity,
+					  @RequestParam int weight,@RequestParam int height, @RequestParam String interest,
+					  @RequestParam String aspiration){
 		Form newForm = new Form(gensex,age,phactivity,weight,height,interest,aspiration);
 		formRep.save(newForm);
-		model.addAttribute("name", user.getName());
-		return "redirect:/ClientDiets";
+		return "redirect:/clientDiets";
 	}
+
 
 }
