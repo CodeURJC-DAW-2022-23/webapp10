@@ -36,14 +36,14 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                             </div>
-                            <form class="user" method="post" action="/addUser">
+                            <form class="user" method="post" action="/newUser">
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input name="name"type="text" class="form-control form-control-user" id="exampleFirstName"
                                             placeholder="First Name">
                                     </div>
                                     <div class="col-sm-6">
-                                        <input name="lastName" type="text" class="form-control form-control-user" id="exampleLastName"
+                                        <input name="lastName"type="text" class="form-control form-control-user" id="exampleLastName"
                                             placeholder="Last Name">
                                     </div>
                                 </div>
@@ -57,11 +57,11 @@
                                             id="exampleInputPassword" placeholder="Password">
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="password" class="form-control form-control-user"
+                                        <input  name="passwordRepeat"type="password" class="form-control form-control-user"
                                             id="exampleRepeatPassword" placeholder="Repeat Password">
                                     </div>
                                 </div>
-                                <input type="submit" value=" Register Account" class="btn btn-primary btn-user btn-block">
+                                <input type="submit"value="Register Account" class="btn btn-primary btn-user btn-block">
                                 <hr>
                                 <a href="index.html" class="btn btn-google btn-user btn-block">
                                     <i class="fab fa-google fa-fw"></i> Register with Google
@@ -75,7 +75,7 @@
                                 <a class="small" href="forgot-password.html">Forgot Password?</a>
                             </div>
                             <div class="text-center">
-                                <a class="small" href="login.html">Already have an account? Login!</a>
+                                <a class="small" href="/login">Already have an account? Login!</a>
                             </div>
                         </div>
                     </div>
@@ -86,11 +86,11 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="js/vendor/jquery/jquery.min.js"></script>
+    <script src="js/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="js/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
