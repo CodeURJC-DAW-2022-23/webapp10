@@ -44,46 +44,46 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
         // Private pages
         //administrator
-        http.authorizeRequests().antMatchers("/admin").hasAnyRole("ADMIN");
+        http.authorizeRequests().antMatchers("/admin").hasAnyRole("admin");
 
-        http.authorizeRequests().antMatchers("/adminCharts").hasAnyRole("ADMIN");
-        http.authorizeRequests().antMatchers("/tablesClient").hasAnyRole("ADMIN");
-        http.authorizeRequests().antMatchers("/workerTable").hasAnyRole("ADMIN");
-        http.authorizeRequests().antMatchers("/addWorker").hasAnyRole("ADMIN");
-        http.authorizeRequests().antMatchers("/workerTable/{id}").hasAnyRole("ADMIN");
-        http.authorizeRequests().antMatchers("/workerTable/{id}/delete").hasAnyRole("ADMIN");
+        http.authorizeRequests().antMatchers("/adminCharts").hasAnyRole("admin");
+        http.authorizeRequests().antMatchers("/tablesClient").hasAnyRole("admin");
+        http.authorizeRequests().antMatchers("/workerTable").hasAnyRole("admin");
+        http.authorizeRequests().antMatchers("/addWorker").hasAnyRole("admin");
+        http.authorizeRequests().antMatchers("/workerTable/{id}").hasAnyRole("admin");
+        http.authorizeRequests().antMatchers("/workerTable/{id}/delete").hasAnyRole("admin");
 
-        http.authorizeRequests().antMatchers("/tablesClient/{id}").hasAnyRole("ADMIN");
-        http.authorizeRequests().antMatchers("/tablesClient/{id}/delete").hasAnyRole("ADMIN");
+        http.authorizeRequests().antMatchers("/tablesClient/{id}").hasAnyRole("admin");
+        http.authorizeRequests().antMatchers("/tablesClient/{id}/delete").hasAnyRole("admin");
 
         //worker
-        http.authorizeRequests().antMatchers("/MONschedule{id}").hasAnyRole("WORKER");
+        http.authorizeRequests().antMatchers("/MONschedule{id}").hasAnyRole("worker");
 
-        http.authorizeRequests().antMatchers("/MONprofile/{id}").hasAnyRole("WORKER");
-        http.authorizeRequests().antMatchers("/MONeditProfile").hasAnyRole("WORKER");
-        http.authorizeRequests().antMatchers("/MONeditProfile/{id}").hasAnyRole("WORKER");
+        http.authorizeRequests().antMatchers("/MONprofile/{id}").hasAnyRole("worker");
+        http.authorizeRequests().antMatchers("/MONeditProfile").hasAnyRole("worker");
+        http.authorizeRequests().antMatchers("/MONeditProfile/{id}").hasAnyRole("worker");
 
-        http.authorizeRequests().antMatchers("/MONexerciseTable").hasAnyRole("WORKER");
-        http.authorizeRequests().antMatchers("/MONexerciseTable/{id}").hasAnyRole("WORKER");
+        http.authorizeRequests().antMatchers("/MONexerciseTable").hasAnyRole("worker");
+        http.authorizeRequests().antMatchers("/MONexerciseTable/{id}").hasAnyRole("worker");
 
-        http.authorizeRequests().antMatchers("/MONaddNewExerciseTable").hasAnyRole("WORKER");
-        http.authorizeRequests().antMatchers("/MONeditExerciseTable/{id}").hasAnyRole("WORKER");
+        http.authorizeRequests().antMatchers("/MONaddNewExerciseTable").hasAnyRole("worker");
+        http.authorizeRequests().antMatchers("/MONeditExerciseTable/{id}").hasAnyRole("worker");
 
-        http.authorizeRequests().antMatchers("/MONeditActivity/{id}").hasAnyRole("WORKER");
-        http.authorizeRequests().antMatchers("/MONexerciseTable/delete/{id}").hasAnyRole("WORKER");
+        http.authorizeRequests().antMatchers("/MONeditActivity/{id}").hasAnyRole("worker");
+        http.authorizeRequests().antMatchers("/MONexerciseTable/delete/{id}").hasAnyRole("worker");
 
-        http.authorizeRequests().antMatchers("/MONactivities").hasAnyRole("WORKER");
-        http.authorizeRequests().antMatchers("/MONactivity/{id}").hasAnyRole("WORKER");
-        http.authorizeRequests().antMatchers("/MONactivity/{id}/image").hasAnyRole("WORKER");
+        http.authorizeRequests().antMatchers("/MONactivities").hasAnyRole("worker");
+        http.authorizeRequests().antMatchers("/MONactivity/{id}").hasAnyRole("worker");
+        http.authorizeRequests().antMatchers("/MONactivity/{id}/image").hasAnyRole("worker");
 
         //client
-        http.authorizeRequests().antMatchers("/clientDiets").hasAnyRole("CLIENT");
-        http.authorizeRequests().antMatchers("/clientForm").hasAnyRole("CLIENT");
-        http.authorizeRequests().antMatchers("/clientRecepies").hasAnyRole("CLIENT");
+        http.authorizeRequests().antMatchers("/clientDiets").hasAnyRole("client");
+        http.authorizeRequests().antMatchers("/clientForm").hasAnyRole("client");
+        http.authorizeRequests().antMatchers("/clientRecepies").hasAnyRole("client");
 
-        http.authorizeRequests().antMatchers("/clientChart").hasAnyRole("CLIENT");
-        http.authorizeRequests().antMatchers("/clientInfo").hasAnyRole("CLIENT");
-        http.authorizeRequests().antMatchers("/clientInfoSettings").hasAnyRole("CLIENT");
+        http.authorizeRequests().antMatchers("/clientChart").hasAnyRole("client");
+        http.authorizeRequests().antMatchers("/clientInfo").hasAnyRole("client");
+        http.authorizeRequests().antMatchers("/clientInfoSettings").hasAnyRole("client");
 
 
         // Login form

@@ -12,11 +12,12 @@ public class LoginController {
     public String page(HttpServletRequest request) {
         Principal principal= request.getUserPrincipal();
         if (principal!=null){
-            if (request.isUserInRole("ADMIN")){
+            if (request.isUserInRole("admin")){
                 return "redirect:/admin";
-            }else if (request.isUserInRole("CLIENT")){
+            }else if (request.isUserInRole("client")){
                 return "redirect:/clientChart";
-            }else{return "redirect:/worker";}
+            }else if (request.isUserInRole("worker")){return "redirect:/worker";}
+            return null;
         }else
             return "USR_NonReg";
     }

@@ -5,6 +5,7 @@ import com.nutri.backend.model.User;
 import com.nutri.backend.repositories.FormRepository;
 import com.nutri.backend.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,10 +23,8 @@ public class InitialationController {
 	@Autowired
 	private UserRepository userRepository;
 
-	@GetMapping("/")
-	public String page() {
-		return "USR_NonReg";
-	}
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	@GetMapping("/login")
 	public String loggingTem() {
@@ -75,7 +74,7 @@ public class InitialationController {
 	@PostMapping("/addUser")
 	public String newUser(@RequestParam String name,@RequestParam String lastName, @RequestParam String email,
 						  @RequestParam String password){
-		User user = new User(name,lastName,email,password);
+		User user = new User(name,lastName,email,passwordEncoder.encode(password));
 		userRepository.save(user);
 		return "redirect:/login";
 	}
