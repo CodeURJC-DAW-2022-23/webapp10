@@ -81,6 +81,9 @@ public class ClientController {
 		userRepository.save(user);
 		return "redirect:/clientDiets";
 	}
-
+	@GetMapping("/clientProfile")
+	public String clientProfile() {
+		return "USR_ClientProfile";
+	}
 
 }

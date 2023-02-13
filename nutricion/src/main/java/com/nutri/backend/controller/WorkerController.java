@@ -29,7 +29,8 @@ public class WorkerController {
 	public String viewDiet() {
 		return "USR_WorkerViewDiet";
 	}
-	@GetMapping("/profile")
+
+	@GetMapping("/workerProfile")
 	public String profile() {
 		return "USR_WorkerProfile";
 	}
