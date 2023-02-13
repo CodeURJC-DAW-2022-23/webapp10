@@ -19,30 +19,15 @@ public class Diet {
     @Column(nullable = false)
     private String name;
 
-    //description
-    @Column(nullable=false)
-    private String description;
-
-    //image
-    @Lob
-    @JsonIgnore
-    private Blob image;
+    //Day of the week
+    @Column(nullable = false)
+    private String date;
 
     //Users List
     @OneToMany(mappedBy = "diet")
     private List<User> users;
 
-    //Recepies List
-    @OneToMany(mappedBy = "dietRecepy")
-    private List<Recepy> recepies;
 
-    public List<Recepy> getRecepies() {
-        return recepies;
-    }
-
-    public void setRecepies(List<Recepy> recepies) {
-        this.recepies = recepies;
-    }
 
     public List<User> getUsers() {
         return users;
@@ -73,27 +58,12 @@ public class Diet {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
-    }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
-    public Blob getImage() {
-        return image;
-    }
+    public Diet(long id, String name,){
+        this.id=id;
+        this.name=name;
 
-    public void setImage(Blob image) {
-        this.image = image;
-    }
-
-    public Diet(long id, String name, String description, Blob image){
-       this.id=id;
-       this.name=name;
-       this.description=description;
-       this.image=image;
 
     }
 

@@ -22,6 +22,25 @@ public class Recepy {
     @Column(nullable=false)
     private String description;
 
+    public String getKindOfRecepy() {
+        return kindOfRecepy;
+    }
+
+    public void setKindOfRecepy(String kindOfRecepy) {
+        this.kindOfRecepy = kindOfRecepy;
+    }
+
+    public Diet getDietRecepy() {
+        return dietRecepy;
+    }
+
+    public void setDietRecepy(Diet dietRecepy) {
+        this.dietRecepy = dietRecepy;
+    }
+
+    @Column(nullable = false)
+    private String kindOfRecepy;
+
     //image
     @Lob
     @JsonIgnore
