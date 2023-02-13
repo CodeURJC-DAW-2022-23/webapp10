@@ -72,9 +72,13 @@ public class ClientController {
 	@PostMapping("/clientFormUpdate")
 	public String updateForm(@RequestParam String gensex, @RequestParam String age,@RequestParam String phactivity,
 					  @RequestParam int weight,@RequestParam int height, @RequestParam String interest,
-					  @RequestParam String aspiration){
+					  @RequestParam String aspiration,HttpServletRequest request){
+		String name = request.getUserPrincipal().getName();
+		User user = userRepository.findByEmail(name).orElseThrow();
 		Form newForm = new Form(gensex,age,phactivity,weight,height,interest,aspiration);
 		formRep.save(newForm);
+		user.setForm(newForm);
+		userRepository.save(user);
 		return "redirect:/clientDiets";
 	}
 

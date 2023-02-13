@@ -52,6 +52,14 @@ public class User{
     @OneToOne(cascade=CascadeType.ALL)
     private Form form;
 
+    public Form getForm() {
+        return form;
+    }
+
+    public void setForm(Form form) {
+        this.form = form;
+    }
+
     public long getId() {
         return id;
     }
