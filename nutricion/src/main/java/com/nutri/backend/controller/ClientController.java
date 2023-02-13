@@ -32,7 +32,7 @@ public class ClientController {
 	@GetMapping("/clientForm")
 	public String forms(Model model, HttpServletRequest request) {
 		String name = request.getUserPrincipal().getName();
-		User user = userRepository.findByName(name).orElseThrow();
+		User user = userRepository.findByEmail(name).orElseThrow();
 		model.addAttribute("name", user.getName());
 		return "USR_ClientForm";
 	}
