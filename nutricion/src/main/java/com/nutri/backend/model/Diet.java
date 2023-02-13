@@ -37,8 +37,13 @@ public class Diet {
         this.users = users;
     }
 
+    public String getDate() {
+        return date;
+    }
 
-
+    public void setDate(String date) {
+        this.date = date;
+    }
 
     public Diet(){}
 
@@ -60,10 +65,10 @@ public class Diet {
 
 
 
-    public Diet(long id, String name,){
+    public Diet(long id, String name, String date){
         this.id=id;
         this.name=name;
-
+        this.date=date;
 
     }
 
