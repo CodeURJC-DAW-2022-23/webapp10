@@ -16,7 +16,7 @@ public class LoginController {
                 return "redirect:/admin";
             }else if (request.isUserInRole("client")){
                 return "redirect:/clientChart";
-            }else if (request.isUserInRole("worker")){return "redirect:/worker";}
+            }else if (request.isUserInRole("worker")){return "redirect:/workerDiets";}
             return null;
         }else
             return "USR_NonReg";
