@@ -163,7 +163,7 @@ public class User{
     }
 
     //worker constructor
-    public User(String name, String surname, String email, String description,String password) {
+    public User(String name, String surname,String email, String description,String password) {
         this.name = name;
         this.surname = surname;
         this.email = email;

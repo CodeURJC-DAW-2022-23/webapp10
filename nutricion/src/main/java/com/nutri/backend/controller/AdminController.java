@@ -33,32 +33,26 @@ public class AdminController {
 
 
 
-	@GetMapping("/profileInfo")
-	public String showProfile() {
-		return "USR_ProfileInfoAdmin";
-	}
 
+	//Worker Administration Controler
 	@GetMapping("/workerTable")
 	public String workers(Model model) {
-
+		model.addAttribute("workers",userRepository.findByUserType("worker"));
 		return "USR_AdminWorkerTable";
+	}
+	@PostMapping("/deleteWorker")
+	public String deleteWorker(Model model,@RequestParam List<Long> id){
+		if(id != null) {
+			for (Long l : id) {
+				userRepository.deleteById(l);
+			}
+		}
+		return "redirect:/workerTable";
 	}
 
 	@GetMapping("/addWorker")
 	public String addWorkers() {
 		return "USR_AdminAddWorker";
-	}
-	@GetMapping("/dietTable")
-	public String dietTable() {
-		return "USR_AdminDietTable";
-	}
-	@GetMapping("/editDiet")
-	public String editDiet() {
-		return "USR_AdminEditDiet";
-	}
-	@GetMapping("/editProfile")
-	public String editProfile() {
-		return "USR_editProfile";
 	}
 
 	//***Client Administration***
