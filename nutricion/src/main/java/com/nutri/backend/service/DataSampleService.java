@@ -21,7 +21,6 @@ public class DataSampleService {
 
     @PostConstruct
     public void init() {
-
         this.userRepository.save(new User("ejemplo@yahoo.es",passwordEncoder.encode("1234")));
         this.userRepository.save(new User("Adrian","Garcia","ejemploworker@yahoo.es","Expert",passwordEncoder.encode("1234")));
         this.userRepository.save(new User("Juan","Perez","ejemploclient@yahoo.es",passwordEncoder.encode("1234")));

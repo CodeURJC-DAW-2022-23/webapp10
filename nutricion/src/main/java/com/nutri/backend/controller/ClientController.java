@@ -5,6 +5,7 @@ import com.nutri.backend.model.User;
 import com.nutri.backend.repositories.FormRepository;
 import com.nutri.backend.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +22,9 @@ public class ClientController {
 
 	@Autowired
 	private FormRepository formRep;
+
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	@GetMapping("/clientDiets")
 	public String diet(Model model, HttpServletRequest request) {
@@ -101,4 +105,33 @@ public class ClientController {
 		model.addAttribute("email",user.getEmail());
 		return "USR_ClientProfile";
 	}
+	@GetMapping("/editProfile")
+	public String editClientProfile(Model model, HttpServletRequest request) {
+		String name = request.getUserPrincipal().getName();
+		User user = userRepository.findByEmail(name).orElseThrow();
+		model.addAttribute("name", user.getName());
+		model.addAttribute("surname",user.getSurname());
+		return "USR_ProfileClientEdit";
+	}
+
+	@PostMapping("/editProfile")
+	public String saveClientProfile(@RequestParam String clientName, @RequestParam String clientSurname,
+									@RequestParam String clientPassword,@RequestParam String clientPasswordRepeat, HttpServletRequest request) {
+		String name = request.getUserPrincipal().getName();
+		User user = userRepository.findByEmail(name).orElseThrow();
+		while (!clientPassword.equals(clientPasswordRepeat)){
+			return "USR_ProfileClientEdit";
+		}
+		if (clientName!=null){
+			user.setName(clientName);
+		}
+		if (clientSurname!=null){
+			user.setSurname(clientSurname);
+		}
+		user.setEncodedPassword(passwordEncoder.encode(clientPassword));
+		userRepository.save(user);
+		return "redirect:/clientChart";
+	}
+
+
 }
