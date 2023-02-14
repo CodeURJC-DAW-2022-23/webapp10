@@ -2,6 +2,7 @@ package com.nutri.backend.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
@@ -17,7 +18,7 @@ public class LoginController {
             }else if (request.isUserInRole("client")){
                 return "redirect:/clientChart";
             }else if (request.isUserInRole("worker")){return "redirect:/worker";}
-            return null;
+                return null;
         }else
             return "USR_NonReg";
     }

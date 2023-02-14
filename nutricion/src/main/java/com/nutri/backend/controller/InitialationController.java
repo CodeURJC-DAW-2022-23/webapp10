@@ -73,7 +73,13 @@ public class InitialationController {
 	}
 	@PostMapping("/addUser")
 	public String newUser(@RequestParam String name,@RequestParam String lastName, @RequestParam String email,
-						  @RequestParam String password){
+						  @RequestParam String password, @RequestParam String passwordRepeat){
+		while (!password.equals(passwordRepeat)){
+			return "USR_NonRegRegister";
+		}
+		while(userRepository.existsByEmail(email)){
+			return "USR_NonRegRegister";
+		}
 		User user = new User(name,lastName,email,passwordEncoder.encode(password));
 		userRepository.save(user);
 		return "redirect:/login";
