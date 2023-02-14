@@ -15,6 +15,14 @@ public class WorkerController {
 	@Autowired
 	private UserRepository userRepository;
 
+	@GetMapping("/worker")
+	public String showWorker(Model model, HttpServletRequest request) {
+		String name = request.getUserPrincipal().getName();
+		User user = userRepository.findByEmail(name).orElseThrow();
+		model.addAttribute("name", user.getName());
+		model.addAttribute("email", user.getEmail());
+		return "USR_Worker";
+	}
 	@GetMapping("/workerDiets")
 	public String workerDiets(Model model, HttpServletRequest request) {
 		String name = request.getUserPrincipal().getName();
@@ -62,7 +70,7 @@ public class WorkerController {
 		String name = request.getUserPrincipal().getName();
 		User user = userRepository.findByEmail(name).orElseThrow();
 		model.addAttribute("name", user.getName());
-		//pasarle la info al html
+		model.addAttribute("email", user.getEmail());
 		return "USR_WorkerProfile";
 	}
 }

@@ -98,7 +98,7 @@ public class ClientController {
 		String name = request.getUserPrincipal().getName();
 		User user = userRepository.findByEmail(name).orElseThrow();
 		model.addAttribute("name", user.getName());
-		//pasarle la info al html
+		model.addAttribute("email",user.getEmail());
 		return "USR_ClientProfile";
 	}
 }
