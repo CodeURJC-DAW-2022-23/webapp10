@@ -5,7 +5,7 @@
 
   <!-- Content Row -->
   <div class="row">
-      <form action="/deleteClient" method="post">
+      <form action="/deleteWorker" method="post">
         <div id="demo">
           <h1>Worker Table</h1>
           <!-- Table starts here -->
@@ -23,7 +23,7 @@
               <td>{{name}}</td>
               <td>{{surname}}</td>
               <td>{{email}}</td>
-              <td><input type="checkbox" name="id"></td>
+              <td><input type="checkbox" name="id" value="{{id}}"></td>
             </tr>
             {{/workers}}
             </tbody>
