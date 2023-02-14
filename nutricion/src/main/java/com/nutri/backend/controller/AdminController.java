@@ -35,10 +35,16 @@ public class AdminController {
 		return "USR_AdminCharts";
 	}
 
+	//Chart controller
+	@GetMapping("/chatInformation")
+	public String updateCharts(Model model, HttpServletRequest request){
+
+		return "USR_AdminCharts";
+	}
 
 
 
-	//Worker Administration Controler
+	//Worker Administration Controller
 	@GetMapping("/workerTable")
 	public String workers(Model model) {
 		model.addAttribute("workers",userRepository.findByUserType("worker"));
@@ -83,7 +89,4 @@ public class AdminController {
 		}
 		return "redirect:/tablesClient";
 	}
-
-
-
 }

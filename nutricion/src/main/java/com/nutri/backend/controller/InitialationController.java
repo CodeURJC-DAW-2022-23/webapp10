@@ -4,6 +4,7 @@ import com.nutri.backend.model.Form;
 import com.nutri.backend.model.User;
 import com.nutri.backend.repositories.FormRepository;
 import com.nutri.backend.repositories.UserRepository;
+import org.hibernate.type.DateType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -11,7 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
+import java.util.Calendar;
+import java.util.Date;
 
 
 @Controller
@@ -80,9 +82,11 @@ public class InitialationController {
 		while(userRepository.existsByEmail(email)){
 			return "USR_NonRegRegister";
 		}
+		Date entryDate= new Date(Calendar.getInstance().get(Calendar.MONTH));
 		User user = new User(name,lastName,email,passwordEncoder.encode(password));
+		user.setEntryDate(entryDate);
 		userRepository.save(user);
-		return "redirect:/login";
+		return "redirect:/";
 	}
 
 }

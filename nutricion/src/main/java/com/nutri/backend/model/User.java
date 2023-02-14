@@ -3,11 +3,11 @@ package com.nutri.backend.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
+import org.hibernate.type.DateType;
+import java.util.Date;
 
 import javax.persistence.*;
 import java.sql.Blob;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name="userTable")
@@ -51,6 +51,17 @@ public class User{
 
     @OneToOne(cascade=CascadeType.ALL)
     private Form form;
+
+    //entryDate
+    private int entryDate;
+
+    public int getEntryDate() {
+        return entryDate;
+    }
+
+    public void setEntryDate(Date entryDate) {
+        this.entryDate = entryDate.getMonth();
+    }
 
     public Form getForm() {
         return form;
@@ -170,6 +181,7 @@ public class User{
         this.description = description;
         this.userType = "worker";
         this.encodedPassword = password;
+
     }
     //client constructor
     public User(String name, String surname, String email, String password){
@@ -178,5 +190,6 @@ public class User{
         this.email = email;
         this.userType = "client";
         this.encodedPassword = password;
+
     }
 }
