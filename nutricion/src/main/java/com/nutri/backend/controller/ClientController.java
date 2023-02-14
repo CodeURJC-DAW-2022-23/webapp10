@@ -81,6 +81,12 @@ public class ClientController {
 		userRepository.save(user);
 		return "redirect:/clientDiets";
 	}
-
+	@GetMapping("/clientProfile")
+	public String clientProfile(HttpServletRequest request) {
+		String name = request.getUserPrincipal().getName();
+		User user = userRepository.findByEmail(name).orElseThrow();
+		//pasarle la info al html
+		return "USR_ClientProfile";
+	}
 
 }
