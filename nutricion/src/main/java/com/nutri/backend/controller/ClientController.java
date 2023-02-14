@@ -75,10 +75,22 @@ public class ClientController {
 					  @RequestParam String aspiration,HttpServletRequest request){
 		String name = request.getUserPrincipal().getName();
 		User user = userRepository.findByEmail(name).orElseThrow();
-		Form newForm = new Form(gensex,age,phactivity,weight,height,interest,aspiration);
-		formRep.save(newForm);
-		user.setForm(newForm);
-		userRepository.save(user);
+		if (user.getForm()==(null)){
+			Form newForm = new Form(gensex,age,phactivity,weight,height,interest,aspiration);
+			formRep.save(newForm);
+			user.setForm(newForm);
+			userRepository.save(user);
+		} else{
+			Form newF=user.getForm();
+			newF.setActivity(phactivity);
+			newF.setSex(gensex);
+			newF.setAge(age);
+			newF.setWeight(weight);
+			newF.setHeight(height);
+			newF.setInteres(interest);
+			newF.setDiet(aspiration);
+			userRepository.save(user);
+		}
 		return "redirect:/clientDiets";
 	}
 	@GetMapping("/clientProfile")
