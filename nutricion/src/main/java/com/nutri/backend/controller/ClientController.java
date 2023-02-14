@@ -82,11 +82,11 @@ public class ClientController {
 		return "redirect:/clientDiets";
 	}
 	@GetMapping("/clientProfile")
-	public String clientProfile(HttpServletRequest request) {
+	public String clientProfile(Model model, HttpServletRequest request) {
 		String name = request.getUserPrincipal().getName();
 		User user = userRepository.findByEmail(name).orElseThrow();
+		model.addAttribute("name", user.getName());
 		//pasarle la info al html
 		return "USR_ClientProfile";
 	}
-
 }
