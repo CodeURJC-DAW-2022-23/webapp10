@@ -5,6 +5,7 @@ import com.nutri.backend.repositories.UserRepository;
 import org.hibernate.jdbc.Work;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.parameters.P;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +18,9 @@ import java.util.Optional;
 
 @Controller
 public class AdminController {
+
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	@Autowired
 	private UserRepository userRepository;
@@ -51,9 +55,18 @@ public class AdminController {
 	}
 
 	@GetMapping("/addWorker")
-	public String addWorkers() {
+	public String showAddWorkersForm() {
+
 		return "USR_AdminAddWorker";
 	}
+	@PostMapping("/addWorker")
+	public String addWorker(@RequestParam String workerName,@RequestParam String workerLastname,@RequestParam String workerEmail
+			,@RequestParam String workerPassword,@RequestParam String workerDescription) {
+		User user = new User(workerName,workerLastname,workerEmail,workerDescription,passwordEncoder.encode(workerPassword));
+		userRepository.save(user);
+		return "redirect:/workerTable";
+	}
+
 
 	//***Client Administration***
 	@GetMapping("/tablesClient")

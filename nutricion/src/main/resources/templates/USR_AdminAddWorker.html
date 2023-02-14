@@ -15,31 +15,39 @@
       <div class="card-body">
         <div class="row">
           <div class="col-xl-6 col-lg-5" style="float:'left'">
-            <form method="get" action="/dataUpdate">
+            <form method="post" action="/addWorker">
               <span style="font-weight:400;">Name:</span>
               <br>
               <br>
-              <input type="text" name="clientName"/>
+              <input type="text" name="workerName" required/>
               <br>
               <br>
-              <span style="font-weight:400;">Apellido:</span>
+              <span style="font-weight:400;">Lastname:</span>
               <br>
               <br>
-              <input type="text" name="clientName"/>
+              <input type="text" name="workerLastname" required/>
               <br>
               <br>
-              <span style="font-weight:400;">Correo Electronico:</span>
+              <span style="font-weight:400;">Description:</span>
               <br>
               <br>
-              <input type="text" name="clientName"/>
-          </div>
+              <input type="text" name="workerDescription" required/>
+              <br>
+              <br>
+              <span style="font-weight:400;">Email:</span>
+              <br>
+              <br>
+              <input type="text" name="workerEmail" required/>
+              <br>
+              <br>
+              <span style="font-weight:400;">Password </span>
+              <input type="password" name="workerPassword" required/>
           <div class="col-xl-6 col-lg-5" style="float:'left'">
             <img src='images/SmartWay.png' style="width:300px; height:300px;border-radius:150px;border:10px solid #666;"/>
             <br>
-            <input type='file' name='clientImage' accept=".jpg, .jpeg"/>
+            <input type='file' name='workerImage' accept=".jpg, .jpeg"/>
 
           </div>
-        </div>
         <br>
         <input type="submit" value="Save" >
         </form>

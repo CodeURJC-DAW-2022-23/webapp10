@@ -57,24 +57,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/tablesClient/{id}/delete").hasAnyRole("admin");
 
         //worker
-        http.authorizeRequests().antMatchers("/MONschedule{id}").hasAnyRole("worker");
-
-        http.authorizeRequests().antMatchers("/MONprofile/{id}").hasAnyRole("worker");
-        http.authorizeRequests().antMatchers("/MONeditProfile").hasAnyRole("worker");
-        http.authorizeRequests().antMatchers("/MONeditProfile/{id}").hasAnyRole("worker");
-
-        http.authorizeRequests().antMatchers("/MONexerciseTable").hasAnyRole("worker");
-        http.authorizeRequests().antMatchers("/MONexerciseTable/{id}").hasAnyRole("worker");
-
-        http.authorizeRequests().antMatchers("/MONaddNewExerciseTable").hasAnyRole("worker");
-        http.authorizeRequests().antMatchers("/MONeditExerciseTable/{id}").hasAnyRole("worker");
-
-        http.authorizeRequests().antMatchers("/MONeditActivity/{id}").hasAnyRole("worker");
-        http.authorizeRequests().antMatchers("/MONexerciseTable/delete/{id}").hasAnyRole("worker");
-
-        http.authorizeRequests().antMatchers("/MONactivities").hasAnyRole("worker");
-        http.authorizeRequests().antMatchers("/MONactivity/{id}").hasAnyRole("worker");
-        http.authorizeRequests().antMatchers("/MONactivity/{id}/image").hasAnyRole("worker");
+        http.authorizeRequests().antMatchers("/workerDiets").hasAnyRole("worker");
+        http.authorizeRequests().antMatchers("/workerUploadDiets").hasAnyRole("worker");
+        http.authorizeRequests().antMatchers("/workerUploadRecipes").hasAnyRole("worker");
+        http.authorizeRequests().antMatchers("/workerProfile").hasAnyRole("worker");
+        http.authorizeRequests().antMatchers("/viewDiet").hasAnyRole("worker");
+        http.authorizeRequests().antMatchers("/viewRecipe").hasAnyRole("worker");
 
         //client
         http.authorizeRequests().antMatchers("/clientDiets").hasAnyRole("client");
@@ -84,6 +72,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/clientChart").hasAnyRole("client");
         http.authorizeRequests().antMatchers("/clientInfo").hasAnyRole("client");
         http.authorizeRequests().antMatchers("/clientInfoSettings").hasAnyRole("client");
+        http.authorizeRequests().antMatchers("/clientProfile").hasAnyRole("client");
 
 
         // Login form
