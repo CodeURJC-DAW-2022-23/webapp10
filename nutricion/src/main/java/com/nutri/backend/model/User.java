@@ -155,8 +155,6 @@ public class User{
 
     public User() {}
 
-    public User(String name, String surname, String NIF, String email, String encodedPassword,String member){
-    }
     //admin constructor
     public User( String email,String password) {
         this.email = email;
@@ -165,7 +163,7 @@ public class User{
     }
 
     //worker constructor
-    public User(String name, String surname, String NIF, String email, String address, String postalCode, String phone,String password) {
+    public User(String name, String surname,String email, String description,String password) {
         this.name = name;
         this.surname = surname;
         this.email = email;
@@ -174,7 +172,7 @@ public class User{
         this.encodedPassword = password;
     }
     //client constructor
-    public User(String name, String surname, String email,String password){
+    public User(String name, String surname, String email, String password){
         this.name = name;
         this.surname = surname;
         this.email = email;
