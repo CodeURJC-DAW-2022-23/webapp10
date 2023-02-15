@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Controller
 public class ClientController {
@@ -117,20 +119,30 @@ public class ClientController {
 	@PostMapping("/editProfile")
 	public String saveClientProfile(@RequestParam String clientName, @RequestParam String clientSurname,
 									@RequestParam String clientPassword,@RequestParam String clientPasswordRepeat, HttpServletRequest request) {
-		String name = request.getUserPrincipal().getName();
-		User user = userRepository.findByEmail(name).orElseThrow();
-		while (!clientPassword.equals(clientPasswordRepeat)){
-			return "USR_ProfileClientEdit";
+		final String regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$";
+		final Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
+		final Matcher matcher = pattern.matcher(clientPassword);
+		String nameRep = request.getUserPrincipal().getName();
+		User user = userRepository.findByEmail(nameRep).orElseThrow();
+		String name=user.getName();
+		String surname=user.getSurname();
+		if (!clientPassword.equals(clientPasswordRepeat) && !matcher.matches()){
+			return "redirect:/editProfile";
+		}else{
+			if (clientName!=null && !clientName.equals("")){
+				user.setName(clientName);
+			}else{
+				user.setName(name);
+			}
+			if (clientSurname!=null && !clientSurname.equals("")){
+				user.setSurname(clientSurname);
+			}else{
+				user.setSurname(surname);
+			}
+			user.setEncodedPassword(passwordEncoder.encode(clientPassword));
 		}
-		if (clientName!=null){
-			user.setName(clientName);
-		}
-		if (clientSurname!=null){
-			user.setSurname(clientSurname);
-		}
-		user.setEncodedPassword(passwordEncoder.encode(clientPassword));
 		userRepository.save(user);
-		return "redirect:/clientChart";
+		return "redirect:/clientProfile";
 	}
 
 

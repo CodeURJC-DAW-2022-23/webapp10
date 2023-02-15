@@ -70,7 +70,7 @@ public class WorkerController {
 		String name = request.getUserPrincipal().getName();
 		User user = userRepository.findByEmail(name).orElseThrow();
 		model.addAttribute("name", user.getName());
-		model.addAttribute("email", user.getEmail());
+		//pasarle la info al html
 		return "USR_WorkerProfile";
 	}
 }
