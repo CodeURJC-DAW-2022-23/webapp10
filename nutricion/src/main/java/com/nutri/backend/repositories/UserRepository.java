@@ -15,6 +15,6 @@ public interface UserRepository extends JpaRepository<User,Long> {
     List<User> findByUserType(String userType);
     boolean existsByEmail(String foo);
     @Query(value = "SELECT COUNT(*) FROM USER_TABLE WHERE ENTRY_DATE= :date",nativeQuery = true)
-    int findByEntryDate( int date);
+    int countByEntryDate(int date);
 
 }

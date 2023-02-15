@@ -4,6 +4,7 @@ import com.nutri.backend.model.Form;
 import com.nutri.backend.model.User;
 import com.nutri.backend.repositories.FormRepository;
 import com.nutri.backend.repositories.UserRepository;
+import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -11,10 +12,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
+import java.net.URI;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
 
 @Controller
 public class ClientController {
@@ -113,19 +121,22 @@ public class ClientController {
 		User user = userRepository.findByEmail(name).orElseThrow();
 		model.addAttribute("name", user.getName());
 		model.addAttribute("surname",user.getSurname());
+		model.addAttribute("image",user.getImageFile());
 		return "USR_ProfileClientEdit";
 	}
 
 	@PostMapping("/editProfile")
 	public String saveClientProfile(@RequestParam String clientName, @RequestParam String clientSurname,
-									@RequestParam String clientPassword,@RequestParam String clientPasswordRepeat, HttpServletRequest request) {
-		final String regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$";
+									@RequestParam String clientPassword, @RequestParam String clientPasswordRepeat,
+									@RequestParam MultipartFile image, HttpServletRequest request) throws IOException {
+		final String regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,40}$";
 		final Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
 		final Matcher matcher = pattern.matcher(clientPassword);
 		String nameRep = request.getUserPrincipal().getName();
 		User user = userRepository.findByEmail(nameRep).orElseThrow();
 		String name=user.getName();
 		String surname=user.getSurname();
+		URI location = fromCurrentRequest().build().toUri();
 		if (!clientPassword.equals(clientPasswordRepeat) && !matcher.matches()){
 			return "redirect:/editProfile";
 		}else{
@@ -141,6 +152,8 @@ public class ClientController {
 			}
 			user.setEncodedPassword(passwordEncoder.encode(clientPassword));
 		}
+		user.setImage(location.toString());
+		user.setImageFile(BlobProxy.generateProxy(image.getInputStream(),image.getSize()));
 		userRepository.save(user);
 		return "redirect:/clientProfile";
 	}

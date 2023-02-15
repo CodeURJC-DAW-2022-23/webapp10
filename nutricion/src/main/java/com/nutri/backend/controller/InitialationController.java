@@ -4,16 +4,23 @@ import com.nutri.backend.model.Form;
 import com.nutri.backend.model.User;
 import com.nutri.backend.repositories.FormRepository;
 import com.nutri.backend.repositories.UserRepository;
+import org.hibernate.engine.jdbc.BlobProxy;
 import org.hibernate.type.DateType;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.io.IOException;
+import java.net.URI;
 import java.util.Calendar;
 import java.util.Date;
+
+import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
 
 
 @Controller
@@ -75,17 +82,21 @@ public class InitialationController {
 	}
 	@PostMapping("/addUser")
 	public String newUser(@RequestParam String name,@RequestParam String lastName, @RequestParam String email,
-						  @RequestParam String password, @RequestParam String passwordRepeat){
+						  @RequestParam String password, @RequestParam String passwordRepeat) throws IOException {
 		while (!password.equals(passwordRepeat)){
 			return "USR_NonRegRegister";
 		}
 		while(userRepository.existsByEmail(email)){
 			return "USR_NonRegRegister";
 		}
+
 		Calendar c1 = Calendar.getInstance();
 		int month =c1.get(Calendar.MONTH) ;
 		User user = new User(name,lastName,email,passwordEncoder.encode(password));
 		user.setEntryDate(month);
+
+		Resource image = new ClassPathResource("/static/images/nutricionist1.jpg");
+		user.setImageFile(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
 		userRepository.save(user);
 		return "redirect:/login";
 	}

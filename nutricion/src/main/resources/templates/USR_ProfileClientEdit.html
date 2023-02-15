@@ -1,6 +1,6 @@
 {{>USR_ClientHeader}}
 <!-- Page Heading -->
-<h1 class="h3 mb-2 text-gray-800" xmlns="http://www.w3.org/1999/html"/>SETTINGS</p>
+<h1 class="h3 mb-2 text-gray-800" xmlns="http://www.w3.org/1999/html"></h1><p>SETTINGS</p>
 
 <!-- Content Row -->
 <div class="row">
@@ -12,7 +12,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-xl-6 col-lg-5" style="float:'left'">
-                        <form method="post" action="/editProfile">
+                        <form method="post" action="/editProfile" enctype="multipart/form-data">
                             <span style="font-weight:600;">Name:</span> {{name}}
                             <br>
                             <br>
@@ -33,7 +33,7 @@ At least 1 Symbol, symbol allowed --> !@#$%^&*_=+-
 Min 8 chars and Max 12 chars"> Password: </abbr></span>
                             <br>
                             <br>
-                            <input type="text" id='clientPassword' name="clientPassword" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$" />
+                            <input type="password" id='clientPassword' name="clientPassword" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$" />
                             <br>
                             <br>
                             <span style="font-weight:600;"><abbr
@@ -44,14 +44,14 @@ At least 1 Symbol, symbol allowed --> !@#$%^&*_=+-
 Min 8 chars and Max 12 chars"> Repeat Password: </abbr></span>
                             <br>
                             <br>
-                            <input type="text" id='clientPasswordRepeat' name="clientPasswordRepeat" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$"/>
+                            <input type="password" id='clientPasswordRepeat' name="clientPasswordRepeat" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,40}$"/>
                             <br>
                             <br>
                     </div>
                     <div class="col-xl-6 col-lg-5" style="float:'left'">
-                        <img src='images/SmartWay.png' style="width:300px; height:300px;border-radius:150px;border:10px solid #666;"/>
+                        <img src='{{image}}' style="width:300px; height:300px;border-radius:150px;border:10px solid #666;"/>
                             <br>
-                            <input type='file' id='clientImage' name='clientImage' accept=".jpg, .jpeg"/>
+                            <input type='file' id='clientImage' name='image' accept=".jpg, .jpeg"/>
                     </div>
                 </div>
                     <br>

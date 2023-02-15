@@ -29,6 +29,7 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 
 // Area Chart Example
 var ctx = document.getElementById("myAreaChart");
+var ene=${monthUsers0};
 var myLineChart = new Chart(ctx, {
   type: 'line',
   data: {
@@ -46,7 +47,7 @@ var myLineChart = new Chart(ctx, {
       pointHoverBorderColor: "rgba(78, 115, 223, 1)",
       pointHitRadius: 10,
       pointBorderWidth: 2,
-      data: [{{monthUsers0}},{{monthUsers1}},{{monthUsers2}},{{monthUsers3}},{{monthUsers4}},{{monthUsers5}},{{monthUsers6}},{{monthUsers7}}
+      data:[${monthUsers0},{{monthUsers1}},{{monthUsers2}},{{monthUsers3}},{{monthUsers4}},{{monthUsers5}},{{monthUsers6}},{{monthUsers7}}
                    {{monthUsers8}}{{monthUsers9}}{{monthUsers10}}{{monthUsers11}}],
     }],
   },

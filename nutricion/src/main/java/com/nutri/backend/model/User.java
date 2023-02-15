@@ -52,13 +52,30 @@ public class User{
 
     @OneToOne(cascade=CascadeType.ALL)
     private Form form;
+    //image
+    @Lob
+    @Column
+    private Blob imageFile;
 
+    private String image;
 
+    public Blob getImageFile() {
+        return imageFile;
+    }
+
+    public void setImageFile(Blob imageFile) {
+        this.imageFile = imageFile;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 
     //entryDate
-    //Desde Fuera inyectar entryDate, sacando la fecha y haciendo Save, me quito doleres de cabeza. Paso un entero y
-    //Uso este como controlador de meses.
-    //Deberia funcionar correctamente, si cuando construyo el objeto tengo ese setter, el getter lo recoge y lo añade a ese elementto.
     @Column
     private int entryDate ;
 
@@ -128,13 +145,8 @@ public class User{
         this.description = description;
     }
 
-    public Blob getImage() {
-        return image;
-    }
 
-    public void setImage(Blob image) {
-        this.image = image;
-    }
+
 
     public String getUserType() {
         return userType;
@@ -158,9 +170,7 @@ public class User{
     private String description = "";
 
     //image
-    @Lob
-    @JsonIgnore
-    private Blob image;
+
 
     //type
     @Column(nullable = false)
@@ -190,6 +200,7 @@ public class User{
         this.userType = "worker";
         this.encodedPassword = password;
         this.entryDate = this.getEntryDate();
+        this.image=this.getImage();
     }
     //client constructor
     public User(String name, String surname, String email, String password){
@@ -199,5 +210,6 @@ public class User{
         this.userType = "client";
         this.encodedPassword = password;
         this.entryDate = this.getEntryDate();
+
     }
 }

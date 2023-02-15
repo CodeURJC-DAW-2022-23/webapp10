@@ -41,12 +41,8 @@ public class AdminController {
 	//Chart controller
 	@GetMapping("/chatInformation")
 	public String updateCharts(Model model, HttpServletRequest request){
-		int count;
-		int monthUsers;
-		for (int i=0;i<12;i++){
-			monthUsers=userRepository.findByEntryDate(i);
-			model.addAttribute("monthUsers"+i,monthUsers);
-		}
+		int jan= userRepository.countByEntryDate(0);
+		model.addAttribute("monthUsers0",jan);
 		return "USR_AdminCharts";
 	}
 
