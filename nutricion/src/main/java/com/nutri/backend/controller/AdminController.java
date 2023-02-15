@@ -12,7 +12,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,6 +41,13 @@ public class AdminController {
 	//Chart controller
 	@GetMapping("/chatInformation")
 	public String updateCharts(Model model, HttpServletRequest request){
+		int count;
+		int month;
+		for (int i=0;i<12;i+=1){
+			month=userRepository.findByEntryDate(i);
+
+		}
+
 
 		return "USR_AdminCharts";
 	}
@@ -68,7 +78,10 @@ public class AdminController {
 	@PostMapping("/addWorker")
 	public String addWorker(@RequestParam String workerName,@RequestParam String workerLastname,@RequestParam String workerEmail
 			,@RequestParam String workerPassword,@RequestParam String workerDescription) {
+		Calendar c1 = Calendar.getInstance();
+		int month =c1.get(Calendar.MONTH) ;
 		User user = new User(workerName,workerLastname,workerEmail,workerDescription,passwordEncoder.encode(workerPassword));
+		user.setEntryDate(month);
 		userRepository.save(user);
 		return "redirect:/workerTable";
 	}

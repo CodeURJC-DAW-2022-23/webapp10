@@ -4,10 +4,11 @@ package com.nutri.backend.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 import org.hibernate.type.DateType;
-import java.util.Date;
+
 
 import javax.persistence.*;
 import java.sql.Blob;
+import java.util.Date;
 
 @Entity
 @Table(name="userTable")
@@ -52,15 +53,21 @@ public class User{
     @OneToOne(cascade=CascadeType.ALL)
     private Form form;
 
+
+
     //entryDate
-    private int entryDate;
+    //Desde Fuera inyectar entryDate, sacando la fecha y haciendo Save, me quito doleres de cabeza. Paso un entero y
+    //Uso este como controlador de meses.
+    //Deberia funcionar correctamente, si cuando construyo el objeto tengo ese setter, el getter lo recoge y lo añade a ese elementto.
+    @Column
+    private int entryDate ;
 
     public int getEntryDate() {
         return entryDate;
     }
 
-    public void setEntryDate(Date entryDate) {
-        this.entryDate = entryDate.getMonth();
+    public void setEntryDate(int entryDate) {
+        this.entryDate = entryDate;
     }
 
     public Form getForm() {
@@ -171,6 +178,7 @@ public class User{
         this.email = email;
         this.userType = "admin";
         this.encodedPassword = password;
+
     }
 
     //worker constructor
@@ -181,7 +189,7 @@ public class User{
         this.description = description;
         this.userType = "worker";
         this.encodedPassword = password;
-
+        this.entryDate = this.getEntryDate();
     }
     //client constructor
     public User(String name, String surname, String email, String password){
@@ -190,6 +198,6 @@ public class User{
         this.email = email;
         this.userType = "client";
         this.encodedPassword = password;
-
+        this.entryDate = this.getEntryDate();
     }
 }

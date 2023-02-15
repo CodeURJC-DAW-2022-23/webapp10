@@ -82,11 +82,12 @@ public class InitialationController {
 		while(userRepository.existsByEmail(email)){
 			return "USR_NonRegRegister";
 		}
-		Date entryDate= new Date(Calendar.getInstance().get(Calendar.MONTH));
+		Calendar c1 = Calendar.getInstance();
+		int month =c1.get(Calendar.MONTH) ;
 		User user = new User(name,lastName,email,passwordEncoder.encode(password));
-		user.setEntryDate(entryDate);
+		user.setEntryDate(month);
 		userRepository.save(user);
-		return "redirect:/";
+		return "redirect:/login";
 	}
 
 }
