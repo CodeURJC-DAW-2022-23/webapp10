@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 @Controller
@@ -76,7 +78,10 @@ public class InitialationController {
 	@PostMapping("/addUser")
 	public String newUser(@RequestParam String name,@RequestParam String lastName, @RequestParam String email,
 						  @RequestParam String password, @RequestParam String passwordRepeat){
-		while (!password.equals(passwordRepeat)){
+		final String regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$";
+		final Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
+		final Matcher matcher = pattern.matcher(password);
+		while (!password.equals(passwordRepeat) && !matcher.matches()){
 			return "USR_NonRegRegister";
 		}
 		while(userRepository.existsByEmail(email)){

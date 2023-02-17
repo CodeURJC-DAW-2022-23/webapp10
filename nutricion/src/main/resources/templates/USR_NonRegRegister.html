@@ -51,14 +51,23 @@
                                     <input name="email" type="email" class="form-control form-control-user" id="exampleInputEmail"
                                         placeholder="Email Address">
                                 </div>
+                                <div class="text-center">
+                                <span><abbr
+                                        title="                     At least 1 Uppercase
+At least 1 Lowercase
+At least 1 Number
+At least 1 Symbol, symbol allowed --> !@#$%^&*_=+-
+Min 8 chars and Max 12 chars">Requires needed in password!</abbr></span>
+                                </div>
+                                <br>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input name="password" type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Password">
+                                            id="exampleInputPassword" placeholder="Password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$">
                                     </div>
                                     <div class="col-sm-6">
                                         <input  name="passwordRepeat"type="password" class="form-control form-control-user"
-                                            id="exampleRepeatPassword" placeholder="Repeat Password">
+                                            id="exampleRepeatPassword" placeholder="Repeat Password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$">
                                     </div>
                                 </div>
                                 <input type="submit"value="Register Account" class="btn btn-primary btn-user btn-block">
@@ -71,9 +80,6 @@
                                 </a>
                             </form>
                             <hr>
-                            <div class="text-center">
-                                <a class="small" href="forgot-password.html">Forgot Password?</a>
-                            </div>
                             <div class="text-center">
                                 <a class="small" href="/login">Already have an account? Login!</a>
                             </div>
