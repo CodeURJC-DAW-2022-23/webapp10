@@ -1,9 +1,12 @@
 package com.nutri.backend.controller;
 
+import com.nutri.backend.model.Diet;
 import com.nutri.backend.model.Form;
 import com.nutri.backend.model.User;
+import com.nutri.backend.repositories.DietRepository;
 import com.nutri.backend.repositories.FormRepository;
 import com.nutri.backend.repositories.UserRepository;
+import com.nutri.backend.service.DietSearchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -27,6 +31,13 @@ public class ClientController {
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
+
+	@Autowired
+	private DietRepository dietRepository;
+
+	@Autowired
+	private DietSearchService dietSearchService;
+
 
 	@GetMapping("/clientDiets")
 	public String diet(Model model, HttpServletRequest request) {
@@ -79,12 +90,16 @@ public class ClientController {
 	public String updateForm(@RequestParam String gensex, @RequestParam String age,@RequestParam String phactivity,
 					  @RequestParam int weight,@RequestParam int height, @RequestParam String interest,
 					  @RequestParam String aspiration,HttpServletRequest request){
+		String dietType;
 		String name = request.getUserPrincipal().getName();
 		User user = userRepository.findByEmail(name).orElseThrow();
 		if (user.getForm()==(null)){
 			Form newForm = new Form(gensex,age,phactivity,weight,height,interest,aspiration);
 			formRep.save(newForm);
 			user.setForm(newForm);
+			dietType=dietSearchService.dietAlgorithm(newForm);
+			Diet diet= dietRepository.findByType(dietType).orElseThrow();
+			user.setDiet(diet);
 			userRepository.save(user);
 		} else{
 			Form newF=user.getForm();
@@ -95,6 +110,9 @@ public class ClientController {
 			newF.setHeight(height);
 			newF.setInteres(interest);
 			newF.setDiet(aspiration);
+			dietType=dietSearchService.dietAlgorithm(newF);
+			Diet diet= dietRepository.findByType(dietType).orElseThrow();
+			user.setDiet(diet);
 			userRepository.save(user);
 		}
 		return "redirect:/clientDiets";

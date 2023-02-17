@@ -19,6 +19,17 @@ public class Diet {
     @Column(nullable = false)
     private String name;
 
+    @Column(nullable = false)
+    private String type;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     //Day of the week
     @Column(nullable = false)
     private String date;
