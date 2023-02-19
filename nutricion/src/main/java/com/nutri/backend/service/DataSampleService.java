@@ -34,8 +34,16 @@ public class DataSampleService {
                 new User("Adrian", "Garcia", "adrian.garcia@example.com", "Expert", passwordEncoder.encode("Password1")),
                 new User("Laura", "Martínez", "laura.martinez@example.com", "Beginner", passwordEncoder.encode("Password2")),
                 new User("Carlos", "Fernández", "carlos.fernandez@example.com", "Intermediate", passwordEncoder.encode("Password3")),
-                new User("Lucía", "Sánchez", "lucia.sanchez@example.com", "Expert", passwordEncoder.encode("Password4")),
-                new User("Pedro", "Gómez", "pedro.gomez@example.com", "Intermediate", passwordEncoder.encode("Password5"))
+                new User("Pedro", "Gómez", "pedro.gomez@example.com", "Intermediate", passwordEncoder.encode("Password5")),
+                new User("Elena", "Pérez", "elena.perez@example.com", "Expert", passwordEncoder.encode("Password1")),
+                new User("Pablo", "Martínez", "pablo.martinez@example.com", "Expert", passwordEncoder.encode("Password1")),
+                new User("María", "González", "maria.gonzalez@example.com", "Expert", passwordEncoder.encode("Password1")),
+                new User("Antonio", "López", "antonio.lopez@example.com", "Expert", passwordEncoder.encode("Password1")),
+                new User("Ana", "Ruiz", "ana.ruiz@example.com", "Expert", passwordEncoder.encode("Password1")),
+                new User("Carlos", "Fernández", "carlos.fernandez@example.com", "Expert", passwordEncoder.encode("Password1")),
+                new User("Lucía", "Sánchez", "lucia.sanchez@example.com", "Expert", passwordEncoder.encode("Password1")),
+                new User("Sergio", "Jiménez", "sergio.jimenez@example.com", "Expert", passwordEncoder.encode("Password1")),
+                new User("Laura", "Gómez", "laura.gomez@example.com", "Expert", passwordEncoder.encode("Password1"))
         };
 
         for (User usuario : workers) {
@@ -54,6 +62,16 @@ public class DataSampleService {
                 new User("Pablo", "Gómez", "pablo.gomez@example.com", passwordEncoder.encode("Password7")),
                 new User("Carmen", "López", "carmen.lopez@example.com", passwordEncoder.encode("Password8")),
                 new User("Miguel", "Torres", "miguel.torres@example.com", passwordEncoder.encode("Password9")),
+                new User("Isabel", "Navarro", "isabel.navarro@example.com", passwordEncoder.encode("Password10")),
+                new User("Pedro", "González", "pedro.gonzalez@example.com", passwordEncoder.encode("Password10")),
+                new User("Sofía", "Sánchez", "sofia.sanchez@example.com", passwordEncoder.encode("Password10")),
+                new User("Carlos", "Martínez", "carlos.martinez@example.com", passwordEncoder.encode("Password10")),
+                new User("Laura", "Pérez", "laura.perez@example.com", passwordEncoder.encode("Password10")),
+                new User("Miguel", "García", "miguel.garcia@example.com", passwordEncoder.encode("Password10")),
+                new User("Ana", "Rodríguez", "ana.rodriguez@example.com", passwordEncoder.encode("Password10")),
+                new User("José", "Fernández", "jose.fernandez@example.com", passwordEncoder.encode("Password10")),
+                new User("María", "López", "maria.lopez@example.com", passwordEncoder.encode("Password10")),
+                new User("David", "Ruiz", "david.ruiz@example.com", passwordEncoder.encode("Password10")),
                 new User("Isabel", "Navarro", "isabel.navarro@example.com", passwordEncoder.encode("Password10"))
         };
 
