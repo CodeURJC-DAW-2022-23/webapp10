@@ -19,8 +19,20 @@ public class Recepy {
     private String name;
 
     //description
-    @Column(nullable=false)
+    @Column(nullable=false, length = 2048)
     private String description;
+
+    @Column(nullable=false)
+    public String getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(String ingredients) {
+        this.ingredients = ingredients;
+    }
+
+    @Column(nullable=false)
+    private String ingredients;
 
     public String getKindOfRecepy() {
         return kindOfRecepy;
@@ -52,11 +64,18 @@ public class Recepy {
 
     public Recepy(){}
 
-    public Recepy(long id, String name, String description, Blob image){
+    public Recepy(String name,String ingredients,String description, Blob image, String tipo_dieta){
         this.description=description;
-        this.id=id;
+        this.kindOfRecepy=tipo_dieta;
+        this.ingredients=ingredients;
         this.image=image;
         this.name=name;
+    }
+    public Recepy(String name,String ingredients, String description,String tipo_dieta){
+        this.description=description;
+        this.name=name;
+        this.ingredients=ingredients;
+        this.kindOfRecepy=tipo_dieta;
     }
 
     public Diet getDiet() {
