@@ -80,7 +80,6 @@ public class Diet {
         this.id=id;
         this.name=name;
         this.date=date;
-
     }
 
 }
