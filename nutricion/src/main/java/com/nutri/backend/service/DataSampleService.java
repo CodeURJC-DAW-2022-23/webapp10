@@ -44,6 +44,7 @@ public class DataSampleService {
 
         //Usuarios
         User[] usuarios = {
+                new User("Adrian", "Pena", "ejemploclient@yahoo.es", passwordEncoder.encode("1234")),
                 new User("Juan", "Pérez", "juan.perez@example.com", passwordEncoder.encode("Password1")),
                 new User("María", "García", "maria.garcia@example.com", passwordEncoder.encode("Password2")),
                 new User("Pedro", "Sánchez", "pedro.sanchez@example.com", passwordEncoder.encode("Password3")),
@@ -95,6 +96,10 @@ public class DataSampleService {
         this.recepyRepository.save(new Recepy("Espaguetis a la boloñesa", "Espaguetis con salsa de carne, tomate y cebolla", "1. Cocinar la pasta al dente en agua con sal.\n2. En una sartén, dorar la carne con cebolla y ajo.\n3. Agregar el tomate pelado y picado.\n4. Cocinar a fuego lento por 15 minutos.\n5. Servir sobre los espaguetis y espolvorear con queso rallado.", "Dinner"));
         this.recepyRepository.save(new Recepy("Pescado al horno con ensalada", "Filetes de pescado horneados con ensalada fresca", "1. Precalentar el horno a 180°C.\n2. Colocar los filetes de pescado en una bandeja para hornear.\n3. Salpimentar y rociar con aceite de oliva.\n4. Hornear por 20 minutos.\n5. Servir con ensalada fresca.", "Dinner"));
         this.recepyRepository.save(new Recepy("Lasaña de verduras", "Deliciosa lasaña vegetariana con berenjenas, calabacines y tomate", "1. Cocinar las berenjenas y calabacines a la parrilla.\n2. En una sartén, cocinar el tomate con ajo y cebolla.\n3. En un molde para hornear, colocar una capa de berenjenas, luego una de calabacines y otra de tomate.\n4. Repetir el proceso hasta que se terminen los ingredientes.\n5. Cubrir con queso y hornear por 30 minutos.", "Dinner"));
+
+        //Diet
+
+
     }
 
 }
