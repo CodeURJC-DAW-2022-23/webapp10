@@ -1,69 +1,93 @@
 {{>USR_ClientHeader}}
-<!-- Page Heading -->
-<h1 class="h3 mb-2 text-gray-800" xmlns="http://www.w3.org/1999/html"/>SETTINGS</p>
 
-<!-- Content Row -->
-<div class="row">
+<div class="container-fluid">
 
-    <div class="col-xl-12 col-lg-5">
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Welcome!</h1>
+    </div>
 
+    <!-- Content Row -->
+    <div class="row">
         <!-- Area Chart -->
-        <div class="card shadow mb-4">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-xl-6 col-lg-5" style="float:'left'">
-                        <form method="post" action="/editProfile">
-                            <span style="font-weight:600;">Name:</span> {{name}}
-                            <br>
-                            <br>
-                                <input type="text" id='clientName' name="clientName"/>
-                            <br>
-                            <br>
-                            <span style="font-weight:600;">Apellido:</span> {{surname}}
-                            <br>
-                            <br>
-                                <input type="text" id='clientSurname' name="clientSurname"/>
-                            <br>
-                            <br>
-                            <span style="font-weight:600;"><abbr
-                                    title="                     At least 1 Uppercase
+        <div class="col-xl-12 col-lg-7">
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary" >Profile Settings</h6>
+                </div>
+
+                <div class="col-xl-12 col-lg-5">
+
+                    <!-- Area Chart -->
+                    <div class="card shadow mb-4">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-xl-6 col-lg-5">
+                                    <form method="post" action="/editProfile">
+                                        <span style="font-weight:600;">Name:</span> {{name}}
+                                        <br>
+                                        <br>
+                                        <input type="text" id='clientName' name="clientName"/>
+                                        <br>
+                                        <br>
+                                        <span style="font-weight:600;">Apellido:</span> {{surname}}
+                                        <br>
+                                        <br>
+                                        <input type="text" id='clientSurname' name="clientSurname"/>
+                                        <br>
+                                        <br>
+                                        <span style="font-weight:600;"><abbr
+                                                title="                     At least 1 Uppercase
 At least 1 Lowercase
 At least 1 Number
 At least 1 Symbol, symbol allowed --> !@#$%^&*_=+-
 Min 8 chars and Max 12 chars"> Password: </abbr></span>
-                            <br>
-                            <br>
-                            <input type="text" id='clientPassword' name="clientPassword" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$" />
-                            <br>
-                            <br>
-                            <span style="font-weight:600;"><abbr
-                                    title="                     At least 1 Uppercase
+                                        <br>
+                                        <br>
+                                        <input type="text" id='clientPassword' name="clientPassword"
+                                               pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$"/>
+                                        <br>
+                                        <br>
+                                        <span style="font-weight:600;"><abbr
+                                                title="                     At least 1 Uppercase
 At least 1 Lowercase
 At least 1 Number
 At least 1 Symbol, symbol allowed --> !@#$%^&*_=+-
 Min 8 chars and Max 12 chars"> Repeat Password: </abbr></span>
+                                        <br>
+                                        <br>
+                                        <input type="text" id='clientPasswordRepeat' name="clientPasswordRepeat"
+                                               pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$"/>
+                                        <br>
+                                        <br>
+                                </div>
+                                <div class="col-xl-6 col-lg-5">
+                                    <img src='images/SmartWay.png'
+                                         style="width:280px;margin-bottom: 15px; height:280px;border-radius:90px;border:10px solid #666;"/>
+                                    <br>
+                                    <input type='file' id='clientImage' name='clientImage' accept=".jpg, .jpeg"/>
+                                </div>
+
+                            </div>
                             <br>
-                            <br>
-                            <input type="text" id='clientPasswordRepeat' name="clientPasswordRepeat" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$"/>
-                            <br>
-                            <br>
-                    </div>
-                    <div class="col-xl-6 col-lg-5" style="float:'left'">
-                        <img src='images/SmartWay.png' style="width:300px; height:300px;border-radius:150px;border:10px solid #666;"/>
-                            <br>
-                            <input type='file' id='clientImage' name='clientImage' accept=".jpg, .jpeg"/>
+                            <div class="row" style="justify-content:left; text-align:left;">
+                                <input class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" type="submit"
+                                       value="Save">
+                            </div>
+                            </form>
+
+                        </div>
+                        <hr>
                     </div>
                 </div>
-                    <br>
-                    <input type="submit" value="Submit" >
-               </form>
-
             </div>
-            <hr>
+        </div>
+
         </div>
     </div>
 </div>
-</div>
+
 <!-- /.container-fluid -->
 
 <!-- End of Main Content -->
