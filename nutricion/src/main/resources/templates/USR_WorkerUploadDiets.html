@@ -22,7 +22,11 @@
                             </div>
                         </div>
                         <datalist id="breakfast">
-                            <option value="oranges">
+                            <select>
+                                {{#recepyBreakfast}}
+                                <option value="{{name}}">{{name}}</option>
+                                {{/recepyBreakfast}}
+                            </select>
                         </datalist>
                         <datalist id="lunch">
                             <option value="steak">
@@ -47,11 +51,7 @@
                             <tr>
                                 <td class="day-time">Breakfast</td>
                                 <td>
-                                    <input list="breakfast" name="brmon" id="brmon" style="width=10px; border-radius: 5px;">
-                                    <!--select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" id="brmon"
-                                            name="brmon">
-                                        <option value="fem">option</option>
-                                    </select-->
+                                    <input list="breakfast" name="brtue" id="brmon">
                                 </td>
                                 <td>
                                     <input list="breakfast" name="brtue" id="brtue">

@@ -8,71 +8,27 @@
 
         <div id="demo">
             <h1>View Recipe</h1>
-
             <div class="table-responsive-vertical shadow p-4">
                 <!-- Table starts here -->
                 <table id="table" class="table table-hover table-mc-light-blue">
                     <thead>
                     <tr>
-                        <th>ID</th>
-                        <th> Name</th>
-                        <th>Link PDF</th>
-                        <th>Upload Date</th>
+                        <th>Name</th>
+                        <th>Ingredients</th>
+                        <th>Description</th>
+                        <th>kindOfRecepy</th>
                     </tr>
                     </thead>
                     <tbody>
+                    {{#recepy}}
                     <tr>
-                        <td data-title="ID">1</td>
-                        <td data-title="Name">Avocado and tuna salad wrap</td>
-                        <td data-title="Link PDF">
-                            <a href="https://github.com/zavoloklom/material-design-color-palette"
-                               target="_blank">PDF</a>
-                        </td>
-                        <td data-title="Upload Date">01/01/2022</td>
+                        <td>{{name}}</td>
+                        <td>{{ingredients}}</td>
+                        <td>{{description}}</td>
+                        <td>{{kindOfRecepy}}</td>
+                        <td><input type="checkbox" name="id" value="{{id}}"></td>
                     </tr>
-                    <tr>
-                        <td data-title="ID">2</td>
-                        <td data-title="Name">caponata flatbread</td>
-                        <td data-title="Link PDF">
-                            <a href="https://github.com/zavoloklom/material-design-color-palette"
-                               target="_blank">PDF</a>
-                        </td>
-                        <td data-title="Upload Date">02/02/2022</td>
-                    </tr>
-                    <tr>
-                        <td data-title="ID">3</td>
-                        <td data-title="Name">Grilled sweet potatoes</td>
-                        <td data-title="Link PDF">
-                            <a href="https://github.com/zavoloklom/material-design-color-palette"
-                               target="_blank">PDF</a>
-                        </td>
-                        <td data-title="Upload Date">03/03/2022</td>
-                    </tr>
-                    <tr>
-                        <td data-title="ID">4</td>
-                        <td data-title="Name">Greek salad</td>
-                        <td data-title="Link"><a href="https://codepen.io/zavoloklom/pen/dIgco"
-                                                 target="_blank">PDF</a></td>
-                        <td data-title="Status">04/02/2021</td>
-
-                    <tr>
-                        <td data-title="ID">5</td>
-                        <td data-title="Name">Fiery Black Bean soup</td>
-                        <td data-title="Link">
-                            <a href="https://codepen.io/zavoloklom/pen/wtApI" target="_blank">PDF</a>
-                        </td>
-                        <td data-title="Status">07/11/2022</td>
-
-                    <tr>
-                        <td data-title="ID">6</td>
-                        <td data-title="Name">Harissa Chicken salad</td>
-                        <td data-title="Link">
-                            <a href="https://codepen.io/zavoloklom/pen/IkaFL" target="_blank">PDF</a>
-                        </td>
-                        <td data-title="Status">12/11/2022</td>
-
-                    </tr>
-
+                    {{/recepy}}
                     </tbody>
                 </table>
             </div>

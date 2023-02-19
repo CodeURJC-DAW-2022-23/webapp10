@@ -45,7 +45,6 @@ public class AdminController {
 		int month;
 		for (int i=0;i<12;i+=1){
 			month=userRepository.findByEntryDate(i);
-
 		}
 
 
@@ -60,6 +59,7 @@ public class AdminController {
 		model.addAttribute("workers",userRepository.findByUserType("worker"));
 		return "USR_AdminWorkerTable";
 	}
+
 	@PostMapping("/deleteWorker")
 	public String deleteWorker(Model model,@RequestParam List<Long> id){
 		if(id != null) {

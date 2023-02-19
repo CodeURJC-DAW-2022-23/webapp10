@@ -1,6 +1,7 @@
 package com.nutri.backend.controller;
 
 import com.nutri.backend.model.User;
+import com.nutri.backend.repositories.RecepyRepository;
 import com.nutri.backend.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,9 @@ public class WorkerController {
 
 	@Autowired
 	private UserRepository userRepository;
+
+	@Autowired
+	private RecepyRepository recepyRepository;
 
 	@GetMapping("/worker")
 	public String showWorker(Model model, HttpServletRequest request) {
@@ -54,7 +58,7 @@ public class WorkerController {
 		String name = request.getUserPrincipal().getName();
 		User user = userRepository.findByEmail(name).orElseThrow();
 		model.addAttribute("name", user.getName());
-		//pasarle la info al html
+		model.addAttribute("recepy",recepyRepository.findAll());
 		return "USR_WorkerViewRecipe";
 	}
 	@GetMapping("/viewDiet")
@@ -62,7 +66,9 @@ public class WorkerController {
 		String name = request.getUserPrincipal().getName();
 		User user = userRepository.findByEmail(name).orElseThrow();
 		model.addAttribute("name", user.getName());
-		//pasarle la info al html
+		model.addAttribute("recepyBreakfast",recepyRepository.findByKindOfRecepy("Breakfast"));
+		model.addAttribute("recepyLunch",recepyRepository.findByKindOfRecepy("Lunch"));
+		model.addAttribute("recepyDinner",recepyRepository.findByKindOfRecepy("Dinner"));
 		return "USR_WorkerViewDiet";
 	}
 	@GetMapping("/workerProfile")
@@ -73,4 +79,6 @@ public class WorkerController {
 		//pasarle la info al html
 		return "USR_WorkerProfile";
 	}
+
+
 }
