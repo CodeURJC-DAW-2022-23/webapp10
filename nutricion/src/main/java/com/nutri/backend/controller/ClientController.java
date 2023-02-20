@@ -124,7 +124,7 @@ public class ClientController {
 		model.addAttribute("email",user.getEmail());
 		return "USR_ClientProfile";
 	}
-	@GetMapping("/editProfile")
+	@GetMapping("/clientEditProfile")
 	public String editClientProfile(Model model, HttpServletRequest request) {
 		String name = request.getUserPrincipal().getName();
 		User user = userRepository.findByEmail(name).orElseThrow();
@@ -133,7 +133,7 @@ public class ClientController {
 		return "USR_ClientEditProfile";
 	}
 
-	@PostMapping("/editProfile")
+	@PostMapping("/clientEditProfile")
 	public String saveClientProfile(@RequestParam String clientName, @RequestParam String clientSurname,
 									@RequestParam String clientPassword,@RequestParam String clientPasswordRepeat, HttpServletRequest request) {
 		final String regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$";
@@ -144,7 +144,7 @@ public class ClientController {
 		String name=user.getName();
 		String surname=user.getSurname();
 		if (!clientPassword.equals(clientPasswordRepeat) && !matcher.matches()){
-			return "redirect:/ClientEditProfile";
+			return "redirect:/clientProfile";
 		}else{
 			if (clientName!=null && !clientName.equals("")){
 				user.setName(clientName);
