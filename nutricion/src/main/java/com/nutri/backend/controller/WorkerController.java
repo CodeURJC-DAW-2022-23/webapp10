@@ -1,5 +1,6 @@
 package com.nutri.backend.controller;
 
+import com.nutri.backend.model.Recepy;
 import com.nutri.backend.model.User;
 import com.nutri.backend.repositories.RecepyRepository;
 import com.nutri.backend.repositories.UserRepository;
@@ -9,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @Controller
 public class WorkerController {
@@ -41,7 +43,9 @@ public class WorkerController {
 		String name = request.getUserPrincipal().getName();
 		User user = userRepository.findByEmail(name).orElseThrow();
 		model.addAttribute("name", user.getName());
-		//pasarle la info al html
+		model.addAttribute("recepyBreakfast",recepyRepository.findByKindOfRecepy("Breakfast"));
+		model.addAttribute("recepyLunch",recepyRepository.findByKindOfRecepy("Lunch"));
+		model.addAttribute("recepyDinner",recepyRepository.findByKindOfRecepy("Dinner"));
 		return "USR_WorkerUploadDiets";
 	}
 	
@@ -66,9 +70,7 @@ public class WorkerController {
 		String name = request.getUserPrincipal().getName();
 		User user = userRepository.findByEmail(name).orElseThrow();
 		model.addAttribute("name", user.getName());
-		model.addAttribute("recepyBreakfast",recepyRepository.findByKindOfRecepy("Breakfast"));
-		model.addAttribute("recepyLunch",recepyRepository.findByKindOfRecepy("Lunch"));
-		model.addAttribute("recepyDinner",recepyRepository.findByKindOfRecepy("Dinner"));
+		model.addAttribute("recepy",recepyRepository.findAll());
 		return "USR_WorkerViewDiet";
 	}
 	@GetMapping("/workerProfile")

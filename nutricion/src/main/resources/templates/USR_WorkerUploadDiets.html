@@ -29,10 +29,18 @@
                             </select>
                         </datalist>
                         <datalist id="lunch">
-                            <option value="steak">
+                            <select>
+                                {{#recepyLunch}}
+                                <option value="{{name}}">{{name}}</option>
+                                {{/recepyLunch}}
+                            </select>
                         </datalist>
                         <datalist id="dinner">
-                            <option value="salad">
+                            <select>
+                                {{#recepyDinner}}
+                                <option value="{{name}}">{{name}}</option>
+                                {{/recepyDinner}}
+                            </select>
                         </datalist>
 
 
@@ -51,7 +59,7 @@
                             <tr>
                                 <td class="day-time">Breakfast</td>
                                 <td>
-                                    <input list="breakfast" name="brtue" id="brmon">
+                                    <input list="breakfast" name="brmon" id="brmon">
                                 </td>
                                 <td>
                                     <input list="breakfast" name="brtue" id="brtue">
