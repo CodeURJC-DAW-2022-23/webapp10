@@ -76,9 +76,20 @@ public class WorkerController {
 		String name = request.getUserPrincipal().getName();
 		User user = userRepository.findByEmail(name).orElseThrow();
 		model.addAttribute("name", user.getName());
+		model.addAttribute("email",user.getEmail());
 		//pasarle la info al html
 		return "USR_WorkerProfile";
 	}
+	@GetMapping("/workerEditProfile")
+	public String workerEditProfile(Model model, HttpServletRequest request) {
+		String name = request.getUserPrincipal().getName();
+		User user = userRepository.findByEmail(name).orElseThrow();
+		model.addAttribute("name", user.getName());
+		model.addAttribute("surname",user.getSurname());
+		//pasarle la info al html
+		return "USR_WorkerEditProfile";
+	}
+
 
 
 }

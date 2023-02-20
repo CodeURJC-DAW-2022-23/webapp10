@@ -1,5 +1,4 @@
 {{>USR_WorkerHeader}}
-
 <div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
     <div class="card p-4">
         <div class=" image d-flex flex-column justify-content-center align-items-center">
@@ -7,8 +6,10 @@
             <span class="name mt-3">{{name}}</span>
             <br>
             <span class="idd">{{email}}</span>
-            <a class=" d-flex mt-2" href="/editProfile">
-                <button>Edit Profile</button>
+            <a class=" d-flex mt-2" href="/workerEditProfile">
+
+                <input class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" type="submit"
+                       value="Edit Profile">
             </a>
             <div class=" px-2 rounded mt-4 date "><span class="join">Joined May,2021</span>
             </div>

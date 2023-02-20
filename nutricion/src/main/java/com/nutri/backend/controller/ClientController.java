@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -83,7 +82,7 @@ public class ClientController {
 		String name = request.getUserPrincipal().getName();
 		User user = userRepository.findByEmail(name).orElseThrow();
 		model.addAttribute("name", user.getName());
-		return "USR_ProfileClientEdit";
+		return "USR_ClientEditProfile";
 	}
 
 	@PostMapping("/clientFormUpdate")
@@ -131,7 +130,7 @@ public class ClientController {
 		User user = userRepository.findByEmail(name).orElseThrow();
 		model.addAttribute("name", user.getName());
 		model.addAttribute("surname",user.getSurname());
-		return "USR_ProfileClientEdit";
+		return "USR_ClientEditProfile";
 	}
 
 	@PostMapping("/editProfile")
@@ -145,7 +144,7 @@ public class ClientController {
 		String name=user.getName();
 		String surname=user.getSurname();
 		if (!clientPassword.equals(clientPasswordRepeat) && !matcher.matches()){
-			return "redirect:/editProfile";
+			return "redirect:/ClientEditProfile";
 		}else{
 			if (clientName!=null && !clientName.equals("")){
 				user.setName(clientName);

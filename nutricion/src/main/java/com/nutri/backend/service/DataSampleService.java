@@ -31,7 +31,7 @@ public class DataSampleService {
 
         //Workers
         User[] workers = {
-                new User("Adrian", "Garcia", "adrian.garcia@example.com", "Expert", passwordEncoder.encode("Password1")),
+                new User("Worker", "Garcia", "ejemploworker@yahoo.es", "Expert", passwordEncoder.encode("1234")),
                 new User("Laura", "Martínez", "laura.martinez@example.com", "Beginner", passwordEncoder.encode("Password2")),
                 new User("Carlos", "Fernández", "carlos.fernandez@example.com", "Intermediate", passwordEncoder.encode("Password3")),
                 new User("Pedro", "Gómez", "pedro.gomez@example.com", "Intermediate", passwordEncoder.encode("Password5")),
@@ -52,7 +52,7 @@ public class DataSampleService {
 
         //Usuarios
         User[] usuarios = {
-                new User("Adrian", "Pena", "ejemploclient@yahoo.es", passwordEncoder.encode("1234")),
+                new User("Cliente", "Pena", "ejemploclient@yahoo.es", passwordEncoder.encode("1234")),
                 new User("Juan", "Pérez", "juan.perez@example.com", passwordEncoder.encode("Password1")),
                 new User("María", "García", "maria.garcia@example.com", passwordEncoder.encode("Password2")),
                 new User("Pedro", "Sánchez", "pedro.sanchez@example.com", passwordEncoder.encode("Password3")),
