@@ -20,7 +20,8 @@ import java.util.List;
 
 @Controller
 public class WorkerController {
-
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 	@Autowired
 	private UserRepository userRepository;
 
