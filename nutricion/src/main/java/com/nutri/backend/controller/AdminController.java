@@ -2,13 +2,16 @@ package com.nutri.backend.controller;
 
 import com.nutri.backend.model.User;
 import com.nutri.backend.repositories.UserRepository;
+import com.nutri.backend.service.UserService;
 import org.hibernate.jdbc.Work;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.security.core.parameters.P;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -27,6 +30,9 @@ public class AdminController {
 
 	@Autowired
 	private UserRepository userRepository;
+
+	@Autowired
+	private UserService  userService;
 
 	@GetMapping("/admin")
 	public String showAdmin( HttpServletRequest request) {
@@ -85,12 +91,21 @@ public class AdminController {
 		userRepository.save(user);
 		return "redirect:/workerTable";
 	}
+	//ajax
+	@GetMapping("/tablesClient/page/{page}")
+	public String getClientPage(Model model, @PathVariable int page) {
+		Page<User> client = userService.findPageClient(page, "client");
+		List<User> users = client.toList();
+		model.addAttribute("list", users);
+		return "USR_AdminClientTableAjax";
 
-
+	}
 	//***Client Administration***
 	@GetMapping("/tablesClient")
 	public String showClients(Model model) {
-		model.addAttribute("clients",userRepository.findByUserType("client"));
+		Page<User> clientPage = userService.findPageClient(0, "client");
+		model.addAttribute("list",clientPage.toList());
+		model.addAttribute("last",clientPage.getTotalPages());
 		return "USR_AdminClientTable";
 	}
 	@PostMapping("/deleteClient")

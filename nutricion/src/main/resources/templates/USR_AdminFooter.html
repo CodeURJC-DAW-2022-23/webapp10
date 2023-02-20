@@ -42,6 +42,26 @@
 <!-- Bootstrap core JavaScript-->
 <script src="js/vendor/jquery/jquery.min.js"></script>
 <script src="js/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script>
+ var contPage = 1;
+    $( "#loadMore" ).click(function() {
+        $.ajax({
+            url: "/tablesClient/page/" + contPage,
+            method: "get",
+            beforeSend: ()=>{
+                $("#spinner").addClass("fd-none d-sm-inline-block btn btn-sm btn-primary shadow-sm");
+            }
+        }).done(function (answer) {
+            $("tr").last().after(answer);
+            contPage += 1;
+            $("#spinner").removeClass("fd-none d-sm-inline-block btn btn-sm btn-primary shadow-sm   ");
+            if(contPage === {{last}}){
+                $("#loadMore").off("click");
+                $("#loadMore").remove();
+            }
+        });
+    });
+</script>
 
 <!-- Core plugin JavaScript-->
 <script src="js/vendor/jquery-easing/jquery.easing.min.js"></script>

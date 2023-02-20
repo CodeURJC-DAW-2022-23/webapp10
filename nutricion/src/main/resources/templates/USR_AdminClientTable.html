@@ -18,19 +18,25 @@
                 </tr>
                 </thead>
                 <tbody>
-                {{#clients}}
+                {{#list}}
                 <tr>
                     <td>{{name}}</td>
                     <td>{{surname}}</td>
                     <td>{{email}}</td>
                     <td><input type="checkbox" name="id" value="{{id}}"></td>
                 </tr>
-                {{/clients}}
+                {{/list}}
                 </tbody>
             </table>
             <div class="row" style="justify-content:center; text-align: center;">
                 <input class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" type="submit"
                        value="Delete">
+            </div>
+            <div>
+            <button class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" type="button" id="loadMore">
+                Load More
+                <i class="" id="spinner"></i>
+            </button>
             </div>
         </div>
         </form>
