@@ -1,7 +1,10 @@
 package com.nutri.backend.service;
 
 
+import com.nutri.backend.model.Diet;
 import com.nutri.backend.model.Recepy;
+import com.nutri.backend.model.Triplet;
+import com.nutri.backend.repositories.DietRepository;
 import com.nutri.backend.repositories.RecepyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -23,6 +26,9 @@ public class DataSampleService {
 
     @Autowired
     private RecepyRepository recepyRepository;
+
+    @Autowired
+    private DietRepository dietRepository;
 
     @PostConstruct
     public void init() {
@@ -116,7 +122,21 @@ public class DataSampleService {
         this.recepyRepository.save(new Recepy("Lasaña de verduras", "Deliciosa lasaña vegetariana con berenjenas, calabacines y tomate", "1. Cocinar las berenjenas y calabacines a la parrilla.\n2. En una sartén, cocinar el tomate con ajo y cebolla.\n3. En un molde para hornear, colocar una capa de berenjenas, luego una de calabacines y otra de tomate.\n4. Repetir el proceso hasta que se terminen los ingredientes.\n5. Cubrir con queso y hornear por 30 minutos.", "Dinner"));
 
         //Diet
+        Triplet arrayObjetos[]=new Triplet[7];
 
+        int suma=0;
+        for (int i=0;i<arrayObjetos.length;i++){
+            //Indicamos cada uno de los parametros del objeto
+            String Breakfast="Huevos";
+
+            String Lunch="Mas huevos";
+
+            String Dinner="Huevos otra vez si";
+
+            arrayObjetos[i]=new Triplet(Breakfast,Lunch,Dinner);
+        }
+
+        this.dietRepository.save(new Diet("Bulking",arrayObjetos,"Bulking"));
 
     }
 

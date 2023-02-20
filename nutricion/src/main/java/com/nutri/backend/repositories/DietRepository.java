@@ -10,5 +10,4 @@ public interface DietRepository extends JpaRepository<Diet, Long> {
      Optional<Diet> findByName(String name);
      Optional<Diet> findByType(String type);
 
-
 }

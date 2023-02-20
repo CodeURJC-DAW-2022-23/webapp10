@@ -1,13 +1,14 @@
 package com.nutri.backend.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
-import java.sql.Blob;
+import java.time.DayOfWeek;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Entity
 public class Diet {
+
     //Columns
     //ID
     @Id
@@ -30,14 +31,20 @@ public class Diet {
         this.type = type;
     }
 
-    //Day of the week
-    @Column(nullable = false)
-    private String date;
+    public Triplet[] getWeek() {
+        return week;
+    }
+
+    public void setWeek(Triplet[] week) {
+        this.week = week;
+    }
+    @Column(length = 2048)
+    private Triplet week[]=new Triplet[7];
+
 
     //Users List
     @OneToMany(mappedBy = "diet")
     private List<User> users;
-
 
 
     public List<User> getUsers() {
@@ -48,13 +55,6 @@ public class Diet {
         this.users = users;
     }
 
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
 
     public Diet(){}
 
@@ -74,12 +74,10 @@ public class Diet {
         this.name = name;
     }
 
-
-
-    public Diet(long id, String name, String date){
-        this.id=id;
+    public Diet(String name, Triplet[] week, String type){
         this.name=name;
-        this.date=date;
+        this.week=week;
+        this.type=type;
     }
 
 }
