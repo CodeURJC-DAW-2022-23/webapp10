@@ -1,6 +1,9 @@
 package com.nutri.backend.controller;
 
+import com.nutri.backend.model.Diet;
+import com.nutri.backend.model.Triplet;
 import com.nutri.backend.model.User;
+import com.nutri.backend.repositories.DietRepository;
 import com.nutri.backend.repositories.RecepyRepository;
 import com.nutri.backend.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -27,6 +31,9 @@ public class WorkerController {
 
 	@Autowired
 	private RecepyRepository recepyRepository;
+
+	@Autowired
+	private DietRepository dietRepository;
 
 	@GetMapping("/worker")
 	public String showWorker(Model model, HttpServletRequest request) {
@@ -77,8 +84,15 @@ public class WorkerController {
 	public String viewDiet(Model model, HttpServletRequest request) {
 		String name = request.getUserPrincipal().getName();
 		User user = userRepository.findByEmail(name).orElseThrow();
+		List<Diet> dietas=dietRepository.findAll();
+		List<String> nombres=dietRepository.findOnlyName();
+		List<String> auxTriplete= new ArrayList<>();
+		for (Diet dieta:dietas){
+			auxTriplete.add(dieta.printWeek(dieta.getWeek()));
+		}
 		model.addAttribute("name", user.getName());
-		model.addAttribute("recepy",recepyRepository.findAll());
+		model.addAttribute("diet",nombres);
+		model.addAttribute("week",auxTriplete);
 		return "USR_WorkerViewDiet";
 	}
 	@GetMapping("/workerProfile")

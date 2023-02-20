@@ -3,6 +3,7 @@ package com.nutri.backend.model;
 import javax.persistence.*;
 import java.time.DayOfWeek;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -38,6 +39,20 @@ public class Diet {
     public void setWeek(Triplet[] week) {
         this.week = week;
     }
+
+    public String printWeek(Triplet[] week){
+        Triplet[] semana=week;
+        return "Week{\n" +
+                "Monday=" + semana[0].toString() + "\n"+
+                "Tuesday =" + semana[1].toString() + "\n"+
+                "Wednesday =" + semana[2].toString() + "\n"+
+                "Thursday =" + semana[3].toString() + "\n"+
+                "Friday =" + semana[4].toString() + "\n"+
+                "Saturday =" + semana[5].toString() + "\n"+
+                "Sunday=" + semana[6].toString() + "\n"+
+                '}';
+    }
+
     @Column(length = 2048)
     private Triplet week[]=new Triplet[7];
 
@@ -79,5 +94,6 @@ public class Diet {
         this.week=week;
         this.type=type;
     }
+
 
 }

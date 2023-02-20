@@ -14,44 +14,20 @@
                 <table id="table" class="table table-hover table-mc-light-blue">
                     <thead>
                     <tr>
-                        <th>ID</th>
-                        <th> Name</th>
-                        <th>Upload Date</th>
+                        <th>Name</th>
+                        <th>Week</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
-                        <td data-title="ID">1</td>
-                        <td data-title="Name">Maintenence Diet</td>
-                        <td data-title="Upload Date">01/01/2022</td>
-                    </tr>
-                    <tr>
-                        <td data-title="ID">2</td>
-                        <td data-title="Name">Specific Diet</td>
-                        <td data-title="Upload Date">02/02/2022</td>
-                    </tr>
-                    <tr>
-                        <td data-title="ID">3</td>
-                        <td data-title="Name">Weightloss Diet</td>
-                        <td data-title="Upload Date">03/03/2022</td>
-                    </tr>
-                    <tr>
-                        <td data-title="ID">4</td>
-                        <td data-title="Name">Bulking Diet</td>
-                        <td data-title="Upload Date">04/04/2022</td>
-
-                    <tr>
-                        <td data-title="ID">5</td>
-                        <td data-title="Name">Personalized Diet</td>
-                        <td data-title="Status">Completed</td>
-
-                    <tr>
-                        <td data-title="ID">6</td>
-                        <td data-title="Name">Beginner Diet</td>
-                        <td data-title="Status">Completed</td>
-
-                    </tr>
-
+                        {{#diet}}
+                        <tr>
+                            <td>{{.}}</td>
+                        {{/diet}}
+                        {{#week}}
+                            <td>{{.}}</td>
+                        </tr>
+                        {{/week}}
                     </tbody>
                 </table>
             </div>
