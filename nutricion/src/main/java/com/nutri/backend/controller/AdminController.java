@@ -1,6 +1,7 @@
 package com.nutri.backend.controller;
 
 import com.nutri.backend.model.User;
+import com.nutri.backend.repositories.DietRepository;
 import com.nutri.backend.repositories.UserRepository;
 import com.nutri.backend.service.UserService;
 import org.hibernate.jdbc.Work;
@@ -34,8 +35,14 @@ public class AdminController {
 	@Autowired
 	private UserService  userService;
 
+	@Autowired
+	private DietRepository dietRepository;
+
 	@GetMapping("/admin")
-	public String showAdmin( HttpServletRequest request) {
+	public String showAdmin(Model model, HttpServletRequest request) {
+		model.addAttribute("activeDiets",dietRepository.numOfDiets());
+		model.addAttribute("earns",userRepository.findAllByuser("client")*9.99);
+		model.addAttribute("Nclient",userRepository.findAllByuser("client"));
 		return "USR_Admin";
 	}
 
@@ -62,10 +69,20 @@ public class AdminController {
 	//Worker Administration Controller
 	@GetMapping("/workerTable")
 	public String workers(Model model) {
-		model.addAttribute("workers",userRepository.findByUserType("worker"));
+		Page<User> clientPage = userService.findPageClient(0, "worker");
+		model.addAttribute("list",clientPage.toList());
+		model.addAttribute("last",clientPage.getTotalPages());
 		return "USR_AdminWorkerTable";
 	}
 
+	@GetMapping("/workerTable/page/{page}")
+	public String getWorkerPage(Model model, @PathVariable int page) {
+		Page<User> client = userService.findPageClient(page, "worker");
+		List<User> users = client.toList();
+		model.addAttribute("list", users);
+		return "USR_AdminClientTableAjax";
+
+	}
 	@PostMapping("/deleteWorker")
 	public String deleteWorker(Model model,@RequestParam List<Long> id){
 		if(id != null) {

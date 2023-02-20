@@ -18,6 +18,8 @@ public interface UserRepository extends JpaRepository<User,Long> {
     boolean existsByEmail(String foo);
     @Query(value = "SELECT COUNT(*) FROM USER_TABLE WHERE ENTRY_DATE= :date",nativeQuery = true)
     int findByEntryDate( int date);
+    @Query(value = "SELECT COUNT(*) FROM USER_TABLE WHERE USER_TYPE= :typeOfUser",nativeQuery = true)
+    int findAllByuser(String typeOfUser);
     Page<User> findByUserType(Pageable page,String userType);
 
 }

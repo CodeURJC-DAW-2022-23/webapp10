@@ -12,6 +12,8 @@ public interface DietRepository extends JpaRepository<Diet, Long> {
      Optional<Diet> findByName(String name);
      Optional<Diet> findByType(String type);
 
+     @Query(value = "SELECT COUNT(*) FROM DIET",nativeQuery = true)
+     int numOfDiets();
      @Query(value = "SELECT NAME FROM DIET ",nativeQuery = true)
      List<String> findOnlyName();
 
