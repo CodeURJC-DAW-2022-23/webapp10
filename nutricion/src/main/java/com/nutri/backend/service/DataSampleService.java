@@ -14,6 +14,7 @@ import com.nutri.backend.model.User;
 import com.nutri.backend.repositories.UserRepository;
 
 import javax.annotation.PostConstruct;
+import java.util.Optional;
 
 @Service
 public class DataSampleService {

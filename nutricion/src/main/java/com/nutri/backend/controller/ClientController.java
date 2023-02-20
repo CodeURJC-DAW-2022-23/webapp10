@@ -2,6 +2,7 @@ package com.nutri.backend.controller;
 
 import com.nutri.backend.model.Diet;
 import com.nutri.backend.model.Form;
+import com.nutri.backend.model.Triplet;
 import com.nutri.backend.model.User;
 import com.nutri.backend.repositories.DietRepository;
 import com.nutri.backend.repositories.FormRepository;
@@ -16,6 +17,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -42,7 +46,21 @@ public class ClientController {
 	public String diet(Model model, HttpServletRequest request) {
 		String name = request.getUserPrincipal().getName();
 		User user = userRepository.findByEmail(name).orElseThrow();
+		Optional<Diet> aux=dietRepository.findByName("Bulking");
+		Triplet[] dieta=aux.get().getWeek();
+		List<String> desayuno=new ArrayList<>();
+		List<String> comida=new ArrayList<>();
+		List<String> cena=new ArrayList<>();
+		for (Triplet dia:dieta){
+			desayuno.add((String) dia.Breakfast);
+			comida.add((String) dia.Lunch);
+			cena.add((String) dia.Dinner);
+		}
 		model.addAttribute("name", user.getName());
+		model.addAttribute("nombreDieta", aux.get().getName());
+		model.addAttribute("desayuno",desayuno);
+		model.addAttribute("comida",comida);
+		model.addAttribute("cena",cena);
 		return "USR_ClientDiets";
 	}
 

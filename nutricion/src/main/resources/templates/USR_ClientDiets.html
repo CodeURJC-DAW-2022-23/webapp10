@@ -51,7 +51,7 @@
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary" >Bulking Diet</h6>
+                    <h6 class="m-0 font-weight-bold text-primary" >{{nombreDieta}}</h6>
                 </div>
                 <form style=" margin-top: 40px; margin-bottom: 60px; text-align: justify;">
 
@@ -67,99 +67,39 @@
                             <td>Saturday</td>
                             <td>Sunday</td>
                         </tr>
+
                         <tr>
                             <td class="day-time">Breakfast</td>
+                            {{#desayuno}}
                             <td data-title="Link PDF">
                                 <a style="color:#1cc88a;" href="https://github.com/zavoloklom/material-design-color-palette"
-                                   target="_blank">Coffee</a>
+                                   target="_blank">{{.}}</a>
                             </td>
-                            <td data-title="Link PDF">
-                                <a style="color:#1cc88a;" href="https://github.com/zavoloklom/material-design-color-palette"
-                                   target="_blank">Cereals</a>
-                            </td>
-                            <td data-title="Link PDF">
-                                <a style="color:#1cc88a;" href="https://github.com/zavoloklom/material-design-color-palette"
-                                   target="_blank">Toasts</a>
-                            </td>
-                            <td data-title="Link PDF">
-                                <a style="color:#1cc88a;" href="https://github.com/zavoloklom/material-design-color-palette"
-                                   target="_blank">Coffee</a>
-                            </td>
-                            <td data-title="Link PDF">
-                                <a style="color:#1cc88a;"href="https://github.com/zavoloklom/material-design-color-palette"
-                                   target="_blank">Cereals</a>
-                            </td>
-                            <td data-title="Link PDF">
-                                <a style="color:#1cc88a;" href="https://github.com/zavoloklom/material-design-color-palette"
-                                   target="_blank">Toasts</a>
-                            </td>
-                            <td data-title="Link PDF">
-                                <a style="color:#1cc88a;" href="https://github.com/zavoloklom/material-design-color-palette"
-                                   target="_blank">Coffee</a>
+                            {{/desayuno}}
                             </td>
                         </tr>
                         <tr>
                             <td class="day-time">Lunch</td>
+                            {{#comida}}
                             <td data-title="Link PDF">
                                 <a style="color:#1cc88a;" href="https://github.com/zavoloklom/material-design-color-palette"
-                                   target="_blank">Fish</a>
+                                   target="_blank">{{.}}</a>
                             </td>
-                            <td data-title="Link PDF">
-                                <a style="color:#1cc88a;" href="https://github.com/zavoloklom/material-design-color-palette"
-                                   target="_blank">Chicken</a>
-                            </td>
-                            <td data-title="Link PDF">
-                                <a style="color:#1cc88a;" href="https://github.com/zavoloklom/material-design-color-palette"
-                                   target="_blank">Pork</a>
-                            </td>
-                            <td data-title="Link PDF">
-                            <a style="color:#1cc88a;" href="https://github.com/zavoloklom/material-design-color-palette"
-                               target="_blank">Beef</a>
-                        </td>
-                            <td data-title="Link PDF">
-                                <a style="color:#1cc88a;" href="https://github.com/zavoloklom/material-design-color-palette"
-                                   target="_blank">Veggies</a>
-                            </td>
-                            <td data-title="Link PDF">
-                                <a style="color:#1cc88a;" href="https://github.com/zavoloklom/material-design-color-palette"
-                                   target="_blank">Tuna</a>
-                            </td>
-                            <td data-title="Link PDF">
-                                <a style="color:#1cc88a;" href="https://github.com/zavoloklom/material-design-color-palette"
-                                   target="_blank">Legume</a>
+                            {{/comida}}
                             </td>
                         </tr>
                         <tr>
                             <td class="day-time">Dinner</td>
+                            {{#cena}}
                             <td data-title="Link PDF">
                                 <a style="color:#1cc88a;" href="https://github.com/zavoloklom/material-design-color-palette"
-                                   target="_blank">Fish</a>
+                                   target="_blank">{{.}}</a>
                             </td>
-                            <td data-title="Link PDF">
-                                <a style="color:#1cc88a;" href="https://github.com/zavoloklom/material-design-color-palette"
-                                   target="_blank">Chicken</a>
-                            </td>
-                            <td data-title="Link PDF">
-                                <a style="color:#1cc88a;" href="https://github.com/zavoloklom/material-design-color-palette"
-                                   target="_blank">Pork</a>
-                            </td>
-                            <td data-title="Link PDF">
-                                <a style="color:#1cc88a;" href="https://github.com/zavoloklom/material-design-color-palette"
-                                   target="_blank">Beef</a>
-                            </td>
-                            <td data-title="Link PDF">
-                                <a style="color:#1cc88a;" href="https://github.com/zavoloklom/material-design-color-palette"
-                                   target="_blank">Veggies</a>
-                            </td>
-                            <td data-title="Link PDF">
-                                <a style="color:#1cc88a;" href="https://github.com/zavoloklom/material-design-color-palette"
-                                   target="_blank">Tuna</a>
-                            </td>
-                            <td data-title="Link PDF">
-                                <a style="color:#1cc88a;" href="https://github.com/zavoloklom/material-design-color-palette"
-                                   target="_blank">Legume</a>
+                            {{/cena}}
                             </td>
                         </tr>
+
+
                         </tbody>
                     </table>
                 </form>
