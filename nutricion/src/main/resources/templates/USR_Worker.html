@@ -1,3 +1,39 @@
 {{>USR_WorkerHeader}}
-<!--Si quereis añadir algo como numero de usuarios que tiene a su cargo o del estilo-->
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Content Row -->
+    <div class="col-12 ">
+
+        <div id="demo">
+            <h1>Tabla clientes</h1>
+            <div class="table-responsive-vertical shadow p-4">
+                <!-- Table starts here -->
+                <table id="table" class="table table-hover table-mc-light-blue">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Surname</th>
+                        <th>Email</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{#client}}
+                    <tr>
+                        <td>{{name}}</td>
+                        <td>{{surname}}</td>
+                        <td>{{email}}</td>
+                    </tr>
+                    {{/client}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->
+<!-- End of Main Content -->
+
 {{>USR_AdminFooter}}

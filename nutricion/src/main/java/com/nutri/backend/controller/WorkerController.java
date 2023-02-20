@@ -33,7 +33,8 @@ public class WorkerController {
 		String name = request.getUserPrincipal().getName();
 		User user = userRepository.findByEmail(name).orElseThrow();
 		model.addAttribute("name", user.getName());
-		model.addAttribute("email", user.getEmail());
+		model.addAttribute("client",userRepository.findByUserType("client"));
+
 		return "USR_Worker";
 	}
 	@GetMapping("/workerDiets")
