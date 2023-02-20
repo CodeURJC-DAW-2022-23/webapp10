@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -52,7 +54,7 @@ public class WorkerController {
 		//pasarle la info al html
 		return "USR_WorkerDiets";
 	}
-	
+
 	@GetMapping("/workerUploadDiets")
 	public String workerUploadDiets(Model model, HttpServletRequest request) {
 		String name = request.getUserPrincipal().getName();
@@ -63,15 +65,52 @@ public class WorkerController {
 		model.addAttribute("recepyDinner",recepyRepository.findByKindOfRecepy("Dinner"));
 		return "USR_WorkerUploadDiets";
 	}
-	
-	@GetMapping("/workerUploadRecipes")
-	public String workerUploadRecipes(Model model, HttpServletRequest request) {
+	@PostMapping("/workerUploadDiets")
+	public String workerUploadRecipes(Model model, HttpServletRequest request, @RequestParam String nombre,
+									@RequestParam String brmon,@RequestParam String brtue,
+									@RequestParam String brwed,@RequestParam String brthr,@RequestParam String brfri,
+									@RequestParam String brsat,@RequestParam String brsun,
+									@RequestParam String lunmon,@RequestParam String luntue,
+									@RequestParam String lunwed,@RequestParam String lunthr,@RequestParam String lunfri,
+									@RequestParam String lunsat,@RequestParam String lunsun,
+									@RequestParam String dinmon,@RequestParam String dintue,
+									@RequestParam String dinwed,@RequestParam String dinthr,@RequestParam String dinfri,
+									@RequestParam String dinsat,@RequestParam String dinsun,
+									@RequestParam String type_diet) {
 		String name = request.getUserPrincipal().getName();
 		User user = userRepository.findByEmail(name).orElseThrow();
+		String[] desayunos={brmon,brtue,brwed,brthr,brfri,brsat,brsun};
+		String[] comidas={lunmon,luntue,lunwed,lunthr,lunfri,lunsat,lunsun};
+		String[] cenas={dinmon,dintue,dinwed,dinthr,dinfri,dinsat,dinsun};
+		System.out.println(desayunos);
+		Triplet week[]=new Triplet[7];
+		for (int aux=0;aux<week.length;aux++){
+			week[aux]=new Triplet(null,null,null);
+			if (desayunos[aux]!=null) {
+				week[aux].Breakfast=desayunos[aux];
+			} else{
+				week[aux].Breakfast="Nada";
+			}
+			if (comidas[aux]!=null) {
+				week[aux].Lunch=comidas[aux];
+			} else{
+				week[aux].Lunch="Nada";
+			}
+			if (cenas[aux]!=null) {
+				week[aux].Dinner=cenas[aux];
+			} else{
+				week[aux].Dinner="Nada";
+			}
+		}
+		Diet dieta=new Diet(nombre,week,type_diet);
+		dietRepository.save(dieta);
 		model.addAttribute("name", user.getName());
-		//pasarle la info al html
-		return "USR_WorkerUploadRecipes";
+		model.addAttribute("recepyBreakfast",recepyRepository.findByKindOfRecepy("Breakfast"));
+		model.addAttribute("recepyLunch",recepyRepository.findByKindOfRecepy("Lunch"));
+		model.addAttribute("recepyDinner",recepyRepository.findByKindOfRecepy("Dinner"));
+		return "redirect:/viewDiet";
 	}
+
 	@GetMapping("/viewRecipe")
 	public String viewRecipe(Model model, HttpServletRequest request) {
 		String name = request.getUserPrincipal().getName();
@@ -85,14 +124,12 @@ public class WorkerController {
 		String name = request.getUserPrincipal().getName();
 		User user = userRepository.findByEmail(name).orElseThrow();
 		List<Diet> dietas=dietRepository.findAll();
-		List<String> nombres=dietRepository.findOnlyName();
-		List<String> auxTriplete= new ArrayList<>();
+		Map<String,String> tupla= new HashMap<>();
 		for (Diet dieta:dietas){
-			auxTriplete.add(dieta.printWeek(dieta.getWeek()));
+			tupla.put(dieta.getName(),dieta.printWeek(dieta.getWeek()));
 		}
 		model.addAttribute("name", user.getName());
-		model.addAttribute("diet",nombres);
-		model.addAttribute("week",auxTriplete);
+		model.addAttribute("dieta",tupla);
 		return "USR_WorkerViewDiet";
 	}
 	@GetMapping("/workerProfile")

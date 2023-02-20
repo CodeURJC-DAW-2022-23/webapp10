@@ -19,15 +19,14 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        {{#diet}}
+                    {{#dieta}}
+                        {{#entrySet}}
                         <tr>
-                            <td>{{.}}</td>
-                        {{/diet}}
-                        {{#week}}
-                            <td>{{.}}</td>
+                            <td>{{key}}</td>
+                            <td>{{value}}</td>
                         </tr>
-                        {{/week}}
+                        {{/entrySet}}
+                    {{/dieta}}
                     </tbody>
                 </table>
             </div>

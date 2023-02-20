@@ -12,13 +12,13 @@
                         <h1 class="h3 mb-0 text-gray-800" >New Diet</h1>
                     </div>
                     <!-- tabla-->
-                    <form style=" margin-top: 40px; margin-bottom: 60px; text-align: justify;">
+                    <form method="post" action="/workerUploadDiets" style=" margin-top: 40px; margin-bottom: 60px; text-align: justify;">
                         <div class="col-12" style="padding: 20px;">
                             <div class="row">
-                                <label for="recipe" style="font-size: 18px;"> Diet Name </label>
+                                <label for="nombre" style="font-size: 18px;"> Diet Name </label>
                             </div>
                             <div class="row">
-                                <input id="recipe" name="recipe" type="text" style="border-color: #5AF499;"><br>
+                                <input id="nombre" name="nombre" type="text" style="border-color: #5AF499;"><br>
                             </div>
                         </div>
                         <datalist id="breakfast">
@@ -42,7 +42,14 @@
                                 {{/recepyDinner}}
                             </select>
                         </datalist>
-
+                        <div class="col-12" style="padding: 20px;">
+                            <div class="row">
+                                <label for="type_diet" style="font-size: 18px;"> Diet Type </label>
+                            </div>
+                            <div class="row">
+                                <input id="type_diet" name="type_diet" type="text" style="border-color: #5AF499;"><br>
+                            </div>
+                        </div>
 
                         <table style="margin-bottom: 40px; table-layout: auto; width: 100%; border: 3px solid #5AF499; overflow-x: auto;">
                             <tbody>

@@ -5,9 +5,9 @@ import java.io.Serializable;
 // clase triplete
 public class Triplet<String> implements Serializable
 {
-    public final String Breakfast;       // el primer campo de un triplete
-    public final String Lunch;      // el segundo campo de un triplete
-    public final String Dinner;       // el tercer campo de un triplete
+    public String Breakfast;       // el primer campo de un triplete
+    public String Lunch;      // el segundo campo de un triplete
+    public String Dinner;       // el tercer campo de un triplete
 
     // Construye un nuevo triplete con los valores dados
     public Triplet(String Breakfast, String Lunch, String Dinner)

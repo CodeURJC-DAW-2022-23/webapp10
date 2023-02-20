@@ -47,6 +47,7 @@ public class ClientController {
 		String name = request.getUserPrincipal().getName();
 		User user = userRepository.findByEmail(name).orElseThrow();
 		Optional<Diet> aux=dietRepository.findByName("Bulking");
+		//aqui habra que cambiarlo por que le de la dieta que tenga el cliente inscrito
 		Triplet[] dieta=aux.get().getWeek();
 		List<String> desayuno=new ArrayList<>();
 		List<String> comida=new ArrayList<>();
