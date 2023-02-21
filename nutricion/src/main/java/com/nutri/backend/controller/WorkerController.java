@@ -128,18 +128,18 @@ public class WorkerController {
 	@PostMapping("/workerUploadRecipes")
 	public String workerUploadRecepiesToDB(Model model, HttpServletRequest request,@RequestParam String recipe,
 										   @RequestParam String steps,@RequestParam String recipetype,
-										   @RequestParam Blob image) {
+										   @RequestParam String image) {
 		String name = request.getUserPrincipal().getName();
 		User user = userRepository.findByEmail(name).orElseThrow();
 		model.addAttribute("name", user.getName());
 		Recepy recetaAux=null;
-		if (image==null){
+		if (image.equals("null")){
 			recetaAux=new Recepy(recipe,"",steps,recipetype);
 		}else{
-			recetaAux=new Recepy(recipe,"",steps,image,recipetype);
+			recetaAux=new Recepy(recipe,"",steps,recipetype);
 		}
 		recepyRepository.save(recetaAux);
-		return "USR_WorkerViewRecipe";
+		return "redirect:/viewRecipe";
 	}
 	@GetMapping("/viewDiet")
 	public String viewDiet(Model model, HttpServletRequest request) {
