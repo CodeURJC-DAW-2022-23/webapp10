@@ -18,10 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Controller
 public class AdminController {
@@ -47,19 +44,26 @@ public class AdminController {
 	}
 
 	@GetMapping("/adminCharts")
-	public String showCharts() {
+	public String showCharts(Model model) {
+		int month[]=new int[12];
+		for (int i=0;i<12;i+=1){
+			month[i]=(userRepository.findByEntryDate(i));
+		}
+
+		System.out.println(Arrays.toString(month));
+
+		model.addAttribute("registeredUsers", Arrays.toString(month));
 		return "USR_AdminCharts";
 	}
 
 	//Chart controller
 	@GetMapping("/chatInformation")
-	public String updateCharts(Model model, HttpServletRequest request){
-		int count;
-		int month;
+	public String updateCharts(Model model){
+		int month[]=new int[12];
 		for (int i=0;i<12;i+=1){
-			month=userRepository.findByEntryDate(i);
+			month[i]=(userRepository.findByEntryDate(i));
 		}
-
+		model.addAttribute("registeredUsers", Arrays.toString(month));
 
 		return "USR_AdminCharts";
 	}

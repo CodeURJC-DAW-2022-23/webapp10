@@ -1,6 +1,7 @@
 package com.nutri.backend.controller;
 
 import com.nutri.backend.model.Diet;
+import com.nutri.backend.model.Recepy;
 import com.nutri.backend.model.Triplet;
 import com.nutri.backend.model.User;
 import com.nutri.backend.repositories.DietRepository;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -105,9 +107,6 @@ public class WorkerController {
 		Diet dieta=new Diet(nombre,week,type_diet);
 		dietRepository.save(dieta);
 		model.addAttribute("name", user.getName());
-		model.addAttribute("recepyBreakfast",recepyRepository.findByKindOfRecepy("Breakfast"));
-		model.addAttribute("recepyLunch",recepyRepository.findByKindOfRecepy("Lunch"));
-		model.addAttribute("recepyDinner",recepyRepository.findByKindOfRecepy("Dinner"));
 		return "redirect:/viewDiet";
 	}
 
@@ -117,6 +116,29 @@ public class WorkerController {
 		User user = userRepository.findByEmail(name).orElseThrow();
 		model.addAttribute("name", user.getName());
 		model.addAttribute("recepy",recepyRepository.findAll());
+		return "USR_WorkerViewRecipe";
+	}
+	@GetMapping("/workerUploadRecipes")
+	public String workerUploadRecepies(Model model, HttpServletRequest request) {
+		String name = request.getUserPrincipal().getName();
+		User user = userRepository.findByEmail(name).orElseThrow();
+		model.addAttribute("name", user.getName());
+		return "USR_WorkerUploadRecipes";
+	}
+	@PostMapping("/workerUploadRecipes")
+	public String workerUploadRecepiesToDB(Model model, HttpServletRequest request,@RequestParam String recipe,
+										   @RequestParam String steps,@RequestParam String recipetype,
+										   @RequestParam Blob image) {
+		String name = request.getUserPrincipal().getName();
+		User user = userRepository.findByEmail(name).orElseThrow();
+		model.addAttribute("name", user.getName());
+		Recepy recetaAux=null;
+		if (image==null){
+			recetaAux=new Recepy(recipe,"",steps,recipetype);
+		}else{
+			recetaAux=new Recepy(recipe,"",steps,image,recipetype);
+		}
+		recepyRepository.save(recetaAux);
 		return "USR_WorkerViewRecipe";
 	}
 	@GetMapping("/viewDiet")
