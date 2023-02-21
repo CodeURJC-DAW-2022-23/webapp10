@@ -45,7 +45,6 @@ public class WorkerController {
 		User user = userRepository.findByEmail(name).orElseThrow();
 		model.addAttribute("name", user.getName());
 		model.addAttribute("client",userRepository.findByUserType("client"));
-
 		return "USR_Worker";
 	}
 	@GetMapping("/workerDiets")
@@ -53,7 +52,7 @@ public class WorkerController {
 		String name = request.getUserPrincipal().getName();
 		User user = userRepository.findByEmail(name).orElseThrow();
 		model.addAttribute("name", user.getName());
-		//pasarle la info al html
+		model.addAttribute("client",userRepository.findByUserType("client"));
 		return "USR_WorkerDiets";
 	}
 
