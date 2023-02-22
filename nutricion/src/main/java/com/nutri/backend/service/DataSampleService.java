@@ -1,19 +1,19 @@
 package com.nutri.backend.service;
 
 
-import com.nutri.backend.model.Diet;
-import com.nutri.backend.model.Recepy;
-import com.nutri.backend.model.Triplet;
+import com.nutri.backend.model.*;
 import com.nutri.backend.repositories.DietRepository;
+import com.nutri.backend.repositories.ImageRepository;
 import com.nutri.backend.repositories.RecepyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.nutri.backend.model.User;
 import com.nutri.backend.repositories.UserRepository;
 
 import javax.annotation.PostConstruct;
+import javax.imageio.stream.ImageInputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.Optional;
 
 @Service
@@ -30,6 +30,9 @@ public class DataSampleService {
 
     @Autowired
     private DietRepository dietRepository;
+
+    @Autowired
+    private ImageRepository imageRepository;
 
     @PostConstruct
     public void init() {
@@ -141,6 +144,7 @@ public class DataSampleService {
 
         this.dietRepository.save(new Diet("Definition",arrayObjetos,"Definition"));
 
+        this.imageRepository.save(new Image("Antonio","pie","images/undraw_profile.svg".getBytes(StandardCharsets.UTF_8)));
     }
 
 }

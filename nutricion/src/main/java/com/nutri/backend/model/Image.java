@@ -11,7 +11,6 @@ import javax.persistence.*;
 @Table(name = "image")
 @Data
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
 public class Image {
     @Id
@@ -27,4 +26,14 @@ public class Image {
 
     @Column(name = "image", unique = false, nullable = false, length = 100000)
     private byte[] image;
+
+    public Image(){
+
+    }
+
+    public Image(String name, String type,byte[] image){
+        this.name=name;
+        this.type=type;
+        this.image=image;
+    }
 }

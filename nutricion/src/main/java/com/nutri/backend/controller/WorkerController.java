@@ -1,10 +1,8 @@
 package com.nutri.backend.controller;
 
-import com.nutri.backend.model.Diet;
-import com.nutri.backend.model.Recepy;
-import com.nutri.backend.model.Triplet;
-import com.nutri.backend.model.User;
+import com.nutri.backend.model.*;
 import com.nutri.backend.repositories.DietRepository;
+import com.nutri.backend.repositories.ImageRepository;
 import com.nutri.backend.repositories.RecepyRepository;
 import com.nutri.backend.repositories.UserRepository;
 import org.hibernate.engine.jdbc.BlobProxy;
@@ -19,15 +17,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
-import java.sql.Blob;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-
-import java.util.List;
 
 @Controller
 public class WorkerController {
@@ -42,13 +34,16 @@ public class WorkerController {
 	@Autowired
 	private DietRepository dietRepository;
 
+	@Autowired
+	private ImageRepository imageRepository;
+
 	@GetMapping("/worker")
 	public String showWorker(Model model, HttpServletRequest request) {
 		String name = request.getUserPrincipal().getName();
 		User user = userRepository.findByEmail(name).orElseThrow();
 		model.addAttribute("name", user.getName());
 		model.addAttribute("client",userRepository.findByUserType("client"));
-		model.addAttribute("image",user.getImage());
+		model.addAttribute("image",imageRepository.findByName("Antonio"));
 		return "USR_Worker";
 	}
 	@GetMapping("/workerDiets")
@@ -57,6 +52,7 @@ public class WorkerController {
 		User user = userRepository.findByEmail(name).orElseThrow();
 		model.addAttribute("name", user.getName());
 		model.addAttribute("client",userRepository.findByUserType("client"));
+		model.addAttribute("image",imageRepository.findByName("Antonio"));
 		return "USR_WorkerDiets";
 	}
 
@@ -64,6 +60,7 @@ public class WorkerController {
 	public String workerUploadDiets(Model model, HttpServletRequest request) {
 		String name = request.getUserPrincipal().getName();
 		User user = userRepository.findByEmail(name).orElseThrow();
+		model.addAttribute("image",imageRepository.findByName("Antonio"));
 		model.addAttribute("name", user.getName());
 		model.addAttribute("recepyBreakfast",recepyRepository.findByKindOfRecepy("Breakfast"));
 		model.addAttribute("recepyLunch",recepyRepository.findByKindOfRecepy("Lunch"));
@@ -119,11 +116,13 @@ public class WorkerController {
 		User user = userRepository.findByEmail(name).orElseThrow();
 		model.addAttribute("name", user.getName());
 		model.addAttribute("recepy",recepyRepository.findAll());
+		model.addAttribute("image",imageRepository.findByName("Antonio"));
 		return "USR_WorkerViewRecipe";
 	}
 	@GetMapping("/workerUploadRecipes")
 	public String workerUploadRecepies(Model model, HttpServletRequest request) {
 		String name = request.getUserPrincipal().getName();
+		model.addAttribute("image",imageRepository.findByName("Antonio"));
 		User user = userRepository.findByEmail(name).orElseThrow();
 		model.addAttribute("name", user.getName());
 		return "USR_WorkerUploadRecipes";
@@ -155,6 +154,7 @@ public class WorkerController {
 		}
 		model.addAttribute("name", user.getName());
 		model.addAttribute("dieta",tupla);
+		model.addAttribute("image",imageRepository.findByName("Antonio"));
 		return "USR_WorkerViewDiet";
 	}
 	@GetMapping("/workerProfile")
@@ -163,12 +163,14 @@ public class WorkerController {
 		User user = userRepository.findByEmail(name).orElseThrow();
 		model.addAttribute("name", user.getName());
 		model.addAttribute("user", user);
+		model.addAttribute("image",imageRepository.findByName("Antonio"));
 		//pasarle la info al html
 		return "USR_WorkerProfile";
 	}
 	@GetMapping("/workerEditProfile")
 	public String workerEditProfile(Model model, HttpServletRequest request) {
 		String name = request.getUserPrincipal().getName();
+		model.addAttribute("image",imageRepository.findByName("Antonio"));
 		User user = userRepository.findByEmail(name).orElseThrow();
 		model.addAttribute("name", user.getName());
 		model.addAttribute("surname",user.getSurname());
@@ -204,8 +206,8 @@ public class WorkerController {
 			}else{
 				user.setSurname(surname);
 			}
-			if (!image.isEmpty())
-				user.setImage(BlobProxy.generateProxy(image.getInputStream(), image.getSize()));
+			imageRepository.save(new Image(clientName,"Profile",image.getBytes()));
+			user.setImage(BlobProxy.generateProxy(image.getInputStream(), image.getSize()));
 			user.setEncodedPassword(passwordEncoder.encode(clientPassword));
 		}
 		userRepository.save(user);
