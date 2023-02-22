@@ -7,6 +7,7 @@ import com.nutri.backend.model.User;
 import com.nutri.backend.repositories.DietRepository;
 import com.nutri.backend.repositories.RecepyRepository;
 import com.nutri.backend.repositories.UserRepository;
+import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -14,8 +15,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -45,6 +48,7 @@ public class WorkerController {
 		User user = userRepository.findByEmail(name).orElseThrow();
 		model.addAttribute("name", user.getName());
 		model.addAttribute("client",userRepository.findByUserType("client"));
+		model.addAttribute("image",user.getImage());
 		return "USR_Worker";
 	}
 	@GetMapping("/workerDiets")
@@ -158,7 +162,7 @@ public class WorkerController {
 		String name = request.getUserPrincipal().getName();
 		User user = userRepository.findByEmail(name).orElseThrow();
 		model.addAttribute("name", user.getName());
-		model.addAttribute("email",user.getEmail());
+		model.addAttribute("user", user);
 		//pasarle la info al html
 		return "USR_WorkerProfile";
 	}
@@ -168,12 +172,18 @@ public class WorkerController {
 		User user = userRepository.findByEmail(name).orElseThrow();
 		model.addAttribute("name", user.getName());
 		model.addAttribute("surname",user.getSurname());
+		if (user.hasImage()){
+			model.addAttribute("image",user.getImage());
+		}
+
 		//pasarle la info al html
 		return "USR_WorkerEditProfile";
 	}
 	@PostMapping("/workerEditProfile")
 	public String saveClientProfile(@RequestParam String clientName, @RequestParam String clientSurname,
-									@RequestParam String clientPassword, @RequestParam String clientPasswordRepeat, HttpServletRequest request) {
+									@RequestParam String clientPassword, @RequestParam String clientPasswordRepeat,
+									@RequestParam (name = "clientImage", required = false) MultipartFile image,
+									HttpServletRequest request) throws IOException{
 		final String regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$";
 		final Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
 		final Matcher matcher = pattern.matcher(clientPassword);
@@ -194,6 +204,8 @@ public class WorkerController {
 			}else{
 				user.setSurname(surname);
 			}
+			if (!image.isEmpty())
+				user.setImage(BlobProxy.generateProxy(image.getInputStream(), image.getSize()));
 			user.setEncodedPassword(passwordEncoder.encode(clientPassword));
 		}
 		userRepository.save(user);

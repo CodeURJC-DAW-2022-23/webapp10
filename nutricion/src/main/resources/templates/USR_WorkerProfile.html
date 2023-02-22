@@ -3,9 +3,9 @@
     <div class="card p-4">
         <div class=" image d-flex flex-column justify-content-center align-items-center">
             <img src="https://i.imgur.com/wvxPV9S.png" height="100" width="100"/>
-            <span class="name mt-3">{{name}}</span>
+            <span class="name mt-3">{{user.name}}</span>
             <br>
-            <span class="idd">{{email}}</span>
+            <span class="idd">{{user.email}}</span>
             <a class=" d-flex mt-2" href="/workerEditProfile">
 
                 <input class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" type="submit"
@@ -17,4 +17,4 @@
     </div>
 </div>
 
-{{>USR_ClientFooter}}
+{{>USR_WorkerFooter}}

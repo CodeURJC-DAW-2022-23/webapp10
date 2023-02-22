@@ -162,6 +162,8 @@ public class User{
     @JsonIgnore
     private Blob image;
 
+    public boolean hasImage() { return this.image != null; }
+
     //type
     @Column(nullable = false)
     @JsonView({ClientLog.class, WorkerLog.class, ClientBasic.class, WorkerBasic.class})
