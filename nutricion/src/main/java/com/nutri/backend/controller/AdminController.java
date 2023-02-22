@@ -74,8 +74,8 @@ public class AdminController {
 	@GetMapping("/workerTable")
 	public String workers(Model model) {
 		Page<User> clientPage = userService.findPageClient(0, "worker");
-		model.addAttribute("list",clientPage.toList());
-		model.addAttribute("last",clientPage.getTotalPages());
+		model.addAttribute("listWorker",clientPage.toList());
+		model.addAttribute("lastWorker",clientPage.getTotalPages());
 		return "USR_AdminWorkerTable";
 	}
 
@@ -83,8 +83,8 @@ public class AdminController {
 	public String getWorkerPage(Model model, @PathVariable int page) {
 		Page<User> client = userService.findPageClient(page, "worker");
 		List<User> users = client.toList();
-		model.addAttribute("list", users);
-		return "USR_AdminClientTableAjax";
+		model.addAttribute("listWorker", users);
+		return "USR_AdminWorkerTableAjax";
 
 	}
 	@PostMapping("/deleteWorker")
@@ -93,13 +93,14 @@ public class AdminController {
 			for (Long l : id) {
 				userRepository.deleteById(l);
 			}
+		}else{
+			return "redirect:/workerTable";
 		}
 		return "redirect:/workerTable";
 	}
 
 	@GetMapping("/addWorker")
 	public String showAddWorkersForm() {
-
 		return "USR_AdminAddWorker";
 	}
 	@PostMapping("/addWorker")
@@ -112,21 +113,13 @@ public class AdminController {
 		userRepository.save(user);
 		return "redirect:/workerTable";
 	}
-	//ajax
-	@GetMapping("/tablesClient/page/{page}")
-	public String getClientPage(Model model, @PathVariable int page) {
-		Page<User> client = userService.findPageClient(page, "client");
-		List<User> users = client.toList();
-		model.addAttribute("list", users);
-		return "USR_AdminClientTableAjax";
 
-	}
 	//***Client Administration***
 	@GetMapping("/tablesClient")
 	public String showClients(Model model) {
 		Page<User> clientPage = userService.findPageClient(0, "client");
-		model.addAttribute("list",clientPage.toList());
-		model.addAttribute("last",clientPage.getTotalPages());
+		model.addAttribute("listClient",clientPage.toList());
+		model.addAttribute("lastClient",clientPage.getTotalPages());
 		return "USR_AdminClientTable";
 	}
 	@PostMapping("/deleteClient")
@@ -137,5 +130,14 @@ public class AdminController {
 			}
 		}
 		return "redirect:/tablesClient";
+	}
+	//ajax
+	@GetMapping("/tablesClient/page/{page}")
+	public String getClientPage(Model model, @PathVariable int page) {
+		Page<User> client = userService.findPageClient(page, "client");
+		List<User> users = client.toList();
+		model.addAttribute("listClient", users);
+		return "USR_AdminClientTableAjax";
+
 	}
 }
