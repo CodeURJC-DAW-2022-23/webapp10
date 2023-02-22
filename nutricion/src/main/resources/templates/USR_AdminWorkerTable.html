@@ -4,10 +4,12 @@
 <div class="container-fluid">
 
   <!-- Content Row -->
-  <div class="row">
-      <form action="/deleteWorker" method="post">
+  <div class="col-12">
+
         <div id="demo">
           <h1>Worker Table</h1>
+          <div class="table-responsive-vertical shadow p-4">
+            <form action="/deleteWorker" method="post">
           <!-- Table starts here -->
           <table id="table" class="table table-hover table-mc-light-blue">
             <thead>
@@ -18,40 +20,41 @@
             </tr>
             </thead>
             <tbody>
-            {{#list}}
+            {{#listWorker}}
             <tr>
               <td>{{name}}</td>
               <td>{{surname}}</td>
               <td>{{email}}</td>
               <td><input type="checkbox" name="id" value="{{id}}"></td>
             </tr>
-            {{/list}}
+            {{/listWorker}}
             </tbody>
           </table>
           <div class="row" style="justify-content:center; text-align: center;">
             <input class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" type="submit"
                    value="Delete">
-          </div>
-          <div>
+        </div>
+          </form>
+          <div class="row">
+            <div class="col-6">
             <button class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" type="button" id="loadMore">
               Load More
               <i class="" id="spinner"></i>
             </button>
+            </div>
+
+            <div class="col-6">
+            <a class="nav-link collapsed" href="/addWorker" style="text-align:right">
+              <input class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" type="submit"
+                     value="Add Worker">
+            </a>
+            </div>
           </div>
         </div>
-      </form>
-</div>
+        </div>
   </div>
 <!-- /.container-fluid -->
 <!-- Nav Item - Utilities Collapse Menu -->
-<li class="nav-item">
-  <a class="nav-link collapsed" href="/addWorker" style="text-align:center">
-    <div class="row" style="justify-content:center; text-align: center;">
-      <input class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" type="submit"
-             value="Add Worker">
-    </div>
-  </a>
-</li>
 </div>
 <!-- End of Main Content -->
 
@@ -63,7 +66,7 @@
  var contPage = 1;
     $( "#loadMore" ).click(function() {
         $.ajax({
-            url: "/tablesClient/page/" + contPage,
+            url: "/workerTable/page/" + contPage,
             method: "get",
             beforeSend: ()=>{
                 $("#spinner").addClass("fd-none d-sm-inline-block btn btn-sm btn-primary shadow-sm");
@@ -72,7 +75,7 @@
             $("tr").last().after(answer);
             contPage += 1;
             $("#spinner").removeClass("fd-none d-sm-inline-block btn btn-sm btn-primary shadow-sm   ");
-            if(contPage === {{last}}){
+            if(contPage === {{lastWorker}}){
                 $("#loadMore").off("click");
                 $("#loadMore").remove();
             }

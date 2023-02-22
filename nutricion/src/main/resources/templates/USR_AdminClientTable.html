@@ -18,14 +18,14 @@
                 </tr>
                 </thead>
                 <tbody>
-                {{#list}}
+                {{#listClient}}
                 <tr>
                     <td>{{name}}</td>
                     <td>{{surname}}</td>
                     <td>{{email}}</td>
                     <td><input type="checkbox" name="id" value="{{id}}"></td>
                 </tr>
-                {{/list}}
+                {{/listClient}}
                 </tbody>
             </table>
             <div class="row" style="justify-content:center; text-align: center;">
@@ -61,8 +61,8 @@
         }).done(function (answer) {
             $("tr").last().after(answer);
             contPage += 1;
-            $("#spinner").removeClass("fd-none d-sm-inline-block btn btn-sm btn-primary shadow-sm   ");
-            if(contPage === {{last}}){
+            $("#spinner").removeClass("fd-none d-sm-inline-block btn btn-sm btn-primary shadow-sm");
+            if(contPage === {{lastClient}}){
                 $("#loadMore").off("click");
                 $("#loadMore").remove();
             }
