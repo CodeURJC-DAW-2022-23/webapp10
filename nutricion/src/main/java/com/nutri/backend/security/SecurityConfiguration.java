@@ -33,7 +33,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.cors().and().csrf().disable();
 
         // Public pages
         http.authorizeRequests().antMatchers("/").permitAll();
@@ -87,12 +86,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.logout().logoutSuccessUrl("/");
 
 
-        }
-    @Override
-    public void configure(WebSecurity web) throws Exception {
-        web
-                .ignoring()
-                .antMatchers("/h2-console/**");
     }
+    //Activate for H2DB
+    //@Override
+  //  public void configure(WebSecurity web) throws Exception {
+     //   web
+     //           .ignoring()
+     //           .antMatchers("/h2-console/**");
+  //  }
 
 }
