@@ -139,6 +139,8 @@ public class DataSampleService {
 
         this.dietRepository.save(new Diet("Bulking",arrayObjetos,"Bulking"));
 
+        this.dietRepository.save(new Diet("Definition",arrayObjetos,"Definition"));
+
     }
 
 }

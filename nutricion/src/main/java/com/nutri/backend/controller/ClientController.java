@@ -46,7 +46,7 @@ public class ClientController {
 	public String diet(Model model, HttpServletRequest request) {
 		String name = request.getUserPrincipal().getName();
 		User user = userRepository.findByEmail(name).orElseThrow();
-		Optional<Diet> aux=dietRepository.findByName("Bulking");
+		Optional<Diet> aux=dietRepository.findByName("Bulking");//user.getDiet()
 		//aqui habra que cambiarlo por que le de la dieta que tenga el cliente inscrito
 		Triplet[] dieta=aux.get().getWeek();
 		List<String> desayuno=new ArrayList<>();
@@ -58,10 +58,10 @@ public class ClientController {
 			cena.add((String) dia.Dinner);
 		}
 		model.addAttribute("name", user.getName());
-		model.addAttribute("nombreDieta", aux.get().getName());
-		model.addAttribute("desayuno",desayuno);
-		model.addAttribute("comida",comida);
-		model.addAttribute("cena",cena);
+		model.addAttribute("nd", aux.get().getName());
+		model.addAttribute("br",desayuno);
+		model.addAttribute("ln",comida);
+		model.addAttribute("dn",cena);
 		return "USR_ClientDiets";
 	}
 

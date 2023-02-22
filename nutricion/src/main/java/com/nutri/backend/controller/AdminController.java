@@ -40,31 +40,42 @@ public class AdminController {
 		model.addAttribute("activeDiets",dietRepository.numOfDiets());
 		model.addAttribute("earns",userRepository.findAllByuser("client")*9.99);
 		model.addAttribute("Nclient",userRepository.findAllByuser("client"));
+		int month[]=new int[12];
+		for (int i=0;i<12;i+=1){
+			month[i]=(userRepository.findByEntryDate(i)*9);
+		}
+		model.addAttribute("registeredUsers", Arrays.toString(month));
 		return "USR_Admin";
 	}
 
 	@GetMapping("/adminCharts")
 	public String showCharts(Model model) {
+		int dietas[]= new int[3];
+		dietas[0]=dietRepository.numOfDietsType("Bulking");
+		dietas[1]=dietRepository.numOfDietsType("Definition");
+		dietas[2]=dietRepository.numOfDietsType("Maintenence");
 		int month[]=new int[12];
 		for (int i=0;i<12;i+=1){
 			month[i]=(userRepository.findByEntryDate(i));
 		}
-
-		System.out.println(Arrays.toString(month));
-
 		model.addAttribute("registeredUsers", Arrays.toString(month));
+		model.addAttribute("listDiets",Arrays.toString(dietas));
 		return "USR_AdminCharts";
 	}
 
 	//Chart controller
 	@GetMapping("/chatInformation")
 	public String updateCharts(Model model){
+		int dietas[]= new int[3];
+		dietas[0]=dietRepository.numOfDietsType("Bulking");
+		dietas[1]=dietRepository.numOfDietsType("Definition");
+		dietas[2]=dietRepository.numOfDietsType("Maintenence");
 		int month[]=new int[12];
 		for (int i=0;i<12;i+=1){
 			month[i]=(userRepository.findByEntryDate(i));
 		}
 		model.addAttribute("registeredUsers", Arrays.toString(month));
-
+		model.addAttribute("listDiets",Arrays.toString(dietas));
 		return "USR_AdminCharts";
 	}
 

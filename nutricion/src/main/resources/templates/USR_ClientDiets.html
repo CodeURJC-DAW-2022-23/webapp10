@@ -51,7 +51,7 @@
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary" >{{nombreDieta}}</h6>
+                    <h6 class="m-0 font-weight-bold text-primary" >{{nd}}</h6>
                 </div>
                 <form style=" margin-top: 40px; margin-bottom: 60px; text-align: justify;">
 
@@ -70,32 +70,32 @@
 
                         <tr>
                             <td class="day-time">Breakfast</td>
-                            {{#desayuno}}
+                            {{#br}}
                             <td data-title="Link PDF">
-                                <a style="color:#1cc88a;" href="https://github.com/zavoloklom/material-design-color-palette"
+                                <a style="color:#1cc88a;"
                                    target="_blank">{{.}}</a>
                             </td>
-                            {{/desayuno}}
+                            {{/br}}
                             </td>
                         </tr>
                         <tr>
                             <td class="day-time">Lunch</td>
-                            {{#comida}}
+                            {{#ln}}
                             <td data-title="Link PDF">
-                                <a style="color:#1cc88a;" href="https://github.com/zavoloklom/material-design-color-palette"
+                                <a style="color:#1cc88a;"
                                    target="_blank">{{.}}</a>
                             </td>
-                            {{/comida}}
+                            {{/ln}}
                             </td>
                         </tr>
                         <tr>
                             <td class="day-time">Dinner</td>
-                            {{#cena}}
+                            {{#dn}}
                             <td data-title="Link PDF">
                                 <a style="color:#1cc88a;" href="https://github.com/zavoloklom/material-design-color-palette"
                                    target="_blank">{{.}}</a>
                             </td>
-                            {{/cena}}
+                            {{/dn}}
                             </td>
                         </tr>
 
