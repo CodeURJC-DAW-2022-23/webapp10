@@ -99,7 +99,7 @@ public class AdminController {
 
 	}
 	@PostMapping("/deleteWorker")
-	public String deleteWorker(Model model,@RequestParam List<Long> id){
+	public String deleteWorker(Model model,@RequestParam(required = false) List<Long> id){
 		if(id != null) {
 			for (Long l : id) {
 				userRepository.deleteById(l);
