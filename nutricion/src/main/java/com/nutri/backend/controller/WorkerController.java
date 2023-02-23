@@ -5,12 +5,18 @@ import com.nutri.backend.repositories.DietRepository;
 import com.nutri.backend.repositories.ImageRepository;
 import com.nutri.backend.repositories.RecepyRepository;
 import com.nutri.backend.repositories.UserRepository;
+import com.nutri.backend.service.RecepyService;
+import com.nutri.backend.service.UserService;
 import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -27,13 +33,14 @@ public class WorkerController {
 	private PasswordEncoder passwordEncoder;
 	@Autowired
 	private UserRepository userRepository;
-
+	@Autowired
+	private RecepyService recepyService;
+	@Autowired
+	private UserService userService;
 	@Autowired
 	private RecepyRepository recepyRepository;
-
 	@Autowired
 	private DietRepository dietRepository;
-
 	@Autowired
 	private ImageRepository imageRepository;
 
@@ -41,18 +48,51 @@ public class WorkerController {
 	public String showWorker(Model model, HttpServletRequest request) {
 		String name = request.getUserPrincipal().getName();
 		User user = userRepository.findByEmail(name).orElseThrow();
+		Page<User> clientPage = userService.findPageClient(0, "client");
 		model.addAttribute("name", user.getName());
-		model.addAttribute("client",userRepository.findByUserType("client"));
-		model.addAttribute("image",imageRepository.findByName("Antonio"));
+		model.addAttribute("client",clientPage.toList());
+		model.addAttribute("last",clientPage.getTotalPages());
+		model.addAttribute("image",imageRepository.findByName(user.getName()));
 		return "USR_Worker";
 	}
+
+	@GetMapping("/worker/page/{page}")
+	public String getWorkerPage(Model model, @PathVariable int page) {
+		Page<User> client = userService.findPageClient(page, "client");
+		List<User> users = client.toList();
+		model.addAttribute("client", users);
+		return "USR_WorkerClientTableAjax";
+
+	}
+
+	@GetMapping("/viewRecipe")
+	public String viewRecipe(Model model, HttpServletRequest request) {
+		String name = request.getUserPrincipal().getName();
+		Page<Recepy> recepiesPage = recepyService.getPageOfRecepies(0) ;
+		User user = userRepository.findByEmail(name).orElseThrow();
+		model.addAttribute("name", user.getName());
+		model.addAttribute("recepy",recepiesPage.toList());
+		model.addAttribute("last",recepiesPage.getTotalPages());
+		model.addAttribute("image",imageRepository.findByName(user.getName()));
+		return "USR_WorkerViewRecipe";
+	}
+
+	@GetMapping("/workerRecepiesTable/page/{page}")
+	public String getRecepiesTable(Model model, @PathVariable int page) {
+		Page<Recepy> recepie =recepyService.getPageOfRecepies(page);
+		model.addAttribute("recepy", recepie.toList());
+		return "USR_WorkerRecepiesTableAjax";
+
+	}
+
 	@GetMapping("/workerDiets")
 	public String workerDiets(Model model, HttpServletRequest request) {
 		String name = request.getUserPrincipal().getName();
 		User user = userRepository.findByEmail(name).orElseThrow();
+		Page<User> clientPage = userService.findPageClient(0, "worker");
 		model.addAttribute("name", user.getName());
 		model.addAttribute("client",userRepository.findByUserType("client"));
-		model.addAttribute("image",imageRepository.findByName("Antonio"));
+		model.addAttribute("image",imageRepository.findByName(user.getName()));
 		return "USR_WorkerDiets";
 	}
 
@@ -60,7 +100,7 @@ public class WorkerController {
 	public String workerUploadDiets(Model model, HttpServletRequest request) {
 		String name = request.getUserPrincipal().getName();
 		User user = userRepository.findByEmail(name).orElseThrow();
-		model.addAttribute("image",imageRepository.findByName("Antonio"));
+		model.addAttribute("image",imageRepository.findByName(user.getName()));
 		model.addAttribute("name", user.getName());
 		model.addAttribute("recepyBreakfast",recepyRepository.findByKindOfRecepy("Breakfast"));
 		model.addAttribute("recepyLunch",recepyRepository.findByKindOfRecepy("Lunch"));
@@ -110,19 +150,11 @@ public class WorkerController {
 		return "redirect:/viewDiet";
 	}
 
-	@GetMapping("/viewRecipe")
-	public String viewRecipe(Model model, HttpServletRequest request) {
-		String name = request.getUserPrincipal().getName();
-		User user = userRepository.findByEmail(name).orElseThrow();
-		model.addAttribute("name", user.getName());
-		model.addAttribute("recepy",recepyRepository.findAll());
-		model.addAttribute("image",imageRepository.findByName("Antonio"));
-		return "USR_WorkerViewRecipe";
-	}
+
 	@GetMapping("/workerUploadRecipes")
 	public String workerUploadRecepies(Model model, HttpServletRequest request) {
 		String name = request.getUserPrincipal().getName();
-		model.addAttribute("image",imageRepository.findByName("Antonio"));
+		model.addAttribute("image",imageRepository.findByName(name));
 		User user = userRepository.findByEmail(name).orElseThrow();
 		model.addAttribute("name", user.getName());
 		return "USR_WorkerUploadRecipes";
@@ -154,7 +186,7 @@ public class WorkerController {
 		}
 		model.addAttribute("name", user.getName());
 		model.addAttribute("dieta",tupla);
-		model.addAttribute("image",imageRepository.findByName("Antonio"));
+		model.addAttribute("image",imageRepository.findByName(user.getName()));
 		return "USR_WorkerViewDiet";
 	}
 	@GetMapping("/workerProfile")

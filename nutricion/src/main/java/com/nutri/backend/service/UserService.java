@@ -17,6 +17,6 @@ public class UserService {
     public Page<User> findPageClient(int page, String s){
         return userRepository.findByUserType(PageRequest.of(page, 6), s);
     }
-    //If client has no Login and make a form and the login. Gets cookie and make stuff
+
 
 }
