@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.regex.Matcher;
@@ -68,11 +72,15 @@ public class InitialationController {
 	}
 
 	@PostMapping("/usrTest")
-	public String formInfoUpdate(@RequestParam String gensex, @RequestParam String age,@RequestParam String phactivity,
-								 @RequestParam int weight,@RequestParam int height, @RequestParam String interest,
-								 @RequestParam String aspiration){
+	public String formInfoUpdate(@RequestParam String gensex, @RequestParam String age, @RequestParam String phactivity,
+								 @RequestParam int weight, @RequestParam int height, @RequestParam String interest,
+								 @RequestParam String aspiration, HttpServletRequest request, HttpServletResponse response){
 		Form newForm = new Form(gensex,age,phactivity,weight,height,interest,aspiration);
 		formRep.save(newForm);
+		String id =String.valueOf(newForm.getId());
+		Cookie formId = new Cookie("formId",id);
+		formId.setMaxAge(60*60);
+		response.addCookie(formId);
 		return "redirect:/login";
 	}
 	@PostMapping("/addUser")

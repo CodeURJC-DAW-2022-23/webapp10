@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -65,6 +67,11 @@ public class ClientController {
 		return "USR_ClientDiets";
 	}
 
+	//Adding cookie to user form
+	public void addFormFromCookie(HttpServletRequest request, HttpServletResponse response){
+
+	}
+
 	@GetMapping("/clientForm")
 	public String forms(Model model, HttpServletRequest request) {
 		String name = request.getUserPrincipal().getName();
@@ -72,6 +79,7 @@ public class ClientController {
 		model.addAttribute("name", user.getName());
 		return "USR_ClientForm";
 	}
+
 	@GetMapping("/clientRecipes")
 	public String recipes(Model model, HttpServletRequest request) {
 		String name = request.getUserPrincipal().getName();
@@ -81,10 +89,23 @@ public class ClientController {
 	}
 
 	@GetMapping("/clientChart")
-	public String chart(Model model, HttpServletRequest request) {
+	public String chart(Model model, HttpServletRequest request, HttpServletResponse response) {
 		String name = request.getUserPrincipal().getName();
 		User user = userRepository.findByEmail(name).orElseThrow();
 		model.addAttribute("name", user.getName());
+		Cookie[] cookies = request.getCookies();
+		String formId="";
+		for (Cookie cookie : cookies) {
+			if (cookie.getName().equals("formId"))
+				formId = cookie.getValue();
+		}
+		Cookie userNameCookieRemove = new Cookie("formId", "");
+		userNameCookieRemove.setMaxAge(0);
+		response.addCookie(userNameCookieRemove);
+		Long id =Long.parseLong(formId);
+		Form form  = formRep.findById(id).orElseThrow() ;
+		String email =request.getUserPrincipal().getName();
+		user.setForm(form);
 		return "USR_ClientCharts";
 	}
 

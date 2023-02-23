@@ -107,4 +107,6 @@ public class Form {
 	public void setHeight(Integer height) {
 		this.height = height;
 	}
+
+	public Long getId(){return id;}
 }
