@@ -94,7 +94,7 @@ public class ClientController {
 		User user = userRepository.findByEmail(name).orElseThrow();
 		model.addAttribute("name", user.getName());
 		Cookie[] cookies = request.getCookies();
-		String formId="";
+		String formId = null;
 		for (Cookie cookie : cookies) {
 			if (cookie.getName().equals("formId"))
 				formId = cookie.getValue();
@@ -102,13 +102,14 @@ public class ClientController {
 		Cookie userNameCookieRemove = new Cookie("formId", "");
 		userNameCookieRemove.setMaxAge(0);
 		response.addCookie(userNameCookieRemove);
-		Long id =Long.parseLong(formId);
-		Form form  = formRep.findById(id).orElseThrow() ;
-		String email =request.getUserPrincipal().getName();
-		user.setForm(form);
+		if (formId != null) {
+			Long id = Long.parseLong(formId);
+			Form form = formRep.findById(id).orElseThrow();
+			user.setForm(form);
+			userRepository.save(user);
+		}
 		return "USR_ClientCharts";
 	}
-
 	@GetMapping("/clientInfo")
 	public String showInfo(Model model, HttpServletRequest request) {
 		String name = request.getUserPrincipal().getName();

@@ -1,0 +1,61 @@
+{{>USR_AdminHeader}}
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Welcome!</h1>
+    </div>
+
+    <!-- Content Row -->
+    <div class="row">
+        <!-- Area Chart -->
+        <div class="col-xl-12 col-lg-7">
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary" >Profile Settings</h6>
+                </div>
+
+                <div class="col-xl-12 col-lg-5">
+
+                    <!-- Area Chart -->
+                    <div class="card shadow mb-4">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-xl-6 col-lg-5">
+                                        <span style="font-weight:600;">Name:</span> {{name}}
+                                        <br>
+                                        <br>
+                                        <span style="font-weight:600;">Surname:</span> {{surname}}
+                                        <br>
+                                        <br>
+                                        <span style="font-weight:600;">Email:</span> {{email}}
+                                        <br>
+                                        <br>
+                                        {{#worker}}
+                                        <span style="font-weight:600;">Description:</span> {{surname}}
+                                        {{/worker}}
+                                    <input type='file' id='clientImage' name='clientImage' accept=".jpg, .jpeg"/>
+                                </div>
+                            </div>
+                            <br>
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{{>USR_AdminFooter}}
+<script src="js/vendor/jquery/jquery.min.js"></script>
+<script src="js/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="js/vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="js/sb-admin-2.min.js"></script>
+
+</body>
+
+</html>

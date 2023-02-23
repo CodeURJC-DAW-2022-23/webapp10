@@ -23,9 +23,9 @@
                 <tbody>
                 {{#listClient}}
                 <tr>
-                    <td>{{name}}</td>
+                    <td> {{name}}</td>
                     <td>{{surname}}</td>
-                    <td>{{email}}</td>
+                    <td><a href="/tablesClient/{{id}}" style="text-decoration:none">{{email}}</a></td>
                     <td><input type="checkbox" name="id" value="{{id}}"></td>
                 </tr>
                 {{/listClient}}

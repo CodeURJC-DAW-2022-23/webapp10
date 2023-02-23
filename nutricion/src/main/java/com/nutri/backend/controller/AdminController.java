@@ -133,6 +133,20 @@ public class AdminController {
 		model.addAttribute("lastClient",clientPage.getTotalPages());
 		return "USR_AdminClientTable";
 	}
+	@GetMapping("/tablesClient/{id}")
+	public String showUsers(Model model,@PathVariable long id){
+		User user =userRepository.findById(id).orElseThrow();
+		model.addAttribute("name",user.getName());
+		model.addAttribute("surname",user.getSurname());
+		model.addAttribute("email", user.getEmail());
+		if(user.getUserType()=="worker")
+			model.addAttribute("worker",true);
+		model.addAttribute("description",user.getDescription());
+
+		return "USR_AdminShowUser";
+	}
+
+
 	@PostMapping("/deleteClient")
 	public String deleteUser(Model model, @RequestParam(required = false) List<Long> id){
 		if(id != null) {
@@ -142,6 +156,9 @@ public class AdminController {
 		}
 		return "redirect:/tablesClient";
 	}
+
+
+
 	//ajax
 	@GetMapping("/tablesClient/page/{page}")
 	public String getClientPage(Model model, @PathVariable int page) {

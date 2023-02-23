@@ -14,9 +14,7 @@ public class UserService {
     @Autowired
     UserRepository userRepository;
 
-    public Page<User> findPageClient(int page, String s){
-        return userRepository.findByUserType(PageRequest.of(page, 6), s);
-    }
+    public Page<User> findPageClient(int page, String s){return userRepository.findByUserType(PageRequest.of(page, 6), s);}
 
 
 }

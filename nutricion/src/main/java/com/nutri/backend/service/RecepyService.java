@@ -14,8 +14,7 @@ public class RecepyService {
     @Autowired
     private RecepyRepository recepyRepository;
 
-    public Page<Recepy> getPageOfRecepies(int page){
-        return recepyRepository.findAll(PageRequest.of(page,6));
+    public Page<Recepy> getPageOfRecepies(int page){return recepyRepository.findAll(PageRequest.of(page,6));
     }
 
 }

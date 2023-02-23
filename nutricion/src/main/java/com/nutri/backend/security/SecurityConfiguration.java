@@ -52,9 +52,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/addWorker").hasAnyRole("admin");
         http.authorizeRequests().antMatchers("/workerTable/{id}").hasAnyRole("admin");
         http.authorizeRequests().antMatchers("/workerTable/{id}/delete").hasAnyRole("admin");
-
         http.authorizeRequests().antMatchers("/tablesClient/{id}").hasAnyRole("admin");
         http.authorizeRequests().antMatchers("/tablesClient/{id}/delete").hasAnyRole("admin");
+
+
 
         //worker
         http.authorizeRequests().antMatchers("/workerDiets").hasAnyRole("worker");
