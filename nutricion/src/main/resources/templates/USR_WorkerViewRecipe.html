@@ -9,6 +9,7 @@
         <div id="demo">
             <h1>View Recipe</h1>
             <div class="table-responsive-vertical shadow p-4">
+                <form action="/recipePDF/downloadRecepy" method="post">
                 <!-- Table starts here -->
                 <table id="table" class="table table-hover table-mc-light-blue">
                     <thead>
@@ -17,6 +18,7 @@
                         <th>Ingredients</th>
                         <th>Description</th>
                         <th>kindOfRecepy</th>
+                        <th>PDF</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -31,6 +33,11 @@
                     {{/recepy}}
                     </tbody>
                 </table>
+                    <div class="row" style="justify-content:center; text-align: center;">
+                        <input class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" type="submit"
+                               value="Download PDF">
+                    </div>
+                </form>
                 <div>
                     <button class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" type="button" id="loadMore">
                         Load More

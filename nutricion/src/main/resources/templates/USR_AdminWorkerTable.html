@@ -3,58 +3,59 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
-  <!-- Content Row -->
-  <div class="col-12">
+    <!-- Content Row -->
+    <div class="col-12">
 
         <div id="demo">
-          <h1>Worker Table</h1>
-          <div class="table-responsive-vertical shadow p-4">
-            <form action="/deleteWorker" method="post">
-          <!-- Table starts here -->
-          <table id="table" class="table table-hover table-mc-light-blue">
-            <thead>
-            <tr>
-              <th>Name</th>
-              <th>Surname</th>
-              <th>Email</th>
-            </tr>
-            </thead>
-            <tbody>
-            {{#listWorker}}
-            <tr>
-              <td>{{name}}</td>
-              <td>{{surname}}</td>
-              <td>{{email}}</td>
-              <td><input type="checkbox" name="id" value="{{id}}"></td>
-            </tr>
-            {{/listWorker}}
-            </tbody>
-          </table>
-          <div class="row" style="justify-content:center; text-align: center;">
-            <input class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" type="submit"
-                   value="Delete">
-        </div>
-          </form>
-          <div class="row">
-            <div class="col-6">
-            <button class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" type="button" id="loadMore">
-              Load More
-              <i class="" id="spinner"></i>
-            </button>
-            </div>
+            <h1>Worker Table</h1>
+            <div class="table-responsive-vertical shadow p-4">
+                <form action="/deleteWorker" method="post">
+                    <!-- Table starts here -->
+                    <table class="table table-hover table-mc-light-blue" id="table">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Surname</th>
+                            <th>Email</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{#listWorker}}
+                        <tr>
+                            <td>{{name}}</td>
+                            <td>{{surname}}</td>
+                            <td>{{email}}</td>
+                            <td><input name="id" type="checkbox" value="{{id}}"></td>
+                        </tr>
+                        {{/listWorker}}
+                        </tbody>
+                    </table>
+                    <div class="row" style="justify-content:center; text-align: center;">
+                        <input class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" type="submit"
+                               value="Delete">
+                    </div>
+                </form>
+                <div class="row">
+                    <div class="col-6">
+                        <button class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" id="loadMore"
+                                type="button">
+                            Load More
+                            <i class="" id="spinner"></i>
+                        </button>
+                    </div>
 
-            <div class="col-6">
-            <a class="nav-link collapsed" href="/addWorker" style="text-align:right">
-              <input class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" type="submit"
-                     value="Add Worker">
-            </a>
+                    <div class="col-6">
+                        <a class="nav-link collapsed" href="/addWorker" style="text-align:right">
+                            <input class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" type="submit"
+                                   value="Add Worker">
+                        </a>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-        </div>
-  </div>
-<!-- /.container-fluid -->
-<!-- Nav Item - Utilities Collapse Menu -->
+    </div>
+    <!-- /.container-fluid -->
+    <!-- Nav Item - Utilities Collapse Menu -->
 </div>
 <!-- End of Main Content -->
 
@@ -81,6 +82,7 @@
             }
         });
     });
+
 </script>
 
 <!-- Core plugin JavaScript-->
