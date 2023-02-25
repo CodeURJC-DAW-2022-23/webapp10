@@ -10,25 +10,35 @@
             <h1>View Diet</h1>
 
             <div class="table-responsive-vertical shadow p-4">
+                <form action="/PDF/downloadDiet" method="post">
                 <!-- Table starts here -->
                 <table id="table" class="table table-hover table-mc-light-blue">
                     <thead>
                     <tr>
                         <th>Name</th>
                         <th>Week</th>
+                        <th>PDF</th>
                     </tr>
                     </thead>
                     <tbody>
                     {{#dieta}}
                         {{#entrySet}}
-                        <tr>
-                            <td>{{key}}</td>
-                            <td>{{value}}</td>
-                        </tr>
+                    <tr>
+                        <td>{{key}}</td>
+                        <td>{{value}}</td>
+                        <td><input type="checkbox" name="key" value="{{key}}"></td>
+                    </tr>
                         {{/entrySet}}
+
                     {{/dieta}}
                     </tbody>
                 </table>
+                    <input type="checkbox" name="key" value="23">
+                    <div class="row" style="justify-content:center; text-align: center;">
+                        <input class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" type="submit"
+                               value="Download PDF">
+                    </div>
+                </form>
             </div>
         </div>
     </div>

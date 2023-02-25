@@ -2,7 +2,9 @@ package com.nutri.backend.controller;
 
 import com.itextpdf.html2pdf.ConverterProperties;
 import com.itextpdf.html2pdf.HtmlConverter;
+import com.nutri.backend.model.Diet;
 import com.nutri.backend.model.Recepy;
+import com.nutri.backend.repositories.DietRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -26,7 +28,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/recipePDF")
+@RequestMapping("/PDF")
 public class PDFController {
 
 
@@ -35,6 +37,9 @@ public class PDFController {
 
     @Autowired
     private RecepyRepository recepyRepository;
+
+    @Autowired
+    private DietRepository dietRepository;
 
     private final TemplateEngine templateEngine;
 
@@ -56,7 +61,7 @@ public class PDFController {
     }
 
     @PostMapping("/downloadRecepy")
-    public Object getPDF(Model model, HttpServletRequest request, HttpServletResponse response, @RequestParam(required = false) List<Long> id) throws IOException {
+    public Object getRecepyPDF(Model model, HttpServletRequest request, HttpServletResponse response, @RequestParam(required = false) List<Long> id) throws IOException {
 
         /* Do Business Logic*/
 
@@ -97,6 +102,48 @@ public class PDFController {
 
         }
         return "redirect:/viewRecipe";
+    }
+
+    @PostMapping("/downloadDiet")
+    public Object getDietPDF(Model model, HttpServletRequest request, HttpServletResponse response, @RequestParam(required = false) List<Long> id) throws IOException {
+
+        /* Do Business Logic*/
+        System.out.println(id);
+        if(id != null) {
+            int i = 0;
+            Optional<Diet> diet = null;
+            for (Long l : id) {
+                diet = dietRepository.findById(l);
+                i++;
+            }
+            /* Create HTML using Thymeleaf template Engine */
+
+            WebContext context = new WebContext(request, response, servletContext);
+            context.setVariable("diet", diet);
+            //model.addAttribute("description", recipe.getDescription());
+            String dietHtml = templateEngine.process("USR_ClientDietPDF", context);
+
+            /* Setup Source and target I/O streams */
+
+            ByteArrayOutputStream target = new ByteArrayOutputStream();
+            ConverterProperties converterProperties = new ConverterProperties();
+            converterProperties.setBaseUri("http://localhost:8080");
+            /* Call convert method */
+            HtmlConverter.convertToPdf(dietHtml, target, converterProperties);
+
+            /* extract output as bytes */
+            byte[] bytes = target.toByteArray();
+
+
+            /* Send the response as downloadable PDF */
+
+            return ResponseEntity.ok()
+                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=diet.pdf")
+                    .contentType(MediaType.APPLICATION_PDF)
+                    .body(bytes);
+
+        }
+        return "redirect:/viewDiet";
     }
 
 }
