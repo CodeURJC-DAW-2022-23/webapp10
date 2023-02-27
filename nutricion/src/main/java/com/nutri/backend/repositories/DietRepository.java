@@ -5,6 +5,7 @@ import com.nutri.backend.model.Triplet;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,4 +24,5 @@ public interface DietRepository extends JpaRepository<Diet, Long> {
      @Query(value = "SELECT WEEK FROM DIET ",nativeQuery = true)
      List<Triplet> findOnlyWeek();
 
+    List<Optional<Diet>> findAllByType(String type);
 }

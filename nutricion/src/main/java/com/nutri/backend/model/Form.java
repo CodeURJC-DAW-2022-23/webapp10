@@ -29,10 +29,10 @@ public class Form {
 	private String age;
 
 	@Column
-	private  int weight;
+	private  double weight;
 
 	@Column
-	private  int height;
+	private  double height;
 
 	@OneToOne(mappedBy = "form")
 	private User user;
@@ -40,7 +40,7 @@ public class Form {
 	public Form() {
 	}
 
-	public Form(String sex, String age, String activity, int weight,int height, String service,
+	public Form(String sex, String age, String activity, double weight,double height, String service,
 	        String diet) {
 
 		this.sex = sex;
@@ -92,19 +92,19 @@ public class Form {
 		this.age = age;
 	}
 
-	public Integer getWeight() {
+	public double getWeight() {
 		return weight;
 	}
 
-	public void setWeight(Integer weight) {
+	public void setWeight(Double weight) {
 		this.weight = weight;
 	}
 
-	public Integer getHeight() {
+	public Double getHeight() {
 		return height;
 	}
 
-	public void setHeight(Integer height) {
+	public void setHeight(Double height) {
 		this.height = height;
 	}
 

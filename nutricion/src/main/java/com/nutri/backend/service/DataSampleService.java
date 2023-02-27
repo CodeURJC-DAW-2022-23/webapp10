@@ -122,7 +122,6 @@ public class DataSampleService {
         //Diet
         Triplet arrayObjetos[] = new Triplet[7];
 
-        int suma = 0;
         for (int i = 0; i < arrayObjetos.length; i++) {
             //Indicamos cada uno de los parametros del objeto
             String Breakfast = "Huevos";
@@ -136,7 +135,7 @@ public class DataSampleService {
 
         this.dietRepository.save(new Diet("Bulking", arrayObjetos, "Bulking"));
 
-        this.dietRepository.save(new Diet("Definition", arrayObjetos, "Definition"));
+        this.dietRepository.save(new Diet("Definition", arrayObjetos, "Cutting"));
 
     }
 
