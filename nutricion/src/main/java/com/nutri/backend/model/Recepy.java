@@ -1,6 +1,7 @@
 package com.nutri.backend.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
 
 import javax.persistence.*;
 import java.sql.Blob;
@@ -53,10 +54,20 @@ public class Recepy {
     @Column(nullable = false)
     private String kindOfRecepy;
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     //image
+    @Column(nullable = true)
+    private String image;
     @Lob
     @JsonIgnore
-    private Blob image;
+    private Blob imageFile;
 
     @ManyToOne
     private Diet dietRecepy;
@@ -68,7 +79,7 @@ public class Recepy {
         this.description=description;
         this.kindOfRecepy=tipo_dieta;
         this.ingredients=ingredients;
-        this.image=image;
+        this.imageFile=image;
         this.name=name;
     }
     public Recepy(String name,String ingredients, String description,String tipo_dieta){
@@ -110,11 +121,11 @@ public class Recepy {
         this.description = description;
     }
 
-    public Blob getImage() {
-        return image;
+    public Blob getImageFile() {
+        return imageFile;
     }
 
-    public void setImage(Blob image) {
-        this.image = image;
+    public void setImageFile(Blob imageFile) {
+        this.imageFile = imageFile;
     }
 }

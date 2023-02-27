@@ -81,7 +81,7 @@ public class PDFController {
             String name = recipe.get().getName();
             String ingredients = recipe.get().getIngredients();
             String description = recipe.get().getDescription();
-            Blob image = recipe.get().getImage();
+            Blob image = recipe.get().getImageFile();
 
             context.setVariable("name", name);
             context.setVariable("ingredients", ingredients);

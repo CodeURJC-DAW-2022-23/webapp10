@@ -49,7 +49,7 @@ public class WorkerController {
 
 
 	@GetMapping("/worker")
-	public String showWorker(Model model, HttpServletRequest request) throws SQLException {
+	public String showWorker(Model model, HttpServletRequest request) {
 		String name = request.getUserPrincipal().getName();
 		User user = userRepository.findByEmail(name).orElseThrow();
 		Page<User> clientPage = userService.findPageClient(0, "client");
