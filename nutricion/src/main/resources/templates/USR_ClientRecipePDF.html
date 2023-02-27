@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Recipe</title>
@@ -10,38 +10,26 @@
     <div class="pt-3 pb-2" style="color:green; text-align:center;">The Smart Way</div>
     <div class="flex flex-row justify-between pb-4">
         <div>
-            <h2 class="text-xl font-bold"><!--{{name}}--> Chocolate fudge cake</span>
+            <h2 class="text-xl font-bold"><span class="text-green-600" th:text="${name}"></span>
             </h2>
         </div>
     </div>
     <div class="row">
-        <img src="images/bannerVerduras.jpg" height="200">
+        <img th:src="${image}" height="200px"/>
     </div>
     <div class="flex flex-col pb-8">
         <div class="pb-2">
             <h2 class="text-l font-bold">Ingredients</h2>
         </div>
 
-        <!--{{ingredients}}-->
+        <span class="text-green-600" th:text="${ingredients}">
     </div>
-    150ml sunflower oil, plus extra for the tin <br>
-    175g self-raising flour <br>
-    2 tbsp cocoa powder<br>
-    1 tsp bicarbonate of soda<br>
-    150g caster sugar<br>
-    2 tbsp golden syrup <br>
-    2 large eggs, lightly beaten<br>
-    150ml semi-skimmed milk<br>
+
     <div class="flex flex-col pb-8">
         <div class="pb-2">
             <h2 class="text-l font-bold">Description</h2>
         </div>
-        1. Heat the oven to 180C/160C fan/gas 4. Oil and line the base of two 18cm sandwich tins. Sieve the flour, cocoa powder and bicarbonate of soda into a bowl. Add the caster sugar and mix well. <br>
-        2.Make a well in the centre and add the golden syrup, eggs, sunflower oil and milk. Beat well with an electric whisk until smooth. <br>
-        3.Pour the mixture into the two tins and bake for 25-30 mins until risen and firm to the touch. Remove from oven, leave to cool for 10 mins before turning out onto a cooling rack.<br>
-        4.To make the icing, beat the unsalted butter in a bowl until soft. Gradually sieve and beat in the icing sugar and cocoa powder, then add enough of the milk to make the icing fluffy and spreadable.<br>
-        5.Sandwich the two cakes together with the butter icing and cover the sides and the top of the cake with more icing.<br>
-        <!--{{description}}-->
+        <span class="text-green-600" th:text="${description}">
     </div>
 </div>
 </body>

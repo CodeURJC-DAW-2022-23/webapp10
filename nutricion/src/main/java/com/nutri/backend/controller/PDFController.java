@@ -24,6 +24,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.sql.Blob;
 import java.util.List;
 import java.util.Optional;
 
@@ -61,7 +62,7 @@ public class PDFController {
     }
 
     @PostMapping("/downloadRecepy")
-    public Object getRecepyPDF(Model model, HttpServletRequest request, HttpServletResponse response, @RequestParam(required = false) List<Long> id) throws IOException {
+    public Object getRecepyPDF(HttpServletRequest request, HttpServletResponse response, @RequestParam(required = false) List<Long> id) throws IOException {
 
         /* Do Business Logic*/
 
@@ -71,14 +72,21 @@ public class PDFController {
             Optional<Recepy> recipe = null;
             for (Long l : id) {
                 recipe = recepyRepository.findById(l);
-                //recipes = recipe;
+                //recipes[i] = recepyRepository.findById(l).get();
                 i++;
             }
             /* Create HTML using Thymeleaf template Engine */
 
             WebContext context = new WebContext(request, response, servletContext);
-            context.setVariable("recipe", recipe);
-            //model.addAttribute("description", recipe.getDescription());
+            String name = recipe.get().getName();
+            String ingredients = recipe.get().getIngredients();
+            String description = recipe.get().getDescription();
+            Blob image = recipe.get().getImage();
+
+            context.setVariable("name", name);
+            context.setVariable("ingredients", ingredients);
+            context.setVariable("description", description);
+            context.setVariable("image", image);
             String recipeHtml = templateEngine.process("USR_ClientRecipePDF", context);
 
             /* Setup Source and target I/O streams */
