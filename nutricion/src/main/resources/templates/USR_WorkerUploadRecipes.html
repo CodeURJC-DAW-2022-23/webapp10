@@ -13,7 +13,7 @@
                         <h1 class="h3 mb-0 text-gray-800" style="">New Recipe</h1>
                     </div>
 
-                    <form method="post" action="/workerUploadRecipes">
+                    <form method="post" action="/workerUploadRecipes" enctype="multipart/form-data">
                         <div class="row">
                             <div class = "col-lg-6">
                                 <!-- Recipe Name -->
@@ -24,6 +24,17 @@
                                         </div>
                                         <div class="row">
                                             <input id="recipe" name="recipe" type="text" style="border-color: #5AF499;"><br>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- ingredients -->
+                                <div class="row" style="margin-bottom: 40px;">
+                                    <div class="col-11">
+                                        <div class="row">
+                                            <label for="recipe"> Ingredients </label>
+                                        </div>
+                                        <div class="row">
+                                            <input id="ingredients" name="ingredients" type="text" style="border-color: #5AF499;"><br>
                                         </div>
                                     </div>
                                 </div>
@@ -46,7 +57,7 @@
                                             <label for="image"> Image of the recipe </label>
                                         </div>
                                         <div class="row">
-                                            <input id="image" name="image" type="file"/>
+                                            <input type='file' id='image' name='image' accept=".jpg, .jpeg"/>
                                         </div>
                                     </div>
                                 </div>
@@ -66,8 +77,6 @@
                             <input class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" type="submit"
                                    value="Submit">
                         </div>
-
-
                     </form>
 
                 </div>

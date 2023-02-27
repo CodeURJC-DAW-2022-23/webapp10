@@ -66,6 +66,7 @@ public class WorkerController {
 		Page<User> client = userService.findPageClient(page, "client");
 		List<User> users = client.toList();
 		model.addAttribute("client", users);
+
 		return "USR_WorkerClientTableAjax";
 
 	}
@@ -78,6 +79,7 @@ public class WorkerController {
 		model.addAttribute("name", user.getName());
 		model.addAttribute("recepy",recepiesPage.toList());
 		model.addAttribute("last",recepiesPage.getTotalPages());
+		model.addAttribute("id", user.getId());
 		return "USR_WorkerViewRecipe";
 	}
 
@@ -85,6 +87,7 @@ public class WorkerController {
 	public String getRecepiesTable(Model model, @PathVariable int page) {
 		Page<Recepy> recepie =recepyService.getPageOfRecepies(page);
 		model.addAttribute("recepy", recepie.toList());
+
 		return "USR_WorkerRecepiesTableAjax";
 
 	}
@@ -96,6 +99,7 @@ public class WorkerController {
 		Page<User> clientPage = userService.findPageClient(0, "worker");
 		model.addAttribute("name", user.getName());
 		model.addAttribute("client",userRepository.findByUserType("client"));
+		model.addAttribute("id", user.getId());
 		return "USR_WorkerDiets";
 	}
 
@@ -107,6 +111,7 @@ public class WorkerController {
 		model.addAttribute("recepyBreakfast",recepyRepository.findByKindOfRecepy("Breakfast"));
 		model.addAttribute("recepyLunch",recepyRepository.findByKindOfRecepy("Lunch"));
 		model.addAttribute("recepyDinner",recepyRepository.findByKindOfRecepy("Dinner"));
+		model.addAttribute("id", user.getId());
 		return "USR_WorkerUploadDiets";
 	}
 	@PostMapping("/workerUploadDiets")
@@ -149,6 +154,7 @@ public class WorkerController {
 		Diet dieta=new Diet(nombre,week,type_diet);
 		dietRepository.save(dieta);
 		model.addAttribute("name", user.getName());
+		model.addAttribute("id", user.getId());
 		return "redirect:/viewDiet";
 	}
 
@@ -158,21 +164,24 @@ public class WorkerController {
 		String name = request.getUserPrincipal().getName();
 		User user = userRepository.findByEmail(name).orElseThrow();
 		model.addAttribute("name", user.getName());
+		model.addAttribute("id", user.getId());
 		return "USR_WorkerUploadRecipes";
 	}
 	@PostMapping("/workerUploadRecipes")
 	public String workerUploadRecepiesToDB(Model model, HttpServletRequest request,@RequestParam String recipe,
+										   @RequestParam String ingredients,
 										   @RequestParam String steps,@RequestParam String recipetype,
-										   @RequestParam String image) {
-		String name = request.getUserPrincipal().getName();
-		User user = userRepository.findByEmail(name).orElseThrow();
-		model.addAttribute("name", user.getName());
-		Recepy recetaAux=null;
-		if (image.equals("null")){
-			recetaAux=new Recepy(recipe,"",steps,recipetype);
-		}else{
-			recetaAux=new Recepy(recipe,"",steps,recipetype);
+										   @RequestParam (name = "image", required = false) MultipartFile image) throws IOException {
+		Recepy recetaAux=new Recepy();
+		if (!image.isEmpty()){
+			URI location = fromCurrentRequest().build().toUri();
+			recetaAux.setImage(location.toString());
+			recetaAux.setImageFile(BlobProxy.generateProxy(image.getInputStream(), image.getSize()));
 		}
+		recetaAux.setDescription(steps);
+		recetaAux.setName(recipe);
+		recetaAux.setIngredients(ingredients);
+		recetaAux.setKindOfRecepy(recipetype);
 		recepyRepository.save(recetaAux);
 		return "redirect:/viewRecipe";
 	}
@@ -188,6 +197,7 @@ public class WorkerController {
 		}
 		model.addAttribute("name", user.getName());
 		model.addAttribute("dieta",tupla);
+		model.addAttribute("id", user.getId());
 		return "USR_WorkerViewDiet";
 	}
 	@GetMapping("/workerProfile")
