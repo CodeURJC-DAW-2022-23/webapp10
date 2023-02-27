@@ -176,33 +176,6 @@ public class WorkerController {
 		recepyRepository.save(recetaAux);
 		return "redirect:/viewRecipe";
 	}
-	@GetMapping("/worker/{id}/image")
-	public ResponseEntity<Object> downloadworkerImage(@PathVariable long id) throws SQLException {
-		Optional<User> optMon = userRepository.findById(id);
-		if (optMon.get().getImageFile() != null) {
-			Resource file = new InputStreamResource(
-					optMon.get().getImageFile().getBinaryStream());
-			return ResponseEntity.ok()
-					.header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
-					.contentLength(optMon.get().getImageFile().length())
-					.body(file);
-		} else {
-			return ResponseEntity.notFound().build();
-		}
-
-	}
-	@PostMapping("/{id}/image")
-	public ResponseEntity<Object> uploadImage(@PathVariable long id,
-											  @RequestParam MultipartFile imageFile) throws IOException {
-		Optional<User> optMon = userRepository.findById(id);
-		URI location = fromCurrentRequest().build().toUri();
-		optMon.get().setImage(location.toString());
-
-		optMon.get().setImageFile(BlobProxy.generateProxy(
-				imageFile.getInputStream(), imageFile.getSize()));
-		userRepository.save(optMon.get());
-		return ResponseEntity.created(location).build();
-	}
 
 	@GetMapping("/viewDiet")
 	public String viewDiet(Model model, HttpServletRequest request) {
@@ -270,6 +243,33 @@ public class WorkerController {
 			}
 		}
 		userRepository.save(user);
-		return "USR_WorkerProfile";
+		return "redirect:/workerEditProfile";
+	}
+	@GetMapping("/worker/{id}/image")
+	public ResponseEntity<Object> downloadworkerImage(@PathVariable long id) throws SQLException {
+		Optional<User> optMon = userRepository.findById(id);
+		if (optMon.get().getImageFile() != null) {
+			Resource file = new InputStreamResource(
+					optMon.get().getImageFile().getBinaryStream());
+			return ResponseEntity.ok()
+					.header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
+					.contentLength(optMon.get().getImageFile().length())
+					.body(file);
+		} else {
+			return ResponseEntity.notFound().build();
+		}
+
+	}
+	@PostMapping("/{id}/image")
+	public ResponseEntity<Object> uploadImage(@PathVariable long id,
+											  @RequestParam MultipartFile imageFile) throws IOException {
+		Optional<User> optMon = userRepository.findById(id);
+		URI location = fromCurrentRequest().build().toUri();
+		optMon.get().setImage(location.toString());
+
+		optMon.get().setImageFile(BlobProxy.generateProxy(
+				imageFile.getInputStream(), imageFile.getSize()));
+		userRepository.save(optMon.get());
+		return ResponseEntity.created(location).build();
 	}
 }

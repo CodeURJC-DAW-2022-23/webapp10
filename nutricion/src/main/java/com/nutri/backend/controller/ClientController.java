@@ -8,6 +8,7 @@ import com.nutri.backend.repositories.DietRepository;
 import com.nutri.backend.repositories.FormRepository;
 import com.nutri.backend.repositories.UserRepository;
 import com.nutri.backend.service.DietSearchService;
+import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -15,15 +16,20 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
 
 @Controller
 public class ClientController {
@@ -64,6 +70,7 @@ public class ClientController {
 		model.addAttribute("br",desayuno);
 		model.addAttribute("ln",comida);
 		model.addAttribute("dn",cena);
+		model.addAttribute("id",user.getId());
 		return "USR_ClientDiets";
 	}
 
@@ -77,6 +84,7 @@ public class ClientController {
 		String name = request.getUserPrincipal().getName();
 		User user = userRepository.findByEmail(name).orElseThrow();
 		model.addAttribute("name", user.getName());
+		model.addAttribute("id",user.getId());
 		return "USR_ClientForm";
 	}
 
@@ -85,6 +93,7 @@ public class ClientController {
 		String name = request.getUserPrincipal().getName();
 		User user = userRepository.findByEmail(name).orElseThrow();
 		model.addAttribute("name", user.getName());
+		model.addAttribute("id",user.getId());
 		return "USR_ClientRecepies";
 	}
 
@@ -93,6 +102,7 @@ public class ClientController {
 		String name = request.getUserPrincipal().getName();
 		User user = userRepository.findByEmail(name).orElseThrow();
 		model.addAttribute("name", user.getName());
+		model.addAttribute("id",user.getId());
 		Cookie[] cookies = request.getCookies();
 		String formId = null;
 		for (Cookie cookie : cookies) {
@@ -115,6 +125,7 @@ public class ClientController {
 		String name = request.getUserPrincipal().getName();
 		User user = userRepository.findByEmail(name).orElseThrow();
 		model.addAttribute("name", user.getName());
+		model.addAttribute("id",user.getId());
 		return "USR_ProfileInfoClient";
 	}
 
@@ -123,6 +134,7 @@ public class ClientController {
 		String name = request.getUserPrincipal().getName();
 		User user = userRepository.findByEmail(name).orElseThrow();
 		model.addAttribute("name", user.getName());
+		model.addAttribute("id",user.getId());
 		return "USR_ClientEditProfile";
 	}
 
@@ -163,6 +175,7 @@ public class ClientController {
 		User user = userRepository.findByEmail(name).orElseThrow();
 		model.addAttribute("name", user.getName());
 		model.addAttribute("email",user.getEmail());
+		model.addAttribute("id",user.getId());
 		return "USR_ClientProfile";
 	}
 	@GetMapping("/clientEditProfile")
@@ -171,12 +184,15 @@ public class ClientController {
 		User user = userRepository.findByEmail(name).orElseThrow();
 		model.addAttribute("name", user.getName());
 		model.addAttribute("surname",user.getSurname());
+		model.addAttribute("id",user.getId());
 		return "USR_ClientEditProfile";
 	}
 
 	@PostMapping("/clientEditProfile")
 	public String saveClientProfile(@RequestParam String clientName, @RequestParam String clientSurname,
-									@RequestParam String clientPassword,@RequestParam String clientPasswordRepeat, HttpServletRequest request) {
+									@RequestParam String clientPassword, @RequestParam String clientPasswordRepeat,
+									@RequestParam (name = "clientImage", required = false) MultipartFile clientImage,
+									HttpServletRequest request) throws IOException {
 		final String regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$";
 		final Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
 		final Matcher matcher = pattern.matcher(clientPassword);
@@ -185,7 +201,7 @@ public class ClientController {
 		String name=user.getName();
 		String surname=user.getSurname();
 		if (!clientPassword.equals(clientPasswordRepeat) && !matcher.matches()){
-			return "redirect:/clientProfile";
+			return "USR_ClientProfile";
 		}else{
 			if (clientName!=null && !clientName.equals("")){
 				user.setName(clientName);
@@ -197,10 +213,14 @@ public class ClientController {
 			}else{
 				user.setSurname(surname);
 			}
-			user.setEncodedPassword(passwordEncoder.encode(clientPassword));
+			if (!clientImage.isEmpty()){
+				URI location = fromCurrentRequest().build().toUri();
+				user.setImage(location.toString());
+				user.setImageFile(BlobProxy.generateProxy(clientImage.getInputStream(), clientImage.getSize()));
+			}
 		}
 		userRepository.save(user);
-		return "redirect:/clientProfile";
+		return "redirect:/clientEditProfile";
 	}
 
 
