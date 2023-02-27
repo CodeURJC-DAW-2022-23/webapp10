@@ -53,6 +53,14 @@ public class User{
     @OneToOne(cascade=CascadeType.ALL)
     private Form form;
 
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    //image
+    @Column(nullable = true)
+    @JsonView({ClientLog.class, WorkerLog.class})
+    private String image;
 
 
     //entryDate
@@ -128,12 +136,12 @@ public class User{
         this.description = description;
     }
 
-    public Blob getImage() {
-        return image;
+    public Blob getImageFile() {
+        return imageFile;
     }
 
-    public void setImage(Blob image) {
-        this.image = image;
+    public void setImageFile(Blob imageFile) {
+        this.imageFile = imageFile;
     }
 
     public String getUserType() {
@@ -160,7 +168,7 @@ public class User{
     //image
     @Lob
     @JsonIgnore
-    private Blob image;
+    private Blob imageFile;
 
     public boolean hasImage() { return this.image != null; }
 

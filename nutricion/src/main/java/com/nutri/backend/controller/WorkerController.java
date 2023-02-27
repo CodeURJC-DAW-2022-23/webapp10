@@ -2,7 +2,6 @@ package com.nutri.backend.controller;
 
 import com.nutri.backend.model.*;
 import com.nutri.backend.repositories.DietRepository;
-import com.nutri.backend.repositories.ImageRepository;
 import com.nutri.backend.repositories.RecepyRepository;
 import com.nutri.backend.repositories.UserRepository;
 import com.nutri.backend.service.RecepyService;
@@ -10,8 +9,10 @@ import com.nutri.backend.service.UserService;
 import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,9 +24,13 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.net.URI;
+import java.sql.SQLException;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
 
 @Controller
 public class WorkerController {
@@ -41,18 +46,18 @@ public class WorkerController {
 	private RecepyRepository recepyRepository;
 	@Autowired
 	private DietRepository dietRepository;
-	@Autowired
-	private ImageRepository imageRepository;
+
 
 	@GetMapping("/worker")
-	public String showWorker(Model model, HttpServletRequest request) {
+	public String showWorker(Model model, HttpServletRequest request) throws SQLException {
 		String name = request.getUserPrincipal().getName();
 		User user = userRepository.findByEmail(name).orElseThrow();
 		Page<User> clientPage = userService.findPageClient(0, "client");
 		model.addAttribute("name", user.getName());
 		model.addAttribute("client",clientPage.toList());
 		model.addAttribute("last",clientPage.getTotalPages());
-		model.addAttribute("image",imageRepository.findByName(user.getName()));
+		model.addAttribute("id", user.getId());
+		model.addAttribute("client",userRepository.findByUserType("client"));
 		return "USR_Worker";
 	}
 
@@ -73,7 +78,6 @@ public class WorkerController {
 		model.addAttribute("name", user.getName());
 		model.addAttribute("recepy",recepiesPage.toList());
 		model.addAttribute("last",recepiesPage.getTotalPages());
-		model.addAttribute("image",imageRepository.findByName(user.getName()));
 		return "USR_WorkerViewRecipe";
 	}
 
@@ -92,7 +96,6 @@ public class WorkerController {
 		Page<User> clientPage = userService.findPageClient(0, "worker");
 		model.addAttribute("name", user.getName());
 		model.addAttribute("client",userRepository.findByUserType("client"));
-		model.addAttribute("image",imageRepository.findByName(user.getName()));
 		return "USR_WorkerDiets";
 	}
 
@@ -100,7 +103,6 @@ public class WorkerController {
 	public String workerUploadDiets(Model model, HttpServletRequest request) {
 		String name = request.getUserPrincipal().getName();
 		User user = userRepository.findByEmail(name).orElseThrow();
-		model.addAttribute("image",imageRepository.findByName(user.getName()));
 		model.addAttribute("name", user.getName());
 		model.addAttribute("recepyBreakfast",recepyRepository.findByKindOfRecepy("Breakfast"));
 		model.addAttribute("recepyLunch",recepyRepository.findByKindOfRecepy("Lunch"));
@@ -154,7 +156,6 @@ public class WorkerController {
 	@GetMapping("/workerUploadRecipes")
 	public String workerUploadRecepies(Model model, HttpServletRequest request) {
 		String name = request.getUserPrincipal().getName();
-		model.addAttribute("image",imageRepository.findByName(name));
 		User user = userRepository.findByEmail(name).orElseThrow();
 		model.addAttribute("name", user.getName());
 		return "USR_WorkerUploadRecipes";
@@ -175,6 +176,34 @@ public class WorkerController {
 		recepyRepository.save(recetaAux);
 		return "redirect:/viewRecipe";
 	}
+	@GetMapping("/worker/{id}/image")
+	public ResponseEntity<Object> downloadworkerImage(@PathVariable long id) throws SQLException {
+		Optional<User> optMon = userRepository.findById(id);
+		if (optMon.get().getImageFile() != null) {
+			Resource file = new InputStreamResource(
+					optMon.get().getImageFile().getBinaryStream());
+			return ResponseEntity.ok()
+					.header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
+					.contentLength(optMon.get().getImageFile().length())
+					.body(file);
+		} else {
+			return ResponseEntity.notFound().build();
+		}
+
+	}
+	@PostMapping("/{id}/image")
+	public ResponseEntity<Object> uploadImage(@PathVariable long id,
+											  @RequestParam MultipartFile imageFile) throws IOException {
+		Optional<User> optMon = userRepository.findById(id);
+		URI location = fromCurrentRequest().build().toUri();
+		optMon.get().setImage(location.toString());
+
+		optMon.get().setImageFile(BlobProxy.generateProxy(
+				imageFile.getInputStream(), imageFile.getSize()));
+		userRepository.save(optMon.get());
+		return ResponseEntity.created(location).build();
+	}
+
 	@GetMapping("/viewDiet")
 	public String viewDiet(Model model, HttpServletRequest request) {
 		String name = request.getUserPrincipal().getName();
@@ -186,7 +215,6 @@ public class WorkerController {
 		}
 		model.addAttribute("name", user.getName());
 		model.addAttribute("dieta",tupla);
-		model.addAttribute("image",imageRepository.findByName(user.getName()));
 		return "USR_WorkerViewDiet";
 	}
 	@GetMapping("/workerProfile")
@@ -195,28 +223,25 @@ public class WorkerController {
 		User user = userRepository.findByEmail(name).orElseThrow();
 		model.addAttribute("name", user.getName());
 		model.addAttribute("user", user);
-		model.addAttribute("image",imageRepository.findByName("Antonio"));
+		model.addAttribute("id", user.getId());
 		//pasarle la info al html
 		return "USR_WorkerProfile";
 	}
 	@GetMapping("/workerEditProfile")
 	public String workerEditProfile(Model model, HttpServletRequest request) {
 		String name = request.getUserPrincipal().getName();
-		model.addAttribute("image",imageRepository.findByName("Antonio"));
 		User user = userRepository.findByEmail(name).orElseThrow();
 		model.addAttribute("name", user.getName());
 		model.addAttribute("surname",user.getSurname());
-		if (user.hasImage()){
-			model.addAttribute("image",user.getImage());
-		}
-
+		model.addAttribute("image",user.getImageFile());
+		model.addAttribute("id", user.getId());
 		//pasarle la info al html
 		return "USR_WorkerEditProfile";
 	}
 	@PostMapping("/workerEditProfile")
 	public String saveClientProfile(@RequestParam String clientName, @RequestParam String clientSurname,
 									@RequestParam String clientPassword, @RequestParam String clientPasswordRepeat,
-									@RequestParam (name = "clientImage", required = false) MultipartFile image,
+									@RequestParam (name = "clientImage", required = false) MultipartFile clientImage,
 									HttpServletRequest request) throws IOException{
 		final String regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$";
 		final Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
@@ -226,7 +251,7 @@ public class WorkerController {
 		String name=user.getName();
 		String surname=user.getSurname();
 		if (!clientPassword.equals(clientPasswordRepeat) && !matcher.matches()){
-			return "redirect:/workerProfile";
+			return "USR_WorkerProfile";
 		}else{
 			if (clientName!=null && !clientName.equals("")){
 				user.setName(clientName);
@@ -238,11 +263,13 @@ public class WorkerController {
 			}else{
 				user.setSurname(surname);
 			}
-			imageRepository.save(new Image(clientName,"Profile",image.getBytes()));
-			user.setImage(BlobProxy.generateProxy(image.getInputStream(), image.getSize()));
-			user.setEncodedPassword(passwordEncoder.encode(clientPassword));
+			if (!clientImage.isEmpty()){
+				URI location = fromCurrentRequest().build().toUri();
+				user.setImage(location.toString());
+				user.setImageFile(BlobProxy.generateProxy(clientImage.getInputStream(), clientImage.getSize()));
+			}
 		}
 		userRepository.save(user);
-		return "redirect:/workerProfile";
+		return "USR_WorkerProfile";
 	}
 }

@@ -24,59 +24,57 @@
             <div class="card-body">
               <div class="row">
                 <div class="col-xl-6 col-lg-5">
-                  <form method="post" action="/workerEditProfile">
-                    <span style="font-weight:600;">Name:</span> {{name}}
-                    <br>
-                    <br>
-                    <input type="text" id='clientName' name="clientName"/>
-                    <br>
-                    <br>
-                    <span style="font-weight:600;">Apellido:</span> {{surname}}
-                    <br>
-                    <br>
-                    <input type="text" id='clientSurname' name="clientSurname"/>
-                    <br>
-                    <br>
-                    <span style="font-weight:600;"><abbr
-                            title="                     At least 1 Uppercase
-At least 1 Lowercase
-At least 1 Number
-At least 1 Symbol, symbol allowed --> !@#$%^&*_=+-
-Min 8 chars and Max 12 chars"> Password: </abbr></span>
-                    <br>
-                    <br>
-                    <input type="text" id='clientPassword' name="clientPassword"
-                           pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$"/>
-                    <br>
-                    <br>
-                    <span style="font-weight:600;"><abbr
-                            title="                     At least 1 Uppercase
-At least 1 Lowercase
-At least 1 Number
-At least 1 Symbol, symbol allowed --> !@#$%^&*_=+-
-Min 8 chars and Max 12 chars"> Repeat Password: </abbr></span>
-                    <br>
-                    <br>
-                    <input type="text" id='clientPasswordRepeat' name="clientPasswordRepeat"
-                           pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$"/>
-                    <br>
-                    <br>
+                  <form method="post" action="/workerEditProfile" enctype="multipart/form-data">>
+                      <div class="col-xl-6 col-lg-5">
+                        <img src='/worker/{id}/image'
+                             style="width:280px;margin-bottom: 15px; height:280px;border-radius:90px;border:10px solid #666;"/>
+                        <br>
+                        <input type='file' id='clientImage' name='clientImage' accept=".jpg, .jpeg"/>
+                      </div>
+                      <span style="font-weight:600;">Name:</span> {{name}}
+                      <br>
+                      <br>
+                      <input type="text" id='clientName' name="clientName"/>
+                      <br>
+                      <br>
+                      <span style="font-weight:600;">Apellido:</span> {{surname}}
+                      <br>
+                      <br>
+                      <input type="text" id='clientSurname' name="clientSurname"/>
+                      <br>
+                      <br>
+                      <span style="font-weight:600;"><abbr
+                              title="                     At least 1 Uppercase
+  At least 1 Lowercase
+  At least 1 Number
+  At least 1 Symbol, symbol allowed --> !@#$%^&*_=+-
+  Min 8 chars and Max 12 chars"> Password: </abbr></span>
+                      <br>
+                      <br>
+                      <input type="text" id='clientPassword' name="clientPassword"
+                             pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$"/>
+                      <br>
+                      <br>
+                      <span style="font-weight:600;"><abbr
+                              title="                     At least 1 Uppercase
+  At least 1 Lowercase
+  At least 1 Number
+  At least 1 Symbol, symbol allowed --> !@#$%^&*_=+-
+  Min 8 chars and Max 12 chars"> Repeat Password: </abbr></span>
+                      <br>
+                      <br>
+                      <input type="text" id='clientPasswordRepeat' name="clientPasswordRepeat"
+                             pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$"/>
+                      <br>
+                      <br>
+                      <br>
+                      <div class="row" style="justify-content:left; text-align:left;">
+                        <input class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" type="submit"
+                               value="Save">
+                      </div>
+                  </form>
                 </div>
-                <div class="col-xl-6 col-lg-5">
-                  <img src='images/SmartWay.png'
-                       style="width:280px;margin-bottom: 15px; height:280px;border-radius:90px;border:10px solid #666;"/>
-                  <br>
-                  <input type='file' id='clientImage' name='clientImage' accept=".jpg, .jpeg"/>
-                </div>
-
               </div>
-              <br>
-              <div class="row" style="justify-content:left; text-align:left;">
-                <input class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" type="submit"
-                       value="Save">
-              </div>
-              </form>
-
             </div>
             <hr>
           </div>
