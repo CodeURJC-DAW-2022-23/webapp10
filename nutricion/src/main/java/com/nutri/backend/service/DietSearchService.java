@@ -20,8 +20,8 @@ public class DietSearchService {
         int imc =weight / (height * height);
 
         if(imc<18){
-            if(form.getInteres().equals("wloss")||form.getInteres().equals("eatbetter")){
-                type="Manteinance";
+            if(form.getInteres().equals("wloss")||form.getInteres().equals("health")){
+                type="Maintenence";
             }else if(form.getInteres().equals("wgain")){
                 type="Bulking";
             }

@@ -203,5 +203,4 @@ public class ClientController {
 		return "redirect:/clientProfile";
 	}
 
-
 }
