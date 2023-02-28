@@ -88,7 +88,7 @@ public class ClientController {
             for (Long l : id) {
                 recipe = recepyRepository.findById(l);
                 String recipeType = recipe.get().getKindOfRecepy();
-                if (recipeType.equals("breakfast")) {
+                if (recipeType.equals("breakfast")){
                     int bCounter = user.getbCounter();
                     bCounter++;
                     user.setbCounter(bCounter);
@@ -96,7 +96,6 @@ public class ClientController {
                     int lCounter = user.getbCounter();
                     lCounter++;
                     user.setbCounter(lCounter);
-
                 } else if (recipeType.equals("dinner")) {
                     int dCounter = user.getbCounter();
                     dCounter++;
@@ -141,9 +140,21 @@ public class ClientController {
     @GetMapping("/clientChart")
     public String chart(Model model, HttpServletRequest request, HttpServletResponse response) {
         String name = request.getUserPrincipal().getName();
+        int aux=0;
         User user = userRepository.findByEmail(name).orElseThrow();
         model.addAttribute("name", user.getName());
         model.addAttribute("id", user.getId());
+        int recepies[]= new int[3];
+        recepies[0]=user.getbCounter();
+        recepies[1]=user.getlCounter();
+        recepies[2]=user.getdCounter();
+        model.addAttribute("recepiesDownload",Arrays.toString(recepies));
+            for (int recepy : recepies) {
+                aux= aux+recepy;
+            }
+
+            if (aux==0)
+                model.addAttribute("noExistInfo",true);
         Cookie[] cookies = request.getCookies();
         String formId = null;
         for (Cookie cookie : cookies) {
