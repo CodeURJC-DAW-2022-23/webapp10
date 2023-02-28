@@ -79,11 +79,6 @@ public class ClientController {
         return "USR_ClientForm";
     }
 
-   // @PostMapping("/clientRecipes")
-    //public String  getDownloads(Model model, HttpServletRequest request, @RequestParam(required = false) List<Long> id) {
-
-
-
     @GetMapping("/clientRecipes")
     public String recipes(Model model, HttpServletRequest request) {
         String name = request.getUserPrincipal().getName();
@@ -96,11 +91,14 @@ public class ClientController {
             Triplet[] diet1 = diet.get().getWeek();
             for (Triplet aux : diet1) {
                 Recepy recepy = recepyRepository.findByName((String) aux.Breakfast).orElseThrow();
-                recepies.add(recepy);
+                if(!recepies.contains(recepy))
+                    recepies.add(recepy);
                 Recepy recepy1 = recepyRepository.findByName((String) aux.Lunch).orElseThrow();
-                recepies.add(recepy1);
+                if(!recepies.contains(recepy1))
+                    recepies.add(recepy1);
                 Recepy recepy2 = recepyRepository.findByName((String) aux.Dinner).orElseThrow();
-                recepies.add(recepy2);
+                if(!recepies.contains(recepy2))
+                    recepies.add(recepy2);
             }
             Collections.shuffle(recepies);
             model.addAttribute("recepies", recepies);
