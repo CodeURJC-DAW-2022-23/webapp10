@@ -11,6 +11,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 import com.nutri.backend.repositories.RecepyRepository;
@@ -44,12 +48,12 @@ public class PDFController {
 
     @PostMapping("/")
     public String getRecipePage(Model model, @RequestParam(required = false) List<Long> id) {
-        if(id != null) {
+        if (id != null) {
             for (Long l : id) {
                 Optional<Recepy> recipe = recepyRepository.findById(l);
                 model.addAttribute("recipeEntry", recipe);
             }
-        }else{
+        } else {
             return "redirect:/viewRecipe";
         }
         return "recipe";
@@ -73,18 +77,18 @@ public class PDFController {
     @PostMapping("/downloadRecepy")
     public Object getRecepyPDF(HttpServletRequest request, HttpServletResponse response, @RequestParam(required = false) List<Long> id) throws IOException, SQLException {
 
-        /* Do Business Logic*/
+            /* Do Business Logic*/
 
-        if(id != null) {
-            //Recepy[] recipes = new Recepy[id.size()];
-            //int i = 0;
-            Optional<Recepy> recipe = null;
-            for (Long l : id) {
-                recipe = recepyRepository.findById(l);
-                //recipes[i] = recepyRepository.findById(l).get();
-                //i++;
-            }
-            /* Create HTML using Thymeleaf template Engine */
+            if (id != null) {
+                //Recepy[] recipes = new Recepy[id.size()];
+                //int i = 0;
+                Optional<Recepy> recipe = null;
+                for (Long l : id) {
+                    recipe = recepyRepository.findById(l);
+                    //recipes[i] = recepyRepository.findById(l).get();
+                    //i++;
+                }
+                /* Create HTML using Thymeleaf template Engine */
 
             WebContext context = new WebContext(request, response, servletContext);
             String name = recipe.get().getName();
