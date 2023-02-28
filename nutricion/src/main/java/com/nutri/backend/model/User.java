@@ -62,6 +62,16 @@ public class User{
     @JsonView({ClientLog.class, WorkerLog.class})
     private String image;
 
+    @Column(nullable = false)
+    @JsonView({WorkerBasic.class, WorkerLog.class})
+    private int bCounter=0;
+    @Column(nullable = false)
+    @JsonView({WorkerBasic.class, WorkerLog.class})
+    private int lCounter=0;
+    @Column(nullable = false)
+    @JsonView({WorkerBasic.class, WorkerLog.class})
+    private int dCounter=0;
+
 
     //entryDate
     //Desde Fuera inyectar entryDate, sacando la fecha y haciendo Save, me quito doleres de cabeza. Paso un entero y
@@ -69,6 +79,15 @@ public class User{
     //Deberia funcionar correctamente, si cuando construyo el objeto tengo ese setter, el getter lo recoge y lo añade a ese elementto.
     @Column
     private int entryDate ;
+
+    public int getbCounter() {return bCounter;}
+
+    public void setbCounter(int bCounter){this.bCounter = bCounter;}
+    public int getdCounter() {return dCounter;}
+    public void setdCounter(int dCounter){this.dCounter = dCounter;}
+    public int getlCounter() {return lCounter;}
+    public void setlCounter(int lCounter){this.lCounter = bCounter;}
+
 
     public int getEntryDate() {
         return entryDate;
@@ -208,6 +227,9 @@ public class User{
         this.email = email;
         this.userType = "client";
         this.encodedPassword = password;
+        this.bCounter = bCounter;
+        this.dCounter = dCounter;
+        this.lCounter = lCounter;
         this.entryDate = this.getEntryDate();
     }
 }

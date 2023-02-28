@@ -9,6 +9,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -44,66 +45,68 @@ public class PDFController {
 
     @PostMapping("/")
     public String getRecipePage(Model model, @RequestParam(required = false) List<Long> id) {
-        if(id != null) {
+        if (id != null) {
             for (Long l : id) {
                 Optional<Recepy> recipe = recepyRepository.findById(l);
                 model.addAttribute("recipeEntry", recipe);
             }
-        }else{
+        } else {
             return "redirect:/viewRecipe";
         }
         return "recipe";
     }
 
-    @PostMapping("/downloadRecepy")
-    public Object getRecepyPDF(HttpServletRequest request, HttpServletResponse response, @RequestParam(required = false) List<Long> id) throws IOException {
 
-        /* Do Business Logic*/
+        @PostMapping("/downloadRecepy")
+        public Object getRecepyPDF (HttpServletRequest request, HttpServletResponse
+        response, @RequestParam(required = false) List < Long > id) throws IOException {
 
-        if(id != null) {
-            //Recepy[] recipes = new Recepy[id.size()];
-            //int i = 0;
-            Optional<Recepy> recipe = null;
-            for (Long l : id) {
-                recipe = recepyRepository.findById(l);
-                //recipes[i] = recepyRepository.findById(l).get();
-                //i++;
+            /* Do Business Logic*/
+
+            if (id != null) {
+                //Recepy[] recipes = new Recepy[id.size()];
+                //int i = 0;
+                Optional<Recepy> recipe = null;
+                for (Long l : id) {
+                    recipe = recepyRepository.findById(l);
+                    //recipes[i] = recepyRepository.findById(l).get();
+                    //i++;
+                }
+                /* Create HTML using Thymeleaf template Engine */
+
+                WebContext context = new WebContext(request, response, servletContext);
+                String name = recipe.get().getName();
+                String ingredients = recipe.get().getIngredients();
+                String description = recipe.get().getDescription();
+                Blob image = recipe.get().getImageFile();
+
+                context.setVariable("name", name);
+                context.setVariable("ingredients", ingredients);
+                context.setVariable("description", description);
+                context.setVariable("image", image);
+                String recipeHtml = templateEngine.process("USR_ClientRecipePDF", context);
+
+                /* Setup Source and target I/O streams */
+
+                ByteArrayOutputStream target = new ByteArrayOutputStream();
+                ConverterProperties converterProperties = new ConverterProperties();
+                converterProperties.setBaseUri("http://localhost:8080");
+                /* Call convert method */
+                HtmlConverter.convertToPdf(recipeHtml, target, converterProperties);
+
+                /* extract output as bytes */
+                byte[] bytes = target.toByteArray();
+
+
+                /* Send the response as downloadable PDF */
+
+                return ResponseEntity.ok()
+                        .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=recipe.pdf")
+                        .contentType(MediaType.APPLICATION_PDF)
+                        .body(bytes);
+
             }
-            /* Create HTML using Thymeleaf template Engine */
-
-            WebContext context = new WebContext(request, response, servletContext);
-            String name = recipe.get().getName();
-            String ingredients = recipe.get().getIngredients();
-            String description = recipe.get().getDescription();
-            Blob image = recipe.get().getImageFile();
-
-            context.setVariable("name", name);
-            context.setVariable("ingredients", ingredients);
-            context.setVariable("description", description);
-            context.setVariable("image", image);
-            String recipeHtml = templateEngine.process("USR_ClientRecipePDF", context);
-
-            /* Setup Source and target I/O streams */
-
-            ByteArrayOutputStream target = new ByteArrayOutputStream();
-            ConverterProperties converterProperties = new ConverterProperties();
-            converterProperties.setBaseUri("http://localhost:8080");
-            /* Call convert method */
-            HtmlConverter.convertToPdf(recipeHtml, target, converterProperties);
-
-            /* extract output as bytes */
-            byte[] bytes = target.toByteArray();
-
-
-            /* Send the response as downloadable PDF */
-
-            return ResponseEntity.ok()
-                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=recipe.pdf")
-                    .contentType(MediaType.APPLICATION_PDF)
-                    .body(bytes);
-
+            return "redirect:/viewRecipe";
         }
-        return "redirect:/viewRecipe";
-    }
 
-}
+    }
