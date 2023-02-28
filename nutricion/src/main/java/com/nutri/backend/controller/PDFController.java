@@ -100,7 +100,6 @@ public class PDFController {
             context.setVariable("description", description);
             context.setVariable("id", idRecipe);
             String recipeHtml = templateEngine.process("USR_ClientRecipePDF", context);
-            System.out.println(recipeHtml);
             /* Setup Source and target I/O streams */
 
             ByteArrayOutputStream target = new ByteArrayOutputStream();
@@ -114,9 +113,9 @@ public class PDFController {
 
 
             /* Send the response as downloadable PDF */
-
+            String recipeName="recipe "+name+".pdf";
             return ResponseEntity.ok()
-                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=recipe.pdf")
+                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename= "+recipeName)
                     .contentType(MediaType.APPLICATION_PDF)
                     .body(bytes);
 
