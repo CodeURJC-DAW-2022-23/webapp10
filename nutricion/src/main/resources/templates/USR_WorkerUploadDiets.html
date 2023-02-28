@@ -21,27 +21,6 @@
                                 <input id="nombre" name="nombre" type="text" style="border-color: #5AF499;"><br>
                             </div>
                         </div>
-                        <datalist id="breakfast">
-                            <select>
-                                {{#recepyBreakfast}}
-                                <option value="{{name}}">{{name}}</option>
-                                {{/recepyBreakfast}}
-                            </select>
-                        </datalist>
-                        <datalist id="lunch">
-                            <select>
-                                {{#recepyLunch}}
-                                <option value="{{name}}">{{name}}</option>
-                                {{/recepyLunch}}
-                            </select>
-                        </datalist>
-                        <datalist id="dinner">
-                            <select>
-                                {{#recepyDinner}}
-                                <option value="{{name}}">{{name}}</option>
-                                {{/recepyDinner}}
-                            </select>
-                        </datalist>
                         <div class="col-12" style="padding: 20px;">
                             <div class="row">
                                 <label for="nombre" style="font-size: 18px;"> Type of recipe </label>
@@ -56,7 +35,7 @@
                             </div>
                         </div>
 
-                        <table style="margin-bottom: 40px; table-layout: auto; width: 100%; border: 3px solid #5AF499; overflow-x: auto;">
+                        <table style="margin-bottom: 40px; text-align:center; table-layout: auto; width: 100%; border: 3px solid #5AF499; overflow-x: auto;">
                             <tbody>
                             <tr>
                                 <td>Time</td>
@@ -69,75 +48,194 @@
                                 <td>Sunday</td>
                             </tr>
                             <tr>
-                                <td class="day-time">Breakfast</td>
+                                <td class="day-time" style="padding:10px;">Breakfast</td>
                                 <td>
-                                    <input list="breakfast" name="brmon" id="brmon">
+                                    <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" id="brmon"
+                                            name="brmon" style="width:250px;padding:8px;">
+                                        {{#recepyBreakfast}}
+                                        <option value="{{name}}">{{name}}</option>
+                                        {{/recepyBreakfast}}
+                                    </select>
                                 </td>
                                 <td>
-                                    <input list="breakfast" name="brtue" id="brtue">
+                                    <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" id="brtue"
+                                            name="brtue" style="width:250px;padding:8px;">
+                                        {{#recepyBreakfast}}
+                                        <option value="{{name}}">{{name}}</option>
+                                        {{/recepyBreakfast}}
+                                    </select>
                                 </td>
                                 <td>
-                                    <input list="breakfast" name="brwed" id="brwed">
+                                    <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" id="brwed"
+                                            name="brwed" style="width:250px;padding:8px;">
+                                        {{#recepyBreakfast}}
+                                        <option value="{{name}}">{{name}}</option>
+                                        {{/recepyBreakfast}}
+                                    </select>
                                 </td>
                                 <td>
-                                    <input list="breakfast" name="brthr" id="brthr">
+                                    <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" id="brthr"
+                                            name="brthr" style="width:250px;padding:8px;">
+                                        {{#recepyBreakfast}}
+                                        <option value="{{name}}">{{name}}</option>
+                                        {{/recepyBreakfast}}
+                                    </select>
                                 </td>
                                 <td>
-                                    <input list="breakfast" name="brfri" id="brfri">
+                                    <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" id="brfri"
+                                            name="brfri" style="width:250px;padding:8px;">
+                                        {{#recepyBreakfast}}
+                                        <option value="{{name}}">{{name}}</option>
+                                        {{/recepyBreakfast}}
+                                    </select>
                                 </td>
                                 <td>
-                                    <input list="breakfast" name="brsat" id="brsat">
+                                    <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" id="brsat"
+                                            name="brsat" style="width:250px;padding:8px;">
+                                        {{#recepyBreakfast}}
+                                        <option value="{{name}}">{{name}}</option>
+                                        {{/recepyBreakfast}}
+                                    </select>
                                 </td>
                                 <td>
-                                    <input list="breakfast" name="brsun" id="brsun">
+                                    <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" id="brsun"
+                                            name="brsun" style="width:250px;padding:8px;">
+                                        {{#recepyBreakfast}}
+                                        <option value="{{name}}">{{name}}</option>
+                                        {{/recepyBreakfast}}
+                                    </select>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="day-time">Lunch</td>
                                 <td>
-                                    <input list="lunch" name="lunmon" id="lunmon">
+                                    <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                                            id="lunmon"
+                                            name="lunmon" style="width:250px;padding:8px;">
+                                        {{#recepyLunch}}
+                                        <option value="{{name}}">{{name}}</option>
+                                        {{/recepyLunch}}
+                                    </select>
                                 </td>
                                 <td>
-                                    <input list="lunch" name="luntue" id="luntue">
+                                    <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                                            id="luntue"
+                                            name="luntue" style="width:250px;padding:8px;">
+                                        {{#recepyLunch}}
+                                        <option value="{{name}}">{{name}}</option>
+                                        {{/recepyLunch}}
+                                    </select>
                                 </td>
                                 <td>
-                                    <input list="lunch" name="lunwed" id="lunwed">
+                                    <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                                            id="lunwed"
+                                            name="lunwed" style="width:250px;padding:8px;">
+                                        {{#recepyLunch}}
+                                        <option value="{{name}}">{{name}}</option>
+                                        {{/recepyLunch}}
+                                    </select>
                                 </td>
                                 <td>
-                                    <input list="lunch" name="lunthr" id="lunthr">
+                                    <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                                            id="lunthr"
+                                            name="lunthr" style="width:250px;padding:8px;">
+                                        {{#recepyLunch}}
+                                        <option value="{{name}}">{{name}}</option>
+                                        {{/recepyLunch}}
+                                    </select>
                                 </td>
                                 <td>
-                                    <input list="lunch" name="lunfri" id="lunfri">
+                                    <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                                            id="lunfri"
+                                            name="lunfri" style="width:250px;padding:8px;">
+                                        {{#recepyLunch}}
+                                        <option value="{{name}}">{{name}}</option>
+                                        {{/recepyLunch}}
+                                    </select>
                                 </td>
                                 <td>
-                                    <input list="lunch" name="lunsat" id="lunsat">
+                                    <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                                            id="lunsat"
+                                            name="lunsat" style="width:250px;padding:8px;">
+                                        {{#recepyLunch}}
+                                        <option value="{{name}}">{{name}}</option>
+                                        {{/recepyLunch}}
+                                    </select>
                                 </td>
                                 <td>
-                                    <input list="lunch" name="lunsun" id="lunsun">
+                                    <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                                            id="lunsun"
+                                            name="lunsun" style="width:250px;padding:8px;">
+                                        {{#recepyLunch}}
+                                        <option value="{{name}}">{{name}}</option>
+                                        {{/recepyLunch}}
+                                    </select>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="day-time">Dinner</td>
                                 <td>
-                                    <input list="dinner" name="dinmon" id="dinmon">
+                                    <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                                            id="dinmon"
+                                            name="dinmon" style="width:250px;padding:8px;">
+                                        {{#recepyDinner}}
+                                        <option value="{{name}}">{{name}}</option>
+                                        {{/recepyDinner}}
+                                    </select>
                                 </td>
                                 <td>
-                                    <input list="dinner" name="dintue" id="dintue">
+                                    <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                                            id="dintue"
+                                            name="dintue" style="width:250px;padding:8px;">
+                                        {{#recepyDinner}}
+                                        <option value="{{name}}">{{name}}</option>
+                                        {{/recepyDinner}}
+                                    </select>
                                 </td>
                                 <td>
-                                    <input list="dinner" name="dinwed" id="dinwed">
+                                    <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                                            id="dinwed"
+                                            name="dinwed" style="width:250px;padding:8px;">
+                                        {{#recepyDinner}}
+                                        <option value="{{name}}">{{name}}</option>
+                                        {{/recepyDinner}}
+                                    </select>
                                 </td>
                                 <td>
-                                    <input list="dinner" name="dinthr" id="dinthr">
+                                    <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                                            id="dinthr"
+                                            name="dinthr" style="width:250px;padding:8px;">
+                                        {{#recepyDinner}}
+                                        <option value="{{name}}">{{name}}</option>
+                                        {{/recepyDinner}}
+                                    </select>
                                 </td>
                                 <td>
-                                    <input list="dinner" name="dinfri" id="dinfri">
+                                    <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                                            id="dinfri"
+                                            name="dinfri" style="width:250px;padding:8px;">
+                                        {{#recepyDinner}}
+                                        <option value="{{name}}">{{name}}</option>
+                                        {{/recepyDinner}}
+                                    </select>
                                 </td>
                                 <td>
-                                    <input list="dinner" name="dinsat" id="dinsat">
+                                    <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                                            id="dinsat"
+                                            name="dinsat" style="width:250px;padding:8px;">
+                                        {{#recepyDinner}}
+                                        <option value="{{name}}">{{name}}</option>
+                                        {{/recepyDinner}}
+                                    </select>
                                 </td>
                                 <td>
-                                    <input list="dinner" name="dinsun" id="dinsun">
+                                    <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                                            id="dinsun"
+                                            name="dinsun" style="width:250px;padding:8px;">
+                                        {{#recepyDinner}}
+                                        <option value="{{name}}">{{name}}</option>
+                                        {{/recepyDinner}}
+                                    </select>
                                 </td>
                             </tr>
                             </tbody>
