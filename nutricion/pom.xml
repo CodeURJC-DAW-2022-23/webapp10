@@ -49,11 +49,11 @@
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
-		<!-- Use h2-->
+		<!-- Use h2
 		<dependency>
-		<groupId>com.h2database</groupId>
+	<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
-		</dependency>
+	</dependency>-->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -63,7 +63,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>io.jsonwebtoken</groupId>
 			<artifactId>jjwt</artifactId>
