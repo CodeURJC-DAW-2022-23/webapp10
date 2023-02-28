@@ -135,6 +135,7 @@ public class AdminController {
 		model.addAttribute("name",user.getName());
 		model.addAttribute("surname",user.getSurname());
 		model.addAttribute("email", user.getEmail());
+		model.addAttribute("id",user.getId());
 		if(user.getUserType().equals("worker")){
 			model.addAttribute("worker", true);
 			model.addAttribute("description", user.getDescription());
