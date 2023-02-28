@@ -4,13 +4,17 @@ package com.nutri.backend.service;
 import com.nutri.backend.model.*;
 import com.nutri.backend.repositories.DietRepository;
 import com.nutri.backend.repositories.RecepyRepository;
+import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.nutri.backend.repositories.UserRepository;
 
 import javax.annotation.PostConstruct;
+import java.io.IOException;
 
 @Service
 public class DataSampleService {
@@ -137,6 +141,11 @@ public class DataSampleService {
 
         this.dietRepository.save(new Diet("Definition", arrayObjetos, "Cutting"));
 
+
+    }
+    public void setUserImage(User monitor, String classpathResource) throws IOException {
+        Resource image = new ClassPathResource(classpathResource);
+        monitor.setImage(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
     }
 
 }
