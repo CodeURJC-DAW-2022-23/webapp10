@@ -1,6 +1,7 @@
 package com.nutri.backend.service;
 
 
+import com.nutri.backend.controller.InitialationController;
 import com.nutri.backend.model.*;
 import com.nutri.backend.repositories.DietRepository;
 import com.nutri.backend.repositories.RecepyRepository;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 import com.nutri.backend.repositories.UserRepository;
 
 import javax.annotation.PostConstruct;
+import java.io.File;
 import java.io.IOException;
 
 @Service
@@ -33,7 +35,7 @@ public class DataSampleService {
 
 
     @PostConstruct
-    public void init() {
+    public void init() throws IOException {
         //Admin
         this.userRepository.save(new User("ejemplo@yahoo.es", passwordEncoder.encode("1234")));
 
@@ -55,6 +57,7 @@ public class DataSampleService {
         };
 
         for (User usuario : workers) {
+            setUserImage(usuario,new ClassPathResource("static/images/undraw_profile.jpg").getPath());
             userRepository.save(usuario);
         }
 
@@ -84,6 +87,7 @@ public class DataSampleService {
         };
 
         for (User usuario : usuarios) {
+            setUserImage(usuario,new ClassPathResource("static/images/undraw_profile.jpg").getPath());
             userRepository.save(usuario);
         }
 
@@ -143,9 +147,10 @@ public class DataSampleService {
 
 
     }
-    public void setUserImage(User monitor, String classpathResource) throws IOException {
+    public void setUserImage(User user, String classpathResource) throws IOException {
         Resource image = new ClassPathResource(classpathResource);
-        monitor.setImage(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
+        user.setImage("Default");
+        user.setImageFile(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
     }
 
 }

@@ -15,47 +15,67 @@
       <div class="card-body">
         <div class="row">
           <div class="col-xl-6 col-lg-5" style="float:'left'">
-            <form method="post" action="/addWorker">
-              <span style="font-weight:400;">Name:</span>
-              <br>
-              <br>
-              <input type="text" name="workerName" required/>
-              <br>
-              <br>
-              <span style="font-weight:400;">Lastname:</span>
-              <br>
-              <br>
-              <input type="text" name="workerLastname" required/>
-              <br>
-              <br>
-              <span style="font-weight:400;">Description:</span>
-              <br>
-              <br>
-              <input type="text" name="workerDescription" required/>
-              <br>
-              <br>
-              <span style="font-weight:400;">Email:</span>
-              <br>
-              <br>
-              <input type="text" name="workerEmail" required/>
-              <br>
-              <br>
-              <span style="font-weight:400;">Password </span>
-              <input type="password" name="workerPassword" required/>
-          <div class="col-xl-6 col-lg-5" style="float:'left'">
-            <img src='images/SmartWay.png' style="width:300px; height:300px;border-radius:150px;border:10px solid #666;"/>
-            <br>
-            <input type='file' name='workerImage' accept=".jpg, .jpeg"/>
-
-          </div>
-        <br>
-        <input type="submit" value="Save" >
-        </form>
-
+            <form method="post" action="/addWorker" enctype="multipart/form-data">
+              <div class="row">
+                <div class="col">
+                  <div class="col">
+                    <span style="font-weight:600;">Name:</span>
+                    <br>
+                    <br>
+                    <input type="text" id='workerName' name="workerName"/>
+                    <br>
+                    <br>
+                  </div>
+                  <div class="col">
+                    <span style="font-weight:600;">Apellido:</span>
+                    <br>
+                    <br>
+                    <input type="text" id='workerLastname' name="workerLastname"/>
+                    <br>
+                    <br>
+                  </div>
+                  <div class="col">
+                  <span style="font-weight:400;">Description:</span>
+                    <br>
+                    <br>
+                    <input type="text" name="workerDescription" required/>
+                    <br>
+                    <br>
+                    </div>
+                  <div class="col">
+                    <span style="font-weight:400;">Email:</span>
+                    <br>
+                    <br>
+                    <input type="text" name="workerEmail" required/>
+                    <br>
+                    <br>
+                  </div>
+                  <div class="col">
+                    <span style="font-weight:600;"><abbr
+                                                            title="                     At least 1 Uppercase
+              At least 1 Lowercase
+              At least 1 Number
+              At least 1 Symbol, symbol allowed --> !@#$%^&*_=+-
+              Min 8 chars and Max 12 chars"> Password: </abbr></span>
+                    <br>
+                    <br>
+                    <input type="text" id='workerPassword' name="workerPassword"
+                           pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$"/>
+                    <br>
+                    <br>
+                  </div>
+                </div>
+              </div>
+              <div class="row" style="justify-content:left; text-align:left;">
+                <input class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" type="submit"
+                       value="Save">
+              </div>
+            </form>
       </div>
       <hr>
     </div>
   </div>
+</div>
 </div>
 </div>
 <!-- /.container-fluid -->

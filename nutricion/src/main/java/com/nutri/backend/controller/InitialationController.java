@@ -110,8 +110,9 @@ public class InitialationController {
 			user.setImageFile(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
 		} catch(Exception e){
 
-		};
+		}
 	}
+
 	@PostMapping("/addUser")
 	public String newUser(@RequestParam String name,@RequestParam String lastName, @RequestParam String email,
 						  @RequestParam String password, @RequestParam String passwordRepeat) throws IOException {
@@ -128,7 +129,7 @@ public class InitialationController {
 		int month =c1.get(Calendar.MONTH) ;
 		User user = new User(name,lastName,email,passwordEncoder.encode(password));
 		user.setEntryDate(month);
-		setUserImage(user,"src/main/resources/static/images/undraw_profile.jpg");
+		setUserImage(user,new ClassPathResource("static/images/undraw_profile.jpg").getPath());
 		userRepository.save(user);
 		return "redirect:/login";
 	}

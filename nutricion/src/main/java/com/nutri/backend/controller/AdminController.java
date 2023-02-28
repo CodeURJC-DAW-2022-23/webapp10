@@ -4,8 +4,11 @@ import com.nutri.backend.model.User;
 import com.nutri.backend.repositories.DietRepository;
 import com.nutri.backend.repositories.UserRepository;
 import com.nutri.backend.service.UserService;
+import org.hibernate.engine.jdbc.BlobProxy;
 import org.hibernate.jdbc.Work;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Page;
 import org.springframework.security.core.parameters.P;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -103,8 +106,19 @@ public class AdminController {
 		int month =c1.get(Calendar.MONTH) ;
 		User user = new User(workerName,workerLastname,workerEmail,workerDescription,passwordEncoder.encode(workerPassword));
 		user.setEntryDate(month);
+		setUserImage(user,new ClassPathResource("static/images/undraw_profile.jpg").getPath());
 		userRepository.save(user);
 		return "redirect:/workerTable";
+	}
+
+	private void setUserImage(User user, String classpathResource){
+		try {
+			Resource image = new ClassPathResource(classpathResource);
+			user.setImage("Default");
+			user.setImageFile(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
+		} catch(Exception e){
+
+		}
 	}
 
 	//***Client Administration***
