@@ -4,14 +4,13 @@ import com.itextpdf.html2pdf.ConverterProperties;
 import com.itextpdf.html2pdf.HtmlConverter;
 import com.nutri.backend.model.Recepy;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 import com.nutri.backend.repositories.RecepyRepository;
@@ -22,6 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.sql.Blob;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
@@ -54,9 +54,24 @@ public class PDFController {
         }
         return "recipe";
     }
-
+    @GetMapping("/recepy/image/{id}")
+    public ResponseEntity<InputStreamResource> downloadUserAvatarImage(@PathVariable Long id) throws SQLException {
+        Optional<Recepy> recepy = recepyRepository.findById(id);
+        if (!recepy.get().getImage().isEmpty()){
+            HttpHeaders responseHeaders = new HttpHeaders();
+            responseHeaders.set("Content-Disposition",
+                    "inline;filename=\"" + recepy.get().getImage()+ "\"");
+            System.out.println(responseHeaders.toString());
+            return ResponseEntity.ok()
+                    .headers(responseHeaders)
+                    .contentLength(recepy.get().getImageFile().length())
+                    .contentType(MediaType.IMAGE_JPEG)
+                    .body(new InputStreamResource(recepy.get().getImageFile().getBinaryStream()));
+        }
+        return ResponseEntity.notFound().build();
+    }
     @PostMapping("/downloadRecepy")
-    public Object getRecepyPDF(HttpServletRequest request, HttpServletResponse response, @RequestParam(required = false) List<Long> id) throws IOException {
+    public Object getRecepyPDF(HttpServletRequest request, HttpServletResponse response, @RequestParam(required = false) List<Long> id) throws IOException, SQLException {
 
         /* Do Business Logic*/
 
@@ -75,14 +90,13 @@ public class PDFController {
             String name = recipe.get().getName();
             String ingredients = recipe.get().getIngredients();
             String description = recipe.get().getDescription();
-            Blob image = recipe.get().getImageFile();
-
+            Long idRecipe = recipe.get().getId();
             context.setVariable("name", name);
             context.setVariable("ingredients", ingredients);
             context.setVariable("description", description);
-            context.setVariable("image", image);
+            context.setVariable("id", idRecipe);
             String recipeHtml = templateEngine.process("USR_ClientRecipePDF", context);
-
+            System.out.println(recipeHtml);
             /* Setup Source and target I/O streams */
 
             ByteArrayOutputStream target = new ByteArrayOutputStream();
