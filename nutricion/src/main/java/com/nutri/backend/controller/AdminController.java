@@ -41,11 +41,11 @@ public class AdminController {
 	@GetMapping("/admin")
 	public String showAdmin(Model model, HttpServletRequest request) {
 		model.addAttribute("activeDiets",dietRepository.numOfDiets());
-		model.addAttribute("earns",userRepository.findAllByuser("client")*9.99);
+		model.addAttribute("earns",userRepository.findAllByuser("client")*9);
 		model.addAttribute("Nclient",userRepository.findAllByuser("client"));
 		int month[]=new int[12];
 		for (int i=0;i<12;i+=1){
-			month[i]=(userRepository.findByEntryDate(i)*9);
+			month[i]=(userRepository.findAllByUserMonth("client",i)*9);
 		}
 		model.addAttribute("registeredUsers", Arrays.toString(month));
 		return "USR_Admin";

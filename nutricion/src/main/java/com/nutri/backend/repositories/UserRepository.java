@@ -20,6 +20,9 @@ public interface UserRepository extends JpaRepository<User,Long> {
     int findByEntryDate(int date);
     @Query(value = "SELECT COUNT(*) FROM USER_TABLE WHERE USER_TYPE= :typeOfUser",nativeQuery = true)
     int findAllByuser(String typeOfUser);
+
+    @Query(value = "SELECT COUNT(*) FROM USER_TABLE WHERE USER_TYPE= :typeOfUser AND ENTRY_DATE= :date",nativeQuery = true)
+    int findAllByUserMonth(String typeOfUser, int date);
     Page<User> findByUserType(Pageable page,String userType);
 
 }
