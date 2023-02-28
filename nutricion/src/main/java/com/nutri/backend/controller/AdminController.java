@@ -52,7 +52,7 @@ public class AdminController {
 	public String showCharts(Model model) {
 		int dietas[]= new int[3];
 		dietas[0]=dietRepository.numOfDietsType("Bulking");
-		dietas[1]=dietRepository.numOfDietsType("Definition");
+		dietas[1]=dietRepository.numOfDietsType("Cutting");
 		dietas[2]=dietRepository.numOfDietsType("Maintenence");
 		int month[]=new int[12];
 		for (int i=0;i<12;i+=1){
@@ -62,24 +62,6 @@ public class AdminController {
 		model.addAttribute("listDiets",Arrays.toString(dietas));
 		return "USR_AdminCharts";
 	}
-
-	//Chart controller
-	@GetMapping("/chatInformation")
-	public String updateCharts(Model model){
-		int dietas[]= new int[3];
-		dietas[0]=dietRepository.numOfDietsType("Bulking");
-		dietas[1]=dietRepository.numOfDietsType("Definition");
-		dietas[2]=dietRepository.numOfDietsType("Maintenence");
-		int month[]=new int[12];
-		for (int i=0;i<12;i+=1){
-			month[i]=(userRepository.findByEntryDate(i));
-		}
-		model.addAttribute("registeredUsers", Arrays.toString(month));
-		model.addAttribute("listDiets",Arrays.toString(dietas));
-		return "USR_AdminCharts";
-	}
-
-
 
 	//Worker Administration Controller
 	@GetMapping("/workerTable")
@@ -139,10 +121,10 @@ public class AdminController {
 		model.addAttribute("name",user.getName());
 		model.addAttribute("surname",user.getSurname());
 		model.addAttribute("email", user.getEmail());
-		if(user.getUserType()=="worker")
-			model.addAttribute("worker",true);
-		model.addAttribute("description",user.getDescription());
-
+		if(user.getUserType().equals("worker")){
+			model.addAttribute("worker", true);
+			model.addAttribute("description", user.getDescription());
+		}
 		return "USR_AdminShowUser";
 	}
 

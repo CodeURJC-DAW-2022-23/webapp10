@@ -53,6 +53,8 @@ public class ClientController {
 	public String diet(Model model, HttpServletRequest request) {
 		String name = request.getUserPrincipal().getName();
 		User user = userRepository.findByEmail(name).orElseThrow();
+		model.addAttribute("name",user.getName());
+		model.addAttribute("id",user.getId());
 		Optional<Diet> diet= Optional.ofNullable(user.getDiet());//user.getDiet()
 		//aqui habra que cambiarlo por que le de la dieta que tenga el cliente inscrito
 		if(diet.isPresent()) {
@@ -73,28 +75,33 @@ public class ClientController {
 			model.addAttribute("id", user.getId());
 			return "USR_ClientDiets";
 		}
-		return "USR_ClientDiets";
+
+		return "USR_ClientForm";
 	}
 	@GetMapping("/clientRecipes")
 	public String recipes(Model model, HttpServletRequest request) {
 		String name = request.getUserPrincipal().getName();
 		User user = userRepository.findByEmail(name).orElseThrow();
 		model.addAttribute("name", user.getName());
-		model.addAttribute("id",user.getId());
+		model.addAttribute("id", user.getId());
 		List<Recepy> recepies = new ArrayList<>();
-		Diet diet = user.getDiet();
-		Triplet[] diet1 = diet.getWeek();
-		for (Triplet aux : diet1){
-			Recepy recepy = recepyRepository.findByName((String)aux.Breakfast).orElseThrow();
-			recepies.add(recepy);
-			Recepy recepy1 = recepyRepository.findByName((String)aux.Lunch).orElseThrow();
-			recepies.add(recepy1);
-			Recepy recepy2 = recepyRepository.findByName((String)aux.Dinner).orElseThrow();
-			recepies.add(recepy2);
+		Optional<Diet> diet = Optional.ofNullable(user.getDiet());
+		if (diet.isPresent()) {
+			Triplet[] diet1 = diet.get().getWeek();
+			for (Triplet aux : diet1) {
+				Recepy recepy = recepyRepository.findByName((String) aux.Breakfast).orElseThrow();
+				recepies.add(recepy);
+				Recepy recepy1 = recepyRepository.findByName((String) aux.Lunch).orElseThrow();
+				recepies.add(recepy1);
+				Recepy recepy2 = recepyRepository.findByName((String) aux.Dinner).orElseThrow();
+				recepies.add(recepy2);
+			}
+			Collections.shuffle(recepies);
+			model.addAttribute("recepies", recepies);
+			return "USR_ClientRecepies";
 		}
-		Collections.shuffle(recepies);
-		model.addAttribute("recepies",recepies);
-		return "USR_ClientRecepies";
+
+		return "USR_ClientForm";
 	}
 
 
@@ -119,7 +126,12 @@ public class ClientController {
 			Long id = Long.parseLong(formId);
 			Form form = formRep.findById(id).orElseThrow();
 			user.setForm(form);
+			String dietType= dietService.dietAlgorithm(form);
+			List<Optional<Diet>> diets= dietService.findAllDietsByType(dietType);
+			Collections.shuffle(diets);
+			user.setDiet(diets.get(0).orElseThrow());
 			userRepository.save(user);
+			return "USR_clientDiet";
 		}
 		return "USR_ClientCharts";
 	}
@@ -163,8 +175,9 @@ public class ClientController {
 			newF.setInteres(interest);
 			newF.setDiet(aspiration);
 			dietType= dietService.dietAlgorithm(newF);
-			Diet diet= dietRepository.findByType(dietType).orElseThrow();
-			user.setDiet(diet);
+			List<Optional<Diet>> diets= dietService.findAllDietsByType(dietType);
+			Collections.shuffle(diets);
+			user.setDiet(diets.get(0).orElseThrow());;
 			userRepository.save(user);
 		}
 		return "redirect:/clientDiets";
@@ -199,6 +212,7 @@ public class ClientController {
 		model.addAttribute("id",user.getId());
 		return "USR_ClientProfile";
 	}
+
 	@GetMapping("/clientEditProfile")
 	public String editClientProfile(Model model, HttpServletRequest request) {
 		String name = request.getUserPrincipal().getName();

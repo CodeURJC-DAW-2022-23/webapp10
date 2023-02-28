@@ -7,7 +7,7 @@ var ctx = document.getElementById("myPieChart");
 var myPieChart = new Chart(ctx, {
   type: 'doughnut',
   data: {
-    labels: ["Bulk", "Cut", "Mantainence"],
+    labels: ["Bulk", "Cut", "Maintenence"],
     datasets: [{
       data: listdiet,
       backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
