@@ -79,33 +79,9 @@ public class ClientController {
         return "USR_ClientForm";
     }
 
-    @PostMapping("/clientRecipes")
-    public String  getDownloads(Model model, HttpServletRequest request, @RequestParam(required = false) List<Long> id) {
-        String name = request.getUserPrincipal().getName();
-        User user = userRepository.findByEmail(name).orElseThrow();
-        if (id != null) {
-            Optional<Recepy> recipe = null;
-            for (Long l : id) {
-                recipe = recepyRepository.findById(l);
-                String recipeType = recipe.get().getKindOfRecepy();
-                if (recipeType.equals("breakfast")){
-                    int bCounter = user.getbCounter();
-                    bCounter++;
-                    user.setbCounter(bCounter);
-                } else if (recipeType.equals("lunch")) {
-                    int lCounter = user.getbCounter();
-                    lCounter++;
-                    user.setbCounter(lCounter);
-                } else if (recipeType.equals("dinner")) {
-                    int dCounter = user.getbCounter();
-                    dCounter++;
-                    user.setbCounter(dCounter);
-                }
-            }
-            userRepository.save(user);
-        }
-    return "USR_ClientCharts";
-    }
+   // @PostMapping("/clientRecipes")
+    //public String  getDownloads(Model model, HttpServletRequest request, @RequestParam(required = false) List<Long> id) {
+
 
 
     @GetMapping("/clientRecipes")

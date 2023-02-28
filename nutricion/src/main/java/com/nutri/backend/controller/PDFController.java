@@ -3,6 +3,8 @@ package com.nutri.backend.controller;
 import com.itextpdf.html2pdf.ConverterProperties;
 import com.itextpdf.html2pdf.HtmlConverter;
 import com.nutri.backend.model.Recepy;
+import com.nutri.backend.model.User;
+import com.nutri.backend.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
@@ -32,6 +34,8 @@ import java.util.Optional;
 @RequestMapping("/PDF")
 public class PDFController {
 
+    @Autowired
+    private UserRepository userRepository;
 
     @Autowired
     ServletContext servletContext;
@@ -75,13 +79,36 @@ public class PDFController {
     }
     @PostMapping("/downloadRecepy")
     public Object getRecepyPDF(HttpServletRequest request, HttpServletResponse response, @RequestParam(required = false) List<Long> id) throws IOException, SQLException {
+        String name = request.getUserPrincipal().getName();
+        User user = userRepository.findByEmail(name).orElseThrow();
+        if (id != null) {
+            Optional<Recepy> recipe;
+            for (Long l : id) {
+                recipe = recepyRepository.findById(l);
+                String recipeType = recipe.get().getKindOfRecepy();
+                if (recipeType.equals("Breakfast")){
+                    int bCounter = user.getbCounter();
+                    bCounter++;
+                    user.setbCounter(bCounter);
+                } else if (recipeType.equals("Lunch")) {
+                    int lCounter = user.getbCounter();
+                    lCounter++;
+                    user.setbCounter(lCounter);
+                } else if (recipeType.equals("Dinner")) {
+                    int dCounter = user.getbCounter();
+                    dCounter++;
+                    user.setbCounter(dCounter);
+                }
+            }
+            userRepository.save(user);
+        }
 
-            /* Do Business Logic*/
+        /* Do Business Logic*/
 
             if (id != null) {
                 //Recepy[] recipes = new Recepy[id.size()];
                 //int i = 0;
-                Optional<Recepy> recipe = null;
+                Optional<Recepy> recipe = Optional.empty();
                 for (Long l : id) {
                     recipe = recepyRepository.findById(l);
                     //recipes[i] = recepyRepository.findById(l).get();
@@ -90,11 +117,11 @@ public class PDFController {
                 /* Create HTML using Thymeleaf template Engine */
 
             WebContext context = new WebContext(request, response, servletContext);
-            String name = recipe.get().getName();
+            String nameRecepy = recipe.get().getName();
             String ingredients = recipe.get().getIngredients();
             String description = recipe.get().getDescription();
             Long idRecipe = recipe.get().getId();
-            context.setVariable("name", name);
+            context.setVariable("name", nameRecepy);
             context.setVariable("ingredients", ingredients);
             context.setVariable("description", description);
             context.setVariable("id", idRecipe);
@@ -112,7 +139,7 @@ public class PDFController {
 
 
             /* Send the response as downloadable PDF */
-            String recipeName="recipe "+name+".pdf";
+            String recipeName="recipe "+nameRecepy+".pdf";
             return ResponseEntity.ok()
                     .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename= "+recipeName)
                     .contentType(MediaType.APPLICATION_PDF)
