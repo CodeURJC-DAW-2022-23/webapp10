@@ -9,6 +9,8 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.util.matcher.AndRequestMatcher;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import java.security.SecureRandom;
 
@@ -74,7 +76,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/clientInfoSettings").hasAnyRole("client");
         http.authorizeRequests().antMatchers("/clientProfile").hasAnyRole("client");
 
-
         // Login form
         http.formLogin().loginPage("/login");
         http.formLogin().usernameParameter("email");
@@ -83,8 +84,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.formLogin().failureUrl("/error");
 
         // Logout
-        http.logout().logoutUrl("/logout");
+
+        http.logout()
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout","GET"));
         http.logout().logoutSuccessUrl("/");
+
+
 
 
     }
