@@ -1,6 +1,6 @@
 {{>USR_AdminHeader}}
 <!-- Page Heading -->
-<h1 class="h3 mb-2 text-gray-800" xmlns="http://www.w3.org/1999/html"/>SETTINGS</p>
+
 
 <!-- Content Row -->
 <div class="row">
@@ -10,7 +10,7 @@
     <!-- Area Chart -->
     <div class="card shadow mb-4">
       <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">"NAME" Profile</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Add Worker</h6>
       </div>
       <div class="card-body">
         <div class="row">
@@ -59,7 +59,7 @@
               Min 8 chars and Max 12 chars"> Password: </abbr></span>
                     <br>
                     <br>
-                    <input type="text" id='workerPassword' name="workerPassword"
+                    <input type="password" id='workerPassword' name="workerPassword"
                            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$"/>
                     <br>
                     <br>
@@ -69,6 +69,7 @@
               <div class="row" style="justify-content:left; text-align:left;">
                 <input class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" type="submit"
                        value="Save">
+                <input type="hidden" name="_csrf" value="{{token}}"/>
               </div>
             </form>
       </div>

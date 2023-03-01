@@ -55,10 +55,9 @@ public class WorkerController {
 		User user = userRepository.findByEmail(name).orElseThrow();
 		Page<User> clientPage = userService.findPageClient(0, "client");
 		model.addAttribute("name", user.getName());
-		model.addAttribute("client",clientPage.toList());
+		model.addAttribute("clientPage",clientPage.toList());
 		model.addAttribute("last",clientPage.getTotalPages());
 		model.addAttribute("id", user.getId());
-		model.addAttribute("client",userRepository.findByUserType("client"));
 		return "USR_Worker";
 	}
 

@@ -33,6 +33,7 @@
                     <div class="row" style="justify-content:center; text-align: center;">
                         <input class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" type="submit"
                                value="Delete">
+                        <input type="hidden" name="_csrf" value="{{token}}"/>
                     </div>
                 </form>
                 <div class="row">
@@ -48,6 +49,7 @@
                         <a class="nav-link collapsed" href="/addWorker" style="text-align:right">
                             <input class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" type="submit"
                                    value="Add Worker">
+                            <input type="hidden" name="_csrf" value="{{token}}"/>
                         </a>
                     </div>
                 </div>

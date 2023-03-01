@@ -52,7 +52,7 @@
               Min 8 chars and Max 12 chars"> Password: </abbr></span>
                                   <br>
                                   <br>
-                                  <input type="text" id='clientPassword' name="clientPassword"
+                                  <input type="password" id='clientPassword' name="clientPassword"
                                          pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$"/>
                                   <br>
                                   <br>
@@ -66,7 +66,7 @@
               Min 8 chars and Max 12 chars"> Repeat Password: </abbr></span>
                                   <br>
                                   <br>
-                                  <input type="text" id='clientPasswordRepeat' name="clientPasswordRepeat"
+                                  <input type="password" id='clientPasswordRepeat' name="clientPasswordRepeat"
                                          pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$"/>
                                   <br>
                                   <br>
@@ -84,6 +84,7 @@
                       <div class="row" style="justify-content:left; text-align:left;">
                           <input class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" type="submit"
                                  value="Save">
+                          <input type="hidden" name="_csrf" value="{{token}}"/>
                       </div>
                   </form>
                 </div>

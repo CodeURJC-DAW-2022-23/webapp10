@@ -130,7 +130,7 @@ public class PDFController {
 
             ByteArrayOutputStream target = new ByteArrayOutputStream();
             ConverterProperties converterProperties = new ConverterProperties();
-            converterProperties.setBaseUri("http://localhost:8080");
+            converterProperties.setBaseUri("http://localhost:3306");
             /* Call convert method */
             HtmlConverter.convertToPdf(recipeHtml, target, converterProperties);
 

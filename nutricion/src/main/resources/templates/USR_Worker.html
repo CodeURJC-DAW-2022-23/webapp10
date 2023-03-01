@@ -4,7 +4,7 @@
 <div class="container-fluid">
 
     <!-- Content Row -->
-    <div class="col-12 ">
+    <div class="col ">
 
         <div id="demo">
             <h1>Clients Table</h1>
@@ -19,14 +19,13 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {{#client}}
+                    {{#clientPage}}
                     <tr>
                         <td>{{name}}</td>
                         <td>{{surname}}</td>
                         <td>{{email}}</td>
-                        <td><input type="checkbox" name="id" value="{{id}}"></td>
                     </tr>
-                    {{/client}}
+                    {{/clientPage}}
                     </tbody>
                 </table>
                 <div>
