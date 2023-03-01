@@ -68,7 +68,6 @@ public class PDFController {
             HttpHeaders responseHeaders = new HttpHeaders();
             responseHeaders.set("Content-Disposition",
                     "inline;filename=\"" + recepy.get().getImage()+ "\"");
-            System.out.println(responseHeaders.toString());
             return ResponseEntity.ok()
                     .headers(responseHeaders)
                     .contentLength(recepy.get().getImageFile().length())
@@ -130,13 +129,12 @@ public class PDFController {
 
             ByteArrayOutputStream target = new ByteArrayOutputStream();
             ConverterProperties converterProperties = new ConverterProperties();
-            converterProperties.setBaseUri("http://localhost:3306");
+            converterProperties.setBaseUri("https://localhost:8443");
             /* Call convert method */
             HtmlConverter.convertToPdf(recipeHtml, target, converterProperties);
 
             /* extract output as bytes */
             byte[] bytes = target.toByteArray();
-
 
             /* Send the response as downloadable PDF */
             String recipeName="recipe "+nameRecepy+".pdf";
