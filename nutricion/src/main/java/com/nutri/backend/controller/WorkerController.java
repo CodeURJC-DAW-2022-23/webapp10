@@ -115,7 +115,7 @@ public class WorkerController {
 		return "USR_WorkerUploadDiets";
 	}
 	@PostMapping("/workerUploadDiets")
-	public String workerUploadRecipes(Model model, HttpServletRequest request, @RequestParam String nombre,
+	public String workerUploadRecipes(Model model, HttpServletRequest request, @RequestParam String name1,
 									@RequestParam String brmon,@RequestParam String brtue,
 									@RequestParam String brwed,@RequestParam String brthr,@RequestParam String brfri,
 									@RequestParam String brsat,@RequestParam String brsun,
@@ -151,7 +151,7 @@ public class WorkerController {
 				week[aux].Dinner="Nada";
 			}
 		}
-		Diet dieta=new Diet(nombre,week,type_diet);
+		Diet dieta=new Diet(name1,week,type_diet);
 		dietRepository.save(dieta);
 		model.addAttribute("name", user.getName());
 		model.addAttribute("id", user.getId());

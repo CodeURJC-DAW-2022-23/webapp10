@@ -68,18 +68,6 @@ public class InitialationController {
 	public String registerTem() {
 		return "USR_NonRegRegister";
 	}
-	@GetMapping("/404")
-	public String error404() {
-		return "404";
-	}
-	@GetMapping("/403")
-	public String error403() {
-		return "403";
-	}
-	@GetMapping("/500")
-	public String error500() {
-		return "500";
-	}
 
 	@GetMapping("/cliente")
 	public String client() {

@@ -91,13 +91,13 @@ public class PDFController {
                     bCounter++;
                     user.setbCounter(bCounter);
                 } else if (recipeType.equals("Lunch")) {
-                    int lCounter = user.getbCounter();
+                    int lCounter = user.getlCounter();
                     lCounter++;
-                    user.setbCounter(lCounter);
+                    user.setlCounter(lCounter);
                 } else if (recipeType.equals("Dinner")) {
-                    int dCounter = user.getbCounter();
+                    int dCounter = user.getdCounter();
                     dCounter++;
-                    user.setbCounter(dCounter);
+                    user.setdCounter(dCounter);
                 }
             }
             userRepository.save(user);
