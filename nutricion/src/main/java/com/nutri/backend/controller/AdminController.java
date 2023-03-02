@@ -154,8 +154,6 @@ public class AdminController {
 		return "redirect:/tablesClient";
 	}
 
-
-
 	//ajax
 	@GetMapping("/tablesClient/page/{page}")
 	public String getClientPage(Model model, @PathVariable int page) {

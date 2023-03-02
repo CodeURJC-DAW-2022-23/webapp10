@@ -186,6 +186,17 @@ public class WorkerController {
 		return "redirect:/viewRecipe";
 	}
 
+	@PostMapping("/deleteRecepy")
+	public String deleteRecepy(@RequestParam(required = false) List<Long> id){
+		if(id != null) {
+			for (Long l : id) {
+				recepyRepository.deleteById(l);
+			}
+		}
+		return "redirect:/viewRecepy";
+	}
+
+
 	@GetMapping("/viewDiet")
 	public String viewDiet(Model model, HttpServletRequest request) {
 		String name = request.getUserPrincipal().getName();

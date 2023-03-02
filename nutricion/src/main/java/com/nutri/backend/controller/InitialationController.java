@@ -61,7 +61,7 @@ public class InitialationController {
 
 	@GetMapping("/loginError")
 	public String loggingErrorTem() {
-		return "USR_NonRegLoginError";
+		return "redirect:/login";
 	}
 
 	@GetMapping("/register")
@@ -69,10 +69,7 @@ public class InitialationController {
 		return "USR_NonRegRegister";
 	}
 
-	@GetMapping("/cliente")
-	public String client() {
-		return "USR_ClientDiets";
-	}
+
 
 	@GetMapping("/test")
 	public String testTem() {
@@ -81,7 +78,7 @@ public class InitialationController {
 
 	@PostMapping("/usrTest")
 	public String formInfoUpdate(@RequestParam String gensex, @RequestParam String age, @RequestParam String phactivity,
-								 @RequestParam int weight, @RequestParam int height, @RequestParam String interest,
+								 @RequestParam double weight, @RequestParam double height, @RequestParam String interest,
 								 @RequestParam String aspiration, HttpServletRequest request, HttpServletResponse response){
 		Form newForm = new Form(gensex,age,phactivity,weight,height,interest,aspiration);
 		formRep.save(newForm);

@@ -26,7 +26,7 @@ public class CustomErrorControler {
             }
 
         }
-        return "error";
+        return "error-404";
     }
 
 }
