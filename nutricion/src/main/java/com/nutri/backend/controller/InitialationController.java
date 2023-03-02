@@ -86,7 +86,7 @@ public class InitialationController {
 		Cookie formId = new Cookie("formId",id);
 		formId.setMaxAge(60*60);
 		response.addCookie(formId);
-		return "redirect:/login";
+		return "redirect:/register";
 	}
 	private void setUserImage(User user, String classpathResource){
 		try {

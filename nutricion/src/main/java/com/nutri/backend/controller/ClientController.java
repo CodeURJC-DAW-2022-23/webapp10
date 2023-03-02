@@ -50,7 +50,7 @@ public class ClientController {
 
     //User Diets and Recepies controller
     @GetMapping("/clientDiets")
-    public String diet(Model model, HttpServletRequest request) {
+    public String diet(Model model, HttpServletRequest request, HttpServletResponse response) {
         String name = request.getUserPrincipal().getName();
         User user = userRepository.findByEmail(name).orElseThrow();
         model.addAttribute("name", user.getName());
@@ -74,6 +74,27 @@ public class ClientController {
             model.addAttribute("dn", dinner);
             model.addAttribute("id", user.getId());
             return "USR_ClientDiets";
+        }else {
+            Cookie[] cookies = request.getCookies();
+            String formId = null;
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("formId"))
+                    formId = cookie.getValue();
+            }
+            Cookie userNameCookieRemove = new Cookie("formId", "");
+            userNameCookieRemove.setMaxAge(0);
+            response.addCookie(userNameCookieRemove);
+            if (formId != null) {
+                Long id = Long.parseLong(formId);
+                Form form = formRep.findById(id).orElseThrow();
+                user.setForm(form);
+                String dietType = dietService.dietAlgorithm(form);
+                List<Optional<Diet>> diets = dietService.findAllDietsByType(dietType);
+                Collections.shuffle(diets);
+                user.setDiet(diets.get(0).orElseThrow());
+                userRepository.save(user);
+                return "redirect:/clientDiets";
+            }
         }
 
         return "USR_ClientForm";
@@ -129,26 +150,7 @@ public class ClientController {
 
             if (aux==0)
                 model.addAttribute("noExistInfo",true);
-        Cookie[] cookies = request.getCookies();
-        String formId = null;
-        for (Cookie cookie : cookies) {
-            if (cookie.getName().equals("formId"))
-                formId = cookie.getValue();
-        }
-        Cookie userNameCookieRemove = new Cookie("formId", "");
-        userNameCookieRemove.setMaxAge(0);
-        response.addCookie(userNameCookieRemove);
-        if (formId != null) {
-            Long id = Long.parseLong(formId);
-            Form form = formRep.findById(id).orElseThrow();
-            user.setForm(form);
-            String dietType = dietService.dietAlgorithm(form);
-            List<Optional<Diet>> diets = dietService.findAllDietsByType(dietType);
-            Collections.shuffle(diets);
-            user.setDiet(diets.get(0).orElseThrow());
-            userRepository.save(user);
-            return "USR_clientDiet";
-        }
+
         return "USR_ClientCharts";
     }
 

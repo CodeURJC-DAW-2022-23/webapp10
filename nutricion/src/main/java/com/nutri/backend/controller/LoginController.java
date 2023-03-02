@@ -33,7 +33,7 @@ public class LoginController {
             if (request.isUserInRole("admin")){
                 return "redirect:/admin";
             }else if (request.isUserInRole("client")){
-                return "redirect:/clientChart";
+                return "redirect:/clientDiets";
             }else if (request.isUserInRole("worker")) {
                 return "redirect:/worker";
             }else{
