@@ -196,7 +196,6 @@ public class ClientController {
             List<Optional<Diet>> diets = dietService.findAllDietsByType(dietType);
             Collections.shuffle(diets);
             user.setDiet(diets.get(0).orElseThrow());
-            ;
             userRepository.save(user);
         }
         return "redirect:/clientDiets";
