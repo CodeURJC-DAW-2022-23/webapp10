@@ -151,7 +151,6 @@ I have worked on the functionalities of the admin, user and worker, i did part o
 | 4 | AdminController.java (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/nutricion/src/main/java/com/nutri/backend/controller/AdminController.java) |
 | 5 | ClientController.java (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/nutricion/src/main/java/com/nutri/backend/controller/ClientController.java) |
 
-### MEMBERS PARTICIPATION
 
 #### Daniel Monje Fuente
 
@@ -178,3 +177,31 @@ I have worked mostly on the fron-end of the aplication. I fixed some buggs with 
 | 3 | USR_AdminClientTable.html(https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/nutricion/src/main/resources/templates/USR_AdminClientTable.html) |
 | 4 | USR_ClientProfile.html(https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/nutricion/src/main/resources/templates/USR_ClientProfile.html) |
 | 5 | USR_WorkerEditProfile.html(https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/nutricion/src/main/resources/templates/USR_WorkerEditProfile.html) |
+
+
+#### Sara González Terroba
+
+##### DESCRIPTION OF TASKS
+
+I have carried out the generation of the PDFs the workers use to save recipes. I have worked on the front-end, mostly the templates of the test, non registered users, clients and workers.
+
+##### COMMITS DONE
+
+| Name | Description |
+| - | - |
+| 1 | Implementation of the Controllers and Templates for PDF Recipe (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/683731f367e2191d11535e9f134e899bccad70af) |
+| 2 | First version of PDF Controller and dependencies (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/6c159fd9be76dc095a655901b9433afedcf7cff9) |
+| 3 | Creation of worker template (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/9230f3bf8659e8f4d73571986345f07992fc6e36) |
+| 4 | Implementation of Test template (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/2bad21fcc0a2d80c181e6bd62af066b1612f10b8) |
+| 5 | Creation of Worker UploadDiets template (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/b0527ad4469373bca5334a0fa25c347a205423a4) |
+
+##### FILES PARTICIPATED
+
+| File name | Link to github |
+| - | - |
+| 1 | PDFController.java (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/nutricion/src/main/java/com/nutri/backend/controller/PDFController.java) |
+| 2 | GeneratePDFUsingHTML.java (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/nutricion/src/main/java/com/nutri/backend/GeneratePDFUsingHTML.java) |
+| 3 | USR_WorkerDiets.html(https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/nutricion/src/main/resources/templates/USR_WorkerDiets.html) |
+| 4 | USR_NonRegForm.html(https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/nutricion/src/main/resources/templates/USR_NonRegForm.html) |
+| 5 | USR_WorkerUploadDiet.html(https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/nutricion/src/main/resources/templates/USR_WorkerUploadDiets.html) |
+
