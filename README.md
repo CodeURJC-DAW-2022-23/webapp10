@@ -150,3 +150,31 @@ I have worked on the functionalities of the admin, user and worker, i did part o
 | 3 | Diet.java (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/nutricion/src/main/java/com/nutri/backend/model/Diet.java) |
 | 4 | SecurityConfiguration.java (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/nutricion/src/main/java/com/nutri/backend/security/SecurityConfiguration.java) |
 | 5 | ClientController.java (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/nutricion/src/main/java/com/nutri/backend/controller/ClientController.java) |
+
+### MEMBERS PARTICIPATION
+
+#### Daniel Monje Fuente
+
+##### DESCRIPTION OF TASKS
+
+I have worked mostly on the fron-end of the aplication. I fixed some buggs with the headers and links, and cared about the managment of controllers. Also helped to correct errors.
+
+##### COMMITS DONE
+
+| Name | Description |
+| - | - |
+| 1 | Profiles templates and controller updates (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/14cfef3f79d445b89ee2210a29c99d9afd40abe4) |
+| 2 | Profile controllers and worker edit profile (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/799bfaf64bde1b28ac44a2d5250f8b86ce881478) |
+| 3 | Profiles format and controllers(https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/f9c048031dc68d2e6469c2dfda8466ecfcf80001) |
+| 4 | PDF counter of downloads (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/2bac6a6d6843b14baed5f4e10dbda9bcaa7fe848) |
+| 5 | Worker client table with mustache (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/faaad014a44bd70a69409176e5725c28fc64ab98) |
+
+##### FILES PARTICIPATED
+
+| File name | Link to github |
+| - | - |
+| 1 | ClientController.java (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/nutricion/src/main/java/com/nutri/backend/controller/ClientController.java) |
+| 2 | WorkerController.java (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/nutricion/src/main/java/com/nutri/backend/controller/WorkerController.java) |
+| 3 | USR_AdminClientTable.html(https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/nutricion/src/main/resources/templates/USR_AdminClientTable.html) |
+| 4 | USR_ClientProfile.html(https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/nutricion/src/main/resources/templates/USR_ClientProfile.html) |
+| 5 | USR_WorkerEditProfile.html(https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/nutricion/src/main/resources/templates/USR_WorkerEditProfile.html) |
