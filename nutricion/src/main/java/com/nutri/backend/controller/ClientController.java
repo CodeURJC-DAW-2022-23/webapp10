@@ -121,14 +121,53 @@ public class ClientController {
                 if(!recepies.contains(recepy2))
                     recepies.add(recepy2);
             }
-            Collections.shuffle(recepies);
-            model.addAttribute("recepies", recepies);
+            List<Recepy> auxRecepies=new ArrayList<>();
+            if (recepies.size()>10){
+                for (int i=0;i<10;i++){
+                    auxRecepies.add(recepies.get(i));
+                }
+                model.addAttribute("recepies", auxRecepies);
+            }else{
+                model.addAttribute("recepies", recepies);
+            }
             return "USR_ClientRecepies";
         }
 
         return "USR_ClientForm";
     }
 
+    @GetMapping("clientRecepies/{page}")
+    public String getRecepiesAjax(Model model, HttpServletRequest request,@RequestParam int page) {
+        String name = request.getUserPrincipal().getName();
+        User user = userRepository.findByEmail(name).orElseThrow();
+        List<Recepy> recepies = new ArrayList<>();
+        Optional<Diet> diet = Optional.ofNullable(user.getDiet());
+        if (diet.isPresent()) {
+            Triplet[] diet1 = diet.get().getWeek();
+            for (Triplet aux : diet1) {
+                Recepy recepy = recepyRepository.findByName((String) aux.Breakfast).orElseThrow();
+                if (!recepies.contains(recepy))
+                    recepies.add(recepy);
+                Recepy recepy1 = recepyRepository.findByName((String) aux.Lunch).orElseThrow();
+                if (!recepies.contains(recepy1))
+                    recepies.add(recepy1);
+                Recepy recepy2 = recepyRepository.findByName((String) aux.Dinner).orElseThrow();
+                if (!recepies.contains(recepy2))
+                    recepies.add(recepy2);
+            }
+        }
+        List<Recepy> auxRecepies=new ArrayList<>();
+            for (int i = (10*page); i < (10*(page+1)); i++) {
+                if(recepies.size()>i) {
+                    auxRecepies.add(recepies.get(i));
+                }else{
+                    break;
+                }
+            }
+            model.addAttribute("recipe",auxRecepies);
+
+        return "USR_ClientRecepiesAjax";
+    }
 
     //Client Chart controller
 
