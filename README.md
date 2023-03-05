@@ -123,6 +123,39 @@ The following diagram shows how users can navigate through the different pages o
 ![Diagrama DAW F1](https://user-images.githubusercontent.com/61882490/218329039-56531846-79cf-4365-9ecf-caeb05a4530f.jpg)
 
 
+
+## PHASE 2: WEB WITH HTML GENERATED IN SERVER AND AJAX
+
+### EXECUTION INSTRUCTIONS
+
+#### VERSIONS
+
+The different technologies used for this phase are:
+•    Java 19.0.2
+•    Maven 4.0.0
+•    Spring Boot 2.7.7
+•    Itextpdf 7.1.12
+•    MySQL 8.0.24
+
+
+#### CONFIGURATION
+
+In order to get our project code, you need to enter GitHub https://github.com/CodeURJC-DAW-2022-23/webapp10 , press code button and download the zip.
+The following steps are needed to install the Data base:
+
+
+#### EXECUTION
+The IDE used to program the app is IntelliJ. In order to run the app you cave to press the button run located on the IDE and make sure is located in backend directory. After that, it is needed to open a browser, preferable Google Chrome. To see the main page, write on the search bar http://localhost:8443/ . 
+
+
+### DATA BASE ENTITIES DIAGRAM
+![ER_model](https://user-images.githubusercontent.com/80918513/222978741-db3873a0-714e-4e74-a89e-de9016088ff7.png)
+
+
+### CLASSES AND TEMPLATES DIAGRAM
+![UMLdaw](https://user-images.githubusercontent.com/80918513/222978799-4b36ddf9-a689-4448-a0f0-811feda9568a.png)
+
+
 ### MEMBERS PARTICIPATION
 
 #### Adrián Peña García
@@ -204,4 +237,30 @@ I have carried out the generation of the PDFs the workers use to save recipes. I
 | 3 | USR_WorkerDiets.html(https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/nutricion/src/main/resources/templates/USR_WorkerDiets.html) |
 | 4 | USR_NonRegForm.html(https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/nutricion/src/main/resources/templates/USR_NonRegForm.html) |
 | 5 | USR_WorkerUploadDiet.html(https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/nutricion/src/main/resources/templates/USR_WorkerUploadDiets.html) |
+
+#### Snezhana Borislavova Buchelska
+
+##### DESCRIPTION OF TASKS
+
+I have worked on the Worker features, mainly front-end. Also correcting errors or add wanted features on the rest of the program.
+
+##### COMMITS DONE
+
+| Name | Description |
+| - | - |
+| 1 | All worker templates created and linked to Worker controller(https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/90e187fbac11f3ce8e3164087c3b8c16d73ff77e) |
+| 2 | Client diet changes (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/5873be8e63c03dfa05a47eed93d34461f9fdc34b) |
+| 3 | Error creaton and linking to Initialitation controller (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/4eedcc5513776cbc654f8d19c8b5976811c85934) |
+| 4 | View diets and recipes and Worker controller (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/97e5ca7a9b1d4677d06fcc965007d69fca28c38f) |
+| 5 | Recipe tables with mustache and Worker controller updates with the data base (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/7b99fc2ea187e9c603286f17220dc44f3f4c741a) |
+
+##### FILES PARTICIPATED
+
+| File name | Link to github |
+| - | - |
+| 1 | USR_ClientDiets.html (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/nutricion/src/main/resources/templates/USR_ClientDiets.html) |
+| 2 | USR_WorkerDiets.html (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/nutricion/src/main/resources/templates/USR_WorkerDiets.html) |
+| 3 | USR_WorkerViewRecipe.html (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/nutricion/src/main/resources/templates/USR_WorkerViewRecipe.html) |
+| 4 | USR_WorkerUploadDiets.html(https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/nutricion/src/main/resources/templates/USR_WorkerUploadDiets.html) |
+| 5 | USR_WorkerUploadRecipes.html(https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/nutricion/src/main/resources/templates/USR_WorkerUploadRecipes.html) |
 
