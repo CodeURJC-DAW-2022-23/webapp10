@@ -1,11 +1,13 @@
 # TheSmartWay
 
-## Development team (name, institutional mail, github user)
-- Snezhan Buchelska Borislavova, s.buchelska.2018@alumnos.urjc.es, JaniURJC
-- Carlos Fernández López, c.fernandezl.2019@alumnos.urjc.es, ruky00
-- Sara González Terroba, s.gonzalezt.2018@alumnos.urjc.es, sara-glezt
-- Daniel Monje Fuente, dj.monje.2019@alumnos.urjc.es, Steyex
-- Adrián Peña García, a.penag.2018@alumnos.urjc.es, adroius
+## Development team
+| Name | Corporative email | Github user |
+| - | - | - |
+| Carlos Fernández López | c.fernandezl.2019@alumnos.urjc.es | ruky00 |
+| Snezhan Buchelska Borislavova | s.buchelska.2018@alumnos.urjc.es | JaniURJC |
+| Sara González Terroba |  s.gonzalezt.2018@alumnos.urjc.es | sara-glezt |
+| Daniel Monje Fuente | dj.monje.2019@alumnos.urjc.es | Steyex |
+| Adrián Peña García | a.penag.2018@alumnos.urjc.es | adroius |
 
 ## Link to Trello
 https://trello.com/b/jEYakjyN/daw
@@ -131,11 +133,11 @@ The following diagram shows how users can navigate through the different pages o
 #### VERSIONS
 
 The different technologies used for this phase are:
-•    Java 19.0.2
-•    Maven 4.0.0
-•    Spring Boot 2.7.7
-•    Itextpdf 7.1.12
-•    MySQL 8.0.24
+  * Java: 19.0.2
+  * Maven: 4.0.0 
+  * Spring Boot: 2.7.7
+  * Itextpdf:  7.1.12
+  * MySQL: 8.0.24
 
 
 #### CONFIGURATION
