@@ -61,7 +61,7 @@ public class InitialationController {
 
 	@GetMapping("/loginError")
 	public String loggingErrorTem() {
-		return "redirect:/login";
+			return "USR_NonRegLoginError";
 	}
 
 	@GetMapping("/register")
