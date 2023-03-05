@@ -116,7 +116,37 @@ Screens have been added for the largest and most important functionalities. The 
 + USR_workerNewRecipe:Workers can upload a new recipe.
 ![workerNewRecipe](https://user-images.githubusercontent.com/80918513/218335264-8c2aa7bf-b78c-4c4b-b843-db8ffd6eddaf.png)
 
+
+
 ## Navegation Diagram
 The following diagram shows how users can navigate through the different pages of the application according to their role. 
 ![Diagrama DAW F1](https://user-images.githubusercontent.com/61882490/218329039-56531846-79cf-4365-9ecf-caeb05a4530f.jpg)
 
+
+### MEMBERS PARTICIPATION
+
+#### Adrián Peña García
+
+##### DESCRIPTION OF TASKS
+
+I have worked on the functionalities of the admin, user and worker, i did part of the front-end development, focusing on the images of the web. I make the data structure of the diet, with the Triple entity, and also i have achived the form of how to show images on the web, that were saved in the data base.
+
+##### COMMITS DONE
+
+| Name | Description |
+| - | - |
+| 1 | Image web use and show (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/50e09c0bc30e34da3c95b983e516f3b5b901271a) |
+| 2 | Charts admin and client (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/da8a90556fe74e4f802be1ddf6d1f3af224d3fd3) |
+| 3 | Default avatar and addWorker admin in function (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/b00fbe9a72e6f9f55171060fd13a98f53f36a404) |
+| 4 | Images load correctly from the data base (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/a6875016788ec2734eab3ae13d6d00d4eee1d5e9) |
+| 5 | Triplet array Diet (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/14c3dafeac9ef7b75202868f4fbbf236f626ea24) |
+
+##### FILES PARTICIPATED
+
+| File name | Link to github |
+| - | - |
+| 1 | WorkerController.java (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/nutricion/src/main/java/com/nutri/backend/controller/WorkerController.java) |
+| 2 | Triplet.java (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/nutricion/src/main/java/com/nutri/backend/model/Triplet.java) |
+| 3 | Diet.java (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/nutricion/src/main/java/com/nutri/backend/model/Diet.java) |
+| 4 | SecurityConfiguration.java (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/nutricion/src/main/java/com/nutri/backend/security/SecurityConfiguration.java) |
+| 5 | ClientController.java (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/nutricion/src/main/java/com/nutri/backend/controller/ClientController.java) |
