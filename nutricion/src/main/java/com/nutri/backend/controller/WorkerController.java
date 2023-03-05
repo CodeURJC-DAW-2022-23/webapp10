@@ -128,31 +128,31 @@ public class WorkerController {
 									@RequestParam String type_diet) {
 		String name = request.getUserPrincipal().getName();
 		User user = userRepository.findByEmail(name).orElseThrow();
-		String[] desayunos={brmon,brtue,brwed,brthr,brfri,brsat,brsun};
-		String[] comidas={lunmon,luntue,lunwed,lunthr,lunfri,lunsat,lunsun};
-		String[] cenas={dinmon,dintue,dinwed,dinthr,dinfri,dinsat,dinsun};
-		System.out.println(desayunos);
+		String[] breakfast={brmon,brtue,brwed,brthr,brfri,brsat,brsun};
+		String[] luch={lunmon,luntue,lunwed,lunthr,lunfri,lunsat,lunsun};
+		String[] dinner={dinmon,dintue,dinwed,dinthr,dinfri,dinsat,dinsun};
+		System.out.println(breakfast);
 		Triplet week[]=new Triplet[7];
 		for (int aux=0;aux<week.length;aux++){
 			week[aux]=new Triplet(null,null,null);
-			if (desayunos[aux]!=null) {
-				week[aux].Breakfast=desayunos[aux];
+			if (breakfast[aux]!=null) {
+				week[aux].Breakfast=breakfast[aux];
 			} else{
 				week[aux].Breakfast="Nada";
 			}
-			if (comidas[aux]!=null) {
-				week[aux].Lunch=comidas[aux];
+			if (luch[aux]!=null) {
+				week[aux].Lunch=luch[aux];
 			} else{
 				week[aux].Lunch="Nada";
 			}
-			if (cenas[aux]!=null) {
-				week[aux].Dinner=cenas[aux];
+			if (dinner[aux]!=null) {
+				week[aux].Dinner=dinner[aux];
 			} else{
 				week[aux].Dinner="Nada";
 			}
 		}
-		Diet dieta=new Diet(name1,week,type_diet);
-		dietRepository.save(dieta);
+		Diet diet=new Diet(name1,week,type_diet);
+		dietRepository.save(diet);
 		model.addAttribute("name", user.getName());
 		model.addAttribute("id", user.getId());
 		return "redirect:/viewDiet";

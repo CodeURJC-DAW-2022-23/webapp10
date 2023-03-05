@@ -266,3 +266,29 @@ I have worked on the Worker features, mainly front-end. Also correcting errors o
 | 4 | USR_WorkerUploadDiets.html(https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/nutricion/src/main/resources/templates/USR_WorkerUploadDiets.html) |
 | 5 | USR_WorkerUploadRecipes.html(https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/nutricion/src/main/resources/templates/USR_WorkerUploadRecipes.html) |
 
+#### Carlos Fernández López
+
+##### DESCRIPTION OF TASKS
+
+I have worked on almost all the features of the aplication, i did some things in the controllers, security configuration
+model and services.  
+
+##### COMMITS DONE
+
+| Name | Description |
+| - | - |
+| 1 | Merge branch 'Security' into main(https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/57fe0858666440bd10eacb418aacc3b1af79de43)  |
+| 2 | User Form cookie update(https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/175cf3acde88ca3b7e8062850c44ffecb12494d8) |
+| 3 | Merge branch 'MySQLTryouts' into main(https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/052525ab921a0dd1c1cc612b9366aaba7510011c) |
+| 4 | isPresent verification and chart update(https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/452d5bcfd81efe6b71850c0676f083115de12074) |
+| 5 | Some updates for AJAX and Post forms(https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/6be0d95ac97473d813cf206eb6e5ba47d5ea1c7f) |
+
+##### FILES PARTICIPATED
+
+| File name | Link to github |
+| - | - |
+| 1 | AdminController.java(https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/nutricion/src/main/java/com/nutri/backend/controller/AdminController.java)  |
+| 2 | InitialationController.java(https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/nutricion/src/main/java/com/nutri/backend/controller/InitialationController.java) |
+| 3 | SecurityConfiguration.java(https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/nutricion/src/main/java/com/nutri/backend/security/SecurityConfiguration.java) |
+| 4 | DietService.java(https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/nutricion/src/main/java/com/nutri/backend/service/DietService.java) |
+| 5 | UserRepository.java(https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/nutricion/src/main/java/com/nutri/backend/repositories/UserRepository.java) |
