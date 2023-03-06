@@ -1,7 +1,6 @@
 package com.nutri.backend.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonView;
 
 import javax.persistence.*;
 import java.sql.Blob;

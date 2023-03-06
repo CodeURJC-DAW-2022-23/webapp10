@@ -3,12 +3,9 @@ package com.nutri.backend.service;
 import com.nutri.backend.model.Diet;
 import com.nutri.backend.model.Form;
 import com.nutri.backend.repositories.DietRepository;
-import com.nutri.backend.repositories.FormRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.criteria.From;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 

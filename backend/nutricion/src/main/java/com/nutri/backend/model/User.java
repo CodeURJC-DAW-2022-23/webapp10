@@ -3,12 +3,10 @@ package com.nutri.backend.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
-import org.hibernate.type.DateType;
 
 
 import javax.persistence.*;
 import java.sql.Blob;
-import java.util.Date;
 
 @Entity
 @Table(name="userTable")

@@ -8,7 +8,6 @@ import com.nutri.backend.service.RecepyService;
 import com.nutri.backend.service.UserService;
 import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.domain.Page;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;

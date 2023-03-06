@@ -1,11 +1,7 @@
 package com.nutri.backend.model;
 
 import javax.persistence.*;
-import java.time.DayOfWeek;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 @Entity
 public class Diet {

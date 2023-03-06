@@ -1,7 +1,6 @@
 package com.nutri.backend.repositories;
 
 import com.nutri.backend.model.Recepy;
-import com.nutri.backend.model.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
