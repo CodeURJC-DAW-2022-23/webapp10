@@ -142,12 +142,33 @@ The different technologies used for this phase are:
 
 #### CONFIGURATION
 
-In order to get our project code, you need to enter GitHub https://github.com/CodeURJC-DAW-2022-23/webapp10 , press code button and download the zip.
+In order to get our project code, you need to enter GitHub https://github.com/CodeURJC-DAW-2022-23/webapp10 , press code
+button and download the zip.
 The following steps are needed to install the Data base:
 
+1. Go to the MySQL website (https://dev.mysql.com/downloads/workbench/) and click on "Download" under the MySQL Workbench
+Community (GPL) section.
+
+2. Select your operating system and click "Download" to start the download process.
+
+3. Once the download is complete, open the installation file and follow the instructions to install MySQL Workbench on 
+your computer.
+
+4. Launch MySQL Workbench from your applications or start menu.
+
+5. Click on the "Local instance 3306" under the "MySQL Connections" section to connect to the default local MySQL server.
+
+6. Enter your MySQL server credentials if prompted.
+
+7. Once connected, you can create or manage databases, tables, and execute SQL queries using the MySQL Workbench interface.
+
+8. In order to use this DB you must insert new data to the DB by adding in DataSampleService info about the elements in tables.
+
+9.Moreover, you should change the aplication.properties to create-drop instead of update.
 
 #### EXECUTION
-The IDE used to program the app is IntelliJ. In order to run the app you cave to press the button run located on the IDE and make sure is located in backend directory. After that, it is needed to open a browser, preferable Google Chrome. To see the main page, write on the search bar http://localhost:8443/ . 
+The IDE used to program the app is IntelliJ. In order to run the app you cave to press the button run located on the IDE
+and make sure is located in backend directory. After that, it is needed to open a browser, preferable Google Chrome. To see the main page, write on the search bar http://localhost:8443/ . 
 
 
 ### DATA BASE ENTITIES DIAGRAM
