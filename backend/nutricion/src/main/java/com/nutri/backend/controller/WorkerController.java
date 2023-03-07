@@ -4,6 +4,7 @@ import com.nutri.backend.model.*;
 import com.nutri.backend.repositories.DietRepository;
 import com.nutri.backend.repositories.RecepyRepository;
 import com.nutri.backend.repositories.UserRepository;
+import com.nutri.backend.service.DietService;
 import com.nutri.backend.service.RecepyService;
 import com.nutri.backend.service.UserService;
 import org.hibernate.engine.jdbc.BlobProxy;
@@ -43,15 +44,13 @@ public class WorkerController {
 	@Autowired
 	private UserService userService;
 	@Autowired
-	private RecepyRepository recepyRepository;
-	@Autowired
-	private DietRepository dietRepository;
+	private DietService dietService;
 
 
 	@GetMapping("/worker")
 	public String showWorker(Model model, HttpServletRequest request) {
 		String name = request.getUserPrincipal().getName();
-		User user = userRepository.findByEmail(name).orElseThrow();
+		User user = userService.findByEmail(name).orElseThrow();
 		Page<User> clientPage = userService.findPageClient(0, "client");
 		model.addAttribute("name", user.getName());
 		model.addAttribute("clientPage",clientPage.toList());
@@ -74,7 +73,7 @@ public class WorkerController {
 	public String viewRecipe(Model model, HttpServletRequest request) {
 		String name = request.getUserPrincipal().getName();
 		Page<Recepy> recepiesPage = recepyService.getPageOfRecepies(0) ;
-		User user = userRepository.findByEmail(name).orElseThrow();
+		User user = userService.findByEmail(name).orElseThrow();
 		model.addAttribute("name", user.getName());
 		model.addAttribute("recepy",recepiesPage.toList());
 		model.addAttribute("last",recepiesPage.getTotalPages());
@@ -91,25 +90,16 @@ public class WorkerController {
 
 	}
 
-	@GetMapping("/workerDiets")
-	public String workerDiets(Model model, HttpServletRequest request) {
-		String name = request.getUserPrincipal().getName();
-		User user = userRepository.findByEmail(name).orElseThrow();
-		Page<User> clientPage = userService.findPageClient(0, "worker");
-		model.addAttribute("name", user.getName());
-		model.addAttribute("client",userRepository.findByUserType("client"));
-		model.addAttribute("id", user.getId());
-		return "USR_WorkerDiets";
-	}
+
 
 	@GetMapping("/workerUploadDiets")
 	public String workerUploadDiets(Model model, HttpServletRequest request) {
 		String name = request.getUserPrincipal().getName();
-		User user = userRepository.findByEmail(name).orElseThrow();
+		User user = userService.findByEmail(name).orElseThrow();
 		model.addAttribute("name", user.getName());
-		model.addAttribute("recepyBreakfast",recepyRepository.findByKindOfRecepy("Breakfast"));
-		model.addAttribute("recepyLunch",recepyRepository.findByKindOfRecepy("Lunch"));
-		model.addAttribute("recepyDinner",recepyRepository.findByKindOfRecepy("Dinner"));
+		model.addAttribute("recepyBreakfast",recepyService.findByKindOfRecepy("Breakfast"));
+		model.addAttribute("recepyLunch",recepyService.findByKindOfRecepy("Lunch"));
+		model.addAttribute("recepyDinner",recepyService.findByKindOfRecepy("Dinner"));
 		model.addAttribute("id", user.getId());
 		return "USR_WorkerUploadDiets";
 	}
@@ -126,7 +116,7 @@ public class WorkerController {
 									@RequestParam String dinsat,@RequestParam String dinsun,
 									@RequestParam String type_diet) {
 		String name = request.getUserPrincipal().getName();
-		User user = userRepository.findByEmail(name).orElseThrow();
+		User user = userService.findByEmail(name).orElseThrow();
 		String[] breakfast={brmon,brtue,brwed,brthr,brfri,brsat,brsun};
 		String[] luch={lunmon,luntue,lunwed,lunthr,lunfri,lunsat,lunsun};
 		String[] dinner={dinmon,dintue,dinwed,dinthr,dinfri,dinsat,dinsun};
@@ -151,7 +141,7 @@ public class WorkerController {
 			}
 		}
 		Diet diet=new Diet(name1,week,type_diet);
-		dietRepository.save(diet);
+		dietService.save(diet);
 		model.addAttribute("name", user.getName());
 		model.addAttribute("id", user.getId());
 		return "redirect:/viewDiet";
@@ -161,7 +151,7 @@ public class WorkerController {
 	@GetMapping("/workerUploadRecipes")
 	public String workerUploadRecepies(Model model, HttpServletRequest request) {
 		String name = request.getUserPrincipal().getName();
-		User user = userRepository.findByEmail(name).orElseThrow();
+		User user = userService.findByEmail(name).orElseThrow();
 		model.addAttribute("name", user.getName());
 		model.addAttribute("id", user.getId());
 		return "USR_WorkerUploadRecipes";
@@ -181,26 +171,18 @@ public class WorkerController {
 		recetaAux.setName(recipe);
 		recetaAux.setIngredients(ingredients);
 		recetaAux.setKindOfRecepy(recipetype);
-		recepyRepository.save(recetaAux);
+		recepyService.save(recetaAux);
 		return "redirect:/viewRecipe";
 	}
 
-	@PostMapping("/deleteRecepy")
-	public String deleteRecepy(@RequestParam(required = false) List<Long> id){
-		if(id != null) {
-			for (Long l : id) {
-				recepyRepository.deleteById(l);
-			}
-		}
-		return "redirect:/viewRecepy";
-	}
+
 
 
 	@GetMapping("/viewDiet")
 	public String viewDiet(Model model, HttpServletRequest request) {
 		String name = request.getUserPrincipal().getName();
-		User user = userRepository.findByEmail(name).orElseThrow();
-		List<Diet> dietas=dietRepository.findAll();
+		User user = userService.findByEmail(name).orElseThrow();
+		List<Diet> dietas=dietService.findAll();
 		Map<String,String> tupla= new HashMap<>();
 		for (Diet dieta:dietas){
 			tupla.put(dieta.getName(),dieta.printWeek(dieta.getWeek()));
@@ -213,7 +195,7 @@ public class WorkerController {
 	@GetMapping("/workerProfile")
 	public String workerProfile(Model model, HttpServletRequest request) {
 		String name = request.getUserPrincipal().getName();
-		User user = userRepository.findByEmail(name).orElseThrow();
+		User user = userService.findByEmail(name).orElseThrow();
 		model.addAttribute("name", user.getName());
 		model.addAttribute("user", user);
 		model.addAttribute("id", user.getId());
@@ -223,7 +205,7 @@ public class WorkerController {
 	@GetMapping("/workerEditProfile")
 	public String workerEditProfile(Model model, HttpServletRequest request) {
 		String name = request.getUserPrincipal().getName();
-		User user = userRepository.findByEmail(name).orElseThrow();
+		User user = userService.findByEmail(name).orElseThrow();
 		model.addAttribute("name", user.getName());
 		model.addAttribute("surname",user.getSurname());
 		model.addAttribute("image",user.getImageFile());
@@ -240,7 +222,7 @@ public class WorkerController {
 		final Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
 		final Matcher matcher = pattern.matcher(clientPassword);
 		String nameRep = request.getUserPrincipal().getName();
-		User user = userRepository.findByEmail(nameRep).orElseThrow();
+		User user = userService.findByEmail(nameRep).orElseThrow();
 		String name=user.getName();
 		String surname=user.getSurname();
 		if (!clientPassword.equals(clientPasswordRepeat) && !matcher.matches()){
@@ -262,12 +244,12 @@ public class WorkerController {
 				user.setImageFile(BlobProxy.generateProxy(clientImage.getInputStream(), clientImage.getSize()));
 			}
 		}
-		userRepository.save(user);
+		userService.save(user);
 		return "redirect:/workerEditProfile";
 	}
 	@GetMapping("/worker/{id}/image")
 	public ResponseEntity<Object> downloadworkerImage(@PathVariable long id) throws SQLException {
-		Optional<User> optMon = userRepository.findById(id);
+		Optional<User> optMon = userService.findById(id);
 		if (optMon.get().getImageFile() != null) {
 			Resource file = new InputStreamResource(
 					optMon.get().getImageFile().getBinaryStream());
@@ -283,13 +265,13 @@ public class WorkerController {
 	@PostMapping("/{id}/image")
 	public ResponseEntity<Object> uploadImage(@PathVariable long id,
 											  @RequestParam MultipartFile imageFile) throws IOException {
-		Optional<User> optMon = userRepository.findById(id);
+		Optional<User> optMon = userService.findById(id);
 		URI location = fromCurrentRequest().build().toUri();
 		optMon.get().setImage(location.toString());
 
 		optMon.get().setImageFile(BlobProxy.generateProxy(
 				imageFile.getInputStream(), imageFile.getSize()));
-		userRepository.save(optMon.get());
+		userService.save(optMon.get());
 		return ResponseEntity.created(location).build();
 	}
 

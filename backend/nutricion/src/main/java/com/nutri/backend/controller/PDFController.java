@@ -5,6 +5,8 @@ import com.itextpdf.html2pdf.HtmlConverter;
 import com.nutri.backend.model.Recepy;
 import com.nutri.backend.model.User;
 import com.nutri.backend.repositories.UserRepository;
+import com.nutri.backend.service.RecepyService;
+import com.nutri.backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
@@ -35,13 +37,13 @@ import java.util.Optional;
 public class PDFController {
 
     @Autowired
-    private UserRepository userRepository;
+    private UserService userService;
 
     @Autowired
     ServletContext servletContext;
 
     @Autowired
-    private RecepyRepository recepyRepository;
+    private RecepyService recepyService;
 
     private final TemplateEngine templateEngine;
 
@@ -53,7 +55,7 @@ public class PDFController {
     public String getRecipePage(Model model, @RequestParam(required = false) List<Long> id) {
         if (id != null) {
             for (Long l : id) {
-                Optional<Recepy> recipe = recepyRepository.findById(l);
+                Optional<Recepy> recipe = recepyService.findById(l);
                 model.addAttribute("recipeEntry", recipe);
             }
         } else {
@@ -63,7 +65,7 @@ public class PDFController {
     }
     @GetMapping("/recepy/image/{id}")
     public ResponseEntity<InputStreamResource> downloadUserAvatarImage(@PathVariable Long id) throws SQLException {
-        Optional<Recepy> recepy = recepyRepository.findById(id);
+        Optional<Recepy> recepy = recepyService.findById(id);
         if (!recepy.get().getImage().isEmpty()){
             HttpHeaders responseHeaders = new HttpHeaders();
             responseHeaders.set("Content-Disposition",
@@ -79,11 +81,11 @@ public class PDFController {
     @PostMapping("/downloadRecepy")
     public Object getRecepyPDF(HttpServletRequest request, HttpServletResponse response, @RequestParam(required = false) List<Long> id) throws IOException, SQLException {
         String name = request.getUserPrincipal().getName();
-        User user = userRepository.findByEmail(name).orElseThrow();
+        User user = userService.findByEmail(name).orElseThrow();
         if (id != null) {
             Optional<Recepy> recipe;
             for (Long l : id) {
-                recipe = recepyRepository.findById(l);
+                recipe = recepyService.findById(l);
                 String recipeType = recipe.get().getKindOfRecepy();
                 if (recipeType.equals("Breakfast")){
                     int bCounter = user.getbCounter();
@@ -99,7 +101,7 @@ public class PDFController {
                     user.setdCounter(dCounter);
                 }
             }
-            userRepository.save(user);
+            userService.save(user);
         }
 
         /* Do Business Logic*/
@@ -109,8 +111,8 @@ public class PDFController {
                 //int i = 0;
                 Optional<Recepy> recipe = Optional.empty();
                 for (Long l : id) {
-                    recipe = recepyRepository.findById(l);
-                    //recipes[i] = recepyRepository.findById(l).get();
+                    recipe = recepyService.findById(l);
+                    //recipes[i] = recepyService.findById(l).get();
                     //i++;
                 }
                 /* Create HTML using Thymeleaf template Engine */

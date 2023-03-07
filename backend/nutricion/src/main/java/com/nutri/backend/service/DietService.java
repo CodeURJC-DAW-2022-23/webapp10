@@ -19,6 +19,32 @@ public class DietService {
         return dietRepository.findAllByType(type);
     }
 
+    public void save(Diet diet){
+        dietRepository.save(diet);
+    }
+
+    public List<Diet> findAll(){
+        return dietRepository.findAll();
+    }
+
+    public Optional<Diet> findByName(String name){
+        return dietRepository.findByName(name);
+    }
+
+    public Optional<Diet> findByType(String type){
+        return dietRepository.findByType(type);
+    }
+
+    public int numOfDietsType(String type){
+        return dietRepository.numOfDietsType(type);
+    }
+
+    public int numOfDiets(){
+        return dietRepository.numOfDiets();
+    }
+
+
+
     public String dietAlgorithm(Form form) {
         String type="";
         double imc;
