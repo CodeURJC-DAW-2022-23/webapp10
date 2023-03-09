@@ -293,5 +293,19 @@ public class WorkerController {
 		return ResponseEntity.created(location).build();
 	}
 
+	@GetMapping("/deleteDiet")
+	public String deleteDiet(@RequestParam(required = false) List<String> key){
+		System.out.println(key);
+		if(key != null) {
+			for (String s : key) {
+				Optional<Diet> diet = dietRepository.findByName(s);
+				Long id = diet.get().getId();
+				dietRepository.deleteById(id);
+			}
+		}else{
+			return "redirect:/viewDiet";
+		}
+		return "redirect:/viewDiet";
+	}
 
 }

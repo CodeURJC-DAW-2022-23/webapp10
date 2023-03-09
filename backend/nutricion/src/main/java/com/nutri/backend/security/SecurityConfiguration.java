@@ -63,6 +63,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/workerProfile").hasAnyRole("worker");
         http.authorizeRequests().antMatchers("/viewDiet").hasAnyRole("worker");
         http.authorizeRequests().antMatchers("/viewRecipe").hasAnyRole("worker");
+        //http.authorizeRequests().antMatchers("/deleteDiet").hasAnyRole("worker");
 
         //client
         http.authorizeRequests().antMatchers("/clientDiets").hasAnyRole("client");
