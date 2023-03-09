@@ -63,6 +63,8 @@ public class UserService {
         return userRepository.findByUserType(type);
     }
 
+
+    //Admin services
     public HashMap<Integer,Integer> statisticsUserByMont(){
         HashMap<Integer,Integer> list = new HashMap<>(12);
         for(int i=0; i<12; i++){
@@ -86,5 +88,9 @@ public class UserService {
         }
         return list;
     }
+
+
+
+
 
 }

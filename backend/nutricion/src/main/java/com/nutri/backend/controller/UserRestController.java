@@ -15,6 +15,8 @@ import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.web.JsonPath;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -26,6 +28,7 @@ import java.security.Principal;
 import java.util.*;
 
 import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
+import static org.springframework.web.util.UriComponentsBuilder.newInstance;
 
 @RestController
 @RequestMapping("/api/users")
@@ -68,6 +71,7 @@ public class UserRestController {
             return ResponseEntity.notFound().build();
         }
     }
+
     //GET users
     @Operation(summary = "Get all users by type")
     @ApiResponses(value = {
@@ -88,7 +92,7 @@ public class UserRestController {
     @JsonView({User.WorkerLog.class})
     @GetMapping("")
     public ResponseEntity<List<User>> getWorkers(@RequestParam String type) {
-        return new ResponseEntity<>(userService.findByUserType(type),HttpStatus.OK);
+        return new ResponseEntity<>(userService.findByUserType(type), HttpStatus.OK);
     }
 
     //GET User with id
@@ -100,7 +104,7 @@ public class UserRestController {
                     description = "Found the user",
                     content = {@Content(
                             mediaType = "application/json",
-                            schema = @Schema(implementation=User.class)
+                            schema = @Schema(implementation = User.class)
                     )}
             ),
             @ApiResponse(
@@ -145,7 +149,7 @@ public class UserRestController {
             )
     })
     @GetMapping("/admin/stats/users")
-    public ResponseEntity<HashMap<Integer,Integer>> getAdminStatsUsers(){
+    public ResponseEntity<HashMap<Integer, Integer>> getAdminStatsUsers() {
         return new ResponseEntity<>(userService.statisticsUserByMont(), HttpStatus.OK);
     }
 
@@ -167,7 +171,7 @@ public class UserRestController {
             )
     })
     @GetMapping("/admin/stats/diets")
-    public ResponseEntity<HashMap<String,Integer>> getAdminStatsDiets(){
+    public ResponseEntity<HashMap<String, Integer>> getAdminStatsDiets() {
         return new ResponseEntity(userService.statisticsDiets(), HttpStatus.OK);
     }
 
@@ -189,7 +193,7 @@ public class UserRestController {
             )
     })
     @GetMapping("/admin/stats/earns")
-    public ResponseEntity<HashMap<Integer,Integer>> getAdminStatsEans(){
+    public ResponseEntity<HashMap<Integer, Integer>> getAdminStatsEans() {
         return new ResponseEntity<>(userService.statisticsEarnsByMonth(), HttpStatus.OK);
     }
 
@@ -211,14 +215,9 @@ public class UserRestController {
             )
     })
     @GetMapping("/admin/stats/diets/all")
-    public ResponseEntity<Integer> getAdminDiets(){
+    public ResponseEntity<Integer> getAdminDiets() {
         return new ResponseEntity(dietService.numOfDiets(), HttpStatus.OK);
     }
-
-
-
-
-
 
 
     //POST functions
@@ -232,7 +231,7 @@ public class UserRestController {
                     description = "Created",
                     content = {@Content(
                             mediaType = "application/json",
-                            schema = @Schema(implementation=User.class)
+                            schema = @Schema(implementation = User.class)
                     )}
             ),
             @ApiResponse(
@@ -247,10 +246,11 @@ public class UserRestController {
     public ResponseEntity<User> createMember(@RequestBody User user) {
         if (user.getUserType().equals("worker")) {
             Calendar c1 = Calendar.getInstance();
-            int month =c1.get(Calendar.MONTH) ;
+            int month = c1.get(Calendar.MONTH);
             user.setEntryDate(month);
             //setUserImage(user, "");
             user.setEncodedPassword(passwordEncoder.encode(user.getEncodedPassword()));
+            userService.save(user);
             URI location = fromCurrentRequest().path("/workers/{id}")
                     .buildAndExpand(user.getId()).toUri();
             return ResponseEntity.created(location).body(user);
@@ -258,16 +258,43 @@ public class UserRestController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
-    // private void setUserImage(User user, String path){
-    //    try {
-    //        Resource image = new ClassPathResource(path);
-    //
-    //    } catch(Exception e){
-    // }
-
 
     //DELETE functions
+    @Operation(summary = "Delete user ")
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Deleted",
+                    content = {@Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = User.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "403",
+                    description = "Forbidden",
+                    content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Not found",
+                    content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Invalid id supplied",
+                    content = @Content
+            )
+    })
+    @DeleteMapping("/{id}")
+    public ResponseEntity<User> deleteWorkers(@PathVariable Long id) {
+            try {
+                userService.delete(id);
+                return new ResponseEntity<>(null, HttpStatus.OK);
 
+            } catch (EmptyResultDataAccessException e) {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+        }
+    }
 
-    //UPDATE functions
-}
