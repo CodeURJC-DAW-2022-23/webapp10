@@ -1,21 +1,25 @@
 package com.nutri.backend.service;
 
 
+import com.nutri.backend.model.Diet;
 import com.nutri.backend.model.User;
+import com.nutri.backend.repositories.DietRepository;
 import com.nutri.backend.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class UserService {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    DietService dietService;
 
     public Page<User> findPageClient(int page, String s){return userRepository.findByUserType(PageRequest.of(page, 6), s);}
 
@@ -55,6 +59,32 @@ public class UserService {
         return userRepository.findAllByUserMonth(type,date);
     }
 
+    public List<User> findByUserType(String type){
+        return userRepository.findByUserType(type);
+    }
 
+    public HashMap<Integer,Integer> statisticsUserByMont(){
+        HashMap<Integer,Integer> list = new HashMap<>(12);
+        for(int i=0; i<12; i++){
+           list.put(i,userRepository.findByEntryDate(i));
+        }
+        return list;
+    }
+    public HashMap<String,Integer>statisticsDiets(){
+        String [] typesOfDiets={"Bulking","Cutting","Maintenence"};
+        HashMap<String,Integer> diets= new HashMap<>(3);
+        for(String type: typesOfDiets){
+            diets.put(type,dietService.numOfDietsType(type));
+        }
+        return diets ;
+    }
+
+    public HashMap<Integer,Integer> statisticsEarnsByMonth(){
+        HashMap<Integer,Integer> list = new HashMap<>(12);
+        for(int i=0; i<12; i++){
+            list.put(i,userRepository.findAllByUserMonth("client",i)*9);
+        }
+        return list;
+    }
 
 }

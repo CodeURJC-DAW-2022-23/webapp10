@@ -91,12 +91,4 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 
     }
-    //Activate for H2DB
-    //@Override
-  //  public void configure(WebSecurity web) throws Exception {
-     //   web
-     //           .ignoring()
-     //           .antMatchers("/h2-console/**");
-  //  }
-
 }

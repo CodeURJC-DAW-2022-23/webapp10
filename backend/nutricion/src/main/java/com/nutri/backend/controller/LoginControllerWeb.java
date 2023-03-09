@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.security.Principal;
 
 @Controller
-public class LoginController {
+public class LoginControllerWeb {
 
     @GetMapping("/")
     public String page(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

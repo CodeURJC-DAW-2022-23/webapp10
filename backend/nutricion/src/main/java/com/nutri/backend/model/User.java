@@ -57,18 +57,17 @@ public class User{
 
     //image
     @Column(nullable = true)
-    @JsonView({ClientLog.class, WorkerLog.class})
     private String image;
 
     @Column(nullable = false)
-    @JsonView({WorkerBasic.class, WorkerLog.class})
-    private int bCounter=0;
+    @JsonView({ClientBasic.class, ClientLog.class})
+    private int bCounter;
     @Column(nullable = false)
-    @JsonView({WorkerBasic.class, WorkerLog.class})
-    private int lCounter=0;
+    @JsonView({ClientLog.class, ClientBasic.class})
+    private int lCounter;
     @Column(nullable = false)
-    @JsonView({WorkerBasic.class, WorkerLog.class})
-    private int dCounter=0;
+    @JsonView({ClientBasic.class, ClientLog.class})
+    private int dCounter;
 
 
     //entryDate

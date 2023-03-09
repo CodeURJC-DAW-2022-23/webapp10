@@ -40,6 +40,39 @@ public class RestSecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    protected void configure(HttpSecurity http) throws Exception {}
+    protected void configure(HttpSecurity http) throws Exception {
+        //http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/users/workers/new/**").hasRole("admin");
+
+
+        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/users/{type}").hasRole("admin");
+        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/users/{id}").hasRole("admin");
+        http.authorizeRequests().antMatchers(HttpMethod.POST,"/api/users/workers/").hasRole("admin");
+        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/users/workers/").hasRole("admin");
+        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/users/admin/stats/users").hasRole("admin");
+        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/users/admin/stats/diets").hasRole("admin");
+        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/users/admin/stats/earns").hasRole("admin");
+
+
+        //Personal Info
+        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/users/me").hasAnyRole("worker","client");
+
+        http.authorizeRequests().anyRequest().permitAll();
+
+        // Disable CSRF protection (it is difficult to implement in REST APIs)
+        http.csrf().disable();
+
+        // Disable Http Basic Authentication
+        http.httpBasic().disable();
+
+        // Disable Form login Authentication
+        http.formLogin().disable();
+
+        // Avoid creating session
+        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+
+        // Add JWT Token filter
+        http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+
+    }
 
 }
