@@ -19,6 +19,8 @@ public class User{
     public interface WorkerBasic{}
     //Interface for worker columns: id, name, surname, NIF, email, description.
     public interface WorkerLog{}
+    //Interface for downloads in the web.
+    public interface ClientInfo{}
 
     //Columns
     //ID
@@ -60,13 +62,13 @@ public class User{
     private String image;
 
     @Column(nullable = false)
-    @JsonView({ClientBasic.class, ClientLog.class})
+    @JsonView(ClientInfo.class)
     private int bCounter;
     @Column(nullable = false)
-    @JsonView({ClientLog.class, ClientBasic.class})
+    @JsonView(ClientInfo.class)
     private int lCounter;
     @Column(nullable = false)
-    @JsonView({ClientBasic.class, ClientLog.class})
+    @JsonView(ClientInfo.class)
     private int dCounter;
 
 

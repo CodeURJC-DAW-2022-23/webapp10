@@ -43,27 +43,31 @@ public class RestSecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http.antMatcher("/api/**");
-
         //admin URLs
-        http.authorizeRequests().antMatchers(HttpMethod.GET,"/users/{type}").hasRole("admin");
-        http.authorizeRequests().antMatchers(HttpMethod.GET,"/users/{id}").hasRole("admin");
-        http.authorizeRequests().antMatchers(HttpMethod.POST,"/users/workers/").hasRole("admin");
-        http.authorizeRequests().antMatchers(HttpMethod.GET,"/users/admin/stats/users").hasRole("admin");
-        http.authorizeRequests().antMatchers(HttpMethod.GET,"/users/admin/stats/diets").hasRole("admin");
-        http.authorizeRequests().antMatchers(HttpMethod.GET,"/users/admin/stats/earns").hasRole("admin");
-        http.authorizeRequests().antMatchers(HttpMethod.DELETE,"/users/workers/{id}").hasRole("admin");
-
-
+        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/users").hasRole("admin");
+        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/users/{id}").hasRole("admin");
+        http.authorizeRequests().antMatchers(HttpMethod.POST,"/api/users/workers/").hasRole("admin");
+        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/users/admin/stats/users").hasRole("admin");
+        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/users/admin/stats/diets").hasRole("admin");
+        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/users/admin/stats/earns").hasRole("admin");
+        http.authorizeRequests().antMatchers(HttpMethod.DELETE,"/api/users/{id}").hasRole("admin");
+        http.authorizeRequests().antMatchers(HttpMethod.DELETE,"/api/users").hasRole("admin");
         //Client URL
-        http.authorizeRequests().antMatchers(HttpMethod.GET,"/users/me/recepies").hasRole("client");
-        http.authorizeRequests().antMatchers(HttpMethod.GET,"/users/me/stats").hasRole("client");
-
-
+        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/users/me/recepies").hasRole("client");
+        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/users/me/diets").hasRole("client");
+        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/users/me/stats").hasRole("client");
+        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/forms/me").hasRole("client");
+        //Worker URL
+        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/recepies").hasRole("worker");
+        http.authorizeRequests().antMatchers(HttpMethod.POST,"/api/recepies/").hasRole("worker");
+        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/diets").hasRole("worker");
+        http.authorizeRequests().antMatchers(HttpMethod.POST,"/api/diets/").hasRole("worker");
+        http.authorizeRequests().antMatchers(HttpMethod.DELETE,"/api/diets").hasRole("worker");
 
 
 
         //Personal Info
-        http.authorizeRequests().antMatchers(HttpMethod.GET,"/users/me").hasAnyRole("worker","client");
+        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/users/me").hasAnyRole("worker","client");
 
         http.authorizeRequests().anyRequest().permitAll();
 

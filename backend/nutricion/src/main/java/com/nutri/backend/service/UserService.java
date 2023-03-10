@@ -10,6 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 
 @Service
@@ -88,6 +89,16 @@ public class UserService {
         }
         return list;
     }
+    public HashMap<String ,Integer> statisticsRecepiesDownloaded(HttpServletRequest request){
+        User user = userRepository.findByEmail(request.getUserPrincipal().getName()).orElseThrow();
+        String[] recepiesType= {"BreakFast","Lunch","Dinner"};
+        HashMap<String,Integer> list = new HashMap<>(12);
+        list.put("Breakfast",user.getbCounter());
+        list.put("Lunch",user.getlCounter());
+        list.put("Dinner",user.getdCounter());
+        return list;
+    }
+
 
 
 

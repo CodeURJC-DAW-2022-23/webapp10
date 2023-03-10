@@ -3,8 +3,11 @@ package com.nutri.backend.controller;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.nutri.backend.model.Diet;
+import com.nutri.backend.model.Recepy;
+import com.nutri.backend.model.Triplet;
 import com.nutri.backend.model.User;
 import com.nutri.backend.service.DietService;
+import com.nutri.backend.service.RecepyService;
 import com.nutri.backend.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -43,8 +46,11 @@ public class UserRestController {
     @Autowired
     private DietService dietService;
 
+    @Autowired
+    private RecepyService recepyService;
+
     //GET functions
-    //GET log monitor
+    //GET log user
     @Operation(summary = "Get user logged in the application")
     @ApiResponses(value = {
             @ApiResponse(
@@ -176,7 +182,6 @@ public class UserRestController {
     }
 
     @Operation(summary = "Get admin statistics earns")
-
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
@@ -219,9 +224,125 @@ public class UserRestController {
         return new ResponseEntity(dietService.numOfDiets(), HttpStatus.OK);
     }
 
+    //User GET methods
+    @Operation(summary = "Get Client Recepies")
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Found",
+                    content = {@Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = Recepy.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Not found",
+                    content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "403",
+                    description = "Forbidden",
+                    content = @Content
+    )
+
+    })
+    @JsonView(Recepy.RecepyBasic.class)
+    @GetMapping("/me/recepies")
+    public ResponseEntity<List<Recepy>> getClientRecepies(HttpServletRequest request) {
+        Principal principal = request.getUserPrincipal();
+        User user = userService.findByEmail(principal.getName()).orElseThrow();
+        List<Recepy> recepies = new ArrayList<>();
+        Optional<Diet> diet = Optional.ofNullable(user.getDiet());
+
+            if (diet.isPresent()) {
+                try {
+                Triplet[] diet1 = diet.get().getWeek();
+                for (Triplet aux : diet1) {
+                    Recepy recepy = recepyService.findByName((String) aux.Breakfast).orElseThrow();
+                    if (!recepies.contains(recepy))
+                        recepies.add(recepy);
+                    Recepy recepy1 = recepyService.findByName((String) aux.Lunch).orElseThrow();
+                    if (!recepies.contains(recepy1))
+                        recepies.add(recepy1);
+                    Recepy recepy2 = recepyService.findByName((String) aux.Dinner).orElseThrow();
+                    if (!recepies.contains(recepy2))
+                        recepies.add(recepy2);
+                }
+            }catch (EmptyResultDataAccessException e) {
+                   return new ResponseEntity<>(HttpStatus.NOT_FOUND);}
+            return new ResponseEntity<>(recepies, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(null,HttpStatus.BAD_REQUEST);
+    }
+    @Operation(summary = "Get Client Diet")
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Found",
+                    content = {@Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = Diet.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Not found",
+                    content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "403",
+                    description = "Forbidden",
+                    content = @Content
+            )
+
+    })
+    @JsonView(Diet.DietBasic.class)
+    @GetMapping("/me/diets")
+    public ResponseEntity<Diet> getClientDiet(HttpServletRequest request) {
+        Principal principal = request.getUserPrincipal();
+        User user = userService.findByEmail(principal.getName()).orElseThrow();
+        Diet diet = dietService.findByName(user.getDiet().getName()).orElseThrow();
+            try {
+                return new ResponseEntity<>(diet,HttpStatus.OK);
+            } catch (EmptyResultDataAccessException e) {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+    }
+
+    @Operation(summary = "Get Client Stats")
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Found",
+                    content = {@Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = User.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Not found",
+                    content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "403",
+                    description = "Forbidden",
+                    content = @Content
+            )
+
+    })
+    @JsonView(User.ClientInfo.class)
+    @GetMapping("/me/stats")
+    public ResponseEntity<List<HashMap<String,Integer>>> getClientStats(HttpServletRequest request) {
+        try {
+            return new ResponseEntity(userService.statisticsRecepiesDownloaded(request),HttpStatus.OK);
+
+        }catch (EmptyResultDataAccessException e){return new ResponseEntity<>(HttpStatus.NOT_FOUND);}
+    }
+
 
     //POST functions
-
     //POST members
     @Operation(summary = "Post a new worker")
 
@@ -240,7 +361,6 @@ public class UserRestController {
                     content = @Content
             )
     })
-
     @PostMapping("/workers/")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<User> createMember(@RequestBody User user) {
@@ -260,7 +380,7 @@ public class UserRestController {
     }
 
     //DELETE functions
-    @Operation(summary = "Delete user ")
+    @Operation(summary = "Delete users ")
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
@@ -276,25 +396,24 @@ public class UserRestController {
                     content = @Content
             ),
             @ApiResponse(
-                    responseCode = "404",
-                    description = "Not found",
-                    content = @Content
-            ),
-            @ApiResponse(
                     responseCode = "400",
-                    description = "Invalid id supplied",
+                    description = "Invalid ids supplied",
                     content = @Content
             )
     })
-    @DeleteMapping("/{id}")
-    public ResponseEntity<User> deleteWorkers(@PathVariable Long id) {
-            try {
-                userService.delete(id);
-                return new ResponseEntity<>(null, HttpStatus.OK);
-
-            } catch (EmptyResultDataAccessException e) {
-                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    @DeleteMapping("")
+    public ResponseEntity<List<User>> deleteListOfWorkers(@RequestParam List<Long> ids) {
+        if(ids != null) {
+            for (Long l : ids) {
+                if(userService.findById(l).isPresent()) {
+                    userService.delete(l);
+                }
             }
+            return new ResponseEntity<>(null,HttpStatus.OK);
         }
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
+
+
     }
 
