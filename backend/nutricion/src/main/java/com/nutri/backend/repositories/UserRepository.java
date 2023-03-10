@@ -25,4 +25,6 @@ public interface UserRepository extends JpaRepository<User,Long> {
     int findAllByUserMonth(String typeOfUser, int date);
     Page<User> findByUserType(Pageable page,String userType);
 
+    @Query(value = "SELECT * FROM USER_TABLE WHERE DIET_ID= :dietId",nativeQuery = true)
+    List<User> findByDiet(int dietId);
 }

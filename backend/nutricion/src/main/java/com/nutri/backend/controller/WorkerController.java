@@ -295,11 +295,18 @@ public class WorkerController {
 
 	@GetMapping("/deleteDiet")
 	public String deleteDiet(@RequestParam(required = false) List<String> key){
-		System.out.println(key);
 		if(key != null) {
 			for (String s : key) {
+				//look for the diet
 				Optional<Diet> diet = dietRepository.findByName(s);
 				Long id = diet.get().getId();
+				//delete foreign key at users table
+				List<User> users = userRepository.findByDiet(Math.toIntExact(id));
+				for (User u : users) {
+					u.setDiet(null);
+					userRepository.save(u);
+				}
+				//delete diet from repository
 				dietRepository.deleteById(id);
 			}
 		}else{
