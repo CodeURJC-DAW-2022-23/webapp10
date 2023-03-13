@@ -1,6 +1,8 @@
 package com.nutri.backend.model;
 
 import com.fasterxml.jackson.annotation.JsonView;
+import com.itextpdf.layout.element.Text;
+
 
 import javax.persistence.*;
 import java.util.List;
@@ -42,7 +44,6 @@ public class Diet {
         this.week = week;
     }
 
-    @JsonView(DietBasic.class)
     public String printWeek(Triplet[] week){
         Triplet[] semana=week;
         return "Week{\n" +
@@ -55,9 +56,8 @@ public class Diet {
                 "Sunday=" + semana[6].toString() + "\n"+
                 '}';
     }
-    @JsonView(DietBasic.class)
     @Column(length = 2048)
-    private Triplet week[]=new Triplet[7];
+    private Triplet[] week;
 
 
     //Users List
