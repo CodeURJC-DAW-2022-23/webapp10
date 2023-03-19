@@ -17,17 +17,22 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.web.JsonPath;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.net.URI;
 import java.security.Principal;
+import java.sql.SQLException;
 import java.util.*;
 
 import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
@@ -413,7 +418,80 @@ public class UserRestController {
         }
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
+    @Operation(summary = "Get user image")
 
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Found the exercise",
+                    content = {@Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = ClientController.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Not found",
+                    content = @Content
+            )
+    })
 
+    @GetMapping("/me/image")
+    public ResponseEntity<Object> downloadImage(HttpServletRequest request) throws SQLException {
+        Principal principal = request.getUserPrincipal();
+        User client = userService.findByEmail(principal.getName()).orElseThrow();
+
+        if (client.hasImage()) {
+
+            Resource file = new InputStreamResource(client.getImageFile().getBinaryStream());
+
+            return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
+                    .contentLength(client.getImageFile().length()).body(file);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
+    @Operation(summary = "POST a user image")
+
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "201",
+                    description = "Created",
+                    content = {@Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation=User.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "403",
+                    description = "Forbidden",
+                    content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Invalid id supplied",
+                    content = @Content
+            )
+    })
+
+    @PostMapping("/me/image/")
+    public ResponseEntity<Object> uploadMyImage(HttpServletRequest request, @RequestParam MultipartFile imageFile) throws IOException {
+        Principal principal = request.getUserPrincipal();
+
+        if (principal != null) {
+            User client = userService.findByEmail(principal.getName()).orElseThrow();
+
+            URI location = fromCurrentRequest().build().toUri();
+            client.setImage(location.toString());
+            client.setImageFile(BlobProxy.generateProxy(imageFile.getInputStream(), imageFile.getSize()));
+            userService.save(client);
+
+            return ResponseEntity.created(location).build();
+        }else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+
+}
 
