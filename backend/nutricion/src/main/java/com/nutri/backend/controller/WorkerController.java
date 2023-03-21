@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.w3c.dom.Text;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
@@ -45,6 +46,7 @@ public class WorkerController {
 	private UserService userService;
 	@Autowired
 	private DietService dietService;
+
 
 
 	@GetMapping("/worker")
@@ -122,6 +124,7 @@ public class WorkerController {
 		String[] dinner={dinmon,dintue,dinwed,dinthr,dinfri,dinsat,dinsun};
 		System.out.println(breakfast);
 		Triplet week[]=new Triplet[7];
+		String weekInfo[]=new String[7];
 		for (int aux=0;aux<week.length;aux++){
 			week[aux]=new Triplet(null,null,null);
 			if (breakfast[aux]!=null) {
@@ -139,8 +142,11 @@ public class WorkerController {
 			} else{
 				week[aux].Dinner="Nada";
 			}
+			weekInfo[aux]=week[aux].toString();
 		}
 		Diet diet=new Diet(name1,week,type_diet);
+		System.out.println(Arrays.toString(weekInfo));
+		String completeDiet =(Arrays.toString(weekInfo));
 		dietService.save(diet);
 		model.addAttribute("name", user.getName());
 		model.addAttribute("id", user.getId());

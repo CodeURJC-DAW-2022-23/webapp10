@@ -43,6 +43,8 @@ public class RestSecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http.antMatcher("/api/**");
+        http.authorizeRequests().antMatchers(HttpMethod.PUT,"/api/users/me").hasAnyRole("worker","client");
+        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/users/me").hasAnyRole("worker","client");
         //admin URLs
         http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/users").hasRole("admin");
         http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/users/{id}").hasRole("admin");
@@ -52,6 +54,10 @@ public class RestSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/users/admin/stats/earns").hasRole("admin");
         http.authorizeRequests().antMatchers(HttpMethod.DELETE,"/api/users/{id}").hasRole("admin");
         http.authorizeRequests().antMatchers(HttpMethod.DELETE,"/api/users").hasRole("admin");
+
+        //Generals
+        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/users/me/image").hasAnyRole("client","worker");
+        http.authorizeRequests().antMatchers(HttpMethod.POST,"/api/users/me/image").hasAnyRole("client","worker");
         //Client URL
         http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/users/me/recepies").hasRole("client");
         http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/users/me/diets").hasRole("client");
@@ -63,11 +69,8 @@ public class RestSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/diets").hasRole("worker");
         http.authorizeRequests().antMatchers(HttpMethod.POST,"/api/diets/").hasRole("worker");
         http.authorizeRequests().antMatchers(HttpMethod.DELETE,"/api/diets").hasRole("worker");
-
-
-
         //Personal Info
-        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/users/me").hasAnyRole("worker","client");
+
 
         http.authorizeRequests().anyRequest().permitAll();
 
