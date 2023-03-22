@@ -25,10 +25,7 @@ public class AdminController {
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
-
-	@Autowired
-	private UserRepository userRepository;
-
+	
 	@Autowired
 	private UserService  userService;
 
@@ -38,11 +35,11 @@ public class AdminController {
 	@GetMapping("/admin")
 	public String showAdmin(Model model, HttpServletRequest request) {
 		model.addAttribute("activeDiets",dietRepository.numOfDiets());
-		model.addAttribute("earns",userRepository.findAllByuser("client")*9);
-		model.addAttribute("Nclient",userRepository.findAllByuser("client"));
+		model.addAttribute("earns",userService.findAllByUser("client")*9);
+		model.addAttribute("Nclient",userService.findAllByUser("client"));
 		int month[]=new int[12];
 		for (int i=0;i<12;i+=1){
-			month[i]=(userRepository.findAllByUserMonth("client",i)*9);
+			month[i]=(userService.finAllByUserMonth("client",i)*9);
 		}
 		model.addAttribute("registeredUsers", Arrays.toString(month));
 		return "USR_Admin";
@@ -56,7 +53,7 @@ public class AdminController {
 		dietas[2]=dietRepository.numOfDietsType("Maintenence");
 		int month[]=new int[12];
 		for (int i=0;i<12;i+=1){
-			month[i]=(userRepository.findByEntryDate(i));
+			month[i]=(userService.findByEntryDate(i));
 		}
 		model.addAttribute("registeredUsers", Arrays.toString(month));
 		model.addAttribute("listDiets",Arrays.toString(dietas));
@@ -84,7 +81,7 @@ public class AdminController {
 	public String deleteWorker(Model model,@RequestParam(required = false) List<Long> id){
 		if(id != null) {
 			for (Long l : id) {
-				userRepository.deleteById(l);
+				userService.delete(l);
 			}
 		}else{
 			return "redirect:/workerTable";
@@ -104,7 +101,7 @@ public class AdminController {
 		User user = new User(workerName,workerLastname,workerEmail,workerDescription,passwordEncoder.encode(workerPassword));
 		user.setEntryDate(month);
 		setUserImage(user,new ClassPathResource("static/images/undraw_profile.jpg").getPath());
-		userRepository.save(user);
+		userService.save(user);
 		return "redirect:/workerTable";
 	}
 
@@ -128,7 +125,7 @@ public class AdminController {
 	}
 	@GetMapping("/tablesClient/{id}")
 	public String showUsers(Model model,@PathVariable long id){
-		User user =userRepository.findById(id).orElseThrow();
+		User user =userService.findById(id).orElseThrow();
 		model.addAttribute("name",user.getName());
 		model.addAttribute("surname",user.getSurname());
 		model.addAttribute("email", user.getEmail());
@@ -145,7 +142,7 @@ public class AdminController {
 	public String deleteUser(Model model, @RequestParam(required = false) List<Long> id){
 		if(id != null) {
 			for (Long l : id) {
-				userRepository.deleteById(l);
+				userService.delete(l);
 			}
 		}
 		return "redirect:/tablesClient";

@@ -1,8 +1,6 @@
 package com.nutri.backend.controller;
 
-import com.nutri.backend.repositories.FormRepository;
-import com.nutri.backend.repositories.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -13,13 +11,7 @@ import java.io.IOException;
 import java.security.Principal;
 
 @Controller
-public class LoginController {
-
-    @Autowired
-    private UserRepository userRepository;
-
-    @Autowired
-    private FormRepository formRepository;
+public class LoginControllerWeb {
 
     @GetMapping("/")
     public String page(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

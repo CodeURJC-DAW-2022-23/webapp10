@@ -1,22 +1,30 @@
 package com.nutri.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import com.itextpdf.layout.element.Text;
+
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 public class Diet {
-
+    public  interface  DietBasic{}
     //Columns
     //ID
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @JsonView(DietBasic.class)
     @Column(name = "ID")
     private long id;
 
     //name
+    @JsonView(DietBasic.class)
     @Column(nullable = false)
     private String name;
 
+    @JsonView(DietBasic.class)
     @Column(nullable = false)
     private String type;
 
@@ -48,9 +56,8 @@ public class Diet {
                 "Sunday=" + semana[6].toString() + "\n"+
                 '}';
     }
-
     @Column(length = 2048)
-    private Triplet week[]=new Triplet[7];
+    private Triplet[] week;
 
 
     //Users List

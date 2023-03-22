@@ -4,6 +4,7 @@ import com.nutri.backend.model.Form;
 import com.nutri.backend.model.User;
 import com.nutri.backend.repositories.FormRepository;
 import com.nutri.backend.repositories.UserRepository;
+import com.nutri.backend.service.UserService;
 import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
@@ -30,7 +31,7 @@ public class InitialationController {
 	private FormRepository formRep;
 
 	@Autowired
-	private UserRepository userRepository;
+	private UserService userService;
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
@@ -88,7 +89,7 @@ public class InitialationController {
 		while (!password.equals(passwordRepeat) && !matcher.matches()){
 			return "USR_NonRegRegister";
 		}
-		while(userRepository.existsByEmail(email)){
+		while(userService.existByEmail(email)){
 			return "USR_NonRegRegister";
 		}
 		Calendar c1 = Calendar.getInstance();
@@ -96,7 +97,7 @@ public class InitialationController {
 		User user = new User(name,lastName,email,passwordEncoder.encode(password));
 		user.setEntryDate(month);
 		setUserImage(user,new ClassPathResource("static/images/undraw_profile.jpg").getPath());
-		userRepository.save(user);
+		userService.save(user);
 		return "redirect:/login";
 	}
 

@@ -1,24 +1,30 @@
 package com.nutri.backend.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
 
 import javax.persistence.*;
 import java.sql.Blob;
 
 @Entity
 public class Recepy {
+    public interface RecepyBasic{}
+
     //Columns
     //ID
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @JsonView(RecepyBasic.class)
     @Column(name = "ID")
     private long id;
 
     //name
+    @JsonView(RecepyBasic.class)
     @Column(nullable = false)
     private String name;
 
     //description
+    @JsonView(RecepyBasic.class)
     @Column(nullable=false, length = 2048)
     private String description;
 
@@ -31,6 +37,7 @@ public class Recepy {
         this.ingredients = ingredients;
     }
 
+    @JsonView(RecepyBasic.class)
     @Column(nullable=false)
     private String ingredients;
 
@@ -50,6 +57,7 @@ public class Recepy {
         this.dietRecepy = dietRecepy;
     }
 
+    @JsonView(RecepyBasic.class)
     @Column(nullable = false)
     private String kindOfRecepy;
 

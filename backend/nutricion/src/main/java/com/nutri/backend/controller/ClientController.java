@@ -6,6 +6,8 @@ import com.nutri.backend.repositories.FormRepository;
 import com.nutri.backend.repositories.RecepyRepository;
 import com.nutri.backend.repositories.UserRepository;
 import com.nutri.backend.service.DietService;
+import com.nutri.backend.service.RecepyService;
+import com.nutri.backend.service.UserService;
 import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -31,7 +33,7 @@ import static org.springframework.web.servlet.support.ServletUriComponentsBuilde
 public class ClientController {
 
     @Autowired
-    private UserRepository userRepository;
+    private UserService userService;
 
     @Autowired
     private FormRepository formRep;
@@ -40,19 +42,18 @@ public class ClientController {
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    private RecepyRepository recepyRepository;
-
-    @Autowired
-    private DietRepository dietRepository;
+    private RecepyService recepyService;
 
     @Autowired
     private DietService dietService;
+
+
 
     //User Diets and Recepies controller
     @GetMapping("/clientDiets")
     public String diet(Model model, HttpServletRequest request, HttpServletResponse response) {
         String name = request.getUserPrincipal().getName();
-        User user = userRepository.findByEmail(name).orElseThrow();
+        User user = userService.findByEmail(name).orElseThrow();
         model.addAttribute("name", user.getName());
         model.addAttribute("id", user.getId());
         Optional<Diet> diet = Optional.ofNullable(user.getDiet());//user.getDiet()
@@ -92,7 +93,7 @@ public class ClientController {
                 List<Optional<Diet>> diets = dietService.findAllDietsByType(dietType);
                 Collections.shuffle(diets);
                 user.setDiet(diets.get(0).orElseThrow());
-                userRepository.save(user);
+                userService.save(user);
                 return "redirect:/clientDiets";
             }
         }
@@ -103,7 +104,7 @@ public class ClientController {
     @GetMapping("/clientRecipes")
     public String recipes(Model model, HttpServletRequest request) {
         String name = request.getUserPrincipal().getName();
-        User user = userRepository.findByEmail(name).orElseThrow();
+        User user = userService.findByEmail(name).orElseThrow();
         model.addAttribute("name", user.getName());
         model.addAttribute("id", user.getId());
         List<Recepy> recepies = new ArrayList<>();
@@ -111,13 +112,13 @@ public class ClientController {
         if (diet.isPresent()) {
             Triplet[] diet1 = diet.get().getWeek();
             for (Triplet aux : diet1) {
-                Recepy recepy = recepyRepository.findByName((String) aux.Breakfast).orElseThrow();
+                Recepy recepy = recepyService.findByName((String) aux.Breakfast).orElseThrow();
                 if(!recepies.contains(recepy))
                     recepies.add(recepy);
-                Recepy recepy1 = recepyRepository.findByName((String) aux.Lunch).orElseThrow();
+                Recepy recepy1 = recepyService.findByName((String) aux.Lunch).orElseThrow();
                 if(!recepies.contains(recepy1))
                     recepies.add(recepy1);
-                Recepy recepy2 = recepyRepository.findByName((String) aux.Dinner).orElseThrow();
+                Recepy recepy2 = recepyService.findByName((String) aux.Dinner).orElseThrow();
                 if(!recepies.contains(recepy2))
                     recepies.add(recepy2);
             }
@@ -135,7 +136,7 @@ public class ClientController {
     public String chart(Model model, HttpServletRequest request, HttpServletResponse response) {
         String name = request.getUserPrincipal().getName();
         int aux=0;
-        User user = userRepository.findByEmail(name).orElseThrow();
+        User user = userService.findByEmail(name).orElseThrow();
         model.addAttribute("name", user.getName());
         model.addAttribute("id", user.getId());
         int recepies[]= new int[3];
@@ -158,7 +159,7 @@ public class ClientController {
     @GetMapping("/clientForm")
     public String forms(Model model, HttpServletRequest request) {
         String name = request.getUserPrincipal().getName();
-        User user = userRepository.findByEmail(name).orElseThrow();
+        User user = userService.findByEmail(name).orElseThrow();
         model.addAttribute("name", user.getName());
         model.addAttribute("id", user.getId());
         return "USR_ClientForm";
@@ -172,7 +173,7 @@ public class ClientController {
         double height1 = Double.parseDouble(height);
         String dietType;
         String name = request.getUserPrincipal().getName();
-        User user = userRepository.findByEmail(name).orElseThrow();
+        User user = userService.findByEmail(name).orElseThrow();
         if (user.getForm() == (null)) {
             Form newForm = new Form(gensex, age, phactivity, weight1, height1, interest, aspiration);
             formRep.save(newForm);
@@ -181,7 +182,7 @@ public class ClientController {
             List<Optional<Diet>> diets = dietService.findAllDietsByType(dietType);
             Collections.shuffle(diets);
             user.setDiet(diets.get(0).orElseThrow());
-            userRepository.save(user);
+            userService.save(user);
         } else {
             Form newF = user.getForm();
             newF.setActivity(phactivity);
@@ -195,7 +196,7 @@ public class ClientController {
             List<Optional<Diet>> diets = dietService.findAllDietsByType(dietType);
             Collections.shuffle(diets);
             user.setDiet(diets.get(0).orElseThrow());
-            userRepository.save(user);
+            userService.save(user);
         }
         return "redirect:/clientDiets";
     }
@@ -205,7 +206,7 @@ public class ClientController {
     @GetMapping("/clientInfo")
     public String showInfo(Model model, HttpServletRequest request) {
         String name = request.getUserPrincipal().getName();
-        User user = userRepository.findByEmail(name).orElseThrow();
+        User user = userService.findByEmail(name).orElseThrow();
         model.addAttribute("name", user.getName());
         model.addAttribute("id", user.getId());
         return "USR_ProfileInfoClient";
@@ -214,7 +215,7 @@ public class ClientController {
     @GetMapping("/clientInfoSetting")
     public String editInfo(Model model, HttpServletRequest request) {
         String name = request.getUserPrincipal().getName();
-        User user = userRepository.findByEmail(name).orElseThrow();
+        User user = userService.findByEmail(name).orElseThrow();
         model.addAttribute("name", user.getName());
         model.addAttribute("id", user.getId());
         return "USR_ClientEditProfile";
@@ -223,7 +224,7 @@ public class ClientController {
     @GetMapping("/clientProfile")
     public String clientProfile(Model model, HttpServletRequest request) {
         String name = request.getUserPrincipal().getName();
-        User user = userRepository.findByEmail(name).orElseThrow();
+        User user = userService.findByEmail(name).orElseThrow();
         model.addAttribute("name", user.getName());
         model.addAttribute("email", user.getEmail());
         model.addAttribute("id", user.getId());
@@ -233,7 +234,7 @@ public class ClientController {
     @GetMapping("/clientEditProfile")
     public String editClientProfile(Model model, HttpServletRequest request) {
         String name = request.getUserPrincipal().getName();
-        User user = userRepository.findByEmail(name).orElseThrow();
+        User user = userService.findByEmail(name).orElseThrow();
         model.addAttribute("name", user.getName());
         model.addAttribute("surname", user.getSurname());
         model.addAttribute("id", user.getId());
@@ -249,7 +250,7 @@ public class ClientController {
         final Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
         final Matcher matcher = pattern.matcher(clientPassword);
         String nameRep = request.getUserPrincipal().getName();
-        User user = userRepository.findByEmail(nameRep).orElseThrow();
+        User user = userService.findByEmail(nameRep).orElseThrow();
         String name = user.getName();
         String surname = user.getSurname();
         if (!clientPassword.equals(clientPasswordRepeat) && !matcher.matches()) {
@@ -271,7 +272,7 @@ public class ClientController {
                 user.setImageFile(BlobProxy.generateProxy(clientImage.getInputStream(), clientImage.getSize()));
             }
         }
-        userRepository.save(user);
+        userService.save(user);
         return "redirect:/clientEditProfile";
     }
 
