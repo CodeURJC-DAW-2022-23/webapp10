@@ -1,0 +1,819 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+- url: http://localhost:8443
+  description: Generated server url
+paths:
+  /api/users/workers/:
+    post:
+      tags:
+      - user-rest-controller
+      summary: Post a new worker
+      operationId: createMember
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        "403":
+          description: Forbidden
+  /api/users/me/image/:
+    post:
+      tags:
+      - user-rest-controller
+      summary: POST a user image
+      operationId: uploadMyImage
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - imageFile
+              type: object
+              properties:
+                imageFile:
+                  type: string
+                  format: binary
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        "403":
+          description: Forbidden
+        "400":
+          description: Invalid id supplied
+  /api/recepies/:
+    post:
+      tags:
+      - recepy-rest-controller
+      summary: Post recepies in app
+      operationId: postRecepies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Recepy_RecepyBasic'
+        required: true
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Recepy_RecepyBasic'
+        "400":
+          description: Error creating
+        "403":
+          description: Forbidden
+  /api/forms/:
+    post:
+      tags:
+      - form-rest-controller
+      summary: Get user logged in the application
+      operationId: createForm
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Form'
+        required: true
+      responses:
+        "201":
+          description: Form created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Form'
+        "404":
+          description: Not found
+  /api/auth/refresh:
+    post:
+      tags:
+      - login-controller
+      operationId: refreshToken
+      parameters:
+      - name: refreshToken
+        in: cookie
+        required: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+  /api/auth/logout:
+    post:
+      tags:
+      - login-controller
+      operationId: logOut
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+  /api/auth/login:
+    post:
+      tags:
+      - login-controller
+      operationId: login
+      parameters:
+      - name: accessToken
+        in: cookie
+        required: false
+        schema:
+          type: string
+      - name: refreshToken
+        in: cookie
+        required: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+  /api/users:
+    get:
+      tags:
+      - user-rest-controller
+      summary: Get all users by type
+      operationId: getWorkers
+      parameters:
+      - name: type
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "404":
+          description: Not found
+        "200":
+          description: Found the users
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User_WorkerLog'
+    delete:
+      tags:
+      - user-rest-controller
+      summary: 'Delete users '
+      operationId: deleteListOfWorkers
+      parameters:
+      - name: ids
+        in: query
+        required: true
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int64
+      responses:
+        "400":
+          description: Invalid ids supplied
+        "403":
+          description: Forbidden
+        "200":
+          description: Deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+  /api/users/{id}:
+    get:
+      tags:
+      - user-rest-controller
+      summary: Get a user by id
+      operationId: getUserById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "404":
+          description: monitor not found
+        "200":
+          description: Found the user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        "400":
+          description: Invalid id supplied
+  /api/users/me:
+    get:
+      tags:
+      - user-rest-controller
+      summary: Get user logged in the application
+      operationId: userLoged
+      responses:
+        "404":
+          description: Not found
+        "200":
+          description: Found the user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User_WorkerLog'
+  /api/users/me/stats:
+    get:
+      tags:
+      - user-rest-controller
+      summary: Get Client Stats
+      operationId: getClientStats
+      responses:
+        "200":
+          description: Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User_ClientInfo'
+        "404":
+          description: Not found
+        "403":
+          description: Forbidden
+  /api/users/me/recepies:
+    get:
+      tags:
+      - user-rest-controller
+      summary: Get Client Recepies
+      operationId: getClientRecepies
+      responses:
+        "404":
+          description: Not found
+        "200":
+          description: Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Recepy_RecepyBasic'
+        "403":
+          description: Forbidden
+  /api/users/me/image:
+    get:
+      tags:
+      - user-rest-controller
+      summary: Get user image
+      operationId: downloadImage
+      responses:
+        "404":
+          description: Not found
+        "200":
+          description: Found the exercise
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientController'
+  /api/users/me/diets:
+    get:
+      tags:
+      - user-rest-controller
+      summary: Get Client Diet
+      operationId: getClientDiet
+      responses:
+        "200":
+          description: Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Diet_DietBasic'
+        "404":
+          description: Not found
+        "403":
+          description: Forbidden
+  /api/users/admin/stats/users:
+    get:
+      tags:
+      - user-rest-controller
+      summary: Get admin statistics users
+      operationId: getAdminStatsUsers
+      responses:
+        "200":
+          description: Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        "404":
+          description: Not found
+  /api/users/admin/stats/earns:
+    get:
+      tags:
+      - user-rest-controller
+      summary: Get admin statistics earns
+      operationId: getAdminStatsEans
+      responses:
+        "200":
+          description: Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        "404":
+          description: Not found
+  /api/users/admin/stats/diets:
+    get:
+      tags:
+      - user-rest-controller
+      summary: Get admin statistics diets
+      operationId: getAdminStatsDiets
+      responses:
+        "200":
+          description: Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        "404":
+          description: Not found
+  /api/users/admin/stats/diets/all:
+    get:
+      tags:
+      - user-rest-controller
+      summary: Get admin statistics all diets
+      operationId: getAdminDiets
+      responses:
+        "200":
+          description: Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        "404":
+          description: Not found
+  /api/recepies:
+    get:
+      tags:
+      - recepy-rest-controller
+      summary: Get recepies in app
+      operationId: getRecepies
+      responses:
+        "404":
+          description: Not found
+        "200":
+          description: Found recepies
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Recepy_RecepyBasic'
+  /api/recepies/me:
+    get:
+      tags:
+      - recepy-rest-controller
+      summary: Get Client Recepies
+      operationId: getClientRecepies_1
+      responses:
+        "404":
+          description: Not found
+        "200":
+          description: Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Recepy_RecepyBasic'
+        "403":
+          description: Forbidden
+  /api/forms/me:
+    get:
+      tags:
+      - form-rest-controller
+      summary: Get user logged in the application
+      operationId: getPersonalForm
+      responses:
+        "201":
+          description: Form created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Form'
+        "404":
+          description: Not found
+  /api/diets:
+    get:
+      tags:
+      - diet-rest-controller
+      summary: Get Diets in app
+      operationId: getDiets
+      responses:
+        "200":
+          description: Found diets
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Diet_DietBasic'
+        "404":
+          description: Not found
+components:
+  schemas:
+    Diet:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        type:
+          type: string
+        week:
+          type: array
+          items:
+            $ref: '#/components/schemas/Triplet'
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+    Form:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        sex:
+          type: string
+        activity:
+          type: string
+        interes:
+          type: string
+        diet:
+          type: string
+        age:
+          type: string
+        weight:
+          type: number
+          format: double
+        height:
+          type: number
+          format: double
+    Triplet:
+      type: object
+      properties:
+        Breakfast:
+          type: object
+        Lunch:
+          type: object
+        Dinner:
+          type: object
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        surname:
+          type: string
+        email:
+          type: string
+        encodedPassword:
+          type: string
+        form:
+          $ref: '#/components/schemas/Form'
+        image:
+          type: string
+          writeOnly: true
+        getbCounter:
+          type: integer
+          format: int32
+        getlCounter:
+          type: integer
+          format: int32
+        getdCounter:
+          type: integer
+          format: int32
+        entryDate:
+          type: integer
+          format: int32
+        description:
+          type: string
+        userType:
+          type: string
+        diet:
+          $ref: '#/components/schemas/Diet'
+    Diet_RecepyBasic:
+      type: object
+      properties:
+        week:
+          type: array
+          items:
+            $ref: '#/components/schemas/Triplet_RecepyBasic'
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/User_RecepyBasic'
+    Form_RecepyBasic:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        sex:
+          type: string
+        activity:
+          type: string
+        interes:
+          type: string
+        diet:
+          type: string
+        age:
+          type: string
+        weight:
+          type: number
+          format: double
+        height:
+          type: number
+          format: double
+    Recepy_RecepyBasic:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        description:
+          type: string
+        ingredients:
+          type: string
+        kindOfRecepy:
+          type: string
+        image:
+          type: string
+        dietRecepy:
+          $ref: '#/components/schemas/Diet_RecepyBasic'
+        diet:
+          $ref: '#/components/schemas/Diet_RecepyBasic'
+    Triplet_RecepyBasic:
+      type: object
+      properties:
+        Breakfast:
+          type: object
+        Lunch:
+          type: object
+        Dinner:
+          type: object
+    User_RecepyBasic:
+      type: object
+      properties:
+        encodedPassword:
+          type: string
+        form:
+          $ref: '#/components/schemas/Form_RecepyBasic'
+        image:
+          type: string
+          writeOnly: true
+        entryDate:
+          type: integer
+          format: int32
+        diet:
+          $ref: '#/components/schemas/Diet_RecepyBasic'
+    AuthResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - SUCCESS
+          - FAILURE
+        message:
+          type: string
+        error:
+          type: string
+    LoginRequest:
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+    Diet_WorkerLog:
+      type: object
+      properties:
+        week:
+          type: array
+          items:
+            $ref: '#/components/schemas/Triplet_WorkerLog'
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/User_WorkerLog'
+    Form_WorkerLog:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        sex:
+          type: string
+        activity:
+          type: string
+        interes:
+          type: string
+        diet:
+          type: string
+        age:
+          type: string
+        weight:
+          type: number
+          format: double
+        height:
+          type: number
+          format: double
+    Triplet_WorkerLog:
+      type: object
+      properties:
+        Breakfast:
+          type: object
+        Lunch:
+          type: object
+        Dinner:
+          type: object
+    User_WorkerLog:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        surname:
+          type: string
+        email:
+          type: string
+        encodedPassword:
+          type: string
+        form:
+          $ref: '#/components/schemas/Form_WorkerLog'
+        image:
+          type: string
+          writeOnly: true
+        entryDate:
+          type: integer
+          format: int32
+        description:
+          type: string
+        userType:
+          type: string
+        diet:
+          $ref: '#/components/schemas/Diet_WorkerLog'
+    Diet_ClientInfo:
+      type: object
+      properties:
+        week:
+          type: array
+          items:
+            $ref: '#/components/schemas/Triplet_ClientInfo'
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/User_ClientInfo'
+    Form_ClientInfo:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        sex:
+          type: string
+        activity:
+          type: string
+        interes:
+          type: string
+        diet:
+          type: string
+        age:
+          type: string
+        weight:
+          type: number
+          format: double
+        height:
+          type: number
+          format: double
+    Triplet_ClientInfo:
+      type: object
+      properties:
+        Breakfast:
+          type: object
+        Lunch:
+          type: object
+        Dinner:
+          type: object
+    User_ClientInfo:
+      type: object
+      properties:
+        encodedPassword:
+          type: string
+        form:
+          $ref: '#/components/schemas/Form_ClientInfo'
+        image:
+          type: string
+          writeOnly: true
+        getbCounter:
+          type: integer
+          format: int32
+        getlCounter:
+          type: integer
+          format: int32
+        getdCounter:
+          type: integer
+          format: int32
+        entryDate:
+          type: integer
+          format: int32
+        diet:
+          $ref: '#/components/schemas/Diet_ClientInfo'
+    ClientController:
+      type: object
+    Diet_DietBasic:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        type:
+          type: string
+        week:
+          type: array
+          items:
+            $ref: '#/components/schemas/Triplet_DietBasic'
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/User_DietBasic'
+    Form_DietBasic:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        sex:
+          type: string
+        activity:
+          type: string
+        interes:
+          type: string
+        diet:
+          type: string
+        age:
+          type: string
+        weight:
+          type: number
+          format: double
+        height:
+          type: number
+          format: double
+    Triplet_DietBasic:
+      type: object
+      properties:
+        Breakfast:
+          type: object
+        Lunch:
+          type: object
+        Dinner:
+          type: object
+    User_DietBasic:
+      type: object
+      properties:
+        encodedPassword:
+          type: string
+        form:
+          $ref: '#/components/schemas/Form_DietBasic'
+        image:
+          type: string
+          writeOnly: true
+        entryDate:
+          type: integer
+          format: int32
+        diet:
+          $ref: '#/components/schemas/Diet_DietBasic'
