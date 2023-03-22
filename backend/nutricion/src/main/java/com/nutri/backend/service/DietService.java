@@ -79,4 +79,8 @@ public class DietService {
         }
         return type;
     }
+
+    public void deleteById(Long id) {
+        dietRepository.deleteById(id);
+    }
 }

@@ -286,7 +286,7 @@ public class WorkerController {
 		if(key != null) {
 			for (String s : key) {
 				//look for the diet
-				Optional<Diet> diet = dietRepository.findByName(s);
+				Optional<Diet> diet = dietService.findByName(s);
 				Long id = diet.get().getId();
 				//delete foreign key at users table
 				List<User> users = userRepository.findByDiet(Math.toIntExact(id));
@@ -295,7 +295,7 @@ public class WorkerController {
 					userRepository.save(u);
 				}
 				//delete diet from repository
-				dietRepository.deleteById(id);
+				dietService.deleteById(id);
 			}
 		}else{
 			return "redirect:/viewDiet";
