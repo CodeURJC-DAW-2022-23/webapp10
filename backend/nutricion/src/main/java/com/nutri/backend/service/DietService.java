@@ -79,4 +79,12 @@ public class DietService {
         }
         return type;
     }
+
+    public Optional<Diet> findById(Long l) {
+        return dietRepository.findById(l);
+    }
+
+    public void delete(Long l) {
+        dietRepository.deleteById(l);
+    }
 }
