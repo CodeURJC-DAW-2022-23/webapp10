@@ -1,14 +1,14 @@
 version: "3.9"
 services:
   web:
-    image: thesmartway
+    image: ruky00/thesmartway
     ports:
       - "8443:8443"
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/TheSmartWay
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=password
-      - SPRING_JPA_HIBERNATE_DDL-AUTO=create-drop
+      - SPRING_JPA_HIBERNATE_DDL-AUTO=update
     depends_on:
       - db
     restart: on-failure

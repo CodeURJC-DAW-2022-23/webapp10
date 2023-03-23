@@ -87,4 +87,8 @@ public class DietService {
     public void delete(Long l) {
         dietRepository.deleteById(l);
     }
+
+    public void deleteById(Long id) {
+        dietRepository.deleteById(id);
+    }
 }
