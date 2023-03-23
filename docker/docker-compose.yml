@@ -1,14 +1,14 @@
 version: "3.9"
 services:
   web:
-    image: adroius/codeurjc-daw-2022-23-webapp10:v.1
+    image: thesmartway
     ports:
       - "8443:8443"
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/TheSmartWay
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=password
-      - SPRING_JPA_HIBERNATE_DDL-AUTO=update
+      - SPRING_JPA_HIBERNATE_DDL-AUTO=create-drop
     depends_on:
       - db
     restart: on-failure
@@ -20,5 +20,3 @@ services:
       MYSQL_DATABASE: TheSmartWay
     ports:
       - "3307:3306"
-#    volumes:
-#      - mysql-data:/var/lib/mysql

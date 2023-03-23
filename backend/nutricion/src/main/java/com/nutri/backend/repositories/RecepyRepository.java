@@ -13,7 +13,7 @@ public interface RecepyRepository extends JpaRepository<Recepy,Long> {
     Optional<Recepy> findByName(String name);
     Optional<Recepy> findByDescription(String email);
     Page<Recepy> findAll(Pageable page);
-    @Query(value = "SELECT * FROM RECEPY WHERE KIND_OF_RECEPY = :kindOfRecepy",nativeQuery = true)
+    @Query(value = "SELECT * FROM recepy WHERE KIND_OF_RECEPY = :kindOfRecepy",nativeQuery = true)
     List<Recepy> findByKindOfRecepy(String kindOfRecepy);
 
 }

@@ -12,15 +12,15 @@ public interface DietRepository extends JpaRepository<Diet, Long> {
      Optional<Diet> findByName(String name);
      Optional<Diet> findByType(String type);
 
-     @Query(value = "SELECT COUNT(*) FROM DIET WHERE TYPE= :Type",nativeQuery = true)
+     @Query(value = "SELECT COUNT(*) FROM diet WHERE TYPE= :Type",nativeQuery = true)
      int numOfDietsType(String Type);
 
-     @Query(value = "SELECT COUNT(*) FROM DIET",nativeQuery = true)
+     @Query(value = "SELECT COUNT(*) FROM diet",nativeQuery = true)
      int numOfDiets();
-     @Query(value = "SELECT NAME FROM DIET ",nativeQuery = true)
+     @Query(value = "SELECT NAME FROM diet ",nativeQuery = true)
      List<String> findOnlyName();
 
-     @Query(value = "SELECT WEEK FROM DIET ",nativeQuery = true)
+     @Query(value = "SELECT WEEK FROM diet ",nativeQuery = true)
      List<Triplet> findOnlyWeek();
 
     List<Optional<Diet>> findAllByType(String type);

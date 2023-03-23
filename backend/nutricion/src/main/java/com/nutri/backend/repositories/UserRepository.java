@@ -17,15 +17,15 @@ UserRepository extends JpaRepository<User,Long> {
     Optional<User> findByEmail(String email);
     List<User> findByUserType(String userType);
     boolean existsByEmail(String foo);
-    @Query(value = "SELECT COUNT(*) FROM USER_TABLE WHERE ENTRY_DATE= :date",nativeQuery = true)
+    @Query(value = "SELECT COUNT(*) FROM user_table WHERE ENTRY_DATE= :date",nativeQuery = true)
     int findByEntryDate(int date);
-    @Query(value = "SELECT COUNT(*) FROM USER_TABLE WHERE USER_TYPE= :typeOfUser",nativeQuery = true)
+    @Query(value = "SELECT COUNT(*) FROM user_table WHERE USER_TYPE= :typeOfUser",nativeQuery = true)
     int findAllByuser(String typeOfUser);
 
-    @Query(value = "SELECT COUNT(*) FROM USER_TABLE WHERE USER_TYPE= :typeOfUser AND ENTRY_DATE= :date",nativeQuery = true)
+    @Query(value = "SELECT COUNT(*) FROM user_table WHERE USER_TYPE= :typeOfUser AND ENTRY_DATE= :date",nativeQuery = true)
     int findAllByUserMonth(String typeOfUser, int date);
     Page<User> findByUserType(Pageable page,String userType);
 
-    @Query(value = "SELECT * FROM USER_TABLE WHERE DIET_ID= :dietId",nativeQuery = true)
+    @Query(value = "SELECT * FROM user_table WHERE DIET_ID= :dietId",nativeQuery = true)
     List<User> findByDiet(int dietId);
 }
