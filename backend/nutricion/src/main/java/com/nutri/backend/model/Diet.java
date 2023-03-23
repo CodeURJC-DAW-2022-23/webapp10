@@ -28,6 +28,19 @@ public class Diet {
     @Column(nullable = false)
     private String type;
 
+    public String[][] getDietRefactored() {
+        return dietRefactored;
+    }
+
+    public void setDietRefactored() {
+        DietRefactor aux = new DietRefactor();
+        this.dietRefactored = aux.setDietRefactorized(this.week);
+    }
+
+    @JsonView(DietBasic.class)
+    @Column(length = 2048)
+    private String[][] dietRefactored;
+
     public String getType() {
         return type;
     }
@@ -92,10 +105,13 @@ public class Diet {
         this.name = name;
     }
 
+
+
     public Diet(String name, Triplet[] week, String type){
         this.name=name;
         this.week=week;
         this.type=type;
+        this.setDietRefactored();
     }
 
 
