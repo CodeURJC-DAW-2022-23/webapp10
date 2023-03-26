@@ -364,18 +364,18 @@ I have worked on the functionalities of the admin, user and worker, i did part o
 
 | Name | Description |
 | - | - |
-| 1 | Image web use and show (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/50e09c0bc30e34da3c95b983e516f3b5b901271a) |
-| 2 | Charts admin and client (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/da8a90556fe74e4f802be1ddf6d1f3af224d3fd3) |
-| 3 | Default avatar and addWorker admin in function (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/b00fbe9a72e6f9f55171060fd13a98f53f36a404) |
-| 4 | Images load correctly from the data base (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/a6875016788ec2734eab3ae13d6d00d4eee1d5e9) |
-| 5 | Triplet array Diet (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/14c3dafeac9ef7b75202868f4fbbf236f626ea24) |
+| 1 | Apis get diet post diet (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/4c4457437aecd587ee7e4d33c687c13ba89701f2) |
+| 2 | Merge branch 'Docker' into apiRestDevelopment (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/fab87f264d14d3619ace1150a30c617e7b24bf5f) |
+| 3 | Api image (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/f5f202d8544a943c5fd11f1722b3426f8a19f30a) |
+| 4 | First try dockerfile (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/dedc02016f73184fb06618c1aab8dd9ccbfc31e3) |
+| 5 | Api images (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/0a672c931e000eaa6cd2e138feeb313611ff2cf4) |
 
 ##### FILES PARTICIPATED
 
 | File name | Link to github |
 | - | - |
-| 1 | WorkerController.java (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/nutricion/src/main/java/com/nutri/backend/controller/WorkerController.java) |
-| 2 | Triplet.java (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/nutricion/src/main/java/com/nutri/backend/model/Triplet.java) |
-| 3 | Diet.java (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/nutricion/src/main/java/com/nutri/backend/model/Diet.java) |
-| 4 | AdminController.java (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/nutricion/src/main/java/com/nutri/backend/controller/AdminController.java) |
-| 5 | ClientController.java (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/nutricion/src/main/java/com/nutri/backend/controller/ClientController.java) |
+| 1 | docker-compose.yml (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/docker/docker-compose.yml) |
+| 2 | dockerfile (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/docker/dockerfile) |
+| 3 | DietRestController.java  (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/backend/nutricion/src/main/java/com/nutri/backend/controller/DietRestController.java) |
+| 4 | RecepyRestController.java  (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/backend/nutricion/src/main/java/com/nutri/backend/controller/RecepyRestController.java) |
+| 5 | UserRestController.java  (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/backend/nutricion/src/main/java/com/nutri/backend/controller/UserRestController.java) |
