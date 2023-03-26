@@ -13,14 +13,18 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.net.URI;
 import java.security.Principal;
 import java.util.ArrayList;
@@ -91,6 +95,42 @@ public class RecepyRestController {
                     .buildAndExpand(recepy.getId()).toUri();
             return ResponseEntity.created(location).body(recepy);
         }catch (EmptyResultDataAccessException e){return new ResponseEntity<>(HttpStatus.BAD_REQUEST);}
+    }
+
+    @Operation(summary = "Post image recepies")
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "201",
+                    description = "Created",
+                    content = {@Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = Recepy.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Error creating",
+                    content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "403",
+                    description = "Forbidden",
+                    content = @Content
+            )
+    })
+    @JsonView(Recepy.RecepyBasic.class)
+    @PostMapping(value = "/image",
+            consumes = {MediaType.MULTIPART_FORM_DATA_VALUE},
+            produces = {MediaType.APPLICATION_JSON_VALUE} )
+    public ResponseEntity<Object> uploadMyImage(@RequestParam MultipartFile imageFile,@RequestParam long id) throws IOException {
+            Recepy recAux=recepyService.findById(id).orElseThrow();
+            try{
+                URI location = fromCurrentRequest().build().toUri();
+                recAux.setImage(location.toString());
+                recAux.setImageFile(BlobProxy.generateProxy(imageFile.getInputStream(), imageFile.getSize()));
+                recepyService.save(recAux);
+                return ResponseEntity.created(location).body(recAux);
+            }catch (EmptyResultDataAccessException e){return new ResponseEntity<>(HttpStatus.BAD_REQUEST);}
     }
 
     @Operation(summary = "Get Client Recepies")

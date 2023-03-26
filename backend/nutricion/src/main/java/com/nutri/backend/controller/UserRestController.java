@@ -474,10 +474,9 @@ public class UserRestController {
             )
     })
 
-    @PostMapping("/me/image/")
+    @PostMapping("/me/image")
     public ResponseEntity<Object> uploadMyImage(HttpServletRequest request, @RequestParam MultipartFile imageFile) throws IOException {
         Principal principal = request.getUserPrincipal();
-
         if (principal != null) {
             User client = userService.findByEmail(principal.getName()).orElseThrow();
 
