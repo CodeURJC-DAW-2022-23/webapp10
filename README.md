@@ -379,3 +379,31 @@ I have worked on the functionalities of the admin, user and worker, i did part o
 | 3 | Diet.java (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/nutricion/src/main/java/com/nutri/backend/model/Diet.java) |
 | 4 | AdminController.java (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/nutricion/src/main/java/com/nutri/backend/controller/AdminController.java) |
 | 5 | ClientController.java (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/nutricion/src/main/java/com/nutri/backend/controller/ClientController.java) |
+
+
+### MEMBERS PARTICIPATION
+#### Carlos Fernández López
+
+##### DESCRIPTION OF TASKS
+
+I have worked on the API REST development and th docker image.
+
+##### COMMITS DONE
+
+| Name | Description |
+| - | - |
+| 1 | API REST admin usage (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/301fd69ee8b523f0de1c499f3229b55661c87721) |
+| 2 | jwt introduction and some RestSecurity creations(https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/3086bbe5188133b237e65848474753993f7fe9b7) |
+| 3 | API REST client functions and worker recipes update 2(https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/87ff9d64c6f99188e49105c5b1359ed458285b01) |
+| 4 | Merge remote-tracking branch 'origin/main' into main(https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/723e077e60b9d483ee2ad6170478ae293477f6e7) |
+| 5 | paged items in API REST(https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/2e1bc8fab79bd05ed3a75d91dadde0f724b970d1) |
+
+##### FILES PARTICIPATED
+
+| File name | Link to github |
+| - | - |
+| 1 | UserRestController.java(https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/backend/nutricion/src/main/java/com/nutri/backend/controller/UserRestController.java)|
+| 2 | LoginController.java(https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/backend/nutricion/src/main/java/com/nutri/backend/controller/auth/LoginController.java) |
+| 3 | DietRestController.java(https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/backend/nutricion/src/main/java/com/nutri/backend/controller/DietRestController.java) |
+| 4 | FormRestController.java(https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/backend/nutricion/src/main/java/com/nutri/backend/controller/FormRestController.java) |
+| 5 | docker(https://github.com/CodeURJC-DAW-2022-23/webapp10/tree/main/docker) |
