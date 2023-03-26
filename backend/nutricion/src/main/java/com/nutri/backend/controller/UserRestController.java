@@ -20,6 +20,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.domain.Page;
 import org.springframework.data.web.JsonPath;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -29,6 +30,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.awt.print.Pageable;
 import java.io.IOException;
 import java.net.URI;
 import java.security.Principal;
@@ -84,7 +86,7 @@ public class UserRestController {
     }
 
     //GET users
-    @Operation(summary = "Get all users by type")
+    @Operation(summary = "Get pages users by type")
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
@@ -102,8 +104,10 @@ public class UserRestController {
     })
     @JsonView({User.WorkerLog.class})
     @GetMapping("")
-    public ResponseEntity<List<User>> getWorkers(@RequestParam String type) {
-        return new ResponseEntity<>(userService.findByUserType(type), HttpStatus.OK);
+    public ResponseEntity<List<User>> getUsersByType(@RequestParam String type,@RequestParam int page) {
+        Page<User> client = userService.findPageClient(page, type);
+        List<User> users = client.toList();
+        return new ResponseEntity<>(users,HttpStatus.OK);
     }
 
     //GET User with id
@@ -477,6 +481,7 @@ public class UserRestController {
     @PostMapping("/me/image")
     public ResponseEntity<Object> uploadMyImage(HttpServletRequest request, @RequestParam MultipartFile imageFile) throws IOException {
         Principal principal = request.getUserPrincipal();
+
         if (principal != null) {
             User client = userService.findByEmail(principal.getName()).orElseThrow();
 

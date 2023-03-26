@@ -67,7 +67,6 @@ public class FormRestController {
         }
     }
 
-
     //POST A FORM
     @Operation(summary = "Get user logged in the application")
     @ApiResponses(value = {

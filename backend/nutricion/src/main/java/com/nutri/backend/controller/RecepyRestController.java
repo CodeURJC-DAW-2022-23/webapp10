@@ -16,6 +16,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -61,8 +62,10 @@ public class RecepyRestController {
     })
     @JsonView(Recepy.RecepyBasic.class)
     @GetMapping("")
-    public ResponseEntity<List<Recepy>> getRecepies() {
-       return new ResponseEntity<>(recepyService.findAll(), HttpStatus.OK);
+    public ResponseEntity<List<Recepy>> getRecepies(@RequestParam int page) {
+        Page<Recepy> recepies= recepyService.getPageOfRecepies(page);
+        List<Recepy> recepi= recepies.toList();
+       return new ResponseEntity<>(recepi, HttpStatus.OK);
     }
 
     @Operation(summary = "Post recepies in app")
