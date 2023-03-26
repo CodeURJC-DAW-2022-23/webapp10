@@ -354,3 +354,28 @@ The links to access to API DOCS documentation are:
 
 
 ### MEMBERS PARTICIPATION
+#### Adrián Peña García
+
+##### DESCRIPTION OF TASKS
+
+I have worked on the functionalities of the admin, user and worker, i did part of the front-end development, focusing on the images of the web. I make the data structure of the diet, with the Triple entity, and also i have achived the form of how to show images on the web, that were saved in the data base.
+
+##### COMMITS DONE
+
+| Name | Description |
+| - | - |
+| 1 | Image web use and show (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/50e09c0bc30e34da3c95b983e516f3b5b901271a) |
+| 2 | Charts admin and client (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/da8a90556fe74e4f802be1ddf6d1f3af224d3fd3) |
+| 3 | Default avatar and addWorker admin in function (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/b00fbe9a72e6f9f55171060fd13a98f53f36a404) |
+| 4 | Images load correctly from the data base (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/a6875016788ec2734eab3ae13d6d00d4eee1d5e9) |
+| 5 | Triplet array Diet (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/14c3dafeac9ef7b75202868f4fbbf236f626ea24) |
+
+##### FILES PARTICIPATED
+
+| File name | Link to github |
+| - | - |
+| 1 | WorkerController.java (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/nutricion/src/main/java/com/nutri/backend/controller/WorkerController.java) |
+| 2 | Triplet.java (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/nutricion/src/main/java/com/nutri/backend/model/Triplet.java) |
+| 3 | Diet.java (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/nutricion/src/main/java/com/nutri/backend/model/Diet.java) |
+| 4 | AdminController.java (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/nutricion/src/main/java/com/nutri/backend/controller/AdminController.java) |
+| 5 | ClientController.java (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/nutricion/src/main/java/com/nutri/backend/controller/ClientController.java) |

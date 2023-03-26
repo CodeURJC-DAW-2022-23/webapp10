@@ -27,7 +27,21 @@ paths:
                 $ref: '#/components/schemas/User'
         "403":
           description: Forbidden
-  /api/users/me/image/:
+  /api/users/me/image:
+    get:
+      tags:
+      - user-rest-controller
+      summary: Get user image
+      operationId: downloadImage
+      responses:
+        "200":
+          description: Found the exercise
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientController'
+        "404":
+          description: Not found
     post:
       tags:
       - user-rest-controller
@@ -55,6 +69,41 @@ paths:
           description: Forbidden
         "400":
           description: Invalid id supplied
+  /api/recepies/image:
+    post:
+      tags:
+      - recepy-rest-controller
+      summary: Post image recepies
+      operationId: uploadMyImage_1
+      parameters:
+      - name: id
+        in: query
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              required:
+              - imageFile
+              type: object
+              properties:
+                imageFile:
+                  type: string
+                  format: binary
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Recepy_RecepyBasic'
+        "400":
+          description: Error creating
+        "403":
+          description: Forbidden
   /api/recepies/:
     post:
       tags:
@@ -99,6 +148,27 @@ paths:
                 $ref: '#/components/schemas/Form'
         "404":
           description: Not found
+  /api/diets/:
+    post:
+      tags:
+      - diet-rest-controller
+      summary: Post Diet
+      operationId: postDiet
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Diet_DietBasic'
+        required: true
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User_DietBasic'
+        "403":
+          description: Forbidden
   /api/auth/refresh:
     post:
       tags:
@@ -171,14 +241,14 @@ paths:
         schema:
           type: string
       responses:
-        "404":
-          description: Not found
         "200":
           description: Found the users
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/User_WorkerLog'
+        "404":
+          description: Not found
     delete:
       tags:
       - user-rest-controller
@@ -194,8 +264,6 @@ paths:
             type: integer
             format: int64
       responses:
-        "400":
-          description: Invalid ids supplied
         "403":
           description: Forbidden
         "200":
@@ -204,6 +272,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/User'
+        "400":
+          description: Invalid ids supplied
   /api/users/{id}:
     get:
       tags:
@@ -220,14 +290,14 @@ paths:
       responses:
         "404":
           description: monitor not found
+        "400":
+          description: Invalid id supplied
         "200":
           description: Found the user
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/User'
-        "400":
-          description: Invalid id supplied
   /api/users/me:
     get:
       tags:
@@ -235,14 +305,14 @@ paths:
       summary: Get user logged in the application
       operationId: userLoged
       responses:
-        "404":
-          description: Not found
         "200":
           description: Found the user
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/User_WorkerLog'
+        "404":
+          description: Not found
   /api/users/me/stats:
     get:
       tags:
@@ -256,10 +326,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/User_ClientInfo'
-        "404":
-          description: Not found
         "403":
           description: Forbidden
+        "404":
+          description: Not found
   /api/users/me/recepies:
     get:
       tags:
@@ -267,31 +337,16 @@ paths:
       summary: Get Client Recepies
       operationId: getClientRecepies
       responses:
-        "404":
-          description: Not found
+        "403":
+          description: Forbidden
         "200":
           description: Found
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Recepy_RecepyBasic'
-        "403":
-          description: Forbidden
-  /api/users/me/image:
-    get:
-      tags:
-      - user-rest-controller
-      summary: Get user image
-      operationId: downloadImage
-      responses:
         "404":
           description: Not found
-        "200":
-          description: Found the exercise
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ClientController'
   /api/users/me/diets:
     get:
       tags:
@@ -299,6 +354,8 @@ paths:
       summary: Get Client Diet
       operationId: getClientDiet
       responses:
+        "403":
+          description: Forbidden
         "200":
           description: Found
           content:
@@ -307,8 +364,6 @@ paths:
                 $ref: '#/components/schemas/Diet_DietBasic'
         "404":
           description: Not found
-        "403":
-          description: Forbidden
   /api/users/admin/stats/users:
     get:
       tags:
@@ -376,14 +431,14 @@ paths:
       summary: Get recepies in app
       operationId: getRecepies
       responses:
-        "404":
-          description: Not found
         "200":
           description: Found recepies
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Recepy_RecepyBasic'
+        "404":
+          description: Not found
   /api/recepies/me:
     get:
       tags:
@@ -391,16 +446,16 @@ paths:
       summary: Get Client Recepies
       operationId: getClientRecepies_1
       responses:
-        "404":
-          description: Not found
+        "403":
+          description: Forbidden
         "200":
           description: Found
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Recepy_RecepyBasic'
-        "403":
-          description: Forbidden
+        "404":
+          description: Not found
   /api/forms/me:
     get:
       tags:
@@ -431,6 +486,31 @@ paths:
                 $ref: '#/components/schemas/Diet_DietBasic'
         "404":
           description: Not found
+    delete:
+      tags:
+      - diet-rest-controller
+      summary: 'Delete Diet '
+      operationId: deleteListOfWorkers_1
+      parameters:
+      - name: ids
+        in: query
+        required: true
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int64
+      responses:
+        "403":
+          description: Forbidden
+        "200":
+          description: Deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Diet'
+        "400":
+          description: Invalid ids supplied
 components:
   schemas:
     Diet:
@@ -443,6 +523,12 @@ components:
           type: string
         type:
           type: string
+        dietRefactored:
+          type: array
+          items:
+            type: array
+            items:
+              type: string
         week:
           type: array
           items:
@@ -596,6 +682,76 @@ components:
           format: int32
         diet:
           $ref: '#/components/schemas/Diet_RecepyBasic'
+    Diet_DietBasic:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        type:
+          type: string
+        dietRefactored:
+          type: array
+          items:
+            type: array
+            items:
+              type: string
+        week:
+          type: array
+          items:
+            $ref: '#/components/schemas/Triplet_DietBasic'
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/User_DietBasic'
+    Form_DietBasic:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        sex:
+          type: string
+        activity:
+          type: string
+        interes:
+          type: string
+        diet:
+          type: string
+        age:
+          type: string
+        weight:
+          type: number
+          format: double
+        height:
+          type: number
+          format: double
+    Triplet_DietBasic:
+      type: object
+      properties:
+        Breakfast:
+          type: object
+        Lunch:
+          type: object
+        Dinner:
+          type: object
+    User_DietBasic:
+      type: object
+      properties:
+        encodedPassword:
+          type: string
+        form:
+          $ref: '#/components/schemas/Form_DietBasic'
+        image:
+          type: string
+          writeOnly: true
+        entryDate:
+          type: integer
+          format: int32
+        diet:
+          $ref: '#/components/schemas/Diet_DietBasic'
     AuthResponse:
       type: object
       properties:
@@ -753,67 +909,3 @@ components:
           $ref: '#/components/schemas/Diet_ClientInfo'
     ClientController:
       type: object
-    Diet_DietBasic:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        type:
-          type: string
-        week:
-          type: array
-          items:
-            $ref: '#/components/schemas/Triplet_DietBasic'
-        users:
-          type: array
-          items:
-            $ref: '#/components/schemas/User_DietBasic'
-    Form_DietBasic:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        sex:
-          type: string
-        activity:
-          type: string
-        interes:
-          type: string
-        diet:
-          type: string
-        age:
-          type: string
-        weight:
-          type: number
-          format: double
-        height:
-          type: number
-          format: double
-    Triplet_DietBasic:
-      type: object
-      properties:
-        Breakfast:
-          type: object
-        Lunch:
-          type: object
-        Dinner:
-          type: object
-    User_DietBasic:
-      type: object
-      properties:
-        encodedPassword:
-          type: string
-        form:
-          $ref: '#/components/schemas/Form_DietBasic'
-        image:
-          type: string
-          writeOnly: true
-        entryDate:
-          type: integer
-          format: int32
-        diet:
-          $ref: '#/components/schemas/Diet_DietBasic'
