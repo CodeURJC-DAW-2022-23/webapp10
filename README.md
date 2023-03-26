@@ -358,7 +358,7 @@ The links to access to API DOCS documentation are:
 
 ##### DESCRIPTION OF TASKS
 
-I have worked on the functionalities of the admin, user and worker, i did part of the front-end development, focusing on the images of the web. I make the data structure of the diet, with the Triple entity, and also i have achived the form of how to show images on the web, that were saved in the data base.
+I have worked on the docker files and done the api's related with images.
 
 ##### COMMITS DONE
 
