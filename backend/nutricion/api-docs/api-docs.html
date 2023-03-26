@@ -1529,8 +1529,8 @@ ul.nav-tabs {
                     <li data-group="UserRestController" data-name="getUserById" class="">
                       <a href="#api-UserRestController-getUserById">getUserById</a>
                     </li>
-                    <li data-group="UserRestController" data-name="getWorkers" class="">
-                      <a href="#api-UserRestController-getWorkers">getWorkers</a>
+                    <li data-group="UserRestController" data-name="getUsersByType" class="">
+                      <a href="#api-UserRestController-getUsersByType">getUsersByType</a>
                     </li>
                     <li data-group="UserRestController" data-name="uploadMyImage" class="">
                       <a href="#api-UserRestController-uploadMyImage">uploadMyImage</a>
@@ -1833,27 +1833,27 @@ pub fn main() {
                             </table>
 
                           <h2>Responses</h2>
-                            <h3 id="examples-DietRestController-deleteListOfWorkers1-title-403"></h3>
-                            <p id="examples-DietRestController-deleteListOfWorkers1-description-403" class="marked"></p>
+                            <h3 id="examples-DietRestController-deleteListOfWorkers1-title-400"></h3>
+                            <p id="examples-DietRestController-deleteListOfWorkers1-description-400" class="marked"></p>
                             <script>
-                              var responseDietRestController403_description = `Forbidden`;
-                              var responseDietRestController403_description_break = responseDietRestController403_description.indexOf('\n');
-                              if (responseDietRestController403_description_break == -1) {
-                                $("#examples-DietRestController-deleteListOfWorkers1-title-403").text("Status: 403 - " + responseDietRestController403_description);
+                              var responseDietRestController400_description = `Invalid ids supplied`;
+                              var responseDietRestController400_description_break = responseDietRestController400_description.indexOf('\n');
+                              if (responseDietRestController400_description_break == -1) {
+                                $("#examples-DietRestController-deleteListOfWorkers1-title-400").text("Status: 400 - " + responseDietRestController400_description);
                               } else {
-                                $("#examples-DietRestController-deleteListOfWorkers1-title-403").text("Status: 403 - " + responseDietRestController403_description.substring(0, responseDietRestController403_description_break));
-                                $("#examples-DietRestController-deleteListOfWorkers1-description-403").html(responseDietRestController403_description.substring(responseDietRestController403_description_break));
+                                $("#examples-DietRestController-deleteListOfWorkers1-title-400").text("Status: 400 - " + responseDietRestController400_description.substring(0, responseDietRestController400_description_break));
+                                $("#examples-DietRestController-deleteListOfWorkers1-description-400").html(responseDietRestController400_description.substring(responseDietRestController400_description_break));
                               }
                             </script>
 
 
-                            <ul id="responses-detail-DietRestController-deleteListOfWorkers1-403" class="nav nav-tabs nav-tabs-examples" >
+                            <ul id="responses-detail-DietRestController-deleteListOfWorkers1-400" class="nav nav-tabs nav-tabs-examples" >
 
 
                             </ul>
 
 
-                            <div class="tab-content" id="responses-DietRestController-deleteListOfWorkers1-403-wrapper" style='margin-bottom: 10px;'>
+                            <div class="tab-content" id="responses-DietRestController-deleteListOfWorkers1-400-wrapper" style='margin-bottom: 10px;'>
                             </div>
                             <h3 id="examples-DietRestController-deleteListOfWorkers1-title-200"></h3>
                             <p id="examples-DietRestController-deleteListOfWorkers1-description-200" class="marked"></p>
@@ -1921,27 +1921,27 @@ pub fn main() {
                                   <input id='responses-DietRestController-deleteListOfWorkers1-200-schema-data' type='hidden' value=''></input>
                                 </div>
                             </div>
-                            <h3 id="examples-DietRestController-deleteListOfWorkers1-title-400"></h3>
-                            <p id="examples-DietRestController-deleteListOfWorkers1-description-400" class="marked"></p>
+                            <h3 id="examples-DietRestController-deleteListOfWorkers1-title-403"></h3>
+                            <p id="examples-DietRestController-deleteListOfWorkers1-description-403" class="marked"></p>
                             <script>
-                              var responseDietRestController400_description = `Invalid ids supplied`;
-                              var responseDietRestController400_description_break = responseDietRestController400_description.indexOf('\n');
-                              if (responseDietRestController400_description_break == -1) {
-                                $("#examples-DietRestController-deleteListOfWorkers1-title-400").text("Status: 400 - " + responseDietRestController400_description);
+                              var responseDietRestController403_description = `Forbidden`;
+                              var responseDietRestController403_description_break = responseDietRestController403_description.indexOf('\n');
+                              if (responseDietRestController403_description_break == -1) {
+                                $("#examples-DietRestController-deleteListOfWorkers1-title-403").text("Status: 403 - " + responseDietRestController403_description);
                               } else {
-                                $("#examples-DietRestController-deleteListOfWorkers1-title-400").text("Status: 400 - " + responseDietRestController400_description.substring(0, responseDietRestController400_description_break));
-                                $("#examples-DietRestController-deleteListOfWorkers1-description-400").html(responseDietRestController400_description.substring(responseDietRestController400_description_break));
+                                $("#examples-DietRestController-deleteListOfWorkers1-title-403").text("Status: 403 - " + responseDietRestController403_description.substring(0, responseDietRestController403_description_break));
+                                $("#examples-DietRestController-deleteListOfWorkers1-description-403").html(responseDietRestController403_description.substring(responseDietRestController403_description_break));
                               }
                             </script>
 
 
-                            <ul id="responses-detail-DietRestController-deleteListOfWorkers1-400" class="nav nav-tabs nav-tabs-examples" >
+                            <ul id="responses-detail-DietRestController-deleteListOfWorkers1-403" class="nav nav-tabs nav-tabs-examples" >
 
 
                             </ul>
 
 
-                            <div class="tab-content" id="responses-DietRestController-deleteListOfWorkers1-400-wrapper" style='margin-bottom: 10px;'>
+                            <div class="tab-content" id="responses-DietRestController-deleteListOfWorkers1-403-wrapper" style='margin-bottom: 10px;'>
                             </div>
                         </article>
                       </div>
@@ -2178,6 +2178,28 @@ pub fn main() {
 
 
                           <h2>Responses</h2>
+                            <h3 id="examples-DietRestController-getDiets-title-404"></h3>
+                            <p id="examples-DietRestController-getDiets-description-404" class="marked"></p>
+                            <script>
+                              var responseDietRestController404_description = `Not found`;
+                              var responseDietRestController404_description_break = responseDietRestController404_description.indexOf('\n');
+                              if (responseDietRestController404_description_break == -1) {
+                                $("#examples-DietRestController-getDiets-title-404").text("Status: 404 - " + responseDietRestController404_description);
+                              } else {
+                                $("#examples-DietRestController-getDiets-title-404").text("Status: 404 - " + responseDietRestController404_description.substring(0, responseDietRestController404_description_break));
+                                $("#examples-DietRestController-getDiets-description-404").html(responseDietRestController404_description.substring(responseDietRestController404_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-DietRestController-getDiets-404" class="nav nav-tabs nav-tabs-examples" >
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-DietRestController-getDiets-404-wrapper" style='margin-bottom: 10px;'>
+                            </div>
                             <h3 id="examples-DietRestController-getDiets-title-200"></h3>
                             <p id="examples-DietRestController-getDiets-description-200" class="marked"></p>
                             <script>
@@ -2243,28 +2265,6 @@ pub fn main() {
                                   </div>
                                   <input id='responses-DietRestController-getDiets-200-schema-data' type='hidden' value=''></input>
                                 </div>
-                            </div>
-                            <h3 id="examples-DietRestController-getDiets-title-404"></h3>
-                            <p id="examples-DietRestController-getDiets-description-404" class="marked"></p>
-                            <script>
-                              var responseDietRestController404_description = `Not found`;
-                              var responseDietRestController404_description_break = responseDietRestController404_description.indexOf('\n');
-                              if (responseDietRestController404_description_break == -1) {
-                                $("#examples-DietRestController-getDiets-title-404").text("Status: 404 - " + responseDietRestController404_description);
-                              } else {
-                                $("#examples-DietRestController-getDiets-title-404").text("Status: 404 - " + responseDietRestController404_description.substring(0, responseDietRestController404_description_break));
-                                $("#examples-DietRestController-getDiets-description-404").html(responseDietRestController404_description.substring(responseDietRestController404_description_break));
-                              }
-                            </script>
-
-
-                            <ul id="responses-detail-DietRestController-getDiets-404" class="nav nav-tabs nav-tabs-examples" >
-
-
-                            </ul>
-
-
-                            <div class="tab-content" id="responses-DietRestController-getDiets-404-wrapper" style='margin-bottom: 10px;'>
                             </div>
                         </article>
                       </div>
@@ -2952,6 +2952,28 @@ $(document).ready(function() {
 
 
                           <h2>Responses</h2>
+                            <h3 id="examples-FormRestController-createForm-title-404"></h3>
+                            <p id="examples-FormRestController-createForm-description-404" class="marked"></p>
+                            <script>
+                              var responseFormRestController404_description = `Not found`;
+                              var responseFormRestController404_description_break = responseFormRestController404_description.indexOf('\n');
+                              if (responseFormRestController404_description_break == -1) {
+                                $("#examples-FormRestController-createForm-title-404").text("Status: 404 - " + responseFormRestController404_description);
+                              } else {
+                                $("#examples-FormRestController-createForm-title-404").text("Status: 404 - " + responseFormRestController404_description.substring(0, responseFormRestController404_description_break));
+                                $("#examples-FormRestController-createForm-description-404").html(responseFormRestController404_description.substring(responseFormRestController404_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-FormRestController-createForm-404" class="nav nav-tabs nav-tabs-examples" >
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-FormRestController-createForm-404-wrapper" style='margin-bottom: 10px;'>
+                            </div>
                             <h3 id="examples-FormRestController-createForm-title-201"></h3>
                             <p id="examples-FormRestController-createForm-description-201" class="marked"></p>
                             <script>
@@ -3017,28 +3039,6 @@ $(document).ready(function() {
                                   </div>
                                   <input id='responses-FormRestController-createForm-201-schema-data' type='hidden' value=''></input>
                                 </div>
-                            </div>
-                            <h3 id="examples-FormRestController-createForm-title-404"></h3>
-                            <p id="examples-FormRestController-createForm-description-404" class="marked"></p>
-                            <script>
-                              var responseFormRestController404_description = `Not found`;
-                              var responseFormRestController404_description_break = responseFormRestController404_description.indexOf('\n');
-                              if (responseFormRestController404_description_break == -1) {
-                                $("#examples-FormRestController-createForm-title-404").text("Status: 404 - " + responseFormRestController404_description);
-                              } else {
-                                $("#examples-FormRestController-createForm-title-404").text("Status: 404 - " + responseFormRestController404_description.substring(0, responseFormRestController404_description_break));
-                                $("#examples-FormRestController-createForm-description-404").html(responseFormRestController404_description.substring(responseFormRestController404_description_break));
-                              }
-                            </script>
-
-
-                            <ul id="responses-detail-FormRestController-createForm-404" class="nav nav-tabs nav-tabs-examples" >
-
-
-                            </ul>
-
-
-                            <div class="tab-content" id="responses-FormRestController-createForm-404-wrapper" style='margin-bottom: 10px;'>
                             </div>
                         </article>
                       </div>
@@ -3275,6 +3275,28 @@ pub fn main() {
 
 
                           <h2>Responses</h2>
+                            <h3 id="examples-FormRestController-getPersonalForm-title-404"></h3>
+                            <p id="examples-FormRestController-getPersonalForm-description-404" class="marked"></p>
+                            <script>
+                              var responseFormRestController404_description = `Not found`;
+                              var responseFormRestController404_description_break = responseFormRestController404_description.indexOf('\n');
+                              if (responseFormRestController404_description_break == -1) {
+                                $("#examples-FormRestController-getPersonalForm-title-404").text("Status: 404 - " + responseFormRestController404_description);
+                              } else {
+                                $("#examples-FormRestController-getPersonalForm-title-404").text("Status: 404 - " + responseFormRestController404_description.substring(0, responseFormRestController404_description_break));
+                                $("#examples-FormRestController-getPersonalForm-description-404").html(responseFormRestController404_description.substring(responseFormRestController404_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-FormRestController-getPersonalForm-404" class="nav nav-tabs nav-tabs-examples" >
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-FormRestController-getPersonalForm-404-wrapper" style='margin-bottom: 10px;'>
+                            </div>
                             <h3 id="examples-FormRestController-getPersonalForm-title-201"></h3>
                             <p id="examples-FormRestController-getPersonalForm-description-201" class="marked"></p>
                             <script>
@@ -3340,28 +3362,6 @@ pub fn main() {
                                   </div>
                                   <input id='responses-FormRestController-getPersonalForm-201-schema-data' type='hidden' value=''></input>
                                 </div>
-                            </div>
-                            <h3 id="examples-FormRestController-getPersonalForm-title-404"></h3>
-                            <p id="examples-FormRestController-getPersonalForm-description-404" class="marked"></p>
-                            <script>
-                              var responseFormRestController404_description = `Not found`;
-                              var responseFormRestController404_description_break = responseFormRestController404_description.indexOf('\n');
-                              if (responseFormRestController404_description_break == -1) {
-                                $("#examples-FormRestController-getPersonalForm-title-404").text("Status: 404 - " + responseFormRestController404_description);
-                              } else {
-                                $("#examples-FormRestController-getPersonalForm-title-404").text("Status: 404 - " + responseFormRestController404_description.substring(0, responseFormRestController404_description_break));
-                                $("#examples-FormRestController-getPersonalForm-description-404").html(responseFormRestController404_description.substring(responseFormRestController404_description_break));
-                              }
-                            </script>
-
-
-                            <ul id="responses-detail-FormRestController-getPersonalForm-404" class="nav nav-tabs nav-tabs-examples" >
-
-
-                            </ul>
-
-
-                            <div class="tab-content" id="responses-FormRestController-getPersonalForm-404-wrapper" style='margin-bottom: 10px;'>
                             </div>
                         </article>
                       </div>
@@ -4593,28 +4593,6 @@ pub fn main() {
 
 
                           <h2>Responses</h2>
-                            <h3 id="examples-RecepyRestController-getClientRecepies1-title-403"></h3>
-                            <p id="examples-RecepyRestController-getClientRecepies1-description-403" class="marked"></p>
-                            <script>
-                              var responseRecepyRestController403_description = `Forbidden`;
-                              var responseRecepyRestController403_description_break = responseRecepyRestController403_description.indexOf('\n');
-                              if (responseRecepyRestController403_description_break == -1) {
-                                $("#examples-RecepyRestController-getClientRecepies1-title-403").text("Status: 403 - " + responseRecepyRestController403_description);
-                              } else {
-                                $("#examples-RecepyRestController-getClientRecepies1-title-403").text("Status: 403 - " + responseRecepyRestController403_description.substring(0, responseRecepyRestController403_description_break));
-                                $("#examples-RecepyRestController-getClientRecepies1-description-403").html(responseRecepyRestController403_description.substring(responseRecepyRestController403_description_break));
-                              }
-                            </script>
-
-
-                            <ul id="responses-detail-RecepyRestController-getClientRecepies1-403" class="nav nav-tabs nav-tabs-examples" >
-
-
-                            </ul>
-
-
-                            <div class="tab-content" id="responses-RecepyRestController-getClientRecepies1-403-wrapper" style='margin-bottom: 10px;'>
-                            </div>
                             <h3 id="examples-RecepyRestController-getClientRecepies1-title-200"></h3>
                             <p id="examples-RecepyRestController-getClientRecepies1-description-200" class="marked"></p>
                             <script>
@@ -4703,6 +4681,28 @@ pub fn main() {
 
                             <div class="tab-content" id="responses-RecepyRestController-getClientRecepies1-404-wrapper" style='margin-bottom: 10px;'>
                             </div>
+                            <h3 id="examples-RecepyRestController-getClientRecepies1-title-403"></h3>
+                            <p id="examples-RecepyRestController-getClientRecepies1-description-403" class="marked"></p>
+                            <script>
+                              var responseRecepyRestController403_description = `Forbidden`;
+                              var responseRecepyRestController403_description_break = responseRecepyRestController403_description.indexOf('\n');
+                              if (responseRecepyRestController403_description_break == -1) {
+                                $("#examples-RecepyRestController-getClientRecepies1-title-403").text("Status: 403 - " + responseRecepyRestController403_description);
+                              } else {
+                                $("#examples-RecepyRestController-getClientRecepies1-title-403").text("Status: 403 - " + responseRecepyRestController403_description.substring(0, responseRecepyRestController403_description_break));
+                                $("#examples-RecepyRestController-getClientRecepies1-description-403").html(responseRecepyRestController403_description.substring(responseRecepyRestController403_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-RecepyRestController-getClientRecepies1-403" class="nav nav-tabs nav-tabs-examples" >
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-RecepyRestController-getClientRecepies1-403-wrapper" style='margin-bottom: 10px;'>
+                            </div>
                         </article>
                       </div>
                       <hr>
@@ -4741,7 +4741,7 @@ pub fn main() {
                           <div class="tab-pane active" id="examples-RecepyRestController-getRecepies-0-curl">
                             <pre class="prettyprint"><code class="language-bsh">curl -X GET \
  -H "Accept: application/json" \
- "http://localhost:8443/api/recepies"
+ "http://localhost:8443/api/recepies?page=56"
 </code></pre>
                           </div>
                           <div class="tab-pane" id="examples-RecepyRestController-getRecepies-0-java">
@@ -4758,9 +4758,10 @@ public class RecepyRestControllerApiExample {
 
         // Create an instance of the API class
         RecepyRestControllerApi apiInstance = new RecepyRestControllerApi();
+        Integer page = 56; // Integer | 
 
         try {
-            Recepy_RecepyBasic result = apiInstance.getRecepies();
+            Recepy_RecepyBasic result = apiInstance.getRecepies(page);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling RecepyRestControllerApi#getRecepies");
@@ -4777,9 +4778,10 @@ public class RecepyRestControllerApiExample {
 public class RecepyRestControllerApiExample {
     public static void main(String[] args) {
         RecepyRestControllerApi apiInstance = new RecepyRestControllerApi();
+        Integer page = 56; // Integer | 
 
         try {
-            Recepy_RecepyBasic result = apiInstance.getRecepies();
+            Recepy_RecepyBasic result = apiInstance.getRecepies(page);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling RecepyRestControllerApi#getRecepies");
@@ -4797,10 +4799,11 @@ public class RecepyRestControllerApiExample {
 
 // Create an instance of the API class
 RecepyRestControllerApi *apiInstance = [[RecepyRestControllerApi alloc] init];
+Integer *page = 56; //  (default to null)
 
 // Get recepies in app
-[apiInstance getRecepiesWithCompletionHandler: 
-              ^(Recepy_RecepyBasic output, NSError* error) {
+[apiInstance getRecepiesWith:page
+              completionHandler: ^(Recepy_RecepyBasic output, NSError* error) {
     if (output) {
         NSLog(@"%@", output);
     }
@@ -4816,6 +4819,8 @@ RecepyRestControllerApi *apiInstance = [[RecepyRestControllerApi alloc] init];
 
 // Create an instance of the API class
 var api = new OpenApiDefinition.RecepyRestControllerApi()
+var page = 56; // {Integer} 
+
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -4823,7 +4828,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.getRecepies(callback);
+api.getRecepies(page, callback);
 </code></pre>
                             </div>
 
@@ -4846,10 +4851,11 @@ namespace Example
 
             // Create an instance of the API class
             var apiInstance = new RecepyRestControllerApi();
+            var page = 56;  // Integer |  (default to null)
 
             try {
                 // Get recepies in app
-                Recepy_RecepyBasic result = apiInstance.getRecepies();
+                Recepy_RecepyBasic result = apiInstance.getRecepies(page);
                 Debug.WriteLine(result);
             } catch (Exception e) {
                 Debug.Print("Exception when calling RecepyRestControllerApi.getRecepies: " + e.Message );
@@ -4866,9 +4872,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Create an instance of the API class
 $api_instance = new OpenAPITools\Client\Api\RecepyRestControllerApi();
+$page = 56; // Integer | 
 
 try {
-    $result = $api_instance->getRecepies();
+    $result = $api_instance->getRecepies($page);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling RecepyRestControllerApi->getRecepies: ', $e->getMessage(), PHP_EOL;
@@ -4883,9 +4890,10 @@ use WWW::OPenAPIClient::RecepyRestControllerApi;
 
 # Create an instance of the API class
 my $api_instance = WWW::OPenAPIClient::RecepyRestControllerApi->new();
+my $page = 56; # Integer | 
 
 eval {
-    my $result = $api_instance->getRecepies();
+    my $result = $api_instance->getRecepies(page => $page);
     print Dumper($result);
 };
 if ($@) {
@@ -4902,10 +4910,11 @@ from pprint import pprint
 
 # Create an instance of the API class
 api_instance = openapi_client.RecepyRestControllerApi()
+page = 56 # Integer |  (default to null)
 
 try:
     # Get recepies in app
-    api_response = api_instance.get_recepies()
+    api_response = api_instance.get_recepies(page)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RecepyRestControllerApi->getRecepies: %s\n" % e)</code></pre>
@@ -4915,9 +4924,10 @@ except ApiException as e:
                               <pre class="prettyprint"><code class="language-rust">extern crate RecepyRestControllerApi;
 
 pub fn main() {
+    let page = 56; // Integer
 
     let mut context = RecepyRestControllerApi::Context::default();
-    let result = client.getRecepies(&context).wait();
+    let result = client.getRecepies(page, &context).wait();
 
     println!("{:?}", result);
 }
@@ -4936,6 +4946,36 @@ pub fn main() {
 
 
 
+                            <div class="methodsubtabletitle">Query parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">page*</td>
+<td>
+
+
+    <div id="d2e199_getRecepies_page">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Integer
+                </span>
+                    <span class="format">
+                        (int32)
+                    </span>
+
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
 
                           <h2>Responses</h2>
                             <h3 id="examples-RecepyRestController-getRecepies-title-200"></h3>
@@ -6553,27 +6593,27 @@ pub fn main() {
                             </table>
 
                           <h2>Responses</h2>
-                            <h3 id="examples-UserRestController-deleteListOfWorkers-title-403"></h3>
-                            <p id="examples-UserRestController-deleteListOfWorkers-description-403" class="marked"></p>
+                            <h3 id="examples-UserRestController-deleteListOfWorkers-title-400"></h3>
+                            <p id="examples-UserRestController-deleteListOfWorkers-description-400" class="marked"></p>
                             <script>
-                              var responseUserRestController403_description = `Forbidden`;
-                              var responseUserRestController403_description_break = responseUserRestController403_description.indexOf('\n');
-                              if (responseUserRestController403_description_break == -1) {
-                                $("#examples-UserRestController-deleteListOfWorkers-title-403").text("Status: 403 - " + responseUserRestController403_description);
+                              var responseUserRestController400_description = `Invalid ids supplied`;
+                              var responseUserRestController400_description_break = responseUserRestController400_description.indexOf('\n');
+                              if (responseUserRestController400_description_break == -1) {
+                                $("#examples-UserRestController-deleteListOfWorkers-title-400").text("Status: 400 - " + responseUserRestController400_description);
                               } else {
-                                $("#examples-UserRestController-deleteListOfWorkers-title-403").text("Status: 403 - " + responseUserRestController403_description.substring(0, responseUserRestController403_description_break));
-                                $("#examples-UserRestController-deleteListOfWorkers-description-403").html(responseUserRestController403_description.substring(responseUserRestController403_description_break));
+                                $("#examples-UserRestController-deleteListOfWorkers-title-400").text("Status: 400 - " + responseUserRestController400_description.substring(0, responseUserRestController400_description_break));
+                                $("#examples-UserRestController-deleteListOfWorkers-description-400").html(responseUserRestController400_description.substring(responseUserRestController400_description_break));
                               }
                             </script>
 
 
-                            <ul id="responses-detail-UserRestController-deleteListOfWorkers-403" class="nav nav-tabs nav-tabs-examples" >
+                            <ul id="responses-detail-UserRestController-deleteListOfWorkers-400" class="nav nav-tabs nav-tabs-examples" >
 
 
                             </ul>
 
 
-                            <div class="tab-content" id="responses-UserRestController-deleteListOfWorkers-403-wrapper" style='margin-bottom: 10px;'>
+                            <div class="tab-content" id="responses-UserRestController-deleteListOfWorkers-400-wrapper" style='margin-bottom: 10px;'>
                             </div>
                             <h3 id="examples-UserRestController-deleteListOfWorkers-title-200"></h3>
                             <p id="examples-UserRestController-deleteListOfWorkers-description-200" class="marked"></p>
@@ -6641,27 +6681,27 @@ pub fn main() {
                                   <input id='responses-UserRestController-deleteListOfWorkers-200-schema-data' type='hidden' value=''></input>
                                 </div>
                             </div>
-                            <h3 id="examples-UserRestController-deleteListOfWorkers-title-400"></h3>
-                            <p id="examples-UserRestController-deleteListOfWorkers-description-400" class="marked"></p>
+                            <h3 id="examples-UserRestController-deleteListOfWorkers-title-403"></h3>
+                            <p id="examples-UserRestController-deleteListOfWorkers-description-403" class="marked"></p>
                             <script>
-                              var responseUserRestController400_description = `Invalid ids supplied`;
-                              var responseUserRestController400_description_break = responseUserRestController400_description.indexOf('\n');
-                              if (responseUserRestController400_description_break == -1) {
-                                $("#examples-UserRestController-deleteListOfWorkers-title-400").text("Status: 400 - " + responseUserRestController400_description);
+                              var responseUserRestController403_description = `Forbidden`;
+                              var responseUserRestController403_description_break = responseUserRestController403_description.indexOf('\n');
+                              if (responseUserRestController403_description_break == -1) {
+                                $("#examples-UserRestController-deleteListOfWorkers-title-403").text("Status: 403 - " + responseUserRestController403_description);
                               } else {
-                                $("#examples-UserRestController-deleteListOfWorkers-title-400").text("Status: 400 - " + responseUserRestController400_description.substring(0, responseUserRestController400_description_break));
-                                $("#examples-UserRestController-deleteListOfWorkers-description-400").html(responseUserRestController400_description.substring(responseUserRestController400_description_break));
+                                $("#examples-UserRestController-deleteListOfWorkers-title-403").text("Status: 403 - " + responseUserRestController403_description.substring(0, responseUserRestController403_description_break));
+                                $("#examples-UserRestController-deleteListOfWorkers-description-403").html(responseUserRestController403_description.substring(responseUserRestController403_description_break));
                               }
                             </script>
 
 
-                            <ul id="responses-detail-UserRestController-deleteListOfWorkers-400" class="nav nav-tabs nav-tabs-examples" >
+                            <ul id="responses-detail-UserRestController-deleteListOfWorkers-403" class="nav nav-tabs nav-tabs-examples" >
 
 
                             </ul>
 
 
-                            <div class="tab-content" id="responses-UserRestController-deleteListOfWorkers-400-wrapper" style='margin-bottom: 10px;'>
+                            <div class="tab-content" id="responses-UserRestController-deleteListOfWorkers-403-wrapper" style='margin-bottom: 10px;'>
                             </div>
                         </article>
                       </div>
@@ -7221,6 +7261,28 @@ pub fn main() {
 
 
                           <h2>Responses</h2>
+                            <h3 id="examples-UserRestController-getAdminDiets-title-404"></h3>
+                            <p id="examples-UserRestController-getAdminDiets-description-404" class="marked"></p>
+                            <script>
+                              var responseUserRestController404_description = `Not found`;
+                              var responseUserRestController404_description_break = responseUserRestController404_description.indexOf('\n');
+                              if (responseUserRestController404_description_break == -1) {
+                                $("#examples-UserRestController-getAdminDiets-title-404").text("Status: 404 - " + responseUserRestController404_description);
+                              } else {
+                                $("#examples-UserRestController-getAdminDiets-title-404").text("Status: 404 - " + responseUserRestController404_description.substring(0, responseUserRestController404_description_break));
+                                $("#examples-UserRestController-getAdminDiets-description-404").html(responseUserRestController404_description.substring(responseUserRestController404_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-UserRestController-getAdminDiets-404" class="nav nav-tabs nav-tabs-examples" >
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-UserRestController-getAdminDiets-404-wrapper" style='margin-bottom: 10px;'>
+                            </div>
                             <h3 id="examples-UserRestController-getAdminDiets-title-200"></h3>
                             <p id="examples-UserRestController-getAdminDiets-description-200" class="marked"></p>
                             <script>
@@ -7286,28 +7348,6 @@ pub fn main() {
                                   </div>
                                   <input id='responses-UserRestController-getAdminDiets-200-schema-data' type='hidden' value=''></input>
                                 </div>
-                            </div>
-                            <h3 id="examples-UserRestController-getAdminDiets-title-404"></h3>
-                            <p id="examples-UserRestController-getAdminDiets-description-404" class="marked"></p>
-                            <script>
-                              var responseUserRestController404_description = `Not found`;
-                              var responseUserRestController404_description_break = responseUserRestController404_description.indexOf('\n');
-                              if (responseUserRestController404_description_break == -1) {
-                                $("#examples-UserRestController-getAdminDiets-title-404").text("Status: 404 - " + responseUserRestController404_description);
-                              } else {
-                                $("#examples-UserRestController-getAdminDiets-title-404").text("Status: 404 - " + responseUserRestController404_description.substring(0, responseUserRestController404_description_break));
-                                $("#examples-UserRestController-getAdminDiets-description-404").html(responseUserRestController404_description.substring(responseUserRestController404_description_break));
-                              }
-                            </script>
-
-
-                            <ul id="responses-detail-UserRestController-getAdminDiets-404" class="nav nav-tabs nav-tabs-examples" >
-
-
-                            </ul>
-
-
-                            <div class="tab-content" id="responses-UserRestController-getAdminDiets-404-wrapper" style='margin-bottom: 10px;'>
                             </div>
                         </article>
                       </div>
@@ -7544,6 +7584,28 @@ pub fn main() {
 
 
                           <h2>Responses</h2>
+                            <h3 id="examples-UserRestController-getAdminStatsDiets-title-404"></h3>
+                            <p id="examples-UserRestController-getAdminStatsDiets-description-404" class="marked"></p>
+                            <script>
+                              var responseUserRestController404_description = `Not found`;
+                              var responseUserRestController404_description_break = responseUserRestController404_description.indexOf('\n');
+                              if (responseUserRestController404_description_break == -1) {
+                                $("#examples-UserRestController-getAdminStatsDiets-title-404").text("Status: 404 - " + responseUserRestController404_description);
+                              } else {
+                                $("#examples-UserRestController-getAdminStatsDiets-title-404").text("Status: 404 - " + responseUserRestController404_description.substring(0, responseUserRestController404_description_break));
+                                $("#examples-UserRestController-getAdminStatsDiets-description-404").html(responseUserRestController404_description.substring(responseUserRestController404_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-UserRestController-getAdminStatsDiets-404" class="nav nav-tabs nav-tabs-examples" >
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-UserRestController-getAdminStatsDiets-404-wrapper" style='margin-bottom: 10px;'>
+                            </div>
                             <h3 id="examples-UserRestController-getAdminStatsDiets-title-200"></h3>
                             <p id="examples-UserRestController-getAdminStatsDiets-description-200" class="marked"></p>
                             <script>
@@ -7609,28 +7671,6 @@ pub fn main() {
                                   </div>
                                   <input id='responses-UserRestController-getAdminStatsDiets-200-schema-data' type='hidden' value=''></input>
                                 </div>
-                            </div>
-                            <h3 id="examples-UserRestController-getAdminStatsDiets-title-404"></h3>
-                            <p id="examples-UserRestController-getAdminStatsDiets-description-404" class="marked"></p>
-                            <script>
-                              var responseUserRestController404_description = `Not found`;
-                              var responseUserRestController404_description_break = responseUserRestController404_description.indexOf('\n');
-                              if (responseUserRestController404_description_break == -1) {
-                                $("#examples-UserRestController-getAdminStatsDiets-title-404").text("Status: 404 - " + responseUserRestController404_description);
-                              } else {
-                                $("#examples-UserRestController-getAdminStatsDiets-title-404").text("Status: 404 - " + responseUserRestController404_description.substring(0, responseUserRestController404_description_break));
-                                $("#examples-UserRestController-getAdminStatsDiets-description-404").html(responseUserRestController404_description.substring(responseUserRestController404_description_break));
-                              }
-                            </script>
-
-
-                            <ul id="responses-detail-UserRestController-getAdminStatsDiets-404" class="nav nav-tabs nav-tabs-examples" >
-
-
-                            </ul>
-
-
-                            <div class="tab-content" id="responses-UserRestController-getAdminStatsDiets-404-wrapper" style='margin-bottom: 10px;'>
                             </div>
                         </article>
                       </div>
@@ -7867,6 +7907,28 @@ pub fn main() {
 
 
                           <h2>Responses</h2>
+                            <h3 id="examples-UserRestController-getAdminStatsEans-title-404"></h3>
+                            <p id="examples-UserRestController-getAdminStatsEans-description-404" class="marked"></p>
+                            <script>
+                              var responseUserRestController404_description = `Not found`;
+                              var responseUserRestController404_description_break = responseUserRestController404_description.indexOf('\n');
+                              if (responseUserRestController404_description_break == -1) {
+                                $("#examples-UserRestController-getAdminStatsEans-title-404").text("Status: 404 - " + responseUserRestController404_description);
+                              } else {
+                                $("#examples-UserRestController-getAdminStatsEans-title-404").text("Status: 404 - " + responseUserRestController404_description.substring(0, responseUserRestController404_description_break));
+                                $("#examples-UserRestController-getAdminStatsEans-description-404").html(responseUserRestController404_description.substring(responseUserRestController404_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-UserRestController-getAdminStatsEans-404" class="nav nav-tabs nav-tabs-examples" >
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-UserRestController-getAdminStatsEans-404-wrapper" style='margin-bottom: 10px;'>
+                            </div>
                             <h3 id="examples-UserRestController-getAdminStatsEans-title-200"></h3>
                             <p id="examples-UserRestController-getAdminStatsEans-description-200" class="marked"></p>
                             <script>
@@ -7932,28 +7994,6 @@ pub fn main() {
                                   </div>
                                   <input id='responses-UserRestController-getAdminStatsEans-200-schema-data' type='hidden' value=''></input>
                                 </div>
-                            </div>
-                            <h3 id="examples-UserRestController-getAdminStatsEans-title-404"></h3>
-                            <p id="examples-UserRestController-getAdminStatsEans-description-404" class="marked"></p>
-                            <script>
-                              var responseUserRestController404_description = `Not found`;
-                              var responseUserRestController404_description_break = responseUserRestController404_description.indexOf('\n');
-                              if (responseUserRestController404_description_break == -1) {
-                                $("#examples-UserRestController-getAdminStatsEans-title-404").text("Status: 404 - " + responseUserRestController404_description);
-                              } else {
-                                $("#examples-UserRestController-getAdminStatsEans-title-404").text("Status: 404 - " + responseUserRestController404_description.substring(0, responseUserRestController404_description_break));
-                                $("#examples-UserRestController-getAdminStatsEans-description-404").html(responseUserRestController404_description.substring(responseUserRestController404_description_break));
-                              }
-                            </script>
-
-
-                            <ul id="responses-detail-UserRestController-getAdminStatsEans-404" class="nav nav-tabs nav-tabs-examples" >
-
-
-                            </ul>
-
-
-                            <div class="tab-content" id="responses-UserRestController-getAdminStatsEans-404-wrapper" style='margin-bottom: 10px;'>
                             </div>
                         </article>
                       </div>
@@ -8190,6 +8230,28 @@ pub fn main() {
 
 
                           <h2>Responses</h2>
+                            <h3 id="examples-UserRestController-getAdminStatsUsers-title-404"></h3>
+                            <p id="examples-UserRestController-getAdminStatsUsers-description-404" class="marked"></p>
+                            <script>
+                              var responseUserRestController404_description = `Not found`;
+                              var responseUserRestController404_description_break = responseUserRestController404_description.indexOf('\n');
+                              if (responseUserRestController404_description_break == -1) {
+                                $("#examples-UserRestController-getAdminStatsUsers-title-404").text("Status: 404 - " + responseUserRestController404_description);
+                              } else {
+                                $("#examples-UserRestController-getAdminStatsUsers-title-404").text("Status: 404 - " + responseUserRestController404_description.substring(0, responseUserRestController404_description_break));
+                                $("#examples-UserRestController-getAdminStatsUsers-description-404").html(responseUserRestController404_description.substring(responseUserRestController404_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-UserRestController-getAdminStatsUsers-404" class="nav nav-tabs nav-tabs-examples" >
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-UserRestController-getAdminStatsUsers-404-wrapper" style='margin-bottom: 10px;'>
+                            </div>
                             <h3 id="examples-UserRestController-getAdminStatsUsers-title-200"></h3>
                             <p id="examples-UserRestController-getAdminStatsUsers-description-200" class="marked"></p>
                             <script>
@@ -8255,28 +8317,6 @@ pub fn main() {
                                   </div>
                                   <input id='responses-UserRestController-getAdminStatsUsers-200-schema-data' type='hidden' value=''></input>
                                 </div>
-                            </div>
-                            <h3 id="examples-UserRestController-getAdminStatsUsers-title-404"></h3>
-                            <p id="examples-UserRestController-getAdminStatsUsers-description-404" class="marked"></p>
-                            <script>
-                              var responseUserRestController404_description = `Not found`;
-                              var responseUserRestController404_description_break = responseUserRestController404_description.indexOf('\n');
-                              if (responseUserRestController404_description_break == -1) {
-                                $("#examples-UserRestController-getAdminStatsUsers-title-404").text("Status: 404 - " + responseUserRestController404_description);
-                              } else {
-                                $("#examples-UserRestController-getAdminStatsUsers-title-404").text("Status: 404 - " + responseUserRestController404_description.substring(0, responseUserRestController404_description_break));
-                                $("#examples-UserRestController-getAdminStatsUsers-description-404").html(responseUserRestController404_description.substring(responseUserRestController404_description_break));
-                              }
-                            </script>
-
-
-                            <ul id="responses-detail-UserRestController-getAdminStatsUsers-404" class="nav nav-tabs nav-tabs-examples" >
-
-
-                            </ul>
-
-
-                            <div class="tab-content" id="responses-UserRestController-getAdminStatsUsers-404-wrapper" style='margin-bottom: 10px;'>
                             </div>
                         </article>
                       </div>
@@ -8513,28 +8553,6 @@ pub fn main() {
 
 
                           <h2>Responses</h2>
-                            <h3 id="examples-UserRestController-getClientDiet-title-403"></h3>
-                            <p id="examples-UserRestController-getClientDiet-description-403" class="marked"></p>
-                            <script>
-                              var responseUserRestController403_description = `Forbidden`;
-                              var responseUserRestController403_description_break = responseUserRestController403_description.indexOf('\n');
-                              if (responseUserRestController403_description_break == -1) {
-                                $("#examples-UserRestController-getClientDiet-title-403").text("Status: 403 - " + responseUserRestController403_description);
-                              } else {
-                                $("#examples-UserRestController-getClientDiet-title-403").text("Status: 403 - " + responseUserRestController403_description.substring(0, responseUserRestController403_description_break));
-                                $("#examples-UserRestController-getClientDiet-description-403").html(responseUserRestController403_description.substring(responseUserRestController403_description_break));
-                              }
-                            </script>
-
-
-                            <ul id="responses-detail-UserRestController-getClientDiet-403" class="nav nav-tabs nav-tabs-examples" >
-
-
-                            </ul>
-
-
-                            <div class="tab-content" id="responses-UserRestController-getClientDiet-403-wrapper" style='margin-bottom: 10px;'>
-                            </div>
                             <h3 id="examples-UserRestController-getClientDiet-title-200"></h3>
                             <p id="examples-UserRestController-getClientDiet-description-200" class="marked"></p>
                             <script>
@@ -8622,6 +8640,28 @@ pub fn main() {
 
 
                             <div class="tab-content" id="responses-UserRestController-getClientDiet-404-wrapper" style='margin-bottom: 10px;'>
+                            </div>
+                            <h3 id="examples-UserRestController-getClientDiet-title-403"></h3>
+                            <p id="examples-UserRestController-getClientDiet-description-403" class="marked"></p>
+                            <script>
+                              var responseUserRestController403_description = `Forbidden`;
+                              var responseUserRestController403_description_break = responseUserRestController403_description.indexOf('\n');
+                              if (responseUserRestController403_description_break == -1) {
+                                $("#examples-UserRestController-getClientDiet-title-403").text("Status: 403 - " + responseUserRestController403_description);
+                              } else {
+                                $("#examples-UserRestController-getClientDiet-title-403").text("Status: 403 - " + responseUserRestController403_description.substring(0, responseUserRestController403_description_break));
+                                $("#examples-UserRestController-getClientDiet-description-403").html(responseUserRestController403_description.substring(responseUserRestController403_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-UserRestController-getClientDiet-403" class="nav nav-tabs nav-tabs-examples" >
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-UserRestController-getClientDiet-403-wrapper" style='margin-bottom: 10px;'>
                             </div>
                         </article>
                       </div>
@@ -8858,28 +8898,6 @@ pub fn main() {
 
 
                           <h2>Responses</h2>
-                            <h3 id="examples-UserRestController-getClientRecepies-title-403"></h3>
-                            <p id="examples-UserRestController-getClientRecepies-description-403" class="marked"></p>
-                            <script>
-                              var responseUserRestController403_description = `Forbidden`;
-                              var responseUserRestController403_description_break = responseUserRestController403_description.indexOf('\n');
-                              if (responseUserRestController403_description_break == -1) {
-                                $("#examples-UserRestController-getClientRecepies-title-403").text("Status: 403 - " + responseUserRestController403_description);
-                              } else {
-                                $("#examples-UserRestController-getClientRecepies-title-403").text("Status: 403 - " + responseUserRestController403_description.substring(0, responseUserRestController403_description_break));
-                                $("#examples-UserRestController-getClientRecepies-description-403").html(responseUserRestController403_description.substring(responseUserRestController403_description_break));
-                              }
-                            </script>
-
-
-                            <ul id="responses-detail-UserRestController-getClientRecepies-403" class="nav nav-tabs nav-tabs-examples" >
-
-
-                            </ul>
-
-
-                            <div class="tab-content" id="responses-UserRestController-getClientRecepies-403-wrapper" style='margin-bottom: 10px;'>
-                            </div>
                             <h3 id="examples-UserRestController-getClientRecepies-title-200"></h3>
                             <p id="examples-UserRestController-getClientRecepies-description-200" class="marked"></p>
                             <script>
@@ -8967,6 +8985,28 @@ pub fn main() {
 
 
                             <div class="tab-content" id="responses-UserRestController-getClientRecepies-404-wrapper" style='margin-bottom: 10px;'>
+                            </div>
+                            <h3 id="examples-UserRestController-getClientRecepies-title-403"></h3>
+                            <p id="examples-UserRestController-getClientRecepies-description-403" class="marked"></p>
+                            <script>
+                              var responseUserRestController403_description = `Forbidden`;
+                              var responseUserRestController403_description_break = responseUserRestController403_description.indexOf('\n');
+                              if (responseUserRestController403_description_break == -1) {
+                                $("#examples-UserRestController-getClientRecepies-title-403").text("Status: 403 - " + responseUserRestController403_description);
+                              } else {
+                                $("#examples-UserRestController-getClientRecepies-title-403").text("Status: 403 - " + responseUserRestController403_description.substring(0, responseUserRestController403_description_break));
+                                $("#examples-UserRestController-getClientRecepies-description-403").html(responseUserRestController403_description.substring(responseUserRestController403_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-UserRestController-getClientRecepies-403" class="nav nav-tabs nav-tabs-examples" >
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-UserRestController-getClientRecepies-403-wrapper" style='margin-bottom: 10px;'>
                             </div>
                         </article>
                       </div>
@@ -9203,6 +9243,28 @@ pub fn main() {
 
 
                           <h2>Responses</h2>
+                            <h3 id="examples-UserRestController-getClientStats-title-404"></h3>
+                            <p id="examples-UserRestController-getClientStats-description-404" class="marked"></p>
+                            <script>
+                              var responseUserRestController404_description = `Not found`;
+                              var responseUserRestController404_description_break = responseUserRestController404_description.indexOf('\n');
+                              if (responseUserRestController404_description_break == -1) {
+                                $("#examples-UserRestController-getClientStats-title-404").text("Status: 404 - " + responseUserRestController404_description);
+                              } else {
+                                $("#examples-UserRestController-getClientStats-title-404").text("Status: 404 - " + responseUserRestController404_description.substring(0, responseUserRestController404_description_break));
+                                $("#examples-UserRestController-getClientStats-description-404").html(responseUserRestController404_description.substring(responseUserRestController404_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-UserRestController-getClientStats-404" class="nav nav-tabs nav-tabs-examples" >
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-UserRestController-getClientStats-404-wrapper" style='margin-bottom: 10px;'>
+                            </div>
                             <h3 id="examples-UserRestController-getClientStats-title-200"></h3>
                             <p id="examples-UserRestController-getClientStats-description-200" class="marked"></p>
                             <script>
@@ -9290,28 +9352,6 @@ pub fn main() {
 
 
                             <div class="tab-content" id="responses-UserRestController-getClientStats-403-wrapper" style='margin-bottom: 10px;'>
-                            </div>
-                            <h3 id="examples-UserRestController-getClientStats-title-404"></h3>
-                            <p id="examples-UserRestController-getClientStats-description-404" class="marked"></p>
-                            <script>
-                              var responseUserRestController404_description = `Not found`;
-                              var responseUserRestController404_description_break = responseUserRestController404_description.indexOf('\n');
-                              if (responseUserRestController404_description_break == -1) {
-                                $("#examples-UserRestController-getClientStats-title-404").text("Status: 404 - " + responseUserRestController404_description);
-                              } else {
-                                $("#examples-UserRestController-getClientStats-title-404").text("Status: 404 - " + responseUserRestController404_description.substring(0, responseUserRestController404_description_break));
-                                $("#examples-UserRestController-getClientStats-description-404").html(responseUserRestController404_description.substring(responseUserRestController404_description_break));
-                              }
-                            </script>
-
-
-                            <ul id="responses-detail-UserRestController-getClientStats-404" class="nav nav-tabs nav-tabs-examples" >
-
-
-                            </ul>
-
-
-                            <div class="tab-content" id="responses-UserRestController-getClientStats-404-wrapper" style='margin-bottom: 10px;'>
                             </div>
                         </article>
                       </div>
@@ -9588,28 +9628,6 @@ pub fn main() {
 
 
                           <h2>Responses</h2>
-                            <h3 id="examples-UserRestController-getUserById-title-404"></h3>
-                            <p id="examples-UserRestController-getUserById-description-404" class="marked"></p>
-                            <script>
-                              var responseUserRestController404_description = `monitor not found`;
-                              var responseUserRestController404_description_break = responseUserRestController404_description.indexOf('\n');
-                              if (responseUserRestController404_description_break == -1) {
-                                $("#examples-UserRestController-getUserById-title-404").text("Status: 404 - " + responseUserRestController404_description);
-                              } else {
-                                $("#examples-UserRestController-getUserById-title-404").text("Status: 404 - " + responseUserRestController404_description.substring(0, responseUserRestController404_description_break));
-                                $("#examples-UserRestController-getUserById-description-404").html(responseUserRestController404_description.substring(responseUserRestController404_description_break));
-                              }
-                            </script>
-
-
-                            <ul id="responses-detail-UserRestController-getUserById-404" class="nav nav-tabs nav-tabs-examples" >
-
-
-                            </ul>
-
-
-                            <div class="tab-content" id="responses-UserRestController-getUserById-404-wrapper" style='margin-bottom: 10px;'>
-                            </div>
                             <h3 id="examples-UserRestController-getUserById-title-400"></h3>
                             <p id="examples-UserRestController-getUserById-description-400" class="marked"></p>
                             <script>
@@ -9698,14 +9716,36 @@ pub fn main() {
                                   <input id='responses-UserRestController-getUserById-200-schema-data' type='hidden' value=''></input>
                                 </div>
                             </div>
+                            <h3 id="examples-UserRestController-getUserById-title-404"></h3>
+                            <p id="examples-UserRestController-getUserById-description-404" class="marked"></p>
+                            <script>
+                              var responseUserRestController404_description = `monitor not found`;
+                              var responseUserRestController404_description_break = responseUserRestController404_description.indexOf('\n');
+                              if (responseUserRestController404_description_break == -1) {
+                                $("#examples-UserRestController-getUserById-title-404").text("Status: 404 - " + responseUserRestController404_description);
+                              } else {
+                                $("#examples-UserRestController-getUserById-title-404").text("Status: 404 - " + responseUserRestController404_description.substring(0, responseUserRestController404_description_break));
+                                $("#examples-UserRestController-getUserById-description-404").html(responseUserRestController404_description.substring(responseUserRestController404_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-UserRestController-getUserById-404" class="nav nav-tabs nav-tabs-examples" >
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-UserRestController-getUserById-404-wrapper" style='margin-bottom: 10px;'>
+                            </div>
                         </article>
                       </div>
                       <hr>
-                    <div id="api-UserRestController-getWorkers">
-                      <article id="api-UserRestController-getWorkers-0" data-group="User" data-name="getWorkers" data-version="0">
+                    <div id="api-UserRestController-getUsersByType">
+                      <article id="api-UserRestController-getUsersByType-0" data-group="User" data-name="getUsersByType" data-version="0">
                         <div class="pull-left">
-                          <h1>getWorkers</h1>
-                          <p>Get all users by type</p>
+                          <h1>getUsersByType</h1>
+                          <p>Get pages users by type</p>
                         </div>
                         <div class="pull-right"></div>
                         <div class="clearfix"></div>
@@ -9718,28 +9758,28 @@ pub fn main() {
                           <h3>Usage and SDK Samples</h3>
                         </p>
                         <ul class="nav nav-tabs nav-tabs-examples">
-                          <li class="active"><a href="#examples-UserRestController-getWorkers-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-UserRestController-getWorkers-0-java">Java</a></li>
-                          <li class=""><a href="#examples-UserRestController-getWorkers-0-android">Android</a></li>
-                          <!--<li class=""><a href="#examples-UserRestController-getWorkers-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-UserRestController-getWorkers-0-objc">Obj-C</a></li>
-                          <li class=""><a href="#examples-UserRestController-getWorkers-0-javascript">JavaScript</a></li>
-                          <!--<li class=""><a href="#examples-UserRestController-getWorkers-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-UserRestController-getWorkers-0-csharp">C#</a></li>
-                          <li class=""><a href="#examples-UserRestController-getWorkers-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-UserRestController-getWorkers-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-UserRestController-getWorkers-0-python">Python</a></li>
-                          <li class=""><a href="#examples-UserRestController-getWorkers-0-rust">Rust</a></li>
+                          <li class="active"><a href="#examples-UserRestController-getUsersByType-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-UserRestController-getUsersByType-0-java">Java</a></li>
+                          <li class=""><a href="#examples-UserRestController-getUsersByType-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-UserRestController-getUsersByType-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-UserRestController-getUsersByType-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-UserRestController-getUsersByType-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-UserRestController-getUsersByType-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-UserRestController-getUsersByType-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-UserRestController-getUsersByType-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-UserRestController-getUsersByType-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-UserRestController-getUsersByType-0-python">Python</a></li>
+                          <li class=""><a href="#examples-UserRestController-getUsersByType-0-rust">Rust</a></li>
                         </ul>
 
                         <div class="tab-content">
-                          <div class="tab-pane active" id="examples-UserRestController-getWorkers-0-curl">
+                          <div class="tab-pane active" id="examples-UserRestController-getUsersByType-0-curl">
                             <pre class="prettyprint"><code class="language-bsh">curl -X GET \
  -H "Accept: application/json" \
- "http://localhost:8443/api/users?type=type_example"
+ "http://localhost:8443/api/users?type=type_example&page=56"
 </code></pre>
                           </div>
-                          <div class="tab-pane" id="examples-UserRestController-getWorkers-0-java">
+                          <div class="tab-pane" id="examples-UserRestController-getUsersByType-0-java">
                             <pre class="prettyprint"><code class="language-java">import org.openapitools.client.*;
 import org.openapitools.client.auth.*;
 import org.openapitools.client.model.*;
@@ -9754,12 +9794,13 @@ public class UserRestControllerApiExample {
         // Create an instance of the API class
         UserRestControllerApi apiInstance = new UserRestControllerApi();
         String type = type_example; // String | 
+        Integer page = 56; // Integer | 
 
         try {
-            User_WorkerLog result = apiInstance.getWorkers(type);
+            User_WorkerLog result = apiInstance.getUsersByType(type, page);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling UserRestControllerApi#getWorkers");
+            System.err.println("Exception when calling UserRestControllerApi#getUsersByType");
             e.printStackTrace();
         }
     }
@@ -9767,37 +9808,40 @@ public class UserRestControllerApiExample {
 </code></pre>
                           </div>
 
-                          <div class="tab-pane" id="examples-UserRestController-getWorkers-0-android">
+                          <div class="tab-pane" id="examples-UserRestController-getUsersByType-0-android">
                             <pre class="prettyprint"><code class="language-java">import org.openapitools.client.api.UserRestControllerApi;
 
 public class UserRestControllerApiExample {
     public static void main(String[] args) {
         UserRestControllerApi apiInstance = new UserRestControllerApi();
         String type = type_example; // String | 
+        Integer page = 56; // Integer | 
 
         try {
-            User_WorkerLog result = apiInstance.getWorkers(type);
+            User_WorkerLog result = apiInstance.getUsersByType(type, page);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling UserRestControllerApi#getWorkers");
+            System.err.println("Exception when calling UserRestControllerApi#getUsersByType");
             e.printStackTrace();
         }
     }
 }</code></pre>
                           </div>
   <!--
-  <div class="tab-pane" id="examples-UserRestController-getWorkers-0-groovy">
+  <div class="tab-pane" id="examples-UserRestController-getUsersByType-0-groovy">
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
-                            <div class="tab-pane" id="examples-UserRestController-getWorkers-0-objc">
+                            <div class="tab-pane" id="examples-UserRestController-getUsersByType-0-objc">
                               <pre class="prettyprint"><code class="language-cpp">
 
 // Create an instance of the API class
 UserRestControllerApi *apiInstance = [[UserRestControllerApi alloc] init];
 String *type = type_example; //  (default to null)
+Integer *page = 56; //  (default to null)
 
-// Get all users by type
-[apiInstance getWorkersWith:type
+// Get pages users by type
+[apiInstance getUsersByTypeWith:type
+    page:page
               completionHandler: ^(User_WorkerLog output, NSError* error) {
     if (output) {
         NSLog(@"%@", output);
@@ -9809,12 +9853,13 @@ String *type = type_example; //  (default to null)
 </code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-UserRestController-getWorkers-0-javascript">
+                            <div class="tab-pane" id="examples-UserRestController-getUsersByType-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var OpenApiDefinition = require('open_api_definition');
 
 // Create an instance of the API class
 var api = new OpenApiDefinition.UserRestControllerApi()
 var type = type_example; // {String} 
+var page = 56; // {Integer} 
 
 var callback = function(error, data, response) {
   if (error) {
@@ -9823,14 +9868,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.getWorkers(type, callback);
+api.getUsersByType(type, page, callback);
 </code></pre>
                             </div>
 
-                            <!--<div class="tab-pane" id="examples-UserRestController-getWorkers-0-angular">
+                            <!--<div class="tab-pane" id="examples-UserRestController-getUsersByType-0-angular">
               <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
             </div>-->
-                            <div class="tab-pane" id="examples-UserRestController-getWorkers-0-csharp">
+                            <div class="tab-pane" id="examples-UserRestController-getUsersByType-0-csharp">
                               <pre class="prettyprint"><code class="language-cs">using System;
 using System.Diagnostics;
 using Org.OpenAPITools.Api;
@@ -9839,7 +9884,7 @@ using Org.OpenAPITools.Model;
 
 namespace Example
 {
-    public class getWorkersExample
+    public class getUsersByTypeExample
     {
         public void main()
         {
@@ -9847,13 +9892,14 @@ namespace Example
             // Create an instance of the API class
             var apiInstance = new UserRestControllerApi();
             var type = type_example;  // String |  (default to null)
+            var page = 56;  // Integer |  (default to null)
 
             try {
-                // Get all users by type
-                User_WorkerLog result = apiInstance.getWorkers(type);
+                // Get pages users by type
+                User_WorkerLog result = apiInstance.getUsersByType(type, page);
                 Debug.WriteLine(result);
             } catch (Exception e) {
-                Debug.Print("Exception when calling UserRestControllerApi.getWorkers: " + e.Message );
+                Debug.Print("Exception when calling UserRestControllerApi.getUsersByType: " + e.Message );
             }
         }
     }
@@ -9861,24 +9907,25 @@ namespace Example
 </code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-UserRestController-getWorkers-0-php">
+                            <div class="tab-pane" id="examples-UserRestController-getUsersByType-0-php">
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Create an instance of the API class
 $api_instance = new OpenAPITools\Client\Api\UserRestControllerApi();
 $type = type_example; // String | 
+$page = 56; // Integer | 
 
 try {
-    $result = $api_instance->getWorkers($type);
+    $result = $api_instance->getUsersByType($type, $page);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling UserRestControllerApi->getWorkers: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling UserRestControllerApi->getUsersByType: ', $e->getMessage(), PHP_EOL;
 }
 ?></code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-UserRestController-getWorkers-0-perl">
+                            <div class="tab-pane" id="examples-UserRestController-getUsersByType-0-perl">
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::OPenAPIClient::Configuration;
 use WWW::OPenAPIClient::UserRestControllerApi;
@@ -9886,17 +9933,18 @@ use WWW::OPenAPIClient::UserRestControllerApi;
 # Create an instance of the API class
 my $api_instance = WWW::OPenAPIClient::UserRestControllerApi->new();
 my $type = type_example; # String | 
+my $page = 56; # Integer | 
 
 eval {
-    my $result = $api_instance->getWorkers(type => $type);
+    my $result = $api_instance->getUsersByType(type => $type, page => $page);
     print Dumper($result);
 };
 if ($@) {
-    warn "Exception when calling UserRestControllerApi->getWorkers: $@\n";
+    warn "Exception when calling UserRestControllerApi->getUsersByType: $@\n";
 }</code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-UserRestController-getWorkers-0-python">
+                            <div class="tab-pane" id="examples-UserRestController-getUsersByType-0-python">
                               <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
 import time
 import openapi_client
@@ -9906,23 +9954,25 @@ from pprint import pprint
 # Create an instance of the API class
 api_instance = openapi_client.UserRestControllerApi()
 type = type_example # String |  (default to null)
+page = 56 # Integer |  (default to null)
 
 try:
-    # Get all users by type
-    api_response = api_instance.get_workers(type)
+    # Get pages users by type
+    api_response = api_instance.get_users_by_type(type, page)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling UserRestControllerApi->getWorkers: %s\n" % e)</code></pre>
+    print("Exception when calling UserRestControllerApi->getUsersByType: %s\n" % e)</code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-UserRestController-getWorkers-0-rust">
+                            <div class="tab-pane" id="examples-UserRestController-getUsersByType-0-rust">
                               <pre class="prettyprint"><code class="language-rust">extern crate UserRestControllerApi;
 
 pub fn main() {
     let type = type_example; // String
+    let page = 56; // Integer
 
     let mut context = UserRestControllerApi::Context::default();
-    let result = client.getWorkers(type, &context).wait();
+    let result = client.getUsersByType(type, page, &context).wait();
 
     println!("{:?}", result);
 }
@@ -9951,7 +10001,7 @@ pub fn main() {
 <td>
 
 
-    <div id="d2e199_getWorkers_type">
+    <div id="d2e199_getUsersByType_type">
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
@@ -9967,26 +10017,49 @@ pub fn main() {
 </td>
 </tr>
 
+                                <tr><td style="width:150px;">page*</td>
+<td>
+
+
+    <div id="d2e199_getUsersByType_page">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Integer
+                </span>
+                    <span class="format">
+                        (int32)
+                    </span>
+
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
                             </table>
 
                           <h2>Responses</h2>
-                            <h3 id="examples-UserRestController-getWorkers-title-200"></h3>
-                            <p id="examples-UserRestController-getWorkers-description-200" class="marked"></p>
+                            <h3 id="examples-UserRestController-getUsersByType-title-200"></h3>
+                            <p id="examples-UserRestController-getUsersByType-description-200" class="marked"></p>
                             <script>
                               var responseUserRestController200_description = `Found the users`;
                               var responseUserRestController200_description_break = responseUserRestController200_description.indexOf('\n');
                               if (responseUserRestController200_description_break == -1) {
-                                $("#examples-UserRestController-getWorkers-title-200").text("Status: 200 - " + responseUserRestController200_description);
+                                $("#examples-UserRestController-getUsersByType-title-200").text("Status: 200 - " + responseUserRestController200_description);
                               } else {
-                                $("#examples-UserRestController-getWorkers-title-200").text("Status: 200 - " + responseUserRestController200_description.substring(0, responseUserRestController200_description_break));
-                                $("#examples-UserRestController-getWorkers-description-200").html(responseUserRestController200_description.substring(responseUserRestController200_description_break));
+                                $("#examples-UserRestController-getUsersByType-title-200").text("Status: 200 - " + responseUserRestController200_description.substring(0, responseUserRestController200_description_break));
+                                $("#examples-UserRestController-getUsersByType-description-200").html(responseUserRestController200_description.substring(responseUserRestController200_description_break));
                               }
                             </script>
 
 
-                            <ul id="responses-detail-UserRestController-getWorkers-200" class="nav nav-tabs nav-tabs-examples" >
+                            <ul id="responses-detail-UserRestController-getUsersByType-200" class="nav nav-tabs nav-tabs-examples" >
                                 <li class="active">
-                                  <a data-toggle="tab" href="#responses-UserRestController-getWorkers-200-schema">Schema</a>
+                                  <a data-toggle="tab" href="#responses-UserRestController-getUsersByType-200-schema">Schema</a>
                                 </li>
 
 
@@ -9995,9 +10068,9 @@ pub fn main() {
                             </ul>
 
 
-                            <div class="tab-content" id="responses-UserRestController-getWorkers-200-wrapper" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-UserRestController-getWorkers-200-schema">
-                                  <div id="responses-UserRestController-getWorkers-schema-200" class="exampleStyle">
+                            <div class="tab-content" id="responses-UserRestController-getUsersByType-200-wrapper" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-UserRestController-getUsersByType-200-schema">
+                                  <div id="responses-UserRestController-getUsersByType-schema-200" class="exampleStyle">
                                     <script>
                                       $(document).ready(function() {
                                         var schemaWrapper = {
@@ -10026,37 +10099,37 @@ pub fn main() {
                                         }
 
                                         var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-UserRestController-getWorkers-200-schema-data').val(JSON.stringify(schema));
-                                        var result = $('#responses-UserRestController-getWorkers-schema-200');
+                                        $('#responses-UserRestController-getUsersByType-200-schema-data').val(JSON.stringify(schema));
+                                        var result = $('#responses-UserRestController-getUsersByType-schema-200');
                                         result.empty();
                                         result.append(view.render());
                                       });
                                     </script>
                                   </div>
-                                  <input id='responses-UserRestController-getWorkers-200-schema-data' type='hidden' value=''></input>
+                                  <input id='responses-UserRestController-getUsersByType-200-schema-data' type='hidden' value=''></input>
                                 </div>
                             </div>
-                            <h3 id="examples-UserRestController-getWorkers-title-404"></h3>
-                            <p id="examples-UserRestController-getWorkers-description-404" class="marked"></p>
+                            <h3 id="examples-UserRestController-getUsersByType-title-404"></h3>
+                            <p id="examples-UserRestController-getUsersByType-description-404" class="marked"></p>
                             <script>
                               var responseUserRestController404_description = `Not found`;
                               var responseUserRestController404_description_break = responseUserRestController404_description.indexOf('\n');
                               if (responseUserRestController404_description_break == -1) {
-                                $("#examples-UserRestController-getWorkers-title-404").text("Status: 404 - " + responseUserRestController404_description);
+                                $("#examples-UserRestController-getUsersByType-title-404").text("Status: 404 - " + responseUserRestController404_description);
                               } else {
-                                $("#examples-UserRestController-getWorkers-title-404").text("Status: 404 - " + responseUserRestController404_description.substring(0, responseUserRestController404_description_break));
-                                $("#examples-UserRestController-getWorkers-description-404").html(responseUserRestController404_description.substring(responseUserRestController404_description_break));
+                                $("#examples-UserRestController-getUsersByType-title-404").text("Status: 404 - " + responseUserRestController404_description.substring(0, responseUserRestController404_description_break));
+                                $("#examples-UserRestController-getUsersByType-description-404").html(responseUserRestController404_description.substring(responseUserRestController404_description_break));
                               }
                             </script>
 
 
-                            <ul id="responses-detail-UserRestController-getWorkers-404" class="nav nav-tabs nav-tabs-examples" >
+                            <ul id="responses-detail-UserRestController-getUsersByType-404" class="nav nav-tabs nav-tabs-examples" >
 
 
                             </ul>
 
 
-                            <div class="tab-content" id="responses-UserRestController-getWorkers-404-wrapper" style='margin-bottom: 10px;'>
+                            <div class="tab-content" id="responses-UserRestController-getUsersByType-404-wrapper" style='margin-bottom: 10px;'>
                             </div>
                         </article>
                       </div>
@@ -10352,6 +10425,28 @@ $(document).ready(function() {
 
 
                           <h2>Responses</h2>
+                            <h3 id="examples-UserRestController-uploadMyImage-title-400"></h3>
+                            <p id="examples-UserRestController-uploadMyImage-description-400" class="marked"></p>
+                            <script>
+                              var responseUserRestController400_description = `Invalid id supplied`;
+                              var responseUserRestController400_description_break = responseUserRestController400_description.indexOf('\n');
+                              if (responseUserRestController400_description_break == -1) {
+                                $("#examples-UserRestController-uploadMyImage-title-400").text("Status: 400 - " + responseUserRestController400_description);
+                              } else {
+                                $("#examples-UserRestController-uploadMyImage-title-400").text("Status: 400 - " + responseUserRestController400_description.substring(0, responseUserRestController400_description_break));
+                                $("#examples-UserRestController-uploadMyImage-description-400").html(responseUserRestController400_description.substring(responseUserRestController400_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-UserRestController-uploadMyImage-400" class="nav nav-tabs nav-tabs-examples" >
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-UserRestController-uploadMyImage-400-wrapper" style='margin-bottom: 10px;'>
+                            </div>
                             <h3 id="examples-UserRestController-uploadMyImage-title-201"></h3>
                             <p id="examples-UserRestController-uploadMyImage-description-201" class="marked"></p>
                             <script>
@@ -10439,28 +10534,6 @@ $(document).ready(function() {
 
 
                             <div class="tab-content" id="responses-UserRestController-uploadMyImage-403-wrapper" style='margin-bottom: 10px;'>
-                            </div>
-                            <h3 id="examples-UserRestController-uploadMyImage-title-400"></h3>
-                            <p id="examples-UserRestController-uploadMyImage-description-400" class="marked"></p>
-                            <script>
-                              var responseUserRestController400_description = `Invalid id supplied`;
-                              var responseUserRestController400_description_break = responseUserRestController400_description.indexOf('\n');
-                              if (responseUserRestController400_description_break == -1) {
-                                $("#examples-UserRestController-uploadMyImage-title-400").text("Status: 400 - " + responseUserRestController400_description);
-                              } else {
-                                $("#examples-UserRestController-uploadMyImage-title-400").text("Status: 400 - " + responseUserRestController400_description.substring(0, responseUserRestController400_description_break));
-                                $("#examples-UserRestController-uploadMyImage-description-400").html(responseUserRestController400_description.substring(responseUserRestController400_description_break));
-                              }
-                            </script>
-
-
-                            <ul id="responses-detail-UserRestController-uploadMyImage-400" class="nav nav-tabs nav-tabs-examples" >
-
-
-                            </ul>
-
-
-                            <div class="tab-content" id="responses-UserRestController-uploadMyImage-400-wrapper" style='margin-bottom: 10px;'>
                             </div>
                         </article>
                       </div>

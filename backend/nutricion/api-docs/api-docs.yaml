@@ -59,6 +59,8 @@ paths:
                   type: string
                   format: binary
       responses:
+        "400":
+          description: Invalid id supplied
         "201":
           description: Created
           content:
@@ -67,8 +69,6 @@ paths:
                 $ref: '#/components/schemas/User'
         "403":
           description: Forbidden
-        "400":
-          description: Invalid id supplied
   /api/recepies/image:
     post:
       tags:
@@ -140,14 +140,14 @@ paths:
               $ref: '#/components/schemas/Form'
         required: true
       responses:
+        "404":
+          description: Not found
         "201":
           description: Form created
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Form'
-        "404":
-          description: Not found
   /api/diets/:
     post:
       tags:
@@ -232,14 +232,20 @@ paths:
     get:
       tags:
       - user-rest-controller
-      summary: Get all users by type
-      operationId: getWorkers
+      summary: Get pages users by type
+      operationId: getUsersByType
       parameters:
       - name: type
         in: query
         required: true
         schema:
           type: string
+      - name: page
+        in: query
+        required: true
+        schema:
+          type: integer
+          format: int32
       responses:
         "200":
           description: Found the users
@@ -264,16 +270,16 @@ paths:
             type: integer
             format: int64
       responses:
-        "403":
-          description: Forbidden
+        "400":
+          description: Invalid ids supplied
         "200":
           description: Deleted
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/User'
-        "400":
-          description: Invalid ids supplied
+        "403":
+          description: Forbidden
   /api/users/{id}:
     get:
       tags:
@@ -288,8 +294,6 @@ paths:
           type: integer
           format: int64
       responses:
-        "404":
-          description: monitor not found
         "400":
           description: Invalid id supplied
         "200":
@@ -298,6 +302,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/User'
+        "404":
+          description: monitor not found
   /api/users/me:
     get:
       tags:
@@ -320,6 +326,8 @@ paths:
       summary: Get Client Stats
       operationId: getClientStats
       responses:
+        "404":
+          description: Not found
         "200":
           description: Found
           content:
@@ -328,8 +336,6 @@ paths:
                 $ref: '#/components/schemas/User_ClientInfo'
         "403":
           description: Forbidden
-        "404":
-          description: Not found
   /api/users/me/recepies:
     get:
       tags:
@@ -337,8 +343,6 @@ paths:
       summary: Get Client Recepies
       operationId: getClientRecepies
       responses:
-        "403":
-          description: Forbidden
         "200":
           description: Found
           content:
@@ -347,6 +351,8 @@ paths:
                 $ref: '#/components/schemas/Recepy_RecepyBasic'
         "404":
           description: Not found
+        "403":
+          description: Forbidden
   /api/users/me/diets:
     get:
       tags:
@@ -354,8 +360,6 @@ paths:
       summary: Get Client Diet
       operationId: getClientDiet
       responses:
-        "403":
-          description: Forbidden
         "200":
           description: Found
           content:
@@ -364,6 +368,8 @@ paths:
                 $ref: '#/components/schemas/Diet_DietBasic'
         "404":
           description: Not found
+        "403":
+          description: Forbidden
   /api/users/admin/stats/users:
     get:
       tags:
@@ -371,14 +377,14 @@ paths:
       summary: Get admin statistics users
       operationId: getAdminStatsUsers
       responses:
+        "404":
+          description: Not found
         "200":
           description: Found
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/User'
-        "404":
-          description: Not found
   /api/users/admin/stats/earns:
     get:
       tags:
@@ -386,14 +392,14 @@ paths:
       summary: Get admin statistics earns
       operationId: getAdminStatsEans
       responses:
+        "404":
+          description: Not found
         "200":
           description: Found
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/User'
-        "404":
-          description: Not found
   /api/users/admin/stats/diets:
     get:
       tags:
@@ -401,14 +407,14 @@ paths:
       summary: Get admin statistics diets
       operationId: getAdminStatsDiets
       responses:
+        "404":
+          description: Not found
         "200":
           description: Found
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/User'
-        "404":
-          description: Not found
   /api/users/admin/stats/diets/all:
     get:
       tags:
@@ -416,20 +422,27 @@ paths:
       summary: Get admin statistics all diets
       operationId: getAdminDiets
       responses:
+        "404":
+          description: Not found
         "200":
           description: Found
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/User'
-        "404":
-          description: Not found
   /api/recepies:
     get:
       tags:
       - recepy-rest-controller
       summary: Get recepies in app
       operationId: getRecepies
+      parameters:
+      - name: page
+        in: query
+        required: true
+        schema:
+          type: integer
+          format: int32
       responses:
         "200":
           description: Found recepies
@@ -446,8 +459,6 @@ paths:
       summary: Get Client Recepies
       operationId: getClientRecepies_1
       responses:
-        "403":
-          description: Forbidden
         "200":
           description: Found
           content:
@@ -456,6 +467,8 @@ paths:
                 $ref: '#/components/schemas/Recepy_RecepyBasic'
         "404":
           description: Not found
+        "403":
+          description: Forbidden
   /api/forms/me:
     get:
       tags:
@@ -463,14 +476,14 @@ paths:
       summary: Get user logged in the application
       operationId: getPersonalForm
       responses:
+        "404":
+          description: Not found
         "201":
           description: Form created
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Form'
-        "404":
-          description: Not found
   /api/diets:
     get:
       tags:
@@ -478,14 +491,14 @@ paths:
       summary: Get Diets in app
       operationId: getDiets
       responses:
+        "404":
+          description: Not found
         "200":
           description: Found diets
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Diet_DietBasic'
-        "404":
-          description: Not found
     delete:
       tags:
       - diet-rest-controller
@@ -501,16 +514,16 @@ paths:
             type: integer
             format: int64
       responses:
-        "403":
-          description: Forbidden
+        "400":
+          description: Invalid ids supplied
         "200":
           description: Deleted
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Diet'
-        "400":
-          description: Invalid ids supplied
+        "403":
+          description: Forbidden
 components:
   schemas:
     Diet:
