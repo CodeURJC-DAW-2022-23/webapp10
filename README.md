@@ -350,7 +350,7 @@ The links to access to API DOCS documentation are:
 
 ### UPDATE DIAGRAM CLASS
 
-(![image](https://user-images.githubusercontent.com/80918513/227786424-f491f06c-074e-4d46-87d5-a9478d18ea64.png)
+![image](https://user-images.githubusercontent.com/80918513/227786424-f491f06c-074e-4d46-87d5-a9478d18ea64.png)
 
 
 ### MEMBERS PARTICIPATION
