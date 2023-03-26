@@ -874,6 +874,15 @@ ul.nav-tabs {
     "type" : {
       "type" : "string"
     },
+    "dietRefactored" : {
+      "type" : "array",
+      "items" : {
+        "type" : "array",
+        "items" : {
+          "type" : "string"
+        }
+      }
+    },
     "week" : {
       "type" : "array",
       "items" : {
@@ -917,6 +926,15 @@ ul.nav-tabs {
     },
     "type" : {
       "type" : "string"
+    },
+    "dietRefactored" : {
+      "type" : "array",
+      "items" : {
+        "type" : "array",
+        "items" : {
+          "type" : "string"
+        }
+      }
     },
     "week" : {
       "type" : "array",
@@ -1438,8 +1456,14 @@ ul.nav-tabs {
             <li class="nav-fixed nav-header active" data-group="_"><a href="#api-_">API Summary</a></li>
 
                   <li class="nav-header" data-group="DietRestController"><a href="#api-DietRestController">API Methods - DietRestController</a></li>
+                    <li data-group="DietRestController" data-name="deleteListOfWorkers1" class="">
+                      <a href="#api-DietRestController-deleteListOfWorkers1">deleteListOfWorkers1</a>
+                    </li>
                     <li data-group="DietRestController" data-name="getDiets" class="">
                       <a href="#api-DietRestController-getDiets">getDiets</a>
+                    </li>
+                    <li data-group="DietRestController" data-name="postDiet" class="">
+                      <a href="#api-DietRestController-postDiet">postDiet</a>
                     </li>
                   <li class="nav-header" data-group="FormRestController"><a href="#api-FormRestController">API Methods - FormRestController</a></li>
                     <li data-group="FormRestController" data-name="createForm" class="">
@@ -1467,6 +1491,9 @@ ul.nav-tabs {
                     </li>
                     <li data-group="RecepyRestController" data-name="postRecepies" class="">
                       <a href="#api-RecepyRestController-postRecepies">postRecepies</a>
+                    </li>
+                    <li data-group="RecepyRestController" data-name="uploadMyImage1" class="">
+                      <a href="#api-RecepyRestController-uploadMyImage1">uploadMyImage1</a>
                     </li>
                   <li class="nav-header" data-group="UserRestController"><a href="#api-UserRestController">API Methods - UserRestController</a></li>
                     <li data-group="UserRestController" data-name="createMember" class="">
@@ -1534,6 +1561,391 @@ ul.nav-tabs {
         <div id="sections">
                 <section id="api-DietRestController">
                   <h1>DietRestController</h1>
+                    <div id="api-DietRestController-deleteListOfWorkers1">
+                      <article id="api-DietRestController-deleteListOfWorkers1-0" data-group="User" data-name="deleteListOfWorkers1" data-version="0">
+                        <div class="pull-left">
+                          <h1>deleteListOfWorkers1</h1>
+                          <p>Delete Diet </p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked"></p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="delete"><code><span class="pln">/api/diets</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-DietRestController-deleteListOfWorkers1-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-DietRestController-deleteListOfWorkers1-0-java">Java</a></li>
+                          <li class=""><a href="#examples-DietRestController-deleteListOfWorkers1-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-DietRestController-deleteListOfWorkers1-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-DietRestController-deleteListOfWorkers1-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-DietRestController-deleteListOfWorkers1-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-DietRestController-deleteListOfWorkers1-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-DietRestController-deleteListOfWorkers1-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-DietRestController-deleteListOfWorkers1-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-DietRestController-deleteListOfWorkers1-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-DietRestController-deleteListOfWorkers1-0-python">Python</a></li>
+                          <li class=""><a href="#examples-DietRestController-deleteListOfWorkers1-0-rust">Rust</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-DietRestController-deleteListOfWorkers1-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X DELETE \
+ -H "Accept: application/json" \
+ "http://localhost:8443/api/diets?ids="
+</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-DietRestController-deleteListOfWorkers1-0-java">
+                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.*;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.model.*;
+import org.openapitools.client.api.DietRestControllerApi;
+
+import java.io.File;
+import java.util.*;
+
+public class DietRestControllerApiExample {
+    public static void main(String[] args) {
+
+        // Create an instance of the API class
+        DietRestControllerApi apiInstance = new DietRestControllerApi();
+        array[Long] ids = ; // array[Long] | 
+
+        try {
+            Diet result = apiInstance.deleteListOfWorkers1(ids);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DietRestControllerApi#deleteListOfWorkers1");
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-DietRestController-deleteListOfWorkers1-0-android">
+                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.api.DietRestControllerApi;
+
+public class DietRestControllerApiExample {
+    public static void main(String[] args) {
+        DietRestControllerApi apiInstance = new DietRestControllerApi();
+        array[Long] ids = ; // array[Long] | 
+
+        try {
+            Diet result = apiInstance.deleteListOfWorkers1(ids);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DietRestControllerApi#deleteListOfWorkers1");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-DietRestController-deleteListOfWorkers1-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-DietRestController-deleteListOfWorkers1-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">
+
+// Create an instance of the API class
+DietRestControllerApi *apiInstance = [[DietRestControllerApi alloc] init];
+array[Long] *ids = ; //  (default to null)
+
+// Delete Diet 
+[apiInstance deleteListOfWorkers1With:ids
+              completionHandler: ^(Diet output, NSError* error) {
+    if (output) {
+        NSLog(@"%@", output);
+    }
+    if (error) {
+        NSLog(@"Error: %@", error);
+    }
+}];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-DietRestController-deleteListOfWorkers1-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var OpenApiDefinition = require('open_api_definition');
+
+// Create an instance of the API class
+var api = new OpenApiDefinition.DietRestControllerApi()
+var ids = ; // {array[Long]} 
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.deleteListOfWorkers1(ids, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-DietRestController-deleteListOfWorkers1-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-DietRestController-deleteListOfWorkers1-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
+
+namespace Example
+{
+    public class deleteListOfWorkers1Example
+    {
+        public void main()
+        {
+
+            // Create an instance of the API class
+            var apiInstance = new DietRestControllerApi();
+            var ids = new array[Long](); // array[Long] |  (default to null)
+
+            try {
+                // Delete Diet 
+                Diet result = apiInstance.deleteListOfWorkers1(ids);
+                Debug.WriteLine(result);
+            } catch (Exception e) {
+                Debug.Print("Exception when calling DietRestControllerApi.deleteListOfWorkers1: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-DietRestController-deleteListOfWorkers1-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Create an instance of the API class
+$api_instance = new OpenAPITools\Client\Api\DietRestControllerApi();
+$ids = ; // array[Long] | 
+
+try {
+    $result = $api_instance->deleteListOfWorkers1($ids);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DietRestControllerApi->deleteListOfWorkers1: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-DietRestController-deleteListOfWorkers1-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::OPenAPIClient::Configuration;
+use WWW::OPenAPIClient::DietRestControllerApi;
+
+# Create an instance of the API class
+my $api_instance = WWW::OPenAPIClient::DietRestControllerApi->new();
+my $ids = []; # array[Long] | 
+
+eval {
+    my $result = $api_instance->deleteListOfWorkers1(ids => $ids);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling DietRestControllerApi->deleteListOfWorkers1: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-DietRestController-deleteListOfWorkers1-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import openapi_client
+from openapi_client.rest import ApiException
+from pprint import pprint
+
+# Create an instance of the API class
+api_instance = openapi_client.DietRestControllerApi()
+ids =  # array[Long] |  (default to null)
+
+try:
+    # Delete Diet 
+    api_response = api_instance.delete_list_of_workers1(ids)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DietRestControllerApi->deleteListOfWorkers1: %s\n" % e)</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-DietRestController-deleteListOfWorkers1-0-rust">
+                              <pre class="prettyprint"><code class="language-rust">extern crate DietRestControllerApi;
+
+pub fn main() {
+    let ids = ; // array[Long]
+
+    let mut context = DietRestControllerApi::Context::default();
+    let result = client.deleteListOfWorkers1(ids, &context).wait();
+
+    println!("{:?}", result);
+}
+</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Scopes</h2>
+                          <table>
+                            
+                          </table>
+
+                          <h2>Parameters</h2>
+
+
+
+
+
+                            <div class="methodsubtabletitle">Query parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">ids*</td>
+<td>
+
+
+    <div id="d2e199_deleteListOfWorkers1_ids">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    array[Long]
+                </span>
+                    <span class="format">
+                        (int64)
+                    </span>
+
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
+
+                          <h2>Responses</h2>
+                            <h3 id="examples-DietRestController-deleteListOfWorkers1-title-403"></h3>
+                            <p id="examples-DietRestController-deleteListOfWorkers1-description-403" class="marked"></p>
+                            <script>
+                              var responseDietRestController403_description = `Forbidden`;
+                              var responseDietRestController403_description_break = responseDietRestController403_description.indexOf('\n');
+                              if (responseDietRestController403_description_break == -1) {
+                                $("#examples-DietRestController-deleteListOfWorkers1-title-403").text("Status: 403 - " + responseDietRestController403_description);
+                              } else {
+                                $("#examples-DietRestController-deleteListOfWorkers1-title-403").text("Status: 403 - " + responseDietRestController403_description.substring(0, responseDietRestController403_description_break));
+                                $("#examples-DietRestController-deleteListOfWorkers1-description-403").html(responseDietRestController403_description.substring(responseDietRestController403_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-DietRestController-deleteListOfWorkers1-403" class="nav nav-tabs nav-tabs-examples" >
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-DietRestController-deleteListOfWorkers1-403-wrapper" style='margin-bottom: 10px;'>
+                            </div>
+                            <h3 id="examples-DietRestController-deleteListOfWorkers1-title-200"></h3>
+                            <p id="examples-DietRestController-deleteListOfWorkers1-description-200" class="marked"></p>
+                            <script>
+                              var responseDietRestController200_description = `Deleted`;
+                              var responseDietRestController200_description_break = responseDietRestController200_description.indexOf('\n');
+                              if (responseDietRestController200_description_break == -1) {
+                                $("#examples-DietRestController-deleteListOfWorkers1-title-200").text("Status: 200 - " + responseDietRestController200_description);
+                              } else {
+                                $("#examples-DietRestController-deleteListOfWorkers1-title-200").text("Status: 200 - " + responseDietRestController200_description.substring(0, responseDietRestController200_description_break));
+                                $("#examples-DietRestController-deleteListOfWorkers1-description-200").html(responseDietRestController200_description.substring(responseDietRestController200_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-DietRestController-deleteListOfWorkers1-200" class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-DietRestController-deleteListOfWorkers1-200-schema">Schema</a>
+                                </li>
+
+
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-DietRestController-deleteListOfWorkers1-200-wrapper" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-DietRestController-deleteListOfWorkers1-200-schema">
+                                  <div id="responses-DietRestController-deleteListOfWorkers1-schema-200" class="exampleStyle">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Deleted",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/Diet"
+      }
+    }
+  }
+};
+                                        var schema = findNode('schema',schemaWrapper).schema;
+                                        if (!schema) {
+                                          schema = schemaWrapper.schema;
+                                        }
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else if (schema.items != null && schema.items.$ref != null) {
+                                            schema.items = defsParser.$refs.get(schema.items.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-DietRestController-deleteListOfWorkers1-200-schema-data').val(JSON.stringify(schema));
+                                        var result = $('#responses-DietRestController-deleteListOfWorkers1-schema-200');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-DietRestController-deleteListOfWorkers1-200-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+                            <h3 id="examples-DietRestController-deleteListOfWorkers1-title-400"></h3>
+                            <p id="examples-DietRestController-deleteListOfWorkers1-description-400" class="marked"></p>
+                            <script>
+                              var responseDietRestController400_description = `Invalid ids supplied`;
+                              var responseDietRestController400_description_break = responseDietRestController400_description.indexOf('\n');
+                              if (responseDietRestController400_description_break == -1) {
+                                $("#examples-DietRestController-deleteListOfWorkers1-title-400").text("Status: 400 - " + responseDietRestController400_description);
+                              } else {
+                                $("#examples-DietRestController-deleteListOfWorkers1-title-400").text("Status: 400 - " + responseDietRestController400_description.substring(0, responseDietRestController400_description_break));
+                                $("#examples-DietRestController-deleteListOfWorkers1-description-400").html(responseDietRestController400_description.substring(responseDietRestController400_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-DietRestController-deleteListOfWorkers1-400" class="nav nav-tabs nav-tabs-examples" >
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-DietRestController-deleteListOfWorkers1-400-wrapper" style='margin-bottom: 10px;'>
+                            </div>
+                        </article>
+                      </div>
+                      <hr>
                     <div id="api-DietRestController-getDiets">
                       <article id="api-DietRestController-getDiets-0" data-group="User" data-name="getDiets" data-version="0">
                         <div class="pull-left">
@@ -1853,6 +2265,387 @@ pub fn main() {
 
 
                             <div class="tab-content" id="responses-DietRestController-getDiets-404-wrapper" style='margin-bottom: 10px;'>
+                            </div>
+                        </article>
+                      </div>
+                      <hr>
+                    <div id="api-DietRestController-postDiet">
+                      <article id="api-DietRestController-postDiet-0" data-group="User" data-name="postDiet" data-version="0">
+                        <div class="pull-left">
+                          <h1>postDiet</h1>
+                          <p>Post Diet</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked"></p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/api/diets/</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-DietRestController-postDiet-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-DietRestController-postDiet-0-java">Java</a></li>
+                          <li class=""><a href="#examples-DietRestController-postDiet-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-DietRestController-postDiet-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-DietRestController-postDiet-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-DietRestController-postDiet-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-DietRestController-postDiet-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-DietRestController-postDiet-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-DietRestController-postDiet-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-DietRestController-postDiet-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-DietRestController-postDiet-0-python">Python</a></li>
+                          <li class=""><a href="#examples-DietRestController-postDiet-0-rust">Rust</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-DietRestController-postDiet-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X POST \
+ -H "Accept: application/json" \
+ -H "Content-Type: application/json" \
+ "http://localhost:8443/api/diets/" \
+ -d ''
+</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-DietRestController-postDiet-0-java">
+                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.*;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.model.*;
+import org.openapitools.client.api.DietRestControllerApi;
+
+import java.io.File;
+import java.util.*;
+
+public class DietRestControllerApiExample {
+    public static void main(String[] args) {
+
+        // Create an instance of the API class
+        DietRestControllerApi apiInstance = new DietRestControllerApi();
+        DietDietBasic dietDietBasic = ; // DietDietBasic | 
+
+        try {
+            User_DietBasic result = apiInstance.postDiet(dietDietBasic);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DietRestControllerApi#postDiet");
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-DietRestController-postDiet-0-android">
+                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.api.DietRestControllerApi;
+
+public class DietRestControllerApiExample {
+    public static void main(String[] args) {
+        DietRestControllerApi apiInstance = new DietRestControllerApi();
+        DietDietBasic dietDietBasic = ; // DietDietBasic | 
+
+        try {
+            User_DietBasic result = apiInstance.postDiet(dietDietBasic);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DietRestControllerApi#postDiet");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-DietRestController-postDiet-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-DietRestController-postDiet-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">
+
+// Create an instance of the API class
+DietRestControllerApi *apiInstance = [[DietRestControllerApi alloc] init];
+DietDietBasic *dietDietBasic = ; // 
+
+// Post Diet
+[apiInstance postDietWith:dietDietBasic
+              completionHandler: ^(User_DietBasic output, NSError* error) {
+    if (output) {
+        NSLog(@"%@", output);
+    }
+    if (error) {
+        NSLog(@"Error: %@", error);
+    }
+}];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-DietRestController-postDiet-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var OpenApiDefinition = require('open_api_definition');
+
+// Create an instance of the API class
+var api = new OpenApiDefinition.DietRestControllerApi()
+var dietDietBasic = ; // {DietDietBasic} 
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.postDiet(dietDietBasic, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-DietRestController-postDiet-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-DietRestController-postDiet-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
+
+namespace Example
+{
+    public class postDietExample
+    {
+        public void main()
+        {
+
+            // Create an instance of the API class
+            var apiInstance = new DietRestControllerApi();
+            var dietDietBasic = new DietDietBasic(); // DietDietBasic | 
+
+            try {
+                // Post Diet
+                User_DietBasic result = apiInstance.postDiet(dietDietBasic);
+                Debug.WriteLine(result);
+            } catch (Exception e) {
+                Debug.Print("Exception when calling DietRestControllerApi.postDiet: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-DietRestController-postDiet-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Create an instance of the API class
+$api_instance = new OpenAPITools\Client\Api\DietRestControllerApi();
+$dietDietBasic = ; // DietDietBasic | 
+
+try {
+    $result = $api_instance->postDiet($dietDietBasic);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DietRestControllerApi->postDiet: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-DietRestController-postDiet-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::OPenAPIClient::Configuration;
+use WWW::OPenAPIClient::DietRestControllerApi;
+
+# Create an instance of the API class
+my $api_instance = WWW::OPenAPIClient::DietRestControllerApi->new();
+my $dietDietBasic = WWW::OPenAPIClient::Object::DietDietBasic->new(); # DietDietBasic | 
+
+eval {
+    my $result = $api_instance->postDiet(dietDietBasic => $dietDietBasic);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling DietRestControllerApi->postDiet: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-DietRestController-postDiet-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import openapi_client
+from openapi_client.rest import ApiException
+from pprint import pprint
+
+# Create an instance of the API class
+api_instance = openapi_client.DietRestControllerApi()
+dietDietBasic =  # DietDietBasic | 
+
+try:
+    # Post Diet
+    api_response = api_instance.post_diet(dietDietBasic)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DietRestControllerApi->postDiet: %s\n" % e)</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-DietRestController-postDiet-0-rust">
+                              <pre class="prettyprint"><code class="language-rust">extern crate DietRestControllerApi;
+
+pub fn main() {
+    let dietDietBasic = ; // DietDietBasic
+
+    let mut context = DietRestControllerApi::Context::default();
+    let result = client.postDiet(dietDietBasic, &context).wait();
+
+    println!("{:?}", result);
+}
+</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Scopes</h2>
+                          <table>
+                            
+                          </table>
+
+                          <h2>Parameters</h2>
+
+
+
+                            <div class="methodsubtabletitle">Body parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">dietDietBasic <span style="color:red;">*</span></td>
+<td>
+<p class="marked"></p>
+<script>
+$(document).ready(function() {
+  var schemaWrapper = {
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/Diet_DietBasic"
+      }
+    }
+  },
+  "required" : true
+};
+
+  var schema = findNode('schema',schemaWrapper).schema;
+  if (!schema) {
+    schema = schemaWrapper.schema;
+  }
+  if (schema.$ref != null) {
+    schema = defsParser.$refs.get(schema.$ref);
+  } else {
+    schemaWrapper.definitions = Object.assign({}, defs);
+    $RefParser.dereference(schemaWrapper).catch(function(err) {
+      console.log(err);
+    });
+  }
+
+  var view = new JSONSchemaView(schema,2,{isBodyParam: true});
+  var result = $('#d2e199_postDiet_dietDietBasic');
+  result.empty();
+  result.append(view.render());
+});
+</script>
+<div id="d2e199_postDiet_dietDietBasic"></div>
+</td>
+</tr>
+
+                            </table>
+
+
+
+                          <h2>Responses</h2>
+                            <h3 id="examples-DietRestController-postDiet-title-201"></h3>
+                            <p id="examples-DietRestController-postDiet-description-201" class="marked"></p>
+                            <script>
+                              var responseDietRestController201_description = `Created`;
+                              var responseDietRestController201_description_break = responseDietRestController201_description.indexOf('\n');
+                              if (responseDietRestController201_description_break == -1) {
+                                $("#examples-DietRestController-postDiet-title-201").text("Status: 201 - " + responseDietRestController201_description);
+                              } else {
+                                $("#examples-DietRestController-postDiet-title-201").text("Status: 201 - " + responseDietRestController201_description.substring(0, responseDietRestController201_description_break));
+                                $("#examples-DietRestController-postDiet-description-201").html(responseDietRestController201_description.substring(responseDietRestController201_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-DietRestController-postDiet-201" class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-DietRestController-postDiet-201-schema">Schema</a>
+                                </li>
+
+
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-DietRestController-postDiet-201-wrapper" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-DietRestController-postDiet-201-schema">
+                                  <div id="responses-DietRestController-postDiet-schema-201" class="exampleStyle">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Created",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/User_DietBasic"
+      }
+    }
+  }
+};
+                                        var schema = findNode('schema',schemaWrapper).schema;
+                                        if (!schema) {
+                                          schema = schemaWrapper.schema;
+                                        }
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else if (schema.items != null && schema.items.$ref != null) {
+                                            schema.items = defsParser.$refs.get(schema.items.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-DietRestController-postDiet-201-schema-data').val(JSON.stringify(schema));
+                                        var result = $('#responses-DietRestController-postDiet-schema-201');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-DietRestController-postDiet-201-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+                            <h3 id="examples-DietRestController-postDiet-title-403"></h3>
+                            <p id="examples-DietRestController-postDiet-description-403" class="marked"></p>
+                            <script>
+                              var responseDietRestController403_description = `Forbidden`;
+                              var responseDietRestController403_description_break = responseDietRestController403_description.indexOf('\n');
+                              if (responseDietRestController403_description_break == -1) {
+                                $("#examples-DietRestController-postDiet-title-403").text("Status: 403 - " + responseDietRestController403_description);
+                              } else {
+                                $("#examples-DietRestController-postDiet-title-403").text("Status: 403 - " + responseDietRestController403_description.substring(0, responseDietRestController403_description_break));
+                                $("#examples-DietRestController-postDiet-description-403").html(responseDietRestController403_description.substring(responseDietRestController403_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-DietRestController-postDiet-403" class="nav nav-tabs nav-tabs-examples" >
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-DietRestController-postDiet-403-wrapper" style='margin-bottom: 10px;'>
                             </div>
                         </article>
                       </div>
@@ -3800,27 +4593,27 @@ pub fn main() {
 
 
                           <h2>Responses</h2>
-                            <h3 id="examples-RecepyRestController-getClientRecepies1-title-404"></h3>
-                            <p id="examples-RecepyRestController-getClientRecepies1-description-404" class="marked"></p>
+                            <h3 id="examples-RecepyRestController-getClientRecepies1-title-403"></h3>
+                            <p id="examples-RecepyRestController-getClientRecepies1-description-403" class="marked"></p>
                             <script>
-                              var responseRecepyRestController404_description = `Not found`;
-                              var responseRecepyRestController404_description_break = responseRecepyRestController404_description.indexOf('\n');
-                              if (responseRecepyRestController404_description_break == -1) {
-                                $("#examples-RecepyRestController-getClientRecepies1-title-404").text("Status: 404 - " + responseRecepyRestController404_description);
+                              var responseRecepyRestController403_description = `Forbidden`;
+                              var responseRecepyRestController403_description_break = responseRecepyRestController403_description.indexOf('\n');
+                              if (responseRecepyRestController403_description_break == -1) {
+                                $("#examples-RecepyRestController-getClientRecepies1-title-403").text("Status: 403 - " + responseRecepyRestController403_description);
                               } else {
-                                $("#examples-RecepyRestController-getClientRecepies1-title-404").text("Status: 404 - " + responseRecepyRestController404_description.substring(0, responseRecepyRestController404_description_break));
-                                $("#examples-RecepyRestController-getClientRecepies1-description-404").html(responseRecepyRestController404_description.substring(responseRecepyRestController404_description_break));
+                                $("#examples-RecepyRestController-getClientRecepies1-title-403").text("Status: 403 - " + responseRecepyRestController403_description.substring(0, responseRecepyRestController403_description_break));
+                                $("#examples-RecepyRestController-getClientRecepies1-description-403").html(responseRecepyRestController403_description.substring(responseRecepyRestController403_description_break));
                               }
                             </script>
 
 
-                            <ul id="responses-detail-RecepyRestController-getClientRecepies1-404" class="nav nav-tabs nav-tabs-examples" >
+                            <ul id="responses-detail-RecepyRestController-getClientRecepies1-403" class="nav nav-tabs nav-tabs-examples" >
 
 
                             </ul>
 
 
-                            <div class="tab-content" id="responses-RecepyRestController-getClientRecepies1-404-wrapper" style='margin-bottom: 10px;'>
+                            <div class="tab-content" id="responses-RecepyRestController-getClientRecepies1-403-wrapper" style='margin-bottom: 10px;'>
                             </div>
                             <h3 id="examples-RecepyRestController-getClientRecepies1-title-200"></h3>
                             <p id="examples-RecepyRestController-getClientRecepies1-description-200" class="marked"></p>
@@ -3888,27 +4681,27 @@ pub fn main() {
                                   <input id='responses-RecepyRestController-getClientRecepies1-200-schema-data' type='hidden' value=''></input>
                                 </div>
                             </div>
-                            <h3 id="examples-RecepyRestController-getClientRecepies1-title-403"></h3>
-                            <p id="examples-RecepyRestController-getClientRecepies1-description-403" class="marked"></p>
+                            <h3 id="examples-RecepyRestController-getClientRecepies1-title-404"></h3>
+                            <p id="examples-RecepyRestController-getClientRecepies1-description-404" class="marked"></p>
                             <script>
-                              var responseRecepyRestController403_description = `Forbidden`;
-                              var responseRecepyRestController403_description_break = responseRecepyRestController403_description.indexOf('\n');
-                              if (responseRecepyRestController403_description_break == -1) {
-                                $("#examples-RecepyRestController-getClientRecepies1-title-403").text("Status: 403 - " + responseRecepyRestController403_description);
+                              var responseRecepyRestController404_description = `Not found`;
+                              var responseRecepyRestController404_description_break = responseRecepyRestController404_description.indexOf('\n');
+                              if (responseRecepyRestController404_description_break == -1) {
+                                $("#examples-RecepyRestController-getClientRecepies1-title-404").text("Status: 404 - " + responseRecepyRestController404_description);
                               } else {
-                                $("#examples-RecepyRestController-getClientRecepies1-title-403").text("Status: 403 - " + responseRecepyRestController403_description.substring(0, responseRecepyRestController403_description_break));
-                                $("#examples-RecepyRestController-getClientRecepies1-description-403").html(responseRecepyRestController403_description.substring(responseRecepyRestController403_description_break));
+                                $("#examples-RecepyRestController-getClientRecepies1-title-404").text("Status: 404 - " + responseRecepyRestController404_description.substring(0, responseRecepyRestController404_description_break));
+                                $("#examples-RecepyRestController-getClientRecepies1-description-404").html(responseRecepyRestController404_description.substring(responseRecepyRestController404_description_break));
                               }
                             </script>
 
 
-                            <ul id="responses-detail-RecepyRestController-getClientRecepies1-403" class="nav nav-tabs nav-tabs-examples" >
+                            <ul id="responses-detail-RecepyRestController-getClientRecepies1-404" class="nav nav-tabs nav-tabs-examples" >
 
 
                             </ul>
 
 
-                            <div class="tab-content" id="responses-RecepyRestController-getClientRecepies1-403-wrapper" style='margin-bottom: 10px;'>
+                            <div class="tab-content" id="responses-RecepyRestController-getClientRecepies1-404-wrapper" style='margin-bottom: 10px;'>
                             </div>
                         </article>
                       </div>
@@ -4145,28 +4938,6 @@ pub fn main() {
 
 
                           <h2>Responses</h2>
-                            <h3 id="examples-RecepyRestController-getRecepies-title-404"></h3>
-                            <p id="examples-RecepyRestController-getRecepies-description-404" class="marked"></p>
-                            <script>
-                              var responseRecepyRestController404_description = `Not found`;
-                              var responseRecepyRestController404_description_break = responseRecepyRestController404_description.indexOf('\n');
-                              if (responseRecepyRestController404_description_break == -1) {
-                                $("#examples-RecepyRestController-getRecepies-title-404").text("Status: 404 - " + responseRecepyRestController404_description);
-                              } else {
-                                $("#examples-RecepyRestController-getRecepies-title-404").text("Status: 404 - " + responseRecepyRestController404_description.substring(0, responseRecepyRestController404_description_break));
-                                $("#examples-RecepyRestController-getRecepies-description-404").html(responseRecepyRestController404_description.substring(responseRecepyRestController404_description_break));
-                              }
-                            </script>
-
-
-                            <ul id="responses-detail-RecepyRestController-getRecepies-404" class="nav nav-tabs nav-tabs-examples" >
-
-
-                            </ul>
-
-
-                            <div class="tab-content" id="responses-RecepyRestController-getRecepies-404-wrapper" style='margin-bottom: 10px;'>
-                            </div>
                             <h3 id="examples-RecepyRestController-getRecepies-title-200"></h3>
                             <p id="examples-RecepyRestController-getRecepies-description-200" class="marked"></p>
                             <script>
@@ -4232,6 +5003,28 @@ pub fn main() {
                                   </div>
                                   <input id='responses-RecepyRestController-getRecepies-200-schema-data' type='hidden' value=''></input>
                                 </div>
+                            </div>
+                            <h3 id="examples-RecepyRestController-getRecepies-title-404"></h3>
+                            <p id="examples-RecepyRestController-getRecepies-description-404" class="marked"></p>
+                            <script>
+                              var responseRecepyRestController404_description = `Not found`;
+                              var responseRecepyRestController404_description_break = responseRecepyRestController404_description.indexOf('\n');
+                              if (responseRecepyRestController404_description_break == -1) {
+                                $("#examples-RecepyRestController-getRecepies-title-404").text("Status: 404 - " + responseRecepyRestController404_description);
+                              } else {
+                                $("#examples-RecepyRestController-getRecepies-title-404").text("Status: 404 - " + responseRecepyRestController404_description.substring(0, responseRecepyRestController404_description_break));
+                                $("#examples-RecepyRestController-getRecepies-description-404").html(responseRecepyRestController404_description.substring(responseRecepyRestController404_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-RecepyRestController-getRecepies-404" class="nav nav-tabs nav-tabs-examples" >
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-RecepyRestController-getRecepies-404-wrapper" style='margin-bottom: 10px;'>
                             </div>
                         </article>
                       </div>
@@ -4639,6 +5432,432 @@ $(document).ready(function() {
                         </article>
                       </div>
                       <hr>
+                    <div id="api-RecepyRestController-uploadMyImage1">
+                      <article id="api-RecepyRestController-uploadMyImage1-0" data-group="User" data-name="uploadMyImage1" data-version="0">
+                        <div class="pull-left">
+                          <h1>uploadMyImage1</h1>
+                          <p>Post image recepies</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked"></p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/api/recepies/image</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-RecepyRestController-uploadMyImage1-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-RecepyRestController-uploadMyImage1-0-java">Java</a></li>
+                          <li class=""><a href="#examples-RecepyRestController-uploadMyImage1-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-RecepyRestController-uploadMyImage1-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-RecepyRestController-uploadMyImage1-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-RecepyRestController-uploadMyImage1-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-RecepyRestController-uploadMyImage1-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-RecepyRestController-uploadMyImage1-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-RecepyRestController-uploadMyImage1-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-RecepyRestController-uploadMyImage1-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-RecepyRestController-uploadMyImage1-0-python">Python</a></li>
+                          <li class=""><a href="#examples-RecepyRestController-uploadMyImage1-0-rust">Rust</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-RecepyRestController-uploadMyImage1-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X POST \
+ -H "Accept: application/json" \
+ -H "Content-Type: multipart/form-data" \
+ "http://localhost:8443/api/recepies/image?id=789"
+</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-RecepyRestController-uploadMyImage1-0-java">
+                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.*;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.model.*;
+import org.openapitools.client.api.RecepyRestControllerApi;
+
+import java.io.File;
+import java.util.*;
+
+public class RecepyRestControllerApiExample {
+    public static void main(String[] args) {
+
+        // Create an instance of the API class
+        RecepyRestControllerApi apiInstance = new RecepyRestControllerApi();
+        Long id = 789; // Long | 
+        File imageFile = BINARY_DATA_HERE; // File | 
+
+        try {
+            Recepy_RecepyBasic result = apiInstance.uploadMyImage1(id, imageFile);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling RecepyRestControllerApi#uploadMyImage1");
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-RecepyRestController-uploadMyImage1-0-android">
+                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.api.RecepyRestControllerApi;
+
+public class RecepyRestControllerApiExample {
+    public static void main(String[] args) {
+        RecepyRestControllerApi apiInstance = new RecepyRestControllerApi();
+        Long id = 789; // Long | 
+        File imageFile = BINARY_DATA_HERE; // File | 
+
+        try {
+            Recepy_RecepyBasic result = apiInstance.uploadMyImage1(id, imageFile);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling RecepyRestControllerApi#uploadMyImage1");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-RecepyRestController-uploadMyImage1-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-RecepyRestController-uploadMyImage1-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">
+
+// Create an instance of the API class
+RecepyRestControllerApi *apiInstance = [[RecepyRestControllerApi alloc] init];
+Long *id = 789; //  (default to null)
+File *imageFile = BINARY_DATA_HERE; //  (default to null)
+
+// Post image recepies
+[apiInstance uploadMyImage1With:id
+    imageFile:imageFile
+              completionHandler: ^(Recepy_RecepyBasic output, NSError* error) {
+    if (output) {
+        NSLog(@"%@", output);
+    }
+    if (error) {
+        NSLog(@"Error: %@", error);
+    }
+}];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-RecepyRestController-uploadMyImage1-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var OpenApiDefinition = require('open_api_definition');
+
+// Create an instance of the API class
+var api = new OpenApiDefinition.RecepyRestControllerApi()
+var id = 789; // {Long} 
+var imageFile = BINARY_DATA_HERE; // {File} 
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.uploadMyImage1(id, imageFile, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-RecepyRestController-uploadMyImage1-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-RecepyRestController-uploadMyImage1-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
+
+namespace Example
+{
+    public class uploadMyImage1Example
+    {
+        public void main()
+        {
+
+            // Create an instance of the API class
+            var apiInstance = new RecepyRestControllerApi();
+            var id = 789;  // Long |  (default to null)
+            var imageFile = BINARY_DATA_HERE;  // File |  (default to null)
+
+            try {
+                // Post image recepies
+                Recepy_RecepyBasic result = apiInstance.uploadMyImage1(id, imageFile);
+                Debug.WriteLine(result);
+            } catch (Exception e) {
+                Debug.Print("Exception when calling RecepyRestControllerApi.uploadMyImage1: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-RecepyRestController-uploadMyImage1-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Create an instance of the API class
+$api_instance = new OpenAPITools\Client\Api\RecepyRestControllerApi();
+$id = 789; // Long | 
+$imageFile = BINARY_DATA_HERE; // File | 
+
+try {
+    $result = $api_instance->uploadMyImage1($id, $imageFile);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling RecepyRestControllerApi->uploadMyImage1: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-RecepyRestController-uploadMyImage1-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::OPenAPIClient::Configuration;
+use WWW::OPenAPIClient::RecepyRestControllerApi;
+
+# Create an instance of the API class
+my $api_instance = WWW::OPenAPIClient::RecepyRestControllerApi->new();
+my $id = 789; # Long | 
+my $imageFile = BINARY_DATA_HERE; # File | 
+
+eval {
+    my $result = $api_instance->uploadMyImage1(id => $id, imageFile => $imageFile);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling RecepyRestControllerApi->uploadMyImage1: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-RecepyRestController-uploadMyImage1-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import openapi_client
+from openapi_client.rest import ApiException
+from pprint import pprint
+
+# Create an instance of the API class
+api_instance = openapi_client.RecepyRestControllerApi()
+id = 789 # Long |  (default to null)
+imageFile = BINARY_DATA_HERE # File |  (default to null)
+
+try:
+    # Post image recepies
+    api_response = api_instance.upload_my_image1(id, imageFile)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling RecepyRestControllerApi->uploadMyImage1: %s\n" % e)</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-RecepyRestController-uploadMyImage1-0-rust">
+                              <pre class="prettyprint"><code class="language-rust">extern crate RecepyRestControllerApi;
+
+pub fn main() {
+    let id = 789; // Long
+    let imageFile = BINARY_DATA_HERE; // File
+
+    let mut context = RecepyRestControllerApi::Context::default();
+    let result = client.uploadMyImage1(id, imageFile, &context).wait();
+
+    println!("{:?}", result);
+}
+</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Scopes</h2>
+                          <table>
+                            
+                          </table>
+
+                          <h2>Parameters</h2>
+
+
+
+
+                            <div class="methodsubtabletitle">Form parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                  <tr><td style="width:150px;">imageFile*</td>
+<td>
+
+
+    <div id="d2e199_uploadMyImage1_imageFile">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    File
+                </span>
+                    <span class="format">
+                        (binary)
+                    </span>
+
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
+
+                            <div class="methodsubtabletitle">Query parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">id*</td>
+<td>
+
+
+    <div id="d2e199_uploadMyImage1_id">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Long
+                </span>
+                    <span class="format">
+                        (int64)
+                    </span>
+
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
+
+                          <h2>Responses</h2>
+                            <h3 id="examples-RecepyRestController-uploadMyImage1-title-201"></h3>
+                            <p id="examples-RecepyRestController-uploadMyImage1-description-201" class="marked"></p>
+                            <script>
+                              var responseRecepyRestController201_description = `Created`;
+                              var responseRecepyRestController201_description_break = responseRecepyRestController201_description.indexOf('\n');
+                              if (responseRecepyRestController201_description_break == -1) {
+                                $("#examples-RecepyRestController-uploadMyImage1-title-201").text("Status: 201 - " + responseRecepyRestController201_description);
+                              } else {
+                                $("#examples-RecepyRestController-uploadMyImage1-title-201").text("Status: 201 - " + responseRecepyRestController201_description.substring(0, responseRecepyRestController201_description_break));
+                                $("#examples-RecepyRestController-uploadMyImage1-description-201").html(responseRecepyRestController201_description.substring(responseRecepyRestController201_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-RecepyRestController-uploadMyImage1-201" class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-RecepyRestController-uploadMyImage1-201-schema">Schema</a>
+                                </li>
+
+
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-RecepyRestController-uploadMyImage1-201-wrapper" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-RecepyRestController-uploadMyImage1-201-schema">
+                                  <div id="responses-RecepyRestController-uploadMyImage1-schema-201" class="exampleStyle">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Created",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/Recepy_RecepyBasic"
+      }
+    }
+  }
+};
+                                        var schema = findNode('schema',schemaWrapper).schema;
+                                        if (!schema) {
+                                          schema = schemaWrapper.schema;
+                                        }
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else if (schema.items != null && schema.items.$ref != null) {
+                                            schema.items = defsParser.$refs.get(schema.items.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-RecepyRestController-uploadMyImage1-201-schema-data').val(JSON.stringify(schema));
+                                        var result = $('#responses-RecepyRestController-uploadMyImage1-schema-201');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-RecepyRestController-uploadMyImage1-201-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+                            <h3 id="examples-RecepyRestController-uploadMyImage1-title-400"></h3>
+                            <p id="examples-RecepyRestController-uploadMyImage1-description-400" class="marked"></p>
+                            <script>
+                              var responseRecepyRestController400_description = `Error creating`;
+                              var responseRecepyRestController400_description_break = responseRecepyRestController400_description.indexOf('\n');
+                              if (responseRecepyRestController400_description_break == -1) {
+                                $("#examples-RecepyRestController-uploadMyImage1-title-400").text("Status: 400 - " + responseRecepyRestController400_description);
+                              } else {
+                                $("#examples-RecepyRestController-uploadMyImage1-title-400").text("Status: 400 - " + responseRecepyRestController400_description.substring(0, responseRecepyRestController400_description_break));
+                                $("#examples-RecepyRestController-uploadMyImage1-description-400").html(responseRecepyRestController400_description.substring(responseRecepyRestController400_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-RecepyRestController-uploadMyImage1-400" class="nav nav-tabs nav-tabs-examples" >
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-RecepyRestController-uploadMyImage1-400-wrapper" style='margin-bottom: 10px;'>
+                            </div>
+                            <h3 id="examples-RecepyRestController-uploadMyImage1-title-403"></h3>
+                            <p id="examples-RecepyRestController-uploadMyImage1-description-403" class="marked"></p>
+                            <script>
+                              var responseRecepyRestController403_description = `Forbidden`;
+                              var responseRecepyRestController403_description_break = responseRecepyRestController403_description.indexOf('\n');
+                              if (responseRecepyRestController403_description_break == -1) {
+                                $("#examples-RecepyRestController-uploadMyImage1-title-403").text("Status: 403 - " + responseRecepyRestController403_description);
+                              } else {
+                                $("#examples-RecepyRestController-uploadMyImage1-title-403").text("Status: 403 - " + responseRecepyRestController403_description.substring(0, responseRecepyRestController403_description_break));
+                                $("#examples-RecepyRestController-uploadMyImage1-description-403").html(responseRecepyRestController403_description.substring(responseRecepyRestController403_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-RecepyRestController-uploadMyImage1-403" class="nav nav-tabs nav-tabs-examples" >
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-RecepyRestController-uploadMyImage1-403-wrapper" style='margin-bottom: 10px;'>
+                            </div>
+                        </article>
+                      </div>
+                      <hr>
                   </section>
                 <section id="api-UserRestController">
                   <h1>UserRestController</h1>
@@ -4714,6 +5933,7 @@ $(document).ready(function() {
     &quot;name&quot; : &quot;name&quot;,
     &quot;id&quot; : 3,
     &quot;type&quot; : &quot;type&quot;,
+    &quot;dietRefactored&quot; : [ [ &quot;dietRefactored&quot;, &quot;dietRefactored&quot; ], [ &quot;dietRefactored&quot;, &quot;dietRefactored&quot; ] ],
     &quot;users&quot; : [ null, null ]
   },
   &quot;email&quot; : &quot;email&quot;
@@ -5333,28 +6553,6 @@ pub fn main() {
                             </table>
 
                           <h2>Responses</h2>
-                            <h3 id="examples-UserRestController-deleteListOfWorkers-title-400"></h3>
-                            <p id="examples-UserRestController-deleteListOfWorkers-description-400" class="marked"></p>
-                            <script>
-                              var responseUserRestController400_description = `Invalid ids supplied`;
-                              var responseUserRestController400_description_break = responseUserRestController400_description.indexOf('\n');
-                              if (responseUserRestController400_description_break == -1) {
-                                $("#examples-UserRestController-deleteListOfWorkers-title-400").text("Status: 400 - " + responseUserRestController400_description);
-                              } else {
-                                $("#examples-UserRestController-deleteListOfWorkers-title-400").text("Status: 400 - " + responseUserRestController400_description.substring(0, responseUserRestController400_description_break));
-                                $("#examples-UserRestController-deleteListOfWorkers-description-400").html(responseUserRestController400_description.substring(responseUserRestController400_description_break));
-                              }
-                            </script>
-
-
-                            <ul id="responses-detail-UserRestController-deleteListOfWorkers-400" class="nav nav-tabs nav-tabs-examples" >
-
-
-                            </ul>
-
-
-                            <div class="tab-content" id="responses-UserRestController-deleteListOfWorkers-400-wrapper" style='margin-bottom: 10px;'>
-                            </div>
                             <h3 id="examples-UserRestController-deleteListOfWorkers-title-403"></h3>
                             <p id="examples-UserRestController-deleteListOfWorkers-description-403" class="marked"></p>
                             <script>
@@ -5442,6 +6640,28 @@ pub fn main() {
                                   </div>
                                   <input id='responses-UserRestController-deleteListOfWorkers-200-schema-data' type='hidden' value=''></input>
                                 </div>
+                            </div>
+                            <h3 id="examples-UserRestController-deleteListOfWorkers-title-400"></h3>
+                            <p id="examples-UserRestController-deleteListOfWorkers-description-400" class="marked"></p>
+                            <script>
+                              var responseUserRestController400_description = `Invalid ids supplied`;
+                              var responseUserRestController400_description_break = responseUserRestController400_description.indexOf('\n');
+                              if (responseUserRestController400_description_break == -1) {
+                                $("#examples-UserRestController-deleteListOfWorkers-title-400").text("Status: 400 - " + responseUserRestController400_description);
+                              } else {
+                                $("#examples-UserRestController-deleteListOfWorkers-title-400").text("Status: 400 - " + responseUserRestController400_description.substring(0, responseUserRestController400_description_break));
+                                $("#examples-UserRestController-deleteListOfWorkers-description-400").html(responseUserRestController400_description.substring(responseUserRestController400_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-UserRestController-deleteListOfWorkers-400" class="nav nav-tabs nav-tabs-examples" >
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-UserRestController-deleteListOfWorkers-400-wrapper" style='margin-bottom: 10px;'>
                             </div>
                         </article>
                       </div>
@@ -5678,28 +6898,6 @@ pub fn main() {
 
 
                           <h2>Responses</h2>
-                            <h3 id="examples-UserRestController-downloadImage-title-404"></h3>
-                            <p id="examples-UserRestController-downloadImage-description-404" class="marked"></p>
-                            <script>
-                              var responseUserRestController404_description = `Not found`;
-                              var responseUserRestController404_description_break = responseUserRestController404_description.indexOf('\n');
-                              if (responseUserRestController404_description_break == -1) {
-                                $("#examples-UserRestController-downloadImage-title-404").text("Status: 404 - " + responseUserRestController404_description);
-                              } else {
-                                $("#examples-UserRestController-downloadImage-title-404").text("Status: 404 - " + responseUserRestController404_description.substring(0, responseUserRestController404_description_break));
-                                $("#examples-UserRestController-downloadImage-description-404").html(responseUserRestController404_description.substring(responseUserRestController404_description_break));
-                              }
-                            </script>
-
-
-                            <ul id="responses-detail-UserRestController-downloadImage-404" class="nav nav-tabs nav-tabs-examples" >
-
-
-                            </ul>
-
-
-                            <div class="tab-content" id="responses-UserRestController-downloadImage-404-wrapper" style='margin-bottom: 10px;'>
-                            </div>
                             <h3 id="examples-UserRestController-downloadImage-title-200"></h3>
                             <p id="examples-UserRestController-downloadImage-description-200" class="marked"></p>
                             <script>
@@ -5765,6 +6963,28 @@ pub fn main() {
                                   </div>
                                   <input id='responses-UserRestController-downloadImage-200-schema-data' type='hidden' value=''></input>
                                 </div>
+                            </div>
+                            <h3 id="examples-UserRestController-downloadImage-title-404"></h3>
+                            <p id="examples-UserRestController-downloadImage-description-404" class="marked"></p>
+                            <script>
+                              var responseUserRestController404_description = `Not found`;
+                              var responseUserRestController404_description_break = responseUserRestController404_description.indexOf('\n');
+                              if (responseUserRestController404_description_break == -1) {
+                                $("#examples-UserRestController-downloadImage-title-404").text("Status: 404 - " + responseUserRestController404_description);
+                              } else {
+                                $("#examples-UserRestController-downloadImage-title-404").text("Status: 404 - " + responseUserRestController404_description.substring(0, responseUserRestController404_description_break));
+                                $("#examples-UserRestController-downloadImage-description-404").html(responseUserRestController404_description.substring(responseUserRestController404_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-UserRestController-downloadImage-404" class="nav nav-tabs nav-tabs-examples" >
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-UserRestController-downloadImage-404-wrapper" style='margin-bottom: 10px;'>
                             </div>
                         </article>
                       </div>
@@ -7293,6 +8513,28 @@ pub fn main() {
 
 
                           <h2>Responses</h2>
+                            <h3 id="examples-UserRestController-getClientDiet-title-403"></h3>
+                            <p id="examples-UserRestController-getClientDiet-description-403" class="marked"></p>
+                            <script>
+                              var responseUserRestController403_description = `Forbidden`;
+                              var responseUserRestController403_description_break = responseUserRestController403_description.indexOf('\n');
+                              if (responseUserRestController403_description_break == -1) {
+                                $("#examples-UserRestController-getClientDiet-title-403").text("Status: 403 - " + responseUserRestController403_description);
+                              } else {
+                                $("#examples-UserRestController-getClientDiet-title-403").text("Status: 403 - " + responseUserRestController403_description.substring(0, responseUserRestController403_description_break));
+                                $("#examples-UserRestController-getClientDiet-description-403").html(responseUserRestController403_description.substring(responseUserRestController403_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-UserRestController-getClientDiet-403" class="nav nav-tabs nav-tabs-examples" >
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-UserRestController-getClientDiet-403-wrapper" style='margin-bottom: 10px;'>
+                            </div>
                             <h3 id="examples-UserRestController-getClientDiet-title-200"></h3>
                             <p id="examples-UserRestController-getClientDiet-description-200" class="marked"></p>
                             <script>
@@ -7380,28 +8622,6 @@ pub fn main() {
 
 
                             <div class="tab-content" id="responses-UserRestController-getClientDiet-404-wrapper" style='margin-bottom: 10px;'>
-                            </div>
-                            <h3 id="examples-UserRestController-getClientDiet-title-403"></h3>
-                            <p id="examples-UserRestController-getClientDiet-description-403" class="marked"></p>
-                            <script>
-                              var responseUserRestController403_description = `Forbidden`;
-                              var responseUserRestController403_description_break = responseUserRestController403_description.indexOf('\n');
-                              if (responseUserRestController403_description_break == -1) {
-                                $("#examples-UserRestController-getClientDiet-title-403").text("Status: 403 - " + responseUserRestController403_description);
-                              } else {
-                                $("#examples-UserRestController-getClientDiet-title-403").text("Status: 403 - " + responseUserRestController403_description.substring(0, responseUserRestController403_description_break));
-                                $("#examples-UserRestController-getClientDiet-description-403").html(responseUserRestController403_description.substring(responseUserRestController403_description_break));
-                              }
-                            </script>
-
-
-                            <ul id="responses-detail-UserRestController-getClientDiet-403" class="nav nav-tabs nav-tabs-examples" >
-
-
-                            </ul>
-
-
-                            <div class="tab-content" id="responses-UserRestController-getClientDiet-403-wrapper" style='margin-bottom: 10px;'>
                             </div>
                         </article>
                       </div>
@@ -7638,27 +8858,27 @@ pub fn main() {
 
 
                           <h2>Responses</h2>
-                            <h3 id="examples-UserRestController-getClientRecepies-title-404"></h3>
-                            <p id="examples-UserRestController-getClientRecepies-description-404" class="marked"></p>
+                            <h3 id="examples-UserRestController-getClientRecepies-title-403"></h3>
+                            <p id="examples-UserRestController-getClientRecepies-description-403" class="marked"></p>
                             <script>
-                              var responseUserRestController404_description = `Not found`;
-                              var responseUserRestController404_description_break = responseUserRestController404_description.indexOf('\n');
-                              if (responseUserRestController404_description_break == -1) {
-                                $("#examples-UserRestController-getClientRecepies-title-404").text("Status: 404 - " + responseUserRestController404_description);
+                              var responseUserRestController403_description = `Forbidden`;
+                              var responseUserRestController403_description_break = responseUserRestController403_description.indexOf('\n');
+                              if (responseUserRestController403_description_break == -1) {
+                                $("#examples-UserRestController-getClientRecepies-title-403").text("Status: 403 - " + responseUserRestController403_description);
                               } else {
-                                $("#examples-UserRestController-getClientRecepies-title-404").text("Status: 404 - " + responseUserRestController404_description.substring(0, responseUserRestController404_description_break));
-                                $("#examples-UserRestController-getClientRecepies-description-404").html(responseUserRestController404_description.substring(responseUserRestController404_description_break));
+                                $("#examples-UserRestController-getClientRecepies-title-403").text("Status: 403 - " + responseUserRestController403_description.substring(0, responseUserRestController403_description_break));
+                                $("#examples-UserRestController-getClientRecepies-description-403").html(responseUserRestController403_description.substring(responseUserRestController403_description_break));
                               }
                             </script>
 
 
-                            <ul id="responses-detail-UserRestController-getClientRecepies-404" class="nav nav-tabs nav-tabs-examples" >
+                            <ul id="responses-detail-UserRestController-getClientRecepies-403" class="nav nav-tabs nav-tabs-examples" >
 
 
                             </ul>
 
 
-                            <div class="tab-content" id="responses-UserRestController-getClientRecepies-404-wrapper" style='margin-bottom: 10px;'>
+                            <div class="tab-content" id="responses-UserRestController-getClientRecepies-403-wrapper" style='margin-bottom: 10px;'>
                             </div>
                             <h3 id="examples-UserRestController-getClientRecepies-title-200"></h3>
                             <p id="examples-UserRestController-getClientRecepies-description-200" class="marked"></p>
@@ -7726,27 +8946,27 @@ pub fn main() {
                                   <input id='responses-UserRestController-getClientRecepies-200-schema-data' type='hidden' value=''></input>
                                 </div>
                             </div>
-                            <h3 id="examples-UserRestController-getClientRecepies-title-403"></h3>
-                            <p id="examples-UserRestController-getClientRecepies-description-403" class="marked"></p>
+                            <h3 id="examples-UserRestController-getClientRecepies-title-404"></h3>
+                            <p id="examples-UserRestController-getClientRecepies-description-404" class="marked"></p>
                             <script>
-                              var responseUserRestController403_description = `Forbidden`;
-                              var responseUserRestController403_description_break = responseUserRestController403_description.indexOf('\n');
-                              if (responseUserRestController403_description_break == -1) {
-                                $("#examples-UserRestController-getClientRecepies-title-403").text("Status: 403 - " + responseUserRestController403_description);
+                              var responseUserRestController404_description = `Not found`;
+                              var responseUserRestController404_description_break = responseUserRestController404_description.indexOf('\n');
+                              if (responseUserRestController404_description_break == -1) {
+                                $("#examples-UserRestController-getClientRecepies-title-404").text("Status: 404 - " + responseUserRestController404_description);
                               } else {
-                                $("#examples-UserRestController-getClientRecepies-title-403").text("Status: 403 - " + responseUserRestController403_description.substring(0, responseUserRestController403_description_break));
-                                $("#examples-UserRestController-getClientRecepies-description-403").html(responseUserRestController403_description.substring(responseUserRestController403_description_break));
+                                $("#examples-UserRestController-getClientRecepies-title-404").text("Status: 404 - " + responseUserRestController404_description.substring(0, responseUserRestController404_description_break));
+                                $("#examples-UserRestController-getClientRecepies-description-404").html(responseUserRestController404_description.substring(responseUserRestController404_description_break));
                               }
                             </script>
 
 
-                            <ul id="responses-detail-UserRestController-getClientRecepies-403" class="nav nav-tabs nav-tabs-examples" >
+                            <ul id="responses-detail-UserRestController-getClientRecepies-404" class="nav nav-tabs nav-tabs-examples" >
 
 
                             </ul>
 
 
-                            <div class="tab-content" id="responses-UserRestController-getClientRecepies-403-wrapper" style='margin-bottom: 10px;'>
+                            <div class="tab-content" id="responses-UserRestController-getClientRecepies-404-wrapper" style='margin-bottom: 10px;'>
                             </div>
                         </article>
                       </div>
@@ -8049,28 +9269,6 @@ pub fn main() {
                                   <input id='responses-UserRestController-getClientStats-200-schema-data' type='hidden' value=''></input>
                                 </div>
                             </div>
-                            <h3 id="examples-UserRestController-getClientStats-title-404"></h3>
-                            <p id="examples-UserRestController-getClientStats-description-404" class="marked"></p>
-                            <script>
-                              var responseUserRestController404_description = `Not found`;
-                              var responseUserRestController404_description_break = responseUserRestController404_description.indexOf('\n');
-                              if (responseUserRestController404_description_break == -1) {
-                                $("#examples-UserRestController-getClientStats-title-404").text("Status: 404 - " + responseUserRestController404_description);
-                              } else {
-                                $("#examples-UserRestController-getClientStats-title-404").text("Status: 404 - " + responseUserRestController404_description.substring(0, responseUserRestController404_description_break));
-                                $("#examples-UserRestController-getClientStats-description-404").html(responseUserRestController404_description.substring(responseUserRestController404_description_break));
-                              }
-                            </script>
-
-
-                            <ul id="responses-detail-UserRestController-getClientStats-404" class="nav nav-tabs nav-tabs-examples" >
-
-
-                            </ul>
-
-
-                            <div class="tab-content" id="responses-UserRestController-getClientStats-404-wrapper" style='margin-bottom: 10px;'>
-                            </div>
                             <h3 id="examples-UserRestController-getClientStats-title-403"></h3>
                             <p id="examples-UserRestController-getClientStats-description-403" class="marked"></p>
                             <script>
@@ -8092,6 +9290,28 @@ pub fn main() {
 
 
                             <div class="tab-content" id="responses-UserRestController-getClientStats-403-wrapper" style='margin-bottom: 10px;'>
+                            </div>
+                            <h3 id="examples-UserRestController-getClientStats-title-404"></h3>
+                            <p id="examples-UserRestController-getClientStats-description-404" class="marked"></p>
+                            <script>
+                              var responseUserRestController404_description = `Not found`;
+                              var responseUserRestController404_description_break = responseUserRestController404_description.indexOf('\n');
+                              if (responseUserRestController404_description_break == -1) {
+                                $("#examples-UserRestController-getClientStats-title-404").text("Status: 404 - " + responseUserRestController404_description);
+                              } else {
+                                $("#examples-UserRestController-getClientStats-title-404").text("Status: 404 - " + responseUserRestController404_description.substring(0, responseUserRestController404_description_break));
+                                $("#examples-UserRestController-getClientStats-description-404").html(responseUserRestController404_description.substring(responseUserRestController404_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-UserRestController-getClientStats-404" class="nav nav-tabs nav-tabs-examples" >
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-UserRestController-getClientStats-404-wrapper" style='margin-bottom: 10px;'>
                             </div>
                         </article>
                       </div>
@@ -8390,6 +9610,28 @@ pub fn main() {
 
                             <div class="tab-content" id="responses-UserRestController-getUserById-404-wrapper" style='margin-bottom: 10px;'>
                             </div>
+                            <h3 id="examples-UserRestController-getUserById-title-400"></h3>
+                            <p id="examples-UserRestController-getUserById-description-400" class="marked"></p>
+                            <script>
+                              var responseUserRestController400_description = `Invalid id supplied`;
+                              var responseUserRestController400_description_break = responseUserRestController400_description.indexOf('\n');
+                              if (responseUserRestController400_description_break == -1) {
+                                $("#examples-UserRestController-getUserById-title-400").text("Status: 400 - " + responseUserRestController400_description);
+                              } else {
+                                $("#examples-UserRestController-getUserById-title-400").text("Status: 400 - " + responseUserRestController400_description.substring(0, responseUserRestController400_description_break));
+                                $("#examples-UserRestController-getUserById-description-400").html(responseUserRestController400_description.substring(responseUserRestController400_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-UserRestController-getUserById-400" class="nav nav-tabs nav-tabs-examples" >
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-UserRestController-getUserById-400-wrapper" style='margin-bottom: 10px;'>
+                            </div>
                             <h3 id="examples-UserRestController-getUserById-title-200"></h3>
                             <p id="examples-UserRestController-getUserById-description-200" class="marked"></p>
                             <script>
@@ -8455,28 +9697,6 @@ pub fn main() {
                                   </div>
                                   <input id='responses-UserRestController-getUserById-200-schema-data' type='hidden' value=''></input>
                                 </div>
-                            </div>
-                            <h3 id="examples-UserRestController-getUserById-title-400"></h3>
-                            <p id="examples-UserRestController-getUserById-description-400" class="marked"></p>
-                            <script>
-                              var responseUserRestController400_description = `Invalid id supplied`;
-                              var responseUserRestController400_description_break = responseUserRestController400_description.indexOf('\n');
-                              if (responseUserRestController400_description_break == -1) {
-                                $("#examples-UserRestController-getUserById-title-400").text("Status: 400 - " + responseUserRestController400_description);
-                              } else {
-                                $("#examples-UserRestController-getUserById-title-400").text("Status: 400 - " + responseUserRestController400_description.substring(0, responseUserRestController400_description_break));
-                                $("#examples-UserRestController-getUserById-description-400").html(responseUserRestController400_description.substring(responseUserRestController400_description_break));
-                              }
-                            </script>
-
-
-                            <ul id="responses-detail-UserRestController-getUserById-400" class="nav nav-tabs nav-tabs-examples" >
-
-
-                            </ul>
-
-
-                            <div class="tab-content" id="responses-UserRestController-getUserById-400-wrapper" style='margin-bottom: 10px;'>
                             </div>
                         </article>
                       </div>
@@ -8750,28 +9970,6 @@ pub fn main() {
                             </table>
 
                           <h2>Responses</h2>
-                            <h3 id="examples-UserRestController-getWorkers-title-404"></h3>
-                            <p id="examples-UserRestController-getWorkers-description-404" class="marked"></p>
-                            <script>
-                              var responseUserRestController404_description = `Not found`;
-                              var responseUserRestController404_description_break = responseUserRestController404_description.indexOf('\n');
-                              if (responseUserRestController404_description_break == -1) {
-                                $("#examples-UserRestController-getWorkers-title-404").text("Status: 404 - " + responseUserRestController404_description);
-                              } else {
-                                $("#examples-UserRestController-getWorkers-title-404").text("Status: 404 - " + responseUserRestController404_description.substring(0, responseUserRestController404_description_break));
-                                $("#examples-UserRestController-getWorkers-description-404").html(responseUserRestController404_description.substring(responseUserRestController404_description_break));
-                              }
-                            </script>
-
-
-                            <ul id="responses-detail-UserRestController-getWorkers-404" class="nav nav-tabs nav-tabs-examples" >
-
-
-                            </ul>
-
-
-                            <div class="tab-content" id="responses-UserRestController-getWorkers-404-wrapper" style='margin-bottom: 10px;'>
-                            </div>
                             <h3 id="examples-UserRestController-getWorkers-title-200"></h3>
                             <p id="examples-UserRestController-getWorkers-description-200" class="marked"></p>
                             <script>
@@ -8838,6 +10036,28 @@ pub fn main() {
                                   <input id='responses-UserRestController-getWorkers-200-schema-data' type='hidden' value=''></input>
                                 </div>
                             </div>
+                            <h3 id="examples-UserRestController-getWorkers-title-404"></h3>
+                            <p id="examples-UserRestController-getWorkers-description-404" class="marked"></p>
+                            <script>
+                              var responseUserRestController404_description = `Not found`;
+                              var responseUserRestController404_description_break = responseUserRestController404_description.indexOf('\n');
+                              if (responseUserRestController404_description_break == -1) {
+                                $("#examples-UserRestController-getWorkers-title-404").text("Status: 404 - " + responseUserRestController404_description);
+                              } else {
+                                $("#examples-UserRestController-getWorkers-title-404").text("Status: 404 - " + responseUserRestController404_description.substring(0, responseUserRestController404_description_break));
+                                $("#examples-UserRestController-getWorkers-description-404").html(responseUserRestController404_description.substring(responseUserRestController404_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-UserRestController-getWorkers-404" class="nav nav-tabs nav-tabs-examples" >
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-UserRestController-getWorkers-404-wrapper" style='margin-bottom: 10px;'>
+                            </div>
                         </article>
                       </div>
                       <hr>
@@ -8853,7 +10073,7 @@ pub fn main() {
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/api/users/me/image/</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/api/users/me/image</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -8877,7 +10097,7 @@ pub fn main() {
                             <pre class="prettyprint"><code class="language-bsh">curl -X POST \
  -H "Accept: application/json" \
  -H "Content-Type: application/json" \
- "http://localhost:8443/api/users/me/image/" \
+ "http://localhost:8443/api/users/me/image" \
  -d ''
 </code></pre>
                           </div>
@@ -9477,28 +10697,6 @@ pub fn main() {
 
 
                           <h2>Responses</h2>
-                            <h3 id="examples-UserRestController-userLoged-title-404"></h3>
-                            <p id="examples-UserRestController-userLoged-description-404" class="marked"></p>
-                            <script>
-                              var responseUserRestController404_description = `Not found`;
-                              var responseUserRestController404_description_break = responseUserRestController404_description.indexOf('\n');
-                              if (responseUserRestController404_description_break == -1) {
-                                $("#examples-UserRestController-userLoged-title-404").text("Status: 404 - " + responseUserRestController404_description);
-                              } else {
-                                $("#examples-UserRestController-userLoged-title-404").text("Status: 404 - " + responseUserRestController404_description.substring(0, responseUserRestController404_description_break));
-                                $("#examples-UserRestController-userLoged-description-404").html(responseUserRestController404_description.substring(responseUserRestController404_description_break));
-                              }
-                            </script>
-
-
-                            <ul id="responses-detail-UserRestController-userLoged-404" class="nav nav-tabs nav-tabs-examples" >
-
-
-                            </ul>
-
-
-                            <div class="tab-content" id="responses-UserRestController-userLoged-404-wrapper" style='margin-bottom: 10px;'>
-                            </div>
                             <h3 id="examples-UserRestController-userLoged-title-200"></h3>
                             <p id="examples-UserRestController-userLoged-description-200" class="marked"></p>
                             <script>
@@ -9564,6 +10762,28 @@ pub fn main() {
                                   </div>
                                   <input id='responses-UserRestController-userLoged-200-schema-data' type='hidden' value=''></input>
                                 </div>
+                            </div>
+                            <h3 id="examples-UserRestController-userLoged-title-404"></h3>
+                            <p id="examples-UserRestController-userLoged-description-404" class="marked"></p>
+                            <script>
+                              var responseUserRestController404_description = `Not found`;
+                              var responseUserRestController404_description_break = responseUserRestController404_description.indexOf('\n');
+                              if (responseUserRestController404_description_break == -1) {
+                                $("#examples-UserRestController-userLoged-title-404").text("Status: 404 - " + responseUserRestController404_description);
+                              } else {
+                                $("#examples-UserRestController-userLoged-title-404").text("Status: 404 - " + responseUserRestController404_description.substring(0, responseUserRestController404_description_break));
+                                $("#examples-UserRestController-userLoged-description-404").html(responseUserRestController404_description.substring(responseUserRestController404_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-UserRestController-userLoged-404" class="nav nav-tabs nav-tabs-examples" >
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-UserRestController-userLoged-404-wrapper" style='margin-bottom: 10px;'>
                             </div>
                         </article>
                       </div>
