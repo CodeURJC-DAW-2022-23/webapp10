@@ -313,3 +313,44 @@ model and services.
 | 3 | SecurityConfiguration.java(https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/nutricion/src/main/java/com/nutri/backend/security/SecurityConfiguration.java) |
 | 4 | DietService.java(https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/nutricion/src/main/java/com/nutri/backend/service/DietService.java) |
 | 5 | UserRepository.java(https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/nutricion/src/main/java/com/nutri/backend/repositories/UserRepository.java) |
+
+## PHASE 3: REST API INCORPORATION AND DOCKER DEPLOYMENT
+
+### EXECUTION INSTRUCTIONS
+
+#### DOCKERIZED APP EXECUTION
+
+Firstly, install Docker in your computer. (You can download this program on: https://www.docker.com/get-started/)
+Next, open command console. Change your working directory to the file where docker-compose.yml is. (/docker)
+Execute 
+
+```$ docker-compose up```
+
+Once the app is running, open it in your browser on https://localhost:8443/
+
+#### DOCKER IMAGE CONSTRUCTION
+
+You need to log in to DockerHub before you execute the create_image.ps1 script (/docker). This script creates the new image and pushes it to DockerHub.
+
+Create an account in DockerHub (https://hub.docker.com/signup) and execute in your command console:
+
+``` $ docker login ```
+
+Execute 
+
+``` $ ./create_image.ps1  <name_of_the_new_image> ```
+
+Note that you must edit the script in order to **add your DockerHub user**. If not, you won't be able to upload the image.
+
+### API DOCS
+The links to access to API DOCS documentation are:
+
+* .yaml file (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/backend/nutricion/api-docs/api-docs.yaml)
+* link to .html (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/backend/nutricion/api-docs/api-docs.html)
+
+### UPDATE DIAGRAM CLASS
+
+![image](https://user-images.githubusercontent.com/80918513/227786424-f491f06c-074e-4d46-87d5-a9478d18ea64.png)
+
+
+### MEMBERS PARTICIPATION
