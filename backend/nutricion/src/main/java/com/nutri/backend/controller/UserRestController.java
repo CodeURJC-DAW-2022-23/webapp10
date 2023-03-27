@@ -23,6 +23,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.web.JsonPath;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -110,6 +111,44 @@ public class UserRestController {
         return new ResponseEntity<>(users,HttpStatus.OK);
     }
 
+    @Operation(summary = "Get pages users by type")
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Found the users",
+                    content = {@Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = User.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Not found",
+                    content = @Content
+            )
+    })
+    @JsonView({User.ClientLog.class})
+    @PutMapping("/me/")
+    public ResponseEntity<Optional<User>> updateUser(HttpServletRequest request,@RequestBody User updated){
+        Principal principal = request.getUserPrincipal();
+        User user = userService.findByEmail(principal.getName()).orElseThrow();
+        if (!updated.getName().equals("")){
+            user.setName(updated.getName());
+        }if (!updated.getSurname().equals("")){
+            user.setSurname(updated.getSurname());
+        }if (!updated.getEmail().equals("")){
+            user.setEmail(updated.getEmail());
+        }if (!updated.getEncodedPassword().equals("")){
+          String pass= passwordEncoder.encode(updated.getEncodedPassword());
+            user.setEncodedPassword(pass);
+        }
+        userService.save(user);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
+
+
+
     //GET User with id
     @Operation(summary = "Get a user by id")
 
@@ -133,7 +172,7 @@ public class UserRestController {
                     content = @Content
             )
     })
-
+    @JsonView(User.WorkerLog.class)
     @GetMapping("/{id}")
     public ResponseEntity<User> getUserById(@PathVariable long id) {
         Optional<User> op = userService.findById(id);

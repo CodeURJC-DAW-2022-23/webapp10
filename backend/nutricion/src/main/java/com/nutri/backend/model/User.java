@@ -47,7 +47,9 @@ public class User{
     private String email = "";
 
     //password
+
     @Column(nullable = false)
+    @JsonView(ClientLog.class)
     private String encodedPassword = "";
 
     @OneToOne(cascade=CascadeType.ALL)

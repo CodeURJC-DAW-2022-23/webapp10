@@ -3,7 +3,6 @@ Param(
 )
 
 
-
 Set-Location ../
 
 Write-Output "Directorio actual cambiado a $PWD"
