@@ -358,7 +358,7 @@ The links to access to API DOCS documentation are:
 
 ##### DESCRIPTION OF TASKS
 
-I have worked on the functionalities of the admin, user and worker, i did part of the front-end development, focusing on the images of the web. I make the data structure of the diet, with the Triple entity, and also i have achived the form of how to show images on the web, that were saved in the data base.
+I have worked on the docker files and done the api's related with images.
 
 ##### COMMITS DONE
 
@@ -381,12 +381,11 @@ I have worked on the functionalities of the admin, user and worker, i did part o
 | 5 | UserRestController.java  (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/backend/nutricion/src/main/java/com/nutri/backend/controller/UserRestController.java) |
 
 
-### MEMBERS PARTICIPATION
 #### Carlos Fernández López
 
 ##### DESCRIPTION OF TASKS
 
-I have worked on the API REST development and th docker image.
+I have worked on the API REST development and the docker image.
 
 ##### COMMITS DONE
 
@@ -407,3 +406,82 @@ I have worked on the API REST development and th docker image.
 | 3 | DietRestController.java(https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/backend/nutricion/src/main/java/com/nutri/backend/controller/DietRestController.java) |
 | 4 | FormRestController.java(https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/backend/nutricion/src/main/java/com/nutri/backend/controller/FormRestController.java) |
 | 5 | docker(https://github.com/CodeURJC-DAW-2022-23/webapp10/tree/main/docker) |
+
+
+#### Sara González Terroba
+
+##### DESCRIPTION OF TASKS
+
+I have carried out the generation of api-docs and the erasure of the diets in the worker page. I have participated a bit on API REST.
+
+##### COMMITS DONE
+
+| Name | Description |
+| - | - |
+| 1 | First part of the generation of Api-docs (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/166a7a2c73cb1bbd4fe1639e562fabc11df301df) |
+| 2 | Completed generation of Api-docs (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/519a039eb70aefc181fb270c88c33d355b5ba32f) |
+| 3 | Implementation of Delete Diet (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/166242275827f38ed2ff338cc19c669f53c3fb52) |
+| 4 | Implementation of Delete Diet (fixed error .- foreign key) (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/b8f3c81900d3998af49dc1ce11d3ee502f73e3b9) |
+| 5 | API REST client functions and worker recipes update (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/f46ac8911ff5720d0afe14557ba5f7a42a89f001) |
+
+##### FILES PARTICIPATED
+
+| File name | Link to github |
+| - | - |
+| 1 | WorkerController.java (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/backend/nutricion/src/main/java/com/nutri/backend/controller/WorkerController.java) |
+| 2 | UserRepository.java (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/backend/nutricion/src/main/java/com/nutri/backend/repositories/UserRepository.java) |
+| 3 | pom.xml (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/backend/nutricion/pom.xml) |
+| 4 | api-docs.html (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/backend/nutricion/api-docs/api-docs.html) |
+| 5 | USR_WorkerViewDiet.html (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/backend/nutricion/src/main/resources/templates/USR_WorkerViewDiet.html) |
+
+#### Daniel Monje Fuente
+
+##### DESCRIPTION OF TASKS
+
+I worked on docker, generation of the docker file and image. Also I did some small changes on the rest of the app. 
+
+##### COMMITS DONE
+
+| Name | Description |
+| - | - |
+| 1 | New Image in DockerHub and DietService delete (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/5ebadd1181601016cf1e4c3ba38afc70dfa2121a) |
+| 2 | docker try (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/e453aa2a0723f53d8aba55bd233bc599e70643ac) |
+| 3 | docker working (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/b49ade487e18c79d40c6a0dc863370ad536096b1) |
+| 4 | api images (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/0a672c931e000eaa6cd2e138feeb313611ff2cf4) |
+| 5 | Mix of changes (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/3f33823c249d3a7c59931835c63d50f1733ebaed) |
+
+##### FILES PARTICIPATED
+
+| File name | Link to github |
+| - | - |
+| 1 | dockerfile (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/docker/dockerfile) |
+| 2 | NutricionApplicationTests.java (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/backend/nutricion/src/test/java/nutri/web/nutricion/NutricionApplicationTests.java) |
+| 3 | RecepyRestController.java (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/backend/nutricion/src/main/java/com/nutri/backend/controller/RecepyRestController.java) |
+| 4 | DietService.java (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/backend/nutricion/src/main/java/com/nutri/backend/service/DietService.java) |
+| 5 | DietRepository.java (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/backend/nutricion/src/main/java/com/nutri/backend/repositories/DietRepository.java) |
+
+#### Snezhana Borislavova Buchelska
+
+##### DESCRIPTION OF TASKS
+
+I worked on ApiRest development and helped with the app's correct starting.
+
+##### COMMITS DONE
+
+| Name | Description |
+| - | - |
+| 1 | Services Injection (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/6efc24b02d2d9defc722471b89170754516b8dcb) |
+| 2 | Merge completed and some little changes (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/71d83ee9becc345032d2c6dd2bc65ee55614d64b) |
+| 3 | API REST admin delete users (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/7d00ba070d213e28097ddf446edac9d28e468650) |
+| 4 | Merge branch 'apiRestDevelopment' into main (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/23bd260992cbaa115e7063dca49da81d6a911a15) |
+| 5 | Correct Starting of the aplication (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/60fbd0ccf464dc5ed6b1a174224433b374e24f25) |
+
+##### FILES PARTICIPATED
+
+| File name | Link to github |
+| - | - |
+| 1 | DietService.java (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/backend/nutricion/src/main/java/com/nutri/backend/service/DietService.java) |
+| 2 | AdminController.java  (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/backend/nutricion/src/main/java/com/nutri/backend/controller/AdminController.java) |
+| 3 | WorkerController.java  (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/backend/nutricion/src/main/java/com/nutri/backend/controller/WorkerController.java) |
+| 4 | UserRestController.java  (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/backend/nutricion/src/main/java/com/nutri/backend/controller/UserRestController.java) |
+| 5 | pom.xml (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/backend/nutricion/pom.xml) |
