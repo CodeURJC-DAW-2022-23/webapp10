@@ -3,7 +3,7 @@ package com.nutri.backend.controller;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.nutri.backend.model.Diet;
-import com.nutri.backend.model.Recepy;
+
 import com.nutri.backend.model.User;
 import com.nutri.backend.service.DietService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -15,14 +15,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
+
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
+
 import java.net.URI;
-import java.security.Principal;
-import java.sql.Blob;
-import java.util.HashMap;
+
 import java.util.List;
 
 import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;

@@ -1,16 +1,12 @@
 package com.nutri.backend.controller;
 
 import com.nutri.backend.model.*;
-import com.nutri.backend.repositories.DietRepository;
 import com.nutri.backend.repositories.FormRepository;
-import com.nutri.backend.repositories.RecepyRepository;
-import com.nutri.backend.repositories.UserRepository;
 import com.nutri.backend.service.DietService;
 import com.nutri.backend.service.RecepyService;
 import com.nutri.backend.service.UserService;
 import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,8 +34,7 @@ public class ClientController {
     @Autowired
     private FormRepository formRep;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+  
 
     @Autowired
     private RecepyService recepyService;

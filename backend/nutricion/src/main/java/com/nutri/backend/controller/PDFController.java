@@ -4,7 +4,7 @@ import com.itextpdf.html2pdf.ConverterProperties;
 import com.itextpdf.html2pdf.HtmlConverter;
 import com.nutri.backend.model.Recepy;
 import com.nutri.backend.model.User;
-import com.nutri.backend.repositories.UserRepository;
+
 import com.nutri.backend.service.RecepyService;
 import com.nutri.backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
-import com.nutri.backend.repositories.RecepyRepository;
+
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
