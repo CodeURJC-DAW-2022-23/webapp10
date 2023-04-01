@@ -1,7 +1,7 @@
 import { style } from '@angular/animations';
 import { Component } from '@angular/core';
 @Component({
- selector: 'header',
+ selector: 'mainHeader',
  templateUrl: './header.component.html',
  styleUrls: ['./header.component.css']
 })
