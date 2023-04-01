@@ -6,8 +6,23 @@ import { Component, EventEmitter, Output, ResolvedReflectiveFactory } from "@ang
 @Component({
     selector:'app-root',
     templateUrl: './login.component.html',
-    styleUrls: ['../../../assets/css/main.css']
+    styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
   user='adri'
+  contr='********'
+  token="patata"
+  loginimg = "./assets/login.jpg";
+  logIn(event: any, user: string, pass: string) {
+
+    event.preventDefault();
+
+    //this.loginService.logIn(user, pass);
+
+
+  }
+
+  logOut() {
+    //this.loginService.logOut();
+  }
 }
