@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "bootstrap": "^5.2.3",
     "startbootstrap-sb-admin-2": "^4.1.4"
   }
 }
