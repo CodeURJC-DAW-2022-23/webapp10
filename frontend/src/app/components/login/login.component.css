@@ -8,12 +8,13 @@ section{
   padding: 100px;
 }
 .box{
+  display:flex;
   align-content: center;
   background-color: white;
   border-radius: 5px;
   width: 936px;
-  height: 350px;
-  margin-left: 31%;
+  height: 380px;
+  margin-left: 20%;
   margin-top: -22.5%;
 }
 .btn{

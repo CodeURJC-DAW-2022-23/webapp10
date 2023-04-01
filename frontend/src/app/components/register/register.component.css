@@ -8,19 +8,25 @@ section{
   padding: 100px;
 }
 .box{
-  align-content: center;
+  display:flex;
+  align-items: center;
   background-color: white;
   border-radius: 5px;
-  width: 936px;
-  height: 350px;
-  margin-left: 31%;
+  width: 1000px;
+  height: 400px;
+  margin-left: 20%;
   margin-top: -22.5%;
 }
 .btn{
+  display: float;
+  align-items: center;
   border-radius: 15%;
-  width: 200px;;
+  width: 410px;
+  text-align:center;
 }
 .btn-primary {
+  text-align: center;
+  padding-left: 10px;
   color:black;
   background-color: #5AF499;
   border-color: #5AF499;
