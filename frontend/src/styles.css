@@ -1,2 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 @import "../node_modules/bootstrap/dist/css/bootstrap.css";
+<<<<<<< HEAD
+=======
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;
+    font-weight: 400;
+    }
+    
+a{
+    text-decoration: none;
+    }
+>>>>>>> ffeb642c0b99d0f092d83347ccb75b972af0ce11
