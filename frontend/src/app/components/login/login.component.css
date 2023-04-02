@@ -8,12 +8,6 @@ section{
   padding: 100px;
 }
 .box{
-<<<<<<< HEAD
-  align-items: center;
-  background-color: white;
-
-  display: flex;
-=======
   display:flex;
   align-content: center;
   background-color: white;
@@ -22,7 +16,6 @@ section{
   height: 380px;
   margin-left: 20%;
   margin-top: -22.5%;
->>>>>>> abf23bd53371160ee8eba5d5e1cca08b45a91c97
 }
 .btn{
   border-radius: 15%;
