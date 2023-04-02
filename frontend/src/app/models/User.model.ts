@@ -1,5 +1,5 @@
 import {Diet} from '../models/Diet.model'
-import {Form} from '../models/Form.model'
+import {Form} from './Formulary.model'
 
 export interface User {
   id?: number;

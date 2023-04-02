@@ -21,8 +21,7 @@
     <div class="container shadow">
 
         <div class="col-12">
-            <form action="/login" method="post"
-                  style=" margin-top: 70px; margin-bottom: 80px;font-size: 18px;font-weight: 800;color: #232d39;letter-spacing: 1.3px;">
+            <form action="" method="post"style=" margin-top: 70px; margin-bottom: 80px;font-size: 18px;font-weight: 800;color: #232d39;letter-spacing: 1.3px;">
 
                 <!--Question-->
                 <div class="row" style="margin-bottom: 40px;">
@@ -40,11 +39,11 @@
                                 <option value="inter">Intersex</option>
                             </select--> <br>
                             <div class="col-lg-5">
-                                <input id="fem" name="gensex" type="radio" value="fem">
+                                <input #gensex id="fem" name="gensex" type="radio" value="fem">
                                 <label for="fem">Female</label><br>
-                                <input id="male" name="gensex" type="radio" value="male">
+                                <input #gensex id="male" name="gensex" type="radio" value="male">
                                 <label for="male">Male</label><br>
-                                <input id="inters" name="gensex" type="radio" value="inters">
+                                <input #gensex id="inters" name="gensex" type="radio" value="inters">
                                 <label for="inters">Intersex</label>
                             </div>
                         </div>
@@ -69,13 +68,13 @@
                                 <option value="51">51+</option>
                             </select> <br-->
                             <div class="col-lg-5">
-                                <input id="1825" name="age" type="radio" value="1825">
+                                <input #age id="1825" name="age" type="radio" value="1825">
                                 <label for="1825">18-25</label><br>
-                                <input id="2635" name="age" type="radio" value="2635">
+                                <input #age id="2635" name="age" type="radio" value="2635">
                                 <label for="2635">26-35</label><br>
-                                <input id="3650" name="age" type="radio" value="3650">
+                                <input #age id="3650" name="age" type="radio" value="3650">
                                 <label for="3650">36-50</label><br>
-                                <input id="51" name="age" type="radio" value="51">
+                                <input #age id="51" name="age" type="radio" value="51">
                                 <label for="51">51+</label>
                             </div>
                         </div>
@@ -98,11 +97,11 @@
                                 <option value="high">More than three times a week</option>
                             </select> <br-->
                             <div class="col-lg-5">
-                                <input id="low" name="phactivity" type="radio" value="low">
+                                <input #phactivity id="low" name="phactivity" type="radio" value="low">
                                 <label for="low">Three times a month or less</label><br>
-                                <input id="medium" name="phactivity" type="radio" value="medium">
+                                <input #phactivity id="medium" name="phactivity" type="radio" value="medium">
                                 <label for="medium">One or two times a week</label><br>
-                                <input id="high" name="phactivity" type="radio" value="high">
+                                <input #phactivity id="high" name="phactivity" type="radio" value="high">
                                 <label for="inters">More than three times a week</label>
                             </div>
                         </div>
@@ -116,10 +115,10 @@
                     </div>
                     <div class="col-11">
                         <div class="row">
-                            <label for="weight" > How much do you weight? (kg)</label>
+                            <label  for="weight" > How much do you weight? (kg)</label>
                         </div>
                         <div class="row">
-                            <input type="text" id="weight" name="weight" style="border-color: #5AF499;"><br>
+                            <input #weight type="text" id="weight" name="weight" style="border-color: #5AF499;"><br>
                         </div>
                     </div>
                 </div>
@@ -131,10 +130,10 @@
                     </div>
                     <div class="col-11">
                         <div class="row">
-                            <label for="height" > How tall are you? (m)</label>
+                            <label  for="height" > How tall are you? (m)</label>
                         </div>
                         <div class="row">
-                            <input type="text" id="height" name="height" style="border-color: #5AF499;"><br>
+                            <input #height type="text" id="height" name="height" style="border-color: #5AF499;"><br>
                         </div>
                     </div>
                 </div>
@@ -156,11 +155,11 @@
                             </select> <br-->
 
                             <div class="col">
-                                <input id="sports" name="interest" type="radio" value="sports">
-                                <label for="sports">I am starting with sports and I need advice</label><br>
-                                <input id="diet" name="interest" type="radio" value="diet">
+                                <input #interest id="sports" name="interest" type="radio" value="sports">
+                                <label  for="sports">I am starting with sports and I need advice</label><br>
+                                <input #interest id="diet" name="interest" type="radio" value="diet">
                                 <label for="diet">I would like to change my body</label><br>
-                                <input id="health" name="interest" type="radio" value="health">
+                                <input #interest id="health" name="interest" type="radio" value="health">
                                 <label for="health">I feel like I could eat better</label>
                             </div>
                         </div>
@@ -184,11 +183,11 @@
                             </select> <br-->
 
                             <div class="col-lg-5">
-                                <input id="wloss" name="aspiration" type="radio" value="wloss">
-                                <label for="wloss">Weight loss</label><br>
-                                <input id="wgain" name="aspiration" type="radio" value="wgain">
+                                <input #aspiration id="wloss" name="aspiration" type="radio" value="wloss">
+                                <label  for="wloss">Weight loss</label><br>
+                                <input #aspiration id="wgain" name="aspiration" type="radio" value="wgain">
                                 <label for="wgain">Weight gain</label><br>
-                                <input id="eatbetter" name="aspiration" type="radio" value="eatbetter">
+                                <input #aspiration id="eatbetter" name="aspiration" type="radio" value="eatbetter">
                                 <label for="eatbetter">Healthy eating</label>
                             </div>
                         </div>
@@ -196,7 +195,8 @@
                 </div>
 
                 <div class="row pb-5" style="justify-content:center; text-align: center;">
-                    <input style=" width:100px; display: inline-block;font-size: 15px;padding: 12px 20px;background-color: #5AF499;color: #fff;border-color: #fff;text-align: center;font-weight: 400;text-transform: uppercase;transition: all .3s;" type="submit" value="Submit">
+                    <input style=" width:100px; display: inline-block;font-size: 15px;padding: 12px 20px;background-color: #5AF499;color: #fff;border-color: #fff;text-align: center;font-weight: 400;text-transform: uppercase;transition: all .3s;" 
+                    (click)="createForm(gensex.value,age.value,phactivity.value,weight.value,height.value,interest.value,aspiration.value)" type="submit" value="Submit">
                     
                 </div>
 
