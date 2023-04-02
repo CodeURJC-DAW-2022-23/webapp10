@@ -43,8 +43,8 @@ public class RestSecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http.antMatcher("/api/**");
-        http.authorizeRequests().antMatchers(HttpMethod.PUT,"/api/users/me").hasAnyRole("worker","client");
-        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/users/me").hasAnyRole("worker","client");
+        http.authorizeRequests().antMatchers(HttpMethod.PUT,"/api/users/me").hasAnyRole("worker","client","admin");
+        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/users/me").hasAnyRole("worker","client","admin");
         //admin URLs
         http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/users").hasRole("admin");
         http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/users/{id}").hasRole("admin");

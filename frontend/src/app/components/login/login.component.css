@@ -8,21 +8,10 @@ section{
   padding: 100px;
 }
 .box{
-<<<<<<< HEAD
-  display:flex;
-  align-content: center;
-  background-color: white;
-  border-radius: 5px;
-  width: 936px;
-  height: 380px;
-  margin-left: 20%;
-  margin-top: -22.5%;
-=======
   align-items: center;
   background-color: white;
 
   display: flex;
->>>>>>> d57cf04d20604011054bf0a6c5ffca2c29dcebd5
 }
 .btn{
   border-radius: 15%;

@@ -52,10 +52,10 @@ export class LoginService {
               window.location.href = ''; //AQUI HAY QUE PONER A QUE COMPONENTE QUEREMOS VIAJAR
               break;
             case 'admin':
-              window.location.href = '';
+              window.location.href = 'register';
               break;
             case 'client':
-              window.location.href = '';
+              window.location.href = 'register';
               break;
           }
         },
