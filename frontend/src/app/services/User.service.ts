@@ -3,6 +3,9 @@ import { Injectable } from "@angular/core";
 import { catchError, Observable, throwError } from "rxjs";
 //import { Page } from "../models/rest/page.model";
 import { User } from "../models/User.model";
+import { Form } from "@angular/forms";
+import {Recepie} from '../models/Recepie.model'
+import { Diet } from "../models/Diet.model";
 
 const BASE_URL = '/api/users';
 
@@ -56,8 +59,8 @@ export class UserService {
       return this.httpClient.get(BASE_URL + '/me' + id).pipe();
     }
 
-    getUserByType(type:string){
-      return this.httpClient.get(BASE_URL);
+    getUserByType(type:string,n:number){
+      return this.httpClient.get(BASE_URL+'?type='+type+'&page='+n);
     }
 
     addWorker(worker: User) {
@@ -67,4 +70,83 @@ export class UserService {
           );
     }
 
+    getUserInServerInMonth(){
+      return this.httpClient.get(BASE_URL + '/admin/stats/users').pipe();
+    }
+
+    deleteWorker(id:number) {
+      return this.httpClient.delete(BASE_URL + '?ids=' + id).pipe(
+        catchError(error => this.handleError(error))
+      );
+    }
+
+    getAllDiets(){
+      return this.httpClient.get(BASE_URL + '/admin/stats/diets/all').pipe();
+    }
+
+    getEarnsByMonth(){
+      return this.httpClient.get(BASE_URL + '/admin/stats/earns').pipe();
+    }
+
+    getDietsByType(){
+      return this.httpClient.get(BASE_URL + '/admin/stats/diets').pipe();
+    }
+
+    //Client
+
+    getPersonalForm(){
+      return this.httpClient.get('api/forms/me').pipe();
+    }
+
+    getClientStats(){
+      return this.httpClient.get(BASE_URL + '/me/stats').pipe();
+    }
+
+    getUserDiet(){
+      return this.httpClient.get(BASE_URL + '/me/diets').pipe();
+    }
+
+    getUserRecipes(){
+      return this.httpClient.get(BASE_URL + '/me/recepies').pipe();
+    }
+
+    postForm(Form:Form){
+      return this.httpClient.post('/api/forms/',Form).pipe(
+        catchError(error => this.handleError(error))
+      );
+    }
+
+    //Worker
+
+    getDiets(){
+      return this.httpClient.get('/api/diets').pipe();
+    }
+
+    getAllRecipes(n:number){
+      return this.httpClient.get(BASE_URL+'?page='+n);
+    }
+
+    postRecipes(recepies:Recepie){
+      return this.httpClient.post('/api/forms/',recepies).pipe(
+        catchError(error => this.handleError(error))
+      );
+    }
+
+    deleteDiet(id:number) {
+      return this.httpClient.delete('/api/diets?ids=' + id).pipe(
+        catchError(error => this.handleError(error))
+      );
+    }
+
+    postDiet(diet:Diet){
+      return this.httpClient.post('/api/forms/',diet).pipe(
+        catchError(error => this.handleError(error))
+      );
+    }
+
+    postImageRecipes(n:number,formData: FormData){
+      return this.httpClient.post('/api/recepies/image?id='+n,formData).pipe(
+        catchError(error => this.handleError(error))
+      );
+    }
 }

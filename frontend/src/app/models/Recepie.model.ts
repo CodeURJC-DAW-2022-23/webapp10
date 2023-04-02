@@ -1,7 +1,4 @@
-import {Diet} from '../models/Diet.model'
-import {Form} from '../models/Form.model'
-
-export interface User {
+export interface Recipe {
   id?: number;
   name: string;
   surname: string;
