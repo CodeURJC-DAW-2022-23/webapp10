@@ -1,0 +1,75 @@
+<!-- log in Section Begin -->
+<section>
+  <br>
+  <br>
+  <br>
+  <br>
+  <div class="container">
+  <div class="box">
+      <div class="card o-hidden border-0 shadow-lg my-5">
+          <div class="card-body p-0">
+              <!-- Nested Row within Card Body -->
+              <div class="row">
+                  <div class="col-lg-5">
+                    <img src="../../../assets/login.jpg" width="400px" height="474px">
+                  </div>
+                  <div class="col-lg-7">
+                      <div class="p-5">
+                          <div class="text-center">
+                              <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                          </div>
+                          <form>
+                              <div class="form-group row">
+                                  <div class="col-sm-6 mb-3 mb-sm-0">
+                                      <input name="name" type="text" class="form-control form-control-user" id="exampleFirstName"
+                                          placeholder="First Name" required>
+                                  </div>
+                                  <div class="col-sm-6">
+                                      <input name="lastName" type="text" class="form-control form-control-user" id="exampleLastName"
+                                          placeholder="Last Name" required>
+                                  </div>
+                              </div>
+                              <br>
+                              <div class="form-group">
+                                  <input name="email" type="email" class="form-control form-control-user" id="exampleInputEmail"
+                                      placeholder="Email Address" required>
+                              </div>
+                              <div class="text-center">
+                              <span><abbr
+                                      title="                     At least 1 Uppercase
+  At least 1 Lowercase
+  At least 1 Number
+  At least 1 Symbol, symbol allowed --> !@#$%^&*_=+-
+  Min 8 chars and Max 12 chars">Requires needed in password!</abbr></span>
+                              </div>
+                              <br>
+                              <div class="form-group row">
+                                  <div class="col-sm-6 mb-3 mb-sm-0">
+                                      <input name="password" type="password" class="form-control form-control-user"
+                                          id="exampleInputPassword" placeholder="Password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$" required>
+                                  </div>
+                                  <div class="col-sm-6">
+                                      <input  name="passwordRepeat" type="password" class="form-control form-control-user"
+                                          id="exampleRepeatPassword" placeholder="Repeat Password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$"required>
+                                  </div>
+                              </div>
+                              <br>
+                              <input type="submit" value="Register Account" class="btn btn-primary btn-user btn-block" style="margin: 10px; ">
+                              <!--<input type="hidden" name="_csrf" value="{{token}}"/>-->
+                              <hr>
+                          </form>
+
+                          <div class="text-center">
+                              <a class="small" href="login" style="text-decoration:none">Already have an account? Login!</a>
+                          </div>
+
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+</section>
+
+<!-- log in Section End -->
