@@ -10,8 +10,8 @@ export interface User {
   userType: string;
   encodedPassword: string;
   diet: Diet;
-  form:Form;
-  imageFile:string;
-  image:Blob;
-  entryDate:number;
+  form: Form;
+  imageFile: string;
+  image: Blob;
+  entryDate: number;
 }

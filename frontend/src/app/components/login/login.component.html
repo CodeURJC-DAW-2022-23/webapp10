@@ -14,7 +14,7 @@
             <h2 > <strong style="color: black;">Welcome Back!</strong></h2>
             <br>
             <br>
-            <form >
+            <form method="post">
                 <input #user type="text" name="email" placeholder="Usuario" required><br><br>
                 <input #pass type="password" name="password" placeholder="Contraseña" required><br><br>
                 <button type="submit" (click)="logIn($event, user.value, pass.value)" class="btn btn-primary">Log-In</button>
