@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
-//import { Page } from "../models/rest/page.model";
 import { User } from '../models/User.model';
 import { Form } from '@angular/forms';
 import { Recepie } from '../models/Recepie.model';

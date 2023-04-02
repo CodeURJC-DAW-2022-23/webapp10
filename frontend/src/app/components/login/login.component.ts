@@ -1,8 +1,7 @@
 import { Component, EventEmitter, Output, ResolvedReflectiveFactory } from "@angular/core";
 //import { User } from "src/app/models/User.model";
-//import { LoginService } from "src/app/services/login.service";ç
-import { Router } from "@angular/router";
-
+//import { LoginService } from "src/app/services/login.service";
+import { LoginService } from "src/app/services/login.service";
 @Component({
     selector:'login',
     templateUrl: './login.component.html',
@@ -12,19 +11,18 @@ export class LoginComponent {
   user='adri'
   contr='********'
   token="patata"
-  constructor(private router: Router) { }
+  constructor(private loginService: LoginService) { }
   logIn(event: any, user: string, pass: string) {
 
 
     event.preventDefault();
-
-    //this.loginService.logIn(user, pass);
+    this.loginService.logIn(user, pass);
 
 
   }
 
   logOut() {
-    //this.loginService.logOut();
+    this.loginService.logOut();
   }
 
 }
