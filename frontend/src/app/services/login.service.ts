@@ -49,10 +49,10 @@ export class LoginService {
           this.logged = true;
           switch (this.user?.userType) {
             case 'worker':
-              window.location.href = ''; //AQUI HAY QUE PONER A QUE COMPONENTE QUEREMOS VIAJAR
+              window.location.href = 'worker'; //AQUI HAY QUE PONER A QUE COMPONENTE QUEREMOS VIAJAR
               break;
             case 'admin':
-              window.location.href = '';
+              window.location.href = 'admin';
               break;
             case 'client':
               window.location.href = 'client';

@@ -15,7 +15,9 @@ const routes: Routes = [
   {path:'',component: MainHeader},
   {path: 'test', component:formComponent},  
   {path: 'admin', component: LayoutComponent},
-  {path: 'client', component: LayoutComponent}
+  {path: 'client', component: LayoutComponent},
+  {path: 'worker', component: LayoutComponent}
+
 
 ];
 

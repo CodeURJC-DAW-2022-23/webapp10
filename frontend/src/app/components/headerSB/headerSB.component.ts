@@ -22,13 +22,13 @@ export class HeaderSB {
       }
     }
     
-    userLoged(){
+    ngOnInit(){
        this.userService.getMe().subscribe(
         (user)=> this.user = user as User,
         (error:any) => console.error(error)
        );
 
-       if(this.user?.userType=="admin"){
+       if(this.user?.userType=="worker"){
             this.type= false;
        }
     }
