@@ -14,7 +14,7 @@ import { UserService } from 'src/app/services/User.service';
 })
 export class formComponent {
 
-    constructor(private router: Router,private httpClient: HttpClient,private formService: FormService,private UserService:UserService){}
+    constructor(private router: Router,private httpClient: HttpClient,private formService: FormService){}
 
     createForm(gensex: string, age: string, phactivity: string, weight: string,
               height: string, interest: string, aspiration: string ){
@@ -27,11 +27,9 @@ export class formComponent {
             interest: interest,
             aspiration: aspiration
         } as unknown as Form;
-
         this.formService.createForm(form).subscribe(
           _=>window.location.href ="login",
           _=>_
-
         );
     }
 

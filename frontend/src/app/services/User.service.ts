@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
 import { User } from '../models/User.model';
-import { Form } from '@angular/forms';
+import { Form } from '../models/Formulary.model';
 import { Recepie } from '../models/Recepie.model';
 import { Diet } from '../models/Diet.model';
 
