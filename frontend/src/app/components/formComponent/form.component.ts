@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { FormService } from 'src/app/services/form.service';
 import { Form } from 'src/app/models/Formulary.model';
+import { UserService } from 'src/app/services/User.service';
 
 @Component({
  selector:'form',
@@ -13,10 +14,10 @@ import { Form } from 'src/app/models/Formulary.model';
 })
 export class formComponent {
 
-    constructor(private router: Router,private httpClient: HttpClient,private formService: FormService){}
+    constructor(private router: Router,private httpClient: HttpClient,private formService: FormService,private UserService:UserService){}
 
-    createForm(gensex: string, age: string, phactivity: string, weight: string, height: string, interest: string, aspiration: string ){
-        
+    createForm(gensex: string, age: string, phactivity: string, weight: string,
+              height: string, interest: string, aspiration: string ){
         const form = {
             sex: gensex,
             age: age,
@@ -28,12 +29,12 @@ export class formComponent {
         } as unknown as Form;
 
         this.formService.createForm(form).subscribe(
-            _=>window.location.href ="login",
-            _=>_
+          _=>window.location.href ="login",
+          _=>_
 
         );
     }
-    
+
 
 
 }
