@@ -22,7 +22,7 @@ export class SidebarSB {
     constructor(private userService: UserService,private http: HttpClient){
       this.userService.getMe().subscribe(
         (user:any)=> {
-          switch(user.userType()){
+          switch(user.userType){
           case 'worker':
             this.worker=true;
             this.admin=false;
