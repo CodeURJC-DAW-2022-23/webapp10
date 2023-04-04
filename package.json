@@ -1,6 +1,8 @@
 {
   "dependencies": {
+    "@angular/core": "^15.2.5",
     "bootstrap": "^5.2.3",
-    "startbootstrap-sb-admin-2": "^4.1.4"
+    "startbootstrap-sb-admin-2": "^4.1.4",
+    "tslib": "^2.5.0"
   }
 }
