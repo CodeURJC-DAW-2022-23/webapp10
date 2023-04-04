@@ -1,5 +1,5 @@
   <!-- Topbar -->
-  <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow" >
+  <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow" style="margin-left: 212px;" >
 
     <!-- Sidebar Toggle (Topbar) -->
     <div class="text-center d-none d-md-inline">
@@ -23,7 +23,7 @@
                  <a *ngIf="type" class="dropdown-item" href="/workerProfile">
                     Profile
                 </a>
-                <div class="dropdown-divider"></div>
+                <div *ngIf="type" class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                     Logout
                 </a>

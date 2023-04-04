@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginService } from './services/login.service';
 import { HeaderSB } from './components/headerSB/headerSB.component';
 import { LayoutComponent } from './components/layout.component';
+import { SidebarSB } from './components/sidebarSB/sidebarSB.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { LayoutComponent } from './components/layout.component';
     LoginComponent,
     RegisterComponent,
     HeaderSB,
-    LayoutComponent
+    LayoutComponent,
+    SidebarSB
   ],
   imports: [
     BrowserModule,

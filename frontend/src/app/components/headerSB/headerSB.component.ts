@@ -2,6 +2,8 @@ import { style } from '@angular/animations';
 import { Component } from '@angular/core';
 import { UserService } from 'src/app/services/User.service';
 import { User } from 'src/app/models/User.model'
+import { HttpClient } from '@angular/common/http';
+
 @Component({
  selector: 'headerSB',
  templateUrl: './headerSB.component.html',
@@ -9,8 +11,11 @@ import { User } from 'src/app/models/User.model'
 })
  
 export class HeaderSB {
-    constructor(private userService: UserService){}
-    user: User | undefined;
+    constructor(private userService: UserService,private http: HttpClient){
+
+      
+
+    }
     type= true;
 
     show="";
@@ -24,13 +29,13 @@ export class HeaderSB {
     
     ngOnInit(){
        this.userService.getMe().subscribe(
-        (user)=> this.user = user as User,
-        (error:any) => console.error(error)
+        (user:any)=> { if(user.userType=="worker"){
+          this.type= false;
+        }
+      }
        );
 
-       if(this.user?.userType=="worker"){
-            this.type= false;
-       }
+      
     }
 
 }
