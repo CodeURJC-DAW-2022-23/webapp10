@@ -11,28 +11,19 @@ const BASE_URL = '/api/auth';
 export class LoginService {
   logged: boolean | undefined;
   user: User | undefined;
-
-  constructor(private http: HttpClient) {
+  type="";
+  constructor(private http: HttpClient, private router: Router) {
     this.reqIsLogged();
     this.logged = false;
   }
 
-  reqIsLogged() {
+  reqIsLogged(){
     this.http.get('/api/users/me', { withCredentials: true }).subscribe(
       (response) => {
         this.user = response as User;
         this.logged = true;
-      },
-      (error) => {
-        if (error.status != 404) {
-          console.error(
-            'Error when asking if logged: ' + JSON.stringify(error)
-          );
-        }
       }
-    );
-  }
-
+    )}
   logIn(user: string, pass: string) {
     this.http.post(BASE_URL + '/login',{ username: user, password: pass },{ withCredentials: true }).subscribe(
         (response) => this.reqIsLoggedAux(),
@@ -40,7 +31,7 @@ export class LoginService {
       );
   }
 
-  reqIsLoggedAux(): void {
+  reqIsLoggedAux(){
     this.http
       .get('/api/users/me', { withCredentials: true })
       .subscribe(
@@ -49,10 +40,10 @@ export class LoginService {
           this.logged = true;
           switch (this.user?.userType) {
             case 'worker':
-              window.location.href = 'worker'; //AQUI HAY QUE PONER A QUE COMPONENTE QUEREMOS VIAJAR
+              this.router.navigate(['admin']); //AQUI HAY QUE PONER A QUE COMPONENTE QUEREMOS VIAJAR
               break;
             case 'admin':
-              window.location.href = 'admin';
+              this.router.navigate(['admin']);
               break;
             case 'client':
               window.location.href = 'client';

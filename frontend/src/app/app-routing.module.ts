@@ -5,8 +5,10 @@ import { LoginComponent } from './components/login/login.component';
 import { MainHeader } from './components/headerMainPage/header.component';
 import { RegisterComponent } from './components/register/register.component';
 import { formComponent } from './components/formComponent/form.component';
-import { HeaderSB } from './components/headerSB/headerSB.component';
-import { LayoutComponent } from './components/layout.component';
+import { AdminModule } from './modules/admin/admin.module';
+import { AuthGuard } from './guards/auth.guard';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+
 
 
 const routes: Routes = [
@@ -14,11 +16,8 @@ const routes: Routes = [
   {path: 'register', component:RegisterComponent},
   {path:'',component: MainHeader},
   {path: 'test', component:formComponent},  
-  {path: 'admin', component: LayoutComponent},
-  {path: 'client', component: LayoutComponent},
-  {path: 'worker', component: LayoutComponent}
-
-
+  {path:'admin',canActivate:[AuthGuard] ,loadChildren:()=>import('./modules/admin/admin.module').then((m)=>AdminModule)},
+  {path:'**',component: NotFoundComponent}
 ];
 
 @NgModule({

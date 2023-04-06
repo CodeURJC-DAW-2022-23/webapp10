@@ -7,10 +7,12 @@ import { MainHeader } from './components/headerMainPage/header.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HttpClientModule } from '@angular/common/http';
-import { LoginService } from './services/login.service';
-import { HeaderSB } from './components/headerSB/headerSB.component';
-import { LayoutComponent } from './components/layout.component';
-import { SidebarSB } from './components/sidebarSB/sidebarSB.component';
+import { LoginService } from './services/login.service';  
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+
 
 
 @NgModule({
@@ -19,14 +21,15 @@ import { SidebarSB } from './components/sidebarSB/sidebarSB.component';
     MainHeader,
     LoginComponent,
     RegisterComponent,
-    HeaderSB,
-    LayoutComponent,
-    SidebarSB
+    NotFoundComponent,  
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule,
+    BrowserAnimationsModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

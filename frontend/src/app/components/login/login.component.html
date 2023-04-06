@@ -19,7 +19,7 @@
                 <input #pass type="password" name="password" placeholder="Contraseña" required><br><br>
                 <button type="submit" (click)="logIn($event, user.value, pass.value)" class="btn btn-primary">Log-In</button>
                 <hr>
-                <a class="small" href="register" style="text-decoration:none">Create an Account!</a>
+                <a class="small" routerLink="register" style="text-decoration:none">Create an Account!</a>
                 <!--<input type="hidden" name="_csrf" value="{{token}}"/>-->
             </form>
           </div>
