@@ -4,8 +4,9 @@ section{
 }
 .container{
   display:flex;
-  margin: 200px;
-  padding: 100px;
+  margin-top: 170px;
+  margin-left: 0px;
+  padding: 90px;
 }
 .box{
   display:flex;

@@ -4,15 +4,29 @@ section{
 }
 .container{
   display:flex;
-  margin: 200px;
+  margin-top: 170px;
+  margin-left: 0px;
   padding: 100px;
 }
 .box{
+  display:flex;
   align-items: center;
   background-color: white;
-
-  display: flex;
+  border-radius: 5px;
+  width: 1000px;
+  height: 400px;
+  margin-left: 20%;
+  margin-top: -22.5%;
 }
+.widthcontrol{
+  width: 350px;
+  margin-left: 100px;
+}
+
+.center{
+  text-align: center;
+}
+
 .btn{
   border-radius: 15%;
   width: 200px;;

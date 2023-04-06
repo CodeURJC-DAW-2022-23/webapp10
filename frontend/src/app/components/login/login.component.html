@@ -5,18 +5,18 @@
   <br>
   <br>
   <div class="container">
-      <div class="box">
+      <div class="box shadow-lg">
           <div class="col-5">
-            <img src="../../../assets/login.jpg" width="400px" height="380px">
+            <img src="../../../assets/login.jpg" width="350px" height="400px">
           </div>
-          <div class="col-7" style="text-align: center;">
+          <div class="col-7 center form-group" >
             <br>
-            <h2 > <strong style="color: black;">Welcome Back!</strong></h2>
+            <h2 class="text-gray-900"> <strong>Welcome Back!</strong></h2>
             <br>
             <br>
             <form method="post">
-                <input #user type="text" name="email" placeholder="Usuario" required><br><br>
-                <input #pass type="password" name="password" placeholder="Contraseña" required><br><br>
+                <input #user type="text" class="form-control form-control-user widthcontrol" name="email" placeholder="Usuario" required><br><br>
+                <input #pass type="password" class="form-control form-control-user widthcontrol" name="password" placeholder="Contraseña" required><br><br>
                 <button type="submit" (click)="logIn($event, user.value, pass.value)" class="btn btn-primary">Log-In</button>
                 <hr>
                 <a class="small" routerLink="register" style="text-decoration:none">Create an Account!</a>
