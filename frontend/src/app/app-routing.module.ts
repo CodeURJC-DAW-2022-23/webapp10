@@ -17,6 +17,7 @@ const routes: Routes = [
   {path:'',component: MainHeader},
   {path: 'test', component:formComponent},  
   {path:'admin',canActivate:[AuthGuard] ,loadChildren:()=>import('./modules/admin/admin.module').then((m)=>AdminModule)},
+  {path:'client',canActivate:[AuthGuard],loadChildren:()=>import('./modules/admin/admin.module').then((m)=>AdminModule)},
   {path:'**',component: NotFoundComponent}
 ];
 

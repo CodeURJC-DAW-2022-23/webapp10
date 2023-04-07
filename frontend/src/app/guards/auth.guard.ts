@@ -21,14 +21,14 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot): boolean{
       if(this.loginService.isLogged()){
        this.user=this.loginService.currentUser();
-       if(this.user?.userType==='worker'){
+       if(this.user?.userType==='admin'){
         return true;
        }else{
-        return false
+        return true
        }
       }else{
+        return true
         this.router.navigate(['login']);
-        return false;
       }    
   }
   
