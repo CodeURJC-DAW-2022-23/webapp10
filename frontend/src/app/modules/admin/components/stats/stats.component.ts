@@ -9,4 +9,7 @@ import { ChartService } from 'src/app/services/chart.service';
 export class StatsComponent {
     
   constructor(private chartService: ChartService){}
+
+  
+
 }
