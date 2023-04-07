@@ -14,6 +14,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ChartService } from './services/chart.service';
 import { ChartsModule } from 'ng2-charts';
+import { NgxEchartsModule } from 'ngx-echarts';
 
 
 
@@ -31,7 +32,9 @@ import { ChartsModule } from 'ng2-charts';
     HttpClientModule,
     NgbModule,
     BrowserAnimationsModule,
-    ChartsModule
+    NgxEchartsModule.forRoot({
+      echarts: () => import('echarts')
+    })
     
   ],
   providers: [ChartService],

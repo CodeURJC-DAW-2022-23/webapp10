@@ -1,25 +1,16 @@
-import { NumberInput } from '@angular/cdk/coercion';
-import { Component, OnInit } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Component } from '@angular/core';
 import { ChartService } from 'src/app/services/chart.service';
 import { EChartsOption } from 'echarts';
 
-
-
-
-
-
 @Component({
-  selector: 'app-stats',
-  templateUrl: './stats.component.html',
-  styleUrls: ['./stats.component.css']
+  selector: 'app-user-in-server',
+  templateUrl: './user-in-server.component.html',
+  styleUrls: ['./user-in-server.component.css']
 })
-export class StatsComponent {
-  userInServer$!: Observable<any>  
-  diets = 0 ;
+export class UserInServerComponent {
   option = {
     title:{
-      text:"Earns per Month",
+      text:"Users in Server",
       textStyle:{
         fontWeight:'bold'
       }
@@ -64,11 +55,7 @@ export class StatsComponent {
     _echartOption!: EChartsOption;
 
   
+  constructor(private chartService: ChartService){ this._echartOption = this.option as EChartsOption;}
 
-  constructor(private chartService: ChartService){ this._echartOption = this.option as EChartsOption;
-    this.chartService.getAllDiets().subscribe((data)=>{
-     this.diets=data;
-    
-  })
-  }
+  
 }

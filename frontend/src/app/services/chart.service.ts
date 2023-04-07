@@ -23,4 +23,11 @@ export class ChartService {
     return this.httpClient.get(BASE_URL+'/admin/stats/diets');
   }
 
+  getEarnsByMonth():Observable<any> {
+    return this.httpClient.get(BASE_URL + '/admin/stats/earns');
+  }
+
+  
+
+
 }

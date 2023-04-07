@@ -75,13 +75,6 @@ export class UserService {
       .pipe(catchError((error) => this.handleError(error)));
   }
 
-  getAllDiets() {
-    return this.httpClient.get(BASE_URL + '/admin/stats/diets/all').pipe();
-  }
-
-  getEarnsByMonth() {
-    return this.httpClient.get(BASE_URL + '/admin/stats/earns').pipe();
-  }
 
   getDietsByType() {
     return this.httpClient.get(BASE_URL + '/admin/stats/diets').pipe();
