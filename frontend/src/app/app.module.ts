@@ -12,6 +12,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { ChartService } from './services/chart.service';
+import { ChartsModule } from 'ng2-charts';
 
 
 
@@ -29,9 +31,10 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     HttpClientModule,
     NgbModule,
     BrowserAnimationsModule,
+    ChartsModule
     
   ],
-  providers: [],
+  providers: [ChartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
