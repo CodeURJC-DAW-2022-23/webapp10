@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ChartService } from 'src/app/services/chart.service';
 
 @Component({
   selector: 'app-stats',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./stats.component.css']
 })
 export class StatsComponent {
-
+    
+  constructor(private chartService: ChartService){}
 }
