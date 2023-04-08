@@ -55,7 +55,7 @@ export class StatsComponent {
         emphasis: {
           focus: 'series'
         },
-        data: [1]
+        data: [{}]
         
       },
     ]
@@ -67,12 +67,13 @@ export class StatsComponent {
 
   constructor(private chartService: ChartService){ this._echartOption = this.option as EChartsOption;
       var miMapa: {[key: string]: number} ={};
-      this.chartService.getAllDiets().subscribe((data)=>{
-      this.diets=data;
+      this.chartService.getAllDiets().subscribe((result:any)=>{
+      this.diets=result;
     
   })
-    this.chartService.getEarnsByMonth().subscribe((data:any)=>{
-      miMapa=data;
+    this.chartService.getEarnsByMonth().subscribe((result:any)=>{
+      miMapa=result;
+      this.option.series[0].data.splice(0,1);
       for(let key in miMapa){
         this.option.series[0].data.push(miMapa[key]);
         console.log(key);
