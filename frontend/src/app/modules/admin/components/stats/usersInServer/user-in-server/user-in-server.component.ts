@@ -46,7 +46,7 @@ export class UserInServerComponent {
         emphasis: {
           focus: 'series'
         },
-        data: [40,12,34]
+        data: [1]
         
       },
     ]
@@ -55,7 +55,20 @@ export class UserInServerComponent {
     _echartOption!: EChartsOption;
 
   
-  constructor(private chartService: ChartService){ this._echartOption = this.option as EChartsOption;}
+  constructor(private chartService: ChartService){ this._echartOption = this.option as EChartsOption;
+    var miMapa: {[key: string]: number} ={};
+    this.chartService.getUsersInServer().subscribe((result:any)=>{
+      miMapa=result;
+      this.option.series[0].data.splice(0,1);
+      for(let key in miMapa){
+        this.option.series[0].data.push(miMapa[key]);
+        console.log(key);
+      }
+    })
 
+
+
+  }
+  
   
 }

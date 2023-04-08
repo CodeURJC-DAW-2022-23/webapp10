@@ -15,8 +15,9 @@ import { EChartsOption } from 'echarts';
   styleUrls: ['./stats.component.css']
 })
 export class StatsComponent {
-  userInServer$!: Observable<any>  
-  diets = 0 ;
+  diets = 0;
+  earns = 0;
+  clients = 0;
   option = {
     title:{
       text:"Earns per Month",
@@ -55,7 +56,7 @@ export class StatsComponent {
         emphasis: {
           focus: 'series'
         },
-        data: [{}]
+        data: [1]
         
       },
     ]
@@ -67,6 +68,8 @@ export class StatsComponent {
 
   constructor(private chartService: ChartService){ this._echartOption = this.option as EChartsOption;
       var miMapa: {[key: string]: number} ={};
+      var earnsAux=0;
+     
       this.chartService.getAllDiets().subscribe((result:any)=>{
       this.diets=result;
     
@@ -76,9 +79,12 @@ export class StatsComponent {
       this.option.series[0].data.splice(0,1);
       for(let key in miMapa){
         this.option.series[0].data.push(miMapa[key]);
-        console.log(key);
+         earnsAux+=miMapa[key];
       }
-    })
-
+      this.earns=earnsAux; 
+      this.clients=this.earns/9;
+    })  
   }
+
+ 
 }

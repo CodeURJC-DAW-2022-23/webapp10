@@ -59,6 +59,7 @@ export class DietsInServerComponent {
     var miMapa: {[key: string]: number} ={};
     this.chartService.getDietsByType().subscribe((data:any)=>{
       miMapa= data;
+      this.option.series[0].data.splice(0,1)
       for(let key in miMapa){
         this.option.series[0].data.push(miMapa[key]);
         console.log(key);
