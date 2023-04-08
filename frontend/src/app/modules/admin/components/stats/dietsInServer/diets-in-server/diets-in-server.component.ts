@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { ChartService } from 'src/app/services/chart.service';
-import { EChartsOption } from 'echarts';
+import { EChartsOption, number } from 'echarts';
+import { never } from 'rxjs';
+
+
+
 
 @Component({
   selector: 'app-diets-in-server',
@@ -44,15 +48,27 @@ export class DietsInServerComponent {
             shadowColor: 'rgba(0, 0, 0, 0.5)'
           }
         },
-        data: [40,12,34],
+        data:[0]
       },
     ]
   };
 
     _echartOption!: EChartsOption;
 
-  
-  constructor(private chartService: ChartService){ this._echartOption = this.option as EChartsOption;}
+  constructor(private chartService: ChartService){ 
+    var miMapa: {[key: string]: number} ={};
+    this.chartService.getDietsByType().subscribe((data:any)=>{
+      miMapa= data;
+      for(let key in miMapa){
+        this.option.series[0].data.push(miMapa[key]);
+        console.log(key);
+      }
+      console.log(miMapa);
+      this._echartOption = this.option as EChartsOption;
+    }
+    )
+    
+   
 
-  
+  }
 }
