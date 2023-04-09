@@ -55,8 +55,12 @@ export class UserService {
     return this.httpClient.get(BASE_URL + '/me' + id).pipe();
   }
 
-  getUserByType(type: string, n: number) {
-    return this.httpClient.get(BASE_URL + '?type=' + type + '&page=' + n);
+  getUserByTypeWorker(n: number) {
+    return this.httpClient.get(BASE_URL + '?type=worker'  + '&page=' + n);
+  }
+
+  getUserByTypeClient(n: number) {
+    return this.httpClient.get(BASE_URL + '?type=client'  + '&page=' + n);
   }
 
   addWorker(worker: User) {

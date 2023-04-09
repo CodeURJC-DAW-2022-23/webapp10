@@ -11,6 +11,8 @@ import { NewWorkerComponent } from './components/new-worker/new-worker.component
 import { NgxEchartsModule } from 'ngx-echarts';
 import { UserInServerComponent } from './components/stats/usersInServer/user-in-server/user-in-server.component';
 import { DietsInServerComponent } from './components/stats/dietsInServer/diets-in-server/diets-in-server.component';
+import { WorkerTableComponent } from './components/user-tables/workerTable/worker-table/worker-table.component';
+import { ClientTableComponent } from './components/user-tables/clientTable/client-table/client-table.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { DietsInServerComponent } from './components/stats/dietsInServer/diets-i
     StatsComponent,
     NewWorkerComponent,
     UserInServerComponent,
-    DietsInServerComponent
+    DietsInServerComponent,
+    WorkerTableComponent,
+    ClientTableComponent
   ],
   imports: [
     CommonModule,
