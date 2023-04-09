@@ -22,7 +22,10 @@ section{
   width: 350px;
   margin-left: 100px;
 }
-
+.sizecontrol{
+  width: 350px;
+  height: 400px;
+}
 .center{
   text-align: center;
 }
