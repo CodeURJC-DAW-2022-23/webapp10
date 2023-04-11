@@ -8,6 +8,7 @@ import { DietComponent } from './components/diet/diet.component';
 import { RecipesComponent } from './components/recipes/recipes.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ChartsComponent } from './components/charts/charts.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { FooterComponent } from './components/footer/footer.component';
     DietComponent,
     RecipesComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ChartsComponent
   ],
   imports: [
     CommonModule,
