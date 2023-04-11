@@ -15,6 +15,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ChartService } from './services/chart.service';
 import { ChartsModule } from 'ng2-charts';
 import { NgxEchartsModule } from 'ngx-echarts';
+import { WorkerDashboardComponent } from './modules/modules/worker/components/worker-dashboard/worker-dashboard.component';
 
 
 
@@ -24,7 +25,8 @@ import { NgxEchartsModule } from 'ngx-echarts';
     MainHeader,
     LoginComponent,
     RegisterComponent,
-    NotFoundComponent,  
+    NotFoundComponent,
+    WorkerDashboardComponent,  
   ],
   imports: [
     BrowserModule,
