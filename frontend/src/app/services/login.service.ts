@@ -61,14 +61,8 @@ export class LoginService {
   }
 
   logOut() {
-    return this.http
-      .post(BASE_URL + '/logout', { withCredentials: true })
-      .subscribe((resp: any) => {
-        console.log('LOGOUT: Successfully');
-        this.logged = false;
-        this.user = undefined;
-        document.location.href = './mainPage';
-      });
+    return this.http.post(BASE_URL + '/logout', { withCredentials: true })
+      
   }
 
   isLogged() {
