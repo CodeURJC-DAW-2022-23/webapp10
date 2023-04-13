@@ -65,7 +65,7 @@ export class UserService {
 
   addWorker(worker: User) {
     return this.httpClient
-      .post(BASE_URL + 'users/workers/', worker)
+      .post(BASE_URL + '/workers/', worker)
       .pipe(catchError((error) => this.handleError(error)));
   }
 

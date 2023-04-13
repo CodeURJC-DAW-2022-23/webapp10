@@ -36,7 +36,7 @@ export class WorkerTableComponent {
   }
   selectItem(item: number){
     this.workers?.splice(0,this.workers.length);
-    this.userService.getUserByTypeClient(item).subscribe(
+    this.userService.getUserByTypeWorker(item-1).subscribe(
       
       clients => {
           for (let e of clients as User [])

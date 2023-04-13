@@ -39,7 +39,7 @@ export class ClientTableComponent {
 
   selectItem(item: number){
     this.clients?.splice(0,this.clients.length);
-    this.userService.getUserByTypeClient(item).subscribe(
+    this.userService.getUserByTypeClient(item-1).subscribe(
       
       clients => {
           for (let e of clients as User [])

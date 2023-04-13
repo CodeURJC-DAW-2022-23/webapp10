@@ -13,6 +13,7 @@ import { UserInServerComponent } from './components/stats/usersInServer/user-in-
 import { DietsInServerComponent } from './components/stats/dietsInServer/diets-in-server/diets-in-server.component';
 import { WorkerTableComponent } from './components/user-tables/workerTable/worker-table/worker-table.component';
 import { ClientTableComponent } from './components/user-tables/clientTable/client-table/client-table.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { ClientTableComponent } from './components/user-tables/clientTable/clien
   ],
   imports: [
     CommonModule,
+    FormsModule,
     AdminRoutingModule,
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts')

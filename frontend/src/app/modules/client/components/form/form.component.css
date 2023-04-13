@@ -718,7 +718,6 @@ subscribe
 
 #call-to-action {
   padding: 120px 0px;
-  background-image: url(../../../assets/peces.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -848,7 +847,6 @@ schedule
 
 #schedule {
   padding: 0px 0px 140px 0px;
-  background-image: url(../../../assets/schedule.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -1018,11 +1016,6 @@ contact
 
 #contact-us .contact-form {
   padding: 80px;
-<<<<<<< HEAD
-
-=======
-  background-image: url(../../../assets/peces.jpg);
->>>>>>> 0734696cd38c8667d06d69c8fe2a8165738f5fd0
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;

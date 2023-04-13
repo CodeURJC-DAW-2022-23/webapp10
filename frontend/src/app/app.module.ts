@@ -10,11 +10,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginService } from './services/login.service';  
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatSidenavModule} from '@angular/material/sidenav';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ChartService } from './services/chart.service';
-import { ChartsModule } from 'ng2-charts';
 import { NgxEchartsModule } from 'ngx-echarts';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -31,6 +30,7 @@ import { NgxEchartsModule } from 'ngx-echarts';
     AppRoutingModule,
     HttpClientModule,
     NgbModule,
+    FormsModule,
     BrowserAnimationsModule,
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts')
