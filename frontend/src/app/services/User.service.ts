@@ -73,10 +73,9 @@ export class UserService {
     return this.httpClient.get(BASE_URL + '/admin/stats/users').pipe();
   }
 
-  deleteWorker(id: number) {
+  deleteUser(id: number[]) {
     return this.httpClient
       .delete(BASE_URL + '?ids=' + id)
-      .pipe(catchError((error) => this.handleError(error)));
   }
 
 

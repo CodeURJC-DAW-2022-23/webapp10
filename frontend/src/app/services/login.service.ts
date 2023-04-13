@@ -75,10 +75,6 @@ export class LoginService {
     return this.logged;
   }
 
-  isAdmin() {
-    return this.user && this.user.userType.indexOf('admin') !== -1;
-  }
-
   currentUser() {
     return this.user;
   }

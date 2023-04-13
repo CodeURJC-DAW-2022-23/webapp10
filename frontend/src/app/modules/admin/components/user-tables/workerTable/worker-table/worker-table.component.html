@@ -1,51 +1,32 @@
 <div class="table-responsive-vertical shadow p-4">
-    <form action="/deleteClient" method="post">
-    <!-- Table starts here -->
-    <table id="table" class="table table-hover table-mc-light-blue">
-        <thead>
-        <tr>
-            <th>Name</th>
-            <th>Surname</th>
-            <th>Email</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td> Juan</td>
-            <td>Luis</td>
-            <td><a href="/tablesClient/15" style="text-decoration:none">ejemploclient@yahoo.es</a></td>
-            <td><input type="checkbox" name="id" value="15"></td>
-        </tr>
-        <tr>
-            <td> Juan</td>
-            <td>Perez</td>
-            <td><a href="/tablesClient/16" style="text-decoration:none">juan.perez@example.com</a></td>
-            <td><input type="checkbox" name="id" value="16"></td>
-        </tr>
-        <tr>
-            <td> Maria</td>
-            <td>Garcia</td>
-            <td><a href="/tablesClient/17" style="text-decoration:none">maria.garcia@example.com</a></td>
-            <td><input type="checkbox" name="id" value="17"></td>
-        </tr>
-        <tr>
-            <td> Pedro</td>
-            <td>Sanchez</td>
-            <td><a href="/tablesClient/18" style="text-decoration:none">pedro.sanchez@example.com</a></td>
-            <td><input type="checkbox" name="id" value="18"></td>
-        </tr>
-        <tr>
-            <td> Ana</td>
-            <td>Martinez</td>
-            <td><a href="/tablesClient/19" style="text-decoration:none">ana.martinez@example.com</a></td>
-            <td><input type="checkbox" name="id" value="19"></td>
-        </tr>
-        <tr>
-            <td> Luis</td>
-            <td>Rodriguez</td>
-            <td><a href="/tablesClient/20" style="text-decoration:none">luis.rodriguez@example.com</a></td>
-            <td><input type="checkbox" name="id" value="20"></td>
-        </tr>
-        </tbody>
-    </table>
-
+  
+        <!-- Table starts here -->
+        <table id="table" class="table table-hover table-mc-light-blue">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let elem of workers" class="colorBlackText">
+                <tr>
+                    <td>{{elem.name}}</td>
+                    <td>{{elem.surname}}</td>
+                    <td>{{elem.email}}</td>
+                    <td>
+                        <label class="customcheckbox m-b-20">
+                            <input type="checkbox" id="mainCheckbox64" name="id" (click)="select(elem)">
+                            <span class="checkmark"></span>
+                        </label>
+                    </td>
+            </tbody>
+          
+        </table>
+        <button class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" id="loadMore" type="submit" (click)="delete()">Eliminar</button> <ul>
+         <ul>
+            <li (click)="selectItem(1)">1</li>
+            <li (click)="selectItem(2)">2</li>
+            <li (click)="selectItem(3)">3</li>
+           
+          </ul>
