@@ -7,7 +7,7 @@ import { DietComponent } from './components/diet/diet.component';
 import { RecipesComponent } from './components/recipes/recipes.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { ChartsComponent } from './components/charts/charts.component';
+import { ClientTableComponent } from './components/client-table/client-table.component'
 
 
 @NgModule({
@@ -17,7 +17,7 @@ import { ChartsComponent } from './components/charts/charts.component';
     RecipesComponent,
     HeaderComponent,
     FooterComponent,
-    ChartsComponent
+    ClientTableComponent,
   ],
   imports: [
     CommonModule,
