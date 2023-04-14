@@ -37,10 +37,9 @@ export class LoginService {
       .subscribe(
         (response) => {
           this.user = response as User;
-          this.logged = true;
           switch (this.user?.userType) {
             case 'worker':
-              this.router.navigate(['worker']); //AQUI HAY QUE PONER A QUE COMPONENTE QUEREMOS VIAJAR
+              this.router.navigate(['worker']); 
               break;
             case 'admin':
               this.router.navigate(['admin']);

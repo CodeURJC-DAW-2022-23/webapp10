@@ -1,0 +1,31 @@
+<div class="table-responsive-vertical shadow p-4">
+    
+        <!-- Table starts here -->
+        <table id="table" class="table table-hover table-mc-light-blue">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let elem of clients" class="colorBlackText">
+                <tr>
+                    <td>{{elem.name}}</td>
+                    <td>{{elem.surname}}</td>
+                    <td>{{elem.email}}</td>
+                    <td>
+                        <label class="customcheckbox m-b-20">
+                            <input type="checkbox" id="mainCheckbox64" name="id" (click)="select(elem)">
+                            <span class="checkmark"></span>
+                        </label>
+                    </td>
+            </tbody>
+        </table>
+        <button class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" id="loadMore" type="submit" (click)="delete()">Eliminar</button>
+        <ul>
+            <li (click)="selectItem(1)">1</li>
+            <li (click)="selectItem(2)">2</li>
+            <li (click)="selectItem(3)">3</li>
+           
+          </ul>

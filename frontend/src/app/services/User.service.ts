@@ -36,13 +36,7 @@ export class UserService {
       .pipe(catchError((error) => this.handleError(error)));
   }
 
-  editPassword(id: number, formData: FormData) {
-    return this.httpClient
-      .patch(BASE_URL + '/' + id + '/password', formData, {
-        withCredentials: true,
-      })
-      .pipe(catchError((error) => this.handleError(error)));
-  }
+  
 
   private handleError(error: any) {
     console.log('ERROR:');

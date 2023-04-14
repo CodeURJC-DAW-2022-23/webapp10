@@ -15,6 +15,7 @@ import { NgxEchartsModule } from 'ngx-echarts';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormComponent } from './modules/client/components/form/form.component';
 import { FormsModule } from '@angular/forms';
+import { FormComponentNonReg } from './components/formComponent/form.component';
 
 
 
@@ -26,6 +27,7 @@ import { FormsModule } from '@angular/forms';
     RegisterComponent,
     NotFoundComponent,
     NotFoundComponent,
+    FormComponentNonReg
   ],
   imports: [
     BrowserModule,
@@ -39,6 +41,7 @@ import { FormsModule } from '@angular/forms';
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts')
     })
+
 
   ],
   providers: [ChartService],
