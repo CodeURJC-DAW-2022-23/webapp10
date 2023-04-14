@@ -8,7 +8,7 @@ import { Observable, catchError, map, of } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-  isAdmin = false
+
 
 
   constructor(private http: HttpClient, private router: Router) {
