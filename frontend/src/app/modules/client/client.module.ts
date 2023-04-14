@@ -9,6 +9,9 @@ import { RecipesComponent } from './components/recipes/recipes.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ChartsComponent } from './components/charts/charts.component';
+import { DownloadedRecipesComponent } from './components/charts/downloaded-recipes/downloaded-recipes.component';
+import { NgxEchartsModule } from 'ngx-echarts';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,11 +22,16 @@ import { ChartsComponent } from './components/charts/charts.component';
     RecipesComponent,
     HeaderComponent,
     FooterComponent,
-    ChartsComponent
+    ChartsComponent,
+    DownloadedRecipesComponent
   ],
   imports: [
     CommonModule,
-    ClientRoutingModule
+    ClientRoutingModule,
+    NgxEchartsModule.forRoot({
+      echarts: () => import('echarts')
+    }),
+    FormsModule
   ]
 })
 export class ClientModule { }

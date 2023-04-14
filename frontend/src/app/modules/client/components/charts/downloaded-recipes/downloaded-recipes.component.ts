@@ -4,18 +4,15 @@ import { EChartsOption, number } from 'echarts';
 import { never } from 'rxjs';
 
 
-
-
 @Component({
-  selector: 'app-diets-in-server',
-  templateUrl: './diets-in-server.component.html',
-  styleUrls: ['./diets-in-server.component.css']
+  selector: 'app-downloaded-recipes',
+  templateUrl: './downloaded-recipes.component.html',
+  styleUrls: ['./downloaded-recipes.component.css']
 })
-export class DietsInServerComponent {
-
+export class DownloadedRecipesComponent {
   option = {
     title:{
-      text:"Diets in Server",
+      text:"Downloaded Recipes",
       textStyle:{
         fontWeight:'bold'
       }
@@ -72,4 +69,5 @@ export class DietsInServerComponent {
 
 
   }
+
 }

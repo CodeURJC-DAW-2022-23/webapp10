@@ -11,8 +11,8 @@
         <div class="card shadow mb-4">
             <!-- Card Body -->
             <div class="card-body">
-              <div class="col-12">
-                <form method="post"style=" margin-bottom: 80px;font-size: 18px;font-weight: 800;color: #232d39;letter-spacing: 1.3px;">
+              <div class="col-12"> <!--[formGroup]="dietForm"-->
+                <form  (ngSubmit)="onsubmit()" style=" margin-bottom: 80px; font-size: 18px;font-weight: 800;color: #232d39;letter-spacing: 1.3px;">
                     <!--Question-->
                     <div class="row" style="margin-bottom: 40px;">
                         <div class="col-1 mt-5" style="color:#5AF499; text-align:center;">
@@ -29,11 +29,11 @@
                                     <option value="inter">Intersex</option>
                                 </select--> <br>
                                 <div class="col-lg-5">
-                                    <input #gensex id="fem" name="gensex" type="radio" value="fem">
+                                    <input #gensex id="fem" formControlName="gensex" type="radio" value="fem">
                                     <label for="fem">Female</label><br>
-                                    <input #gensex id="male" name="gensex" type="radio" value="male">
+                                    <input #gensex id="male" formControlName="gensex" type="radio" value="male">
                                     <label for="male">Male</label><br>
-                                    <input #gensex id="inters" name="gensex" type="radio" value="inters">
+                                    <input #gensex id="inters" formControlName="gensex" type="radio" value="inters">
                                     <label for="inters">Intersex</label>
                                 </div>
                             </div>
@@ -185,8 +185,8 @@
                     </div>
 
                     <div class="row pb-5" style="justify-content:center; text-align: center;">
-                        <!--input title="sent" style=" width:100px; display: inline-block;font-size: 15px;padding: 12px 20px;background-color: #5AF499;color: #fff;border-color: #fff;text-align: center;font-weight: 400;text-transform: uppercase;transition: all .3s;"
-                        (click)="createForm(gensex.value,age.value,phactivity.value,weight.value,height.value,interest.value,aspiration.value)" value="Submit"-->
+                        <input title="sent" style=" width:100px; display: inline-block;font-size: 15px;padding: 12px 20px;background-color: #5AF499;color: #fff;border-color: #fff;text-align: center;font-weight: 400;text-transform: uppercase;transition: all .3s;"
+                        type="submit" [disabled]="!dietForm.valid">
                     </div>
                 </form>
 
