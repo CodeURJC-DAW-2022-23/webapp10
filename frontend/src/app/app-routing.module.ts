@@ -7,6 +7,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { FormComponentNonReg } from './components/formComponent/form.component';
 import { AdminModule } from './modules/admin/admin.module';
 import { ClientModule } from './modules/client/client.module';
+import { WorkerModule } from './modules/worker/worker.module';
 import { AuthGuard } from './guards/auth.guard';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 
@@ -19,6 +20,8 @@ const routes: Routes = [
   {path: 'test', component:FormComponentNonReg},
   {path:'admin',canActivate:[AuthGuard] ,loadChildren:()=>import('./modules/admin/admin.module').then((m)=>m.AdminModule)},
   {path:'client',canActivate:[AuthGuard],loadChildren:()=>import('./modules/client/client.module').then((n)=>n.ClientModule)},
+  {path:'worker',canActivate:[AuthGuard],loadChildren:()=>import('./modules/worker/worker.module').then((n)=>n.WorkerModule)},
+
   {path:'**',component: NotFoundComponent}
 ];
 

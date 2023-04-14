@@ -36,7 +36,7 @@ import { FormComponentNonReg } from './components/formComponent/form.component';
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts')
     })
-    
+
   ],
   providers: [ChartService],
   bootstrap: [AppComponent]
