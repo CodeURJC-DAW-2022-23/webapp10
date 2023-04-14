@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { FormService } from 'src/app/services/form.service';
 import { Form } from 'src/app/models/Formulary.model';
 import { UserService } from 'src/app/services/User.service';
+import { catchError } from 'rxjs';
 
 @Component({
  selector:'form',
@@ -12,26 +13,29 @@ import { UserService } from 'src/app/services/User.service';
  styleUrls:['./form.component.css'],
 
 })
-export class formComponent {
+export class FormComponentNonReg {
+    
+    form:Form={
+        sex:'',
+        activity: '',
+        interes: '',
+        diet: '',
+        age: '',
+        weight: '',
+        height: '',
+        aspiration:''
+    }
 
     constructor(private router: Router,private httpClient: HttpClient,private formService: FormService){}
 
-    createForm(gensex: string, age: string, phactivity: string, weight: string,
-              height: string, interest: string, aspiration: string ){
-        const form = {
-            sex: gensex,
-            age: age,
-            phactivity: phactivity,
-            weight: weight,
-            height: height,
-            interest: interest,
-            aspiration: aspiration
-        } as unknown as Form;
-        this.formService.createForm(form).subscribe(
-          _=>window.location.href ="login",
-          _=>_
-        );
+    pushForm(){
+        this.formService.createForm(this.form as Form).subscribe((form:Form)=>
+        localStorage.setItem('form',JSON.stringify(form)),catchError=> alert('Fallo al enviar el formulario, intentelo mas tarde')
+        )
+
     }
+   
+    
 
 
 

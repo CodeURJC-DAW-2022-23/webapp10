@@ -13,6 +13,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ChartService } from './services/chart.service';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { FormsModule } from '@angular/forms';
+import { FormComponentNonReg } from './components/formComponent/form.component';
 
 
 
@@ -23,6 +24,7 @@ import { FormsModule } from '@angular/forms';
     LoginComponent,
     RegisterComponent,
     NotFoundComponent,
+    FormComponentNonReg
   ],
   imports: [
     BrowserModule,

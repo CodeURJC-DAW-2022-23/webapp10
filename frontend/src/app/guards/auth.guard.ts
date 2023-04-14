@@ -20,7 +20,7 @@ export class AuthGuard implements CanActivate {
   ):  Observable<boolean> | Promise<boolean> | boolean {
     return this.http.get('/api/users/me').pipe(
       map((user: User) => {
-        if (user) {
+        if (user.userType==='admin') {
           return true;
         } else {
           this.router.navigate(['login']);
