@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, map, of } from 'rxjs';
 import { User } from '../models/User.model';
-import { HttpClient } from '@angular/common/http';
-
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +18,7 @@ export class AuthClientGuard implements CanActivate {
   ):  Observable<boolean> | Promise<boolean> | boolean {
     return this.http.get('/api/users/me').pipe(
       map((user: User) => {
-        if (user.userType==='worker') {
+        if (user.userType==='client') {
           return true;
         } else {
           this.router.navigate(['login']);
@@ -34,4 +33,5 @@ export class AuthClientGuard implements CanActivate {
     ) as Observable<boolean>;
   }
   
+
 }
