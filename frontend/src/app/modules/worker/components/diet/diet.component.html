@@ -1,0 +1,62 @@
+<div class="container-fluid">
+
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+      <h1 class="h3 mb-2 mt-5 ml-4 text-gray-800">My diet</h1>
+  </div>
+  <div class="row">
+
+    <!-- Area Chart -->
+    <div class="col-xl-12 col-lg-6">
+        <div class="card shadow mb-4" style="height: 390px;">
+            <!-- Card Body -->
+          <div class="card-body">
+            <table style="margin-bottom: 40px; margin-top: 50px; table-layout: auto; width: 100%; border: 5px solid #5AF499; overflow-x: auto;">
+              <tbody>
+              <tr style="height: 70px; font-weight: 600; border: 3px solid #5AF499;">
+                  <td>Time</td>
+                  <td>Monday</td>
+                  <td>Tuesday</td>
+                  <td>Wednesday</td>
+                  <td>Thursday</td>
+                  <td>Friday</td>
+                  <td>Saturday</td>
+                  <td>Sunday</td>
+              </tr>
+
+              <tr style="height: 50px; border: 3px solid #5AF499;">
+                  <td class="day-time">Breakfast</td>
+                  <!--{{#br}}-->
+                  <td data-title="Link PDF">
+                      <a style="color:#1cc88a;"
+                         target="_blank">eggs <!--{{.}}--></a>
+                  </td>
+                  <!--{{/br}}-->
+              </tr>
+              <tr style="height: 50px; border: 3px solid #5AF499;">
+                  <td class="day-time" >Lunch</td>
+                  <!--{{#ln}}-->
+                  <td data-title="Link PDF">
+                      <a style="color:#1cc88a;"
+                         target="_blank">salad<!--{{.}}--></a>
+                  </td>
+                  <!--{{/ln}}-->
+              </tr>
+              <tr style="height: 50px; border: 3px solid #5AF499;">
+                  <td class="day-time">Dinner</td>
+                  <!--{{#dn}}-->
+                  <td data-title="Link PDF">
+                      <a style="color:#1cc88a;"
+                         target="_blank">hot dog<!--{{.}}--></a>
+                  </td>
+                  <!--{{/dn}}-->
+              </tr>
+
+
+              </tbody>
+          </table>
+          </div>
+
+        </div>
+    </div>
+</div>
