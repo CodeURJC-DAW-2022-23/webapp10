@@ -20,7 +20,14 @@
               </li>
 
           </ul>
-          <img class="img-profile rounded-circle correctsize" src="../../../../../assets/undraw_profile.svg" title="icon">
+          <a class="nav-link dropdown-toggle" (click)="show()" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <img class="img-profile rounded-circle correctsize" src="../../../../../assets/undraw_profile.svg" title="icon" >
+        </a>
+        <div *ngIf="showMenu" class="dropdown-menu dropdown-menu-right shadow animated--grow-in show"  style="margin-top: 100px;">
+            <a class="dropdown-item" (click)="logout()"  data-toggle="modal" data-target="#logoutModal">
+                Logout
+            </a>
+        </div>
       </div>
   </div>
 </nav>
