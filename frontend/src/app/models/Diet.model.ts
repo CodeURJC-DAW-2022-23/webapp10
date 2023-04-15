@@ -5,5 +5,5 @@ export interface Diet {
   name: string;
   description: string;
   week: Triplet;
-  weekInfo: string[7];
+  dietRefactored: string[7];
 }
