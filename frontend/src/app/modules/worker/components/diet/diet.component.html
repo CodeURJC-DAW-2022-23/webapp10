@@ -13,8 +13,14 @@
           <div class="card-body">
               <ul>
                 <li *ngFor="let diet of diets">
-                    <p>{{diet.id}}</p>
-                    <p>{{diet.dietRefactored}}</p>
+                  <div class="row">
+                    <div class="col-1">
+                      <p>{{diet.id}}</p>
+                    </div>
+                    <div class="col-11">
+                      <p>{{diet.dietRefactored}}</p>
+                    </div>
+                  </div>
               </ul>
           </div>
 
