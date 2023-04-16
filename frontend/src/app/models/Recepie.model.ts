@@ -1,7 +1,8 @@
 export interface Recepie {
   id?:number;
   name: string;
-  description: string;
+  description:string;
   ingredients: string;
-  kindOfRecepy: string;
+  kindOfRecepy:string;
+  image?: string;
 }
