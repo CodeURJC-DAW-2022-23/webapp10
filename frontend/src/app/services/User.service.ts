@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { catchError, throwError } from 'rxjs';
 import { User } from '../models/User.model';
 import { Form } from '../models/Formulary.model';
-import { Recepie } from '../models/Recepie.model';
 import { Diet } from '../models/Diet.model';
+import { recipe } from '../models/Recepie.model';
 
 const BASE_URL = '/api/users';
 
@@ -111,7 +111,7 @@ export class UserService {
     return this.httpClient.get(BASE_URL + '?page=' + n);
   }
 
-  postRecipes(recepies: Recepie) {
+  postRecipes(recepies: recipe) {
     return this.httpClient
       .post('/api/recepies/', recepies)
       .pipe(catchError((error) => this.handleError(error)));
