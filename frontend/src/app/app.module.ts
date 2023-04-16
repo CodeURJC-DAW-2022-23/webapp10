@@ -27,7 +27,7 @@ import { FormComponentNonReg } from './components/formComponent/form.component';
     RegisterComponent,
     NotFoundComponent,
     NotFoundComponent,
-    FormComponentNonReg
+    FormComponentNonReg,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,34 @@
+<div class="table-responsive-vertical shadow p-4">
+    
+    <!-- Table starts here -->
+    <table id="table" class="table table-hover table-mc-light-blue">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Ingredients</th>
+                <th>Description</th>
+                <th>kindOfRecepy</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let elem of recipe" class="colorBlackText">
+            <tr>
+                <td>{{elem.name}}</td>
+                <td>{{elem.ingredients}}</td>
+                <td>{{elem.description}}</td>
+                <td>{{elem.kindOfRecepy}}</td>
+                <td>
+                    <label class="customcheckbox m-b-20">
+                        <input type="checkbox" id="mainCheckbox64" name="id" (click)="select(elem)">
+                        <span class="checkmark"></span>
+                    </label>
+                </td>
+        </tbody>
+    </table>
+    <button class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" id="loadMore" type="submit">Eliminar</button>
+    <ul>
+        <li (click)="selectItem(1)">1</li>
+        <li (click)="selectItem(2)">2</li>
+        <li (click)="selectItem(3)">3</li>
+        <li (click)="selectItem(4)">4</li>
+       
+      </ul>
