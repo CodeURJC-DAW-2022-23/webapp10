@@ -36,7 +36,7 @@ export class UserService {
       .pipe(catchError((error) => this.handleError(error)));
   }
 
-  
+
 
   private handleError(error: any) {
     console.log('ERROR:');
@@ -108,7 +108,7 @@ export class UserService {
   }
 
   getAllRecipes(n: number) {
-    return this.httpClient.get(BASE_URL + '?page=' + n);
+    return this.httpClient.get("/api/recepies" + '?page=' + n);
   }
 
   postRecipes(recepies: Recepie) {

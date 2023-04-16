@@ -6,7 +6,7 @@ ul {
     flex-direction: row;
     justify-content: flex-end;
   }
-  
+
   li {
     margin: 0 10px;
     padding: 10px;
@@ -14,13 +14,12 @@ ul {
     border-radius: 5px;
     cursor: pointer;
   }
-  
+
   li:hover {
     background-color: #ddd;
   }
-  
+
   li.selected {
     background-color: #4CAF50;
     color: white;
   }
-  
