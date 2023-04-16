@@ -24,11 +24,10 @@ export class UploadDietComponent {
       );
     }
 
-    upDiet(mb:String,ml:String,md:String,tb:String,tl:String,td:String
+    uploadDiet(mb:String,ml:String,md:String,tb:String,tl:String,td:String
       ,wb:String,wl:String,wd:String,thb:String,thl:String,thd:String,
       fb:String,fl:String,fd:String,stb:String,stl:String,std:String,
       snb:String,snl:String,snd:String){
-      
     }
 }
 
