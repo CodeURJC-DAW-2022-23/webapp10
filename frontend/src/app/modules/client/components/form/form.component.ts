@@ -12,6 +12,7 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.css']
 })
+
 export class FormComponent {
   form:Form={
     sex:'',

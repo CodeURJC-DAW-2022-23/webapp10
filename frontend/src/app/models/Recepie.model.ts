@@ -1,4 +1,8 @@
-export interface Recepie {
-  id?: number;
-  name: string;
+export interface recipe {
+  name?: string;
+  breakfast?: string;
+  lunch?: string;
+  dinner?: string;
+  ingredients?: string;
+  image?: string;
 }
