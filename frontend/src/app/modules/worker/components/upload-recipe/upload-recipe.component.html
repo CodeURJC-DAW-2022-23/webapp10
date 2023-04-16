@@ -12,7 +12,7 @@
                     <div class="row">
                         <input [(ngModel)]="form.name" id="recipe" name="recipe" style="border-color: #5AF499;">
                         <br>
-                    </div>
+                    </div> 
                 </div>
             </div>
             <!-- ingredients -->
@@ -41,21 +41,19 @@
             <!-- Image of the recipe -->
             <div class="row" style="margin-bottom: 40px;">
                 <div class="col-11">
+                   
                     <div class="row">
-                        <label for="image"> Image of the recipe </label>
-                    </div>
-                    <div class="row">
-                        <input [(ngModel)]="form.image" id="image" name="image" accept=".jpg, .jpeg;">
+                       
                     </div>
                 </div>
             </div>
         </div>
         <div class = "col-lg-5">
-            <input [(ngModel)]="form.breakfast" id="breakfast" name="recipetype" type="radio" accept=".jpg, .jpeg;">
+            <input [(ngModel)]="form.kindOfRecepy" id="breakfast" name="recipetype" type="radio" accept=".jpg, .jpeg;"value="Breakfast">
             <label for="breakfast">breakfast</label><br>
-            <input [(ngModel)]="form.lunch" id="lunch" name="recipetype" type="radio" accept=".jpg, .jpeg;">
+            <input [(ngModel)]="form.kindOfRecepy" id="lunch" name="recipetype" type="radio" accept=".jpg, .jpeg;" value="Lunch">
             <label for="lunch">lunch</label><br>
-            <input [(ngModel)]="form.dinner" id="dinner" name="recipetype" type="radio" accept=".jpg, .jpeg;">
+            <input [(ngModel)]="form.kindOfRecepy" id="dinner" name="recipetype" type="radio" accept=".jpg, .jpeg;" value="Dinner">
             <label for="dinner">dinner</label>
         </div>
     </div>

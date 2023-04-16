@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, throwError } from 'rxjs';
+import { catchError, throwError } from 'rxjs';
 import { User } from '../models/User.model';
 import { Form } from '../models/Formulary.model';
 import { Recepie } from '../models/Recepie.model';
@@ -36,7 +36,7 @@ export class UserService {
       .pipe(catchError((error) => this.handleError(error)));
   }
 
-
+  
 
   private handleError(error: any) {
     console.log('ERROR:');
@@ -108,12 +108,12 @@ export class UserService {
   }
 
   getAllRecipes(n: number) {
-    return this.httpClient.get("/api/recepies" + '?page=' + n);
+    return this.httpClient.get(BASE_URL + '?page=' + n);
   }
 
   postRecipes(recepies: Recepie) {
     return this.httpClient
-      .post('/api/forms/', recepies)
+      .post('/api/recepies/', recepies)
       .pipe(catchError((error) => this.handleError(error)));
   }
 

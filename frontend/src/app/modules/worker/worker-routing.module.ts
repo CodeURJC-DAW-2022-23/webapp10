@@ -4,6 +4,7 @@ import { WorkerDashboardComponent } from './components/worker-dashboard/worker-d
 import { DietComponent } from './components/diet/diet.component';
 import { RecipesComponent } from './components/recipes/recipes.component';
 import { ClientTableComponent } from './components/client-table/client-table.component';
+import { UploadRecipeComponent } from './components/upload-recipe/upload-recipe.component';
 
 const routes: Routes = [
   {path: '', component: WorkerDashboardComponent,
@@ -11,6 +12,7 @@ const routes: Routes = [
   {path:'diet', component:DietComponent},
   {path:'recipes', component:RecipesComponent},
   {path: 'clients', component:ClientTableComponent},
+  {path:'new',component:UploadRecipeComponent},
   {path:'',redirectTo:'/worker/recipes',pathMatch:'full'},
   ],
 },

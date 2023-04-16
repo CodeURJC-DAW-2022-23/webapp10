@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Form, FormsModule } from '@angular/forms';
 import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { FormService } from 'src/app/services/form.service';
 import { UserService } from 'src/app/services/User.service';
 import { catchError } from 'rxjs';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { recipe } from 'src/app/models/Recepie.model';
+import { Recepie } from 'src/app/models/Recepie.model';
 
 @Component({
   selector: 'app-upload-recipe',
@@ -14,26 +14,19 @@ import { recipe } from 'src/app/models/Recepie.model';
   styleUrls: ['./upload-recipe.component.css']
 })
 export class UploadRecipeComponent {
-  form:recipe={
-    name:'',
+  form: Recepie = {
+    name: '',
+    description: '',
     ingredients: '',
-    image: '',
-    breakfast: '',
-    lunch: '',
-    dinner: ''
-}
+    kindOfRecepy: ''
+  }
 
-constructor(private router: Router,private httpClient: HttpClient,private formService: FormService){}
+  constructor(private router: Router, private httpClient: HttpClient, private userService: UserService) { }
 
-pushForm(){
-  this.formService.createRecipe(this.form as recipe).subscribe(
-    (recipe: recipe) => {
-      localStorage.setItem('recipe', JSON.stringify(recipe));
-    },
-    catchError => {
-      alert('Fallo al enviar el formulario, intentelo más tarde.');
-    }
-  );
-}
-
+  pushForm() {
+    this.userService.postRecipes(this.form as Recepie).subscribe(
+      _=>this.router.navigate(['./']),
+      catchError=>alert('no se pudo completar la accion')
+    )
+  }
 }

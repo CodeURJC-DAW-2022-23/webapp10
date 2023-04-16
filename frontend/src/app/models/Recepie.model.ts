@@ -1,8 +1,7 @@
-export interface recipe {
-  name?: string;
-  breakfast?: string;
-  lunch?: string;
-  dinner?: string;
-  ingredients?: string;
-  image?: string;
+export interface Recepie {
+  id?:number;
+  name: string;
+  description: string;
+  ingredients: string;
+  kindOfRecepy: string;
 }
