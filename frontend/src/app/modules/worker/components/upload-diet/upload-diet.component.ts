@@ -28,7 +28,7 @@ export class UploadDietComponent {
       ,wb:String,wl:String,wd:String,thb:String,thl:String,thd:String,
       fb:String,fl:String,fd:String,stb:String,stl:String,std:String,
       snb:String,snl:String,snd:String){
-        this.week[0].breakfast=mb;
+      
     }
 }
 
