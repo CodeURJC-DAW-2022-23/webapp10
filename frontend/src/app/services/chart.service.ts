@@ -27,7 +27,11 @@ export class ChartService {
     return this.httpClient.get(BASE_URL + '/admin/stats/earns');
   }
 
-  
+  getDownloadedRecipes():Observable<any> {
+    return this.httpClient.get(BASE_URL + '/me/stats');
+  }
+
+
 
 
 }
