@@ -426,6 +426,40 @@ public class UserRestController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
+    @Operation(summary = "Post a new client")
+
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "201",
+                    description = "Created",
+                    content = {@Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = User.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "403",
+                    description = "Forbidden",
+                    content = @Content
+            )
+    })
+    @PostMapping("/client/")
+    @ResponseStatus(HttpStatus.CREATED)
+    public ResponseEntity<User> createMemberClient(@RequestBody User user) {
+        if (user.getUserType().equals("client")) {
+            Calendar c1 = Calendar.getInstance();
+            int month = c1.get(Calendar.MONTH);
+            user.setEntryDate(month);
+            //setUserImage(user, "");
+            user.setEncodedPassword(passwordEncoder.encode(user.getEncodedPassword()));
+            userService.save(user);
+            URI location = fromCurrentRequest().path("/client/{id}")
+                    .buildAndExpand(user.getId()).toUri();
+            return ResponseEntity.created(location).body(user);
+        } else {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
 
     //DELETE functions
     @Operation(summary = "Delete users ")
