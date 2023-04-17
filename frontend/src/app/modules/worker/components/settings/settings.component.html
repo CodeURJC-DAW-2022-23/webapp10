@@ -80,9 +80,17 @@
                       </div>
                 </div>
                 <!-- Aquí va la imagen -->
-                <div class="col-xl-6 col-lg-5">                  
-                  <img [src]="user.image" alt="User image">
-              </div>
+                <div class="col-xl-6 col-lg-5">
+                  <label for="image">Imagen de perfil:</label>
+                  <div class="col-xl-6 col-lg-5">
+                    <img class="img-profile rounded-circle correctsize" *ngIf="user.image; else default" [src]="user.image" title="icon">
+                    <ng-template #default>
+                      <img class="img-profile rounded-circle correctsize" src="../../../../../assets/undraw_profile.svg" title="icon" >
+                    </ng-template>
+                  </div>
+                  
+                  <input type="file" class="form-control-file" id="image" (change)="onImageSelected($event)">
+                </div>
               </div>
             </div>
             <hr>
