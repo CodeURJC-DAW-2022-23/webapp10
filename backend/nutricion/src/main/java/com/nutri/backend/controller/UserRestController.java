@@ -450,7 +450,7 @@ public class UserRestController {
             Calendar c1 = Calendar.getInstance();
             int month = c1.get(Calendar.MONTH);
             user.setEntryDate(month);
-            //setUserImage(user, "");
+            setUserImage(user, new ClassPathResource("static/images/undraw_profile.jpg").getPath());
             user.setEncodedPassword(passwordEncoder.encode(user.getEncodedPassword()));
             userService.save(user);
             URI location = fromCurrentRequest().path("/client/{id}")
@@ -458,6 +458,15 @@ public class UserRestController {
             return ResponseEntity.created(location).body(user);
         } else {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+    private void setUserImage(User user, String classpathResource){
+        try {
+            Resource image = new ClassPathResource(classpathResource);
+            user.setImage("Default");
+            user.setImageFile(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
+        } catch(Exception e){
+
         }
     }
 

@@ -4,6 +4,7 @@ package com.nutri.backend.controller;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.nutri.backend.model.Diet;
 import com.nutri.backend.model.Recepy;
+import com.nutri.backend.model.Triplet;
 import com.nutri.backend.model.User;
 import com.nutri.backend.service.DietService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -75,7 +76,13 @@ public class DietRestController {
     @PostMapping("/")
     public ResponseEntity<Diet> postDiet(@RequestBody Diet diet) {
         try{
-            dietService.save(diet);
+
+            //Diet dietNew=new Diet();
+            //dietNew.setId(diet.getId());
+            //dietNew.setName(diet.getName());
+            //dietNew.setDietWeekAPI(diet.getDietRefactored());
+            Diet newD=new Diet(diet.getName(),diet.getDietRefactored(),diet.getType());
+            dietService.save(newD);
             URI location = fromCurrentRequest().path("diets/{id}")
                     .buildAndExpand(diet.getId()).toUri();
             return ResponseEntity.created(location).body(diet);
