@@ -416,7 +416,7 @@ public class UserRestController {
             Calendar c1 = Calendar.getInstance();
             int month = c1.get(Calendar.MONTH);
             user.setEntryDate(month);
-            //setUserImage(user, "");
+            setUserImage(user, new ClassPathResource("static/images/undraw_profile.jpg").getPath());
             user.setEncodedPassword(passwordEncoder.encode(user.getEncodedPassword()));
             userService.save(user);
             URI location = fromCurrentRequest().path("/workers/{id}")
