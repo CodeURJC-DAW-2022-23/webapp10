@@ -49,7 +49,7 @@ export class UserService {
     return throwError('Server error (' + error.status + '): ' + error.text());
   }
 
-  updateProfile(user: User){
+  updateProfile(user: User, imageFile?: Blob){
     return this.httpClient
       .put(BASE_URL + '/', user)
       .pipe(catchError((error) => this.handleError(error)));
