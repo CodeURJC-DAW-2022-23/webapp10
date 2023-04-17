@@ -20,7 +20,7 @@ export class RecipesComponent {
     this.recipes?.splice(0,this.recipes.length);
     this.userService.getAllRecipes(item-1).subscribe(
       recipes => {
-          for (let e of this.recipes as Recepie [])
+          for (let e of recipes as Recepie [])
                   this.recipes?.push(e);
       },
       error => alert("No fue posible cargar las recetas del servidor. Inténtelo más tarde.")

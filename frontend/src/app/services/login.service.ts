@@ -4,6 +4,7 @@ import { User } from '../models/User.model';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { UserService } from './User.service';
+import { FormService } from './form.service';
 
 const BASE_URL = '/api/auth';
 
@@ -12,7 +13,7 @@ export class LoginService {
   logged: boolean | undefined;
   user: User | undefined;
   type="";
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient, private router: Router,private formService: FormService) {
     this.reqIsLogged();
     this.logged = false;
   }
@@ -45,10 +46,10 @@ export class LoginService {
               this.router.navigate(['admin']);
               break;
             case 'client':
-              window.location.href = 'client';
-              break;
+                this.router.navigate(['client']);
+                break;   
           }
-        },
+          },
         (error) => {
           if (error.status != 404) {
             console.error(
