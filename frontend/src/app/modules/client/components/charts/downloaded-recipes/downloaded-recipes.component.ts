@@ -12,7 +12,7 @@ import { never } from 'rxjs';
 export class DownloadedRecipesComponent {
   option = {
     title:{
-      text:"Downloaded Recipes",
+      text:"",
       textStyle:{
         fontWeight:'bold'
       }
@@ -35,7 +35,7 @@ export class DownloadedRecipesComponent {
     },
     series: [
       {
-        name: 'Users in Sys',
+        name: 'Downloaded recipes',
         type: 'pie',
         emphasis: {
           focus: 'series',
@@ -54,7 +54,7 @@ export class DownloadedRecipesComponent {
 
   constructor(private chartService: ChartService){
     var miMapa: {[key: string]: number} ={};
-    this.chartService.getDietsByType().subscribe((data:any)=>{
+    this.chartService.getDownloadedRecipes().subscribe((data:any)=>{
       miMapa= data;
       this.option.series[0].data.splice(0,1)
       for(let key in miMapa){

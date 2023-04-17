@@ -18,20 +18,20 @@
                           <div class="text-center">
                               <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                           </div>
-                          
+
                               <div class=" row">
                                   <div class="col-sm-6 mb-3 mb-sm-0">
-                                      <input name="name" type="text" class="form-control form-control-user" id="exampleFirstName"
+                                      <input [(ngModel)]="userNew.name" name="name" type="text" class="form-control form-control-user" id="exampleFirstName"
                                           placeholder="First Name" required>
                                   </div>
                                   <div class="col-sm-6">
-                                      <input name="lastName" type="text" class="form-control form-control-user" id="exampleLastName"
+                                      <input [(ngModel)]="userNew.surname" name="lastName" type="text" class="form-control form-control-user" id="exampleLastName"
                                           placeholder="Last Name" required>
                                   </div>
                               </div>
                               <br>
                               <div>
-                                  <input name="email" type="email" class="form-control form-control-user" id="exampleInputEmail"
+                                  <input [(ngModel)]="userNew.email" name="email" type="email" class="form-control form-control-user" id="exampleInputEmail"
                                       placeholder="Email Address" required>
                               </div>
                               <div class="text-center">
@@ -45,15 +45,15 @@
                                           id="exampleInputPassword" placeholder="Password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$" required>
                                   </div>
                                   <div class="col-sm-6">
-                                      <input  name="passwordRepeat" type="password" class="form-control form-control-user"
-                                          id="exampleRepeatPassword" placeholder="Repeat Password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$"required>
+                                      <input  [(ngModel)]="userNew.encodedPassword" name="passwordRepeat" type="password" class="form-control form-control-user"
+                                          id="exampleRepeatPassword" placeholder="Repeat Password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$" required>
                                   </div>
                               </div>
                               <br>
-                              <input type="submit" value="Register Account" class="btn btn-primary btn-user btn-block" style="margin: 10px; ">
+                              <input type="submit" (click)="save()" value="Register Account" class="btn btn-primary btn-user btn-block" style="margin: 10px; ">
                               <!--<input type="hidden" name="_csrf" value="{{token}}"/>-->
                               <hr>
-                        
+
 
                           <div class="text-center">
                               <a class="small" href="login" style="text-decoration:none">Already have an account? Login!</a>

@@ -24,6 +24,11 @@ export class UserService {
     return user.image ? BASE_URL + '/me/image' : user.image;
   }
 
+  registerUser(user:User){
+    return this.httpClient.post(BASE_URL + '/client/',user)
+    .pipe(catchError((error) => this.handleError(error)));;
+  }
+
   editProfile(id: number, formData: FormData) {
     return this.httpClient
       .patch(BASE_URL + '/' + id, formData, { withCredentials: true })
