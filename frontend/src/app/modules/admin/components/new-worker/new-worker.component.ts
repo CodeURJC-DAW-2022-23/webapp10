@@ -14,11 +14,12 @@ export class NewWorkerComponent {
     surname:'',
     email:'',
     encodedPassword:'',
+    description:'',
     userType:'worker'
   }
- 
+
   constructor(private router: Router, private userService: UserService){
-    
+
   }
 
   save(){
