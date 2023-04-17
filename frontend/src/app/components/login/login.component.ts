@@ -9,18 +9,12 @@ import { LoginService } from "src/app/services/login.service";
 export class LoginComponent {
   constructor(private loginService: LoginService,private router: Router) { }
 
-  ngOnInit():void{
-    if(this.loginService.isLogged()){
-      this.router.navigate(['admin','worker','client'])
-    }
-  }
-
+ 
   logIn(event: any, user: string, pass: string) {
-
 
     event.preventDefault();
     this.loginService.logIn(user, pass);
-
+    
 
   }
 
