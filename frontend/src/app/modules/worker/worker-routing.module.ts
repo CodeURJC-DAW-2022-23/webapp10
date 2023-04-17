@@ -5,6 +5,7 @@ import { DietComponent } from './components/diet/diet.component';
 import { RecipesComponent } from './components/recipes/recipes.component';
 import { ClientTableComponent } from './components/client-table/client-table.component';
 import { UploadRecipeComponent } from './components/upload-recipe/upload-recipe.component';
+import { SettingsComponent } from './components/settings/settings.component';
 
 const routes: Routes = [
   {path: '', component: WorkerDashboardComponent,
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path:'recipes', component:RecipesComponent},
   {path: 'clients', component:ClientTableComponent},
   {path:'new',component:UploadRecipeComponent},
+  {path:'settings',component:SettingsComponent},
   {path:'',redirectTo:'/worker/recipes',pathMatch:'full'},
   ],
 },

@@ -44,6 +44,12 @@ export class UserService {
     return throwError('Server error (' + error.status + '): ' + error.text());
   }
 
+  updateProfile(user: User){
+    return this.httpClient
+      .put(BASE_URL + '/', user)
+      .pipe(catchError((error) => this.handleError(error)));
+  }
+
   //adminUser
   getUserById(id: number) {
     return this.httpClient.get(BASE_URL + '/me' + id).pipe();

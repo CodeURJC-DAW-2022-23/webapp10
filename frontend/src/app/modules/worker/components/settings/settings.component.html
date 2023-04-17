@@ -1,0 +1,95 @@
+<div class="container-fluid">
+
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Welcome!</h1>
+  </div>
+
+  <!-- Content Row -->
+  <div class="row">
+    <!-- Area Chart -->
+    <div class="col-xl-12 col-lg-7">
+      <div class="card shadow mb-4">
+        <!-- Card Header - Dropdown -->
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+          <h6 class="m-0 font-weight-bold text-primary" >Profile Settings</h6>
+        </div>
+
+        <div class="col-xl-12 col-lg-5">
+
+          <!-- Area Chart -->
+          <div class="card shadow mb-4">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-xl-6 col-lg-5">
+                  
+                      <div class="row">
+                          <div class="col-10">
+                              <div class="col">
+                                  <span style="font-weight:600;">Name:</span>
+                                  <br>
+                                  <br>
+                                  <input type="text" style="font-weight:600;width: 100%;" [(ngModel)]="user.name">
+                                  <br>
+                                  <br>
+                              </div>
+                              <div class="col">
+                                  <span style="font-weight:600;">Surname:</span>
+                                  <br>
+                                  <br>
+                                  <input type="text" style="font-weight:600;width: 100%;" [(ngModel)]="user.surname">
+                                  <br>
+                                  <br>
+                              </div>
+                              <div class="col">
+                                <span style="font-weight:600;">Email:</span>
+                                <br>
+                                <br>
+                                <input type="text" style="font-weight:600;width: 100%;" [(ngModel)]="user.email">
+                                <br>
+                                <br>
+                            </div>
+                              <div class="col">
+                                <span style="font-weight:600;justify-content: center;display: flex"><abbr title="                     At least 1 Uppercase
+                          At least 1 Lowercase
+                          At least 1 Number
+                          At least 1 Symbol, symbol allowed --> !@#$%^&amp;*_=+-
+                          Min 8 chars and Max 12 chars"> Password: </abbr></span>
+                                <br>
+                                <br>
+                                <input type="password" [(ngModel)]="user.encodedPassword" style="width: 100%;" name="workerPassword" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&amp;*_=+-]).{8,12}$">
+                                <br>
+                                <br>
+                              </div>
+                              <div class="col">
+                                <span style="font-weight:600;justify-content: center;display: flex"><abbr title="                     At least 1 Uppercase
+                          At least 1 Lowercase
+                          At least 1 Number
+                          At least 1 Symbol, symbol allowed --> !@#$%^&amp;*_=+-
+                          Min 8 chars and Max 12 chars"> Repeat Password: </abbr></span>
+                                <br>
+                                <br>
+                                <input type="password" [(ngModel)]="user.encodedPassword" style="width: 100%;" name="workerPassword" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&amp;*_=+-]).{8,12}$">
+                                <br>
+                                <br>
+                              </div>
+                          </div>                          
+                      </div>
+                      <div class="row" style="justify-content:left; text-align:left;">
+                        <button class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" id="loadMore" type="submit" (click)="save()">Save</button>
+                      </div>
+                </div>
+                <!-- Aquí va la imagen -->
+                <div class="col-xl-6 col-lg-5">                  
+                  <img [src]="user.image" alt="User image">
+              </div>
+              </div>
+            </div>
+            <hr>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
