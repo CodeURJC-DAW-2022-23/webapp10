@@ -4,7 +4,7 @@ import { Component, EventEmitter, Output, ResolvedReflectiveFactory } from "@ang
 import { Router } from "@angular/router";
 
 @Component({
-    selector:'login',
+    selector:'register',
     templateUrl: './register.component.html',
     styleUrls: ['./register.component.css']
 })
