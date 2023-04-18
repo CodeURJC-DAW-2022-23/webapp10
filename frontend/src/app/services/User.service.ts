@@ -125,6 +125,9 @@ export class UserService {
   getAllRecipes(n: number) {
     return this.httpClient.get("/api/recepies" + '?page=' + n);
   }
+  getAllRecipesByType(n: string) {
+    return this.httpClient.get("/api/recepies/type" + '?type=' + n);
+  }
 
   postRecipes(recepies: Recepie) {
     return this.httpClient

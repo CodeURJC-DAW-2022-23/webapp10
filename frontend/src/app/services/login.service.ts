@@ -46,6 +46,12 @@ export class LoginService {
               this.router.navigate(['admin']);
               break;
             case 'client':
+              let form = localStorage.getItem('form')
+                if(form){
+                  this.formService.createForm(JSON.parse(form)).subscribe(
+                    _=> {localStorage.removeItem('form')}
+                  );
+                }
                 this.router.navigate(['client']);
                 break;   
           }

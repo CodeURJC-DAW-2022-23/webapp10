@@ -6,10 +6,12 @@ import { RecipesComponent } from './components/recipes/recipes.component';
 import { ClientTableComponent } from './components/client-table/client-table.component';
 import { UploadRecipeComponent } from './components/upload-recipe/upload-recipe.component';
 import { SettingsComponent } from './components/settings/settings.component';
+import { UploadDietComponent } from './components/upload-diet/upload-diet.component';
 
 const routes: Routes = [
   {path: '', component: WorkerDashboardComponent,
   children: [
+  {path:'newdiet', component:UploadDietComponent},
   {path:'diet', component:DietComponent},
   {path:'recipes', component:RecipesComponent},
   {path: 'clients', component:ClientTableComponent},
