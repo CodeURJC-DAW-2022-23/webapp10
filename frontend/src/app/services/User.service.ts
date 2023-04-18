@@ -139,7 +139,7 @@ export class UserService {
 
   postDiet(diet: Diet) {
     return this.httpClient
-      .post('/api/forms/', diet)
+      .post('/api/diets/', diet)
       .pipe(catchError((error) => this.handleError(error)));
   }
 
