@@ -1,0 +1,66 @@
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">New Recipe</h1>
+</div>
+    <div class="row">
+        <div class = "col-lg-6">
+            <!-- Recipe Name -->
+            <div class="row" style="margin-bottom: 40px;">
+                <div class="col-11">
+                    <div class="row">
+                        <label for="recipe"> Recipe Name </label>
+                    </div>
+                    <div class="row">
+                        <input [(ngModel)]="form.name" id="recipe" name="recipe" style="border-color: #5AF499;">
+                        <br>
+                    </div> 
+                </div>
+            </div>
+            <!-- ingredients -->
+            <div class="row" style="margin-bottom: 40px;">
+                <div class="col-11">
+                    <div class="row">
+                        <label for="recipe"> Ingredients </label>
+                    </div>
+                    <div class="row">
+                        <input [(ngModel)]="form.ingredients" id="recipe" name="ingredients" style="border-color: #5AF499;"><br>
+                    </div>
+                </div>
+            </div>
+            <!-- Description textbox -->
+            <div class="row" style="margin-bottom: 40px;">
+                <div class="col-11">
+                    <div class="row">
+                        <label for="steps"> Description </label>
+                    </div>
+                    <div class="row">
+                <textarea id="steps" name="steps" rows="4" cols="50" style="border-color: #5AF499; text-align:left;">
+                </textarea>
+                    </div>
+                </div>
+            </div>
+            <!-- Image of the recipe -->
+            <div class="row" style="margin-bottom: 40px;">
+                <div class="col-11">
+                   
+                    <div class="row">
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class = "col-lg-5">
+            <input [(ngModel)]="form.kindOfRecepy" id="breakfast" name="recipetype" type="radio" accept=".jpg, .jpeg;"value="Breakfast">
+            <label for="breakfast">breakfast</label><br>
+            <input [(ngModel)]="form.kindOfRecepy" id="lunch" name="recipetype" type="radio" accept=".jpg, .jpeg;" value="Lunch">
+            <label for="lunch">lunch</label><br>
+            <input [(ngModel)]="form.kindOfRecepy" id="dinner" name="recipetype" type="radio" accept=".jpg, .jpeg;" value="Dinner">
+            <label for="dinner">dinner</label>
+        </div>
+    </div>
+    <!-- Submit botton -->
+    <div class="row pb-5" style="justify-content:center; text-align: center;">
+        <button title="sent" style=" width:100px; display: inline-block;font-size: 15px;padding: 12px 20px;background-color: #5AF499;color: #fff;border-color: #fff;text-align: center;font-weight: 400;text-transform: uppercase;transition: all .3s;"
+         value="Submit" (click)="pushForm()">Submit</button>
+    </div>
+
+

@@ -1,0 +1,29 @@
+<div class="container-fluid">
+
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+      <h1 class="h3 mb-2 mt-5 ml-4 text-gray-800">Diets</h1>
+  </div>
+  <div class="row">
+
+    <!-- Area Chart -->
+    <div class="col-xl-12 col-lg-6">
+        <div class="card shadow mb-4" style="height: 390px;">
+            <!-- Card Body -->
+          <div class="card-body">
+              <ul>
+                <li *ngFor="let diet of diets">
+                  <div class="row">
+                    <div class="col-1">
+                      <p>{{diet.id}}</p>
+                    </div>
+                    <div class="col-11">
+                      <p>{{diet.dietRefactored}}</p>
+                    </div>
+                  </div>
+              </ul>
+          </div>
+
+        </div>
+    </div>
+</div>

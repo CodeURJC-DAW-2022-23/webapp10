@@ -3,7 +3,6 @@ package com.nutri.backend.controller;
 import com.nutri.backend.model.Form;
 import com.nutri.backend.model.User;
 import com.nutri.backend.repositories.FormRepository;
-import com.nutri.backend.repositories.UserRepository;
 import com.nutri.backend.service.UserService;
 import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;

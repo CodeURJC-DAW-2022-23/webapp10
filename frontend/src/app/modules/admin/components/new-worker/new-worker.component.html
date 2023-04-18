@@ -1,0 +1,69 @@
+<div class="col-xl-12 col-lg-5">
+
+    <!-- Area Chart -->
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Add Worker</h6>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-xl-12 col-lg-5" >
+         
+              <div class="row">
+                <div class="col">
+                  <div class="col">
+                    <span style="font-weight:600;justify-content: center;display: flex">Name:</span>
+                    <br>
+                    <br>
+                    <input type="text" style="font-weight:600;width: 100%;" [(ngModel)]="worker.name">
+                    <br>
+                    <br>
+                  </div>
+                  <div class="col">
+                    <span style="font-weight:600;justify-content: center;display: flex">Apellido:</span>
+                    <br>
+                    <br>
+                    <input type="text" [(ngModel)]="worker.surname" style="width: 100%;">
+                    <br>
+                    <br>
+                  </div>
+                  <div class="col">
+                  <span style="font-weight:600;justify-content: center;display: flex">Description:</span>
+                    <br>
+                    <br>
+                    <input type="text" [(ngModel)]="worker.description" style="width: 100%;">
+                    <br>
+                    <br>
+                    </div>
+                  <div class="col">
+                    <span style="font-weight:600;justify-content: center;display: flex">Email:</span>
+                    <br>
+                    <br>
+                    <input type="text"[(ngModel)]="worker.email" required="" style="width: 100%;">
+                    <br>
+                    <br>
+                  </div>
+                  <div class="col">
+                    <span style="font-weight:600;justify-content: center;display: flex"><abbr title="                     At least 1 Uppercase
+              At least 1 Lowercase
+              At least 1 Number
+              At least 1 Symbol, symbol allowed --> !@#$%^&amp;*_=+-
+              Min 8 chars and Max 12 chars"> Password: </abbr></span>
+                    <br>
+                    <br>
+                    <input type="password" [(ngModel)]="worker.encodedPassword" style="width: 100%;" name="workerPassword" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&amp;*_=+-]).{8,12}$">
+                    <br>
+                    <br>
+                  </div>
+                </div>
+              </div>
+              <div class="row" style="justify-content:left; text-align:left;">
+                <button class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" id="loadMore" type="submit" (click)="save()">Save</button> 
+              </div>
+           
+      </div>
+      <hr>
+    </div>
+  </div>
+</div>
+</div>
