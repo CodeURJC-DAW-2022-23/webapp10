@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Diet } from 'src/app/models/Diet.model';
 import { Recepie } from 'src/app/models/Recepie.model';
@@ -12,14 +12,13 @@ import { transpile } from 'typescript';
   templateUrl: './upload-diet.component.html',
   styleUrls: ['./upload-diet.component.css']
 })
-export class UploadDietComponent {
+export class UploadDietComponent implements OnInit{
     diet : Diet={
       name:'',
-      description:'',
+      type:'',
       week:[],
-      dietRefactored:''
+      dietRefactored:[['','',''],['','',''],['','',''],['','',''],['','',''],['','',''],['','','']]
     }
-    week : Triplet []|undefined;
     breakfast : Recepie []|undefined;
     lunch : Recepie []|undefined;
     dinner : Recepie []|undefined;
@@ -58,27 +57,6 @@ export class UploadDietComponent {
       lunch:'',
       dinner:''
     }
-    mb:String='';
-    ml:String='';
-    md:String='';
-    tb:String='';
-    tl:String='';
-    td:String='';
-    wb:String='';
-    wl:String='';
-    wd:String='';
-    thb:String='';
-    thl:String='';
-    thd:String='';
-    fb:String='';
-    fl:String='';
-    fd:String='';
-    stb:String='';
-    stl:String='';
-    std:String='';
-    db:String='';
-    dl:String='';
-    dd:String='';
     nom:String='';
     des:String='';
     constructor(private router: Router,private httpClient: HttpClient,private UserService :UserService){
@@ -93,36 +71,32 @@ export class UploadDietComponent {
       )
 
     }
-    pushDiet(diet: Diet){
-      this.UserService.postDiet(this.diet as Diet).subscribe(
-        catchError => {
-          alert('Fallo al enviar el formulario, intentelo más tarde.');
-        }
-      );
-    }
-    uploadTriplet(tr:Triplet,b:String,l:String,d:String){
-      tr.breakfast=b
-      tr.breakfast=l
-      tr.breakfast=d
-      this.diet?.week.push(tr)
-    }
+
     updatediet(){
-      this.uploadTriplet(this.mon,this.mb,this.ml,this.md)
-      this.uploadTriplet(this.tus,this.tb,this.tl,this.td)
-      this.uploadTriplet(this.wen,this.wb,this.wl,this.wd)
-      this.uploadTriplet(this.thr,this.thb,this.thl,this.thd)
-      this.uploadTriplet(this.fri,this.fb,this.fl,this.fd)
-      this.uploadTriplet(this.sat,this.stb,this.stl,this.std)
-      this.uploadTriplet(this.sun,this.db,this.dl,this.dd)
+      this.diet.week.push(this.mon)
+      this.diet.week.push(this.tus)
+      this.diet.week.push(this.wen)
+      this.diet.week.push(this.thr)
+      this.diet.week.push(this.fri)
+      this.diet.week.push(this.sat)
+      this.diet.week.push(this.sun)
+      for (let i = 0; i < 7; i++) {
+        this.diet.dietRefactored[i][0]=this.diet.week[i].breakfast
+        this.diet.dietRefactored[i][1]=this.diet.week[i].lunch
+        this.diet.dietRefactored[i][2]=this.diet.week[i].dinner
+      }
       this.diet.name=this.nom
-      this.diet.description=this.des
+      this.diet.type=this.des
     }
 
     uploadDiet(){
       this.updatediet()
       this.UserService.postDiet(this.diet as Diet).subscribe(
-        _=>this.router.navigate(['worker'])
+        _=>this.router.navigate(['worker/diet'])
       )
+    }
+    ngOnInit(){
+
     }
 }
 
