@@ -76,13 +76,19 @@ public class DietRestController {
     @PostMapping("/")
     public ResponseEntity<Diet> postDiet(@RequestBody Diet diet) {
         try{
-
-            //Diet dietNew=new Diet();
-            //dietNew.setId(diet.getId());
-            //dietNew.setName(diet.getName());
-            //dietNew.setDietWeekAPI(diet.getDietRefactored());
-            Diet newD=new Diet(diet.getName(),diet.getDietRefactored(),diet.getType());
-            dietService.save(newD);
+            Diet dietNew=new Diet();
+            if (diet.getDietRefactored()!=null){
+                dietNew.setName(diet.getName());
+                dietNew.setWeek(dietNew.setDietWeekAPI(diet.getDietRefactored()));
+                dietNew.setDietRefactored();
+                dietNew.setType(diet.getType());
+            }else{
+                dietNew.setName(diet.getName());
+                dietNew.setWeek(dietNew.setDietWeekAPI(diet.getDietRefactored()));
+                dietNew.setDietRefactored();
+                dietNew.setType(diet.getType());
+            }
+            dietService.save(dietNew);
             URI location = fromCurrentRequest().path("diets/{id}")
                     .buildAndExpand(diet.getId()).toUri();
             return ResponseEntity.created(location).body(diet);

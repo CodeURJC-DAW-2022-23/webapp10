@@ -40,6 +40,10 @@ public class Diet {
         DietRefactor aux = new DietRefactor();
         this.dietRefactored = aux.setDietRefactorized(this.week);
     }
+    public void setDietRefactoredAPI() {
+        DietRefactor aux = new DietRefactor();
+        this.dietRefactored = aux.setDietRefactorized(this.week);
+    }
 
     @JsonView(DietBasic.class)
     @Column(length = 2048)
@@ -50,11 +54,17 @@ public class Diet {
     }
 
     public Triplet[] setDietWeekAPI(String [][] aux){
-        Triplet [] weekAux=new Triplet[7];
+        Triplet [] weekAux = new Triplet[7];
         for (int i=0;i<7;i++){
-            weekAux[i].Breakfast=aux[i][0];
-            weekAux[i].Lunch=aux[i][1];
-            weekAux[i].Dinner=aux[i][2];
+            weekAux[i]=new Triplet("","","");
+        }
+        for (int i=0;i<7;i++){
+            String aux1=aux[i][0];
+            String aux2=aux[i][1];
+            String aux3=aux[i][2];
+            weekAux[i].Breakfast=aux1;
+            weekAux[i].Lunch=aux2;
+            weekAux[i].Dinner=aux3;
         }
         return weekAux;
     }
