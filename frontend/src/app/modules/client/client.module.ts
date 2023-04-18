@@ -12,6 +12,7 @@ import { ChartsComponent } from './components/charts/charts.component';
 import { DownloadedRecipesComponent } from './components/charts/downloaded-recipes/downloaded-recipes.component';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { FormsModule } from '@angular/forms';
+import { SettingsComponent } from './components/settings/settings.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { FormsModule } from '@angular/forms';
     HeaderComponent,
     FooterComponent,
     ChartsComponent,
-    DownloadedRecipesComponent
+    DownloadedRecipesComponent,
+    SettingsComponent
   ],
   imports: [
     CommonModule,

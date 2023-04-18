@@ -15,7 +15,7 @@ export class RecipesComponent {
   ids: number[] = [];
   item:number=0;
   constructor(private userService: UserService, private router: Router) {
-    userService.getUserRecipes().subscribe(
+    userService.getUserRecipes(0).subscribe(
       recipes => this.recipes = recipes as Recepie[]
     )
   }
@@ -29,16 +29,15 @@ export class RecipesComponent {
   }
 
   download() {
-    this.userService.deleteUser(this.ids).subscribe(
+    /*this.userService.deleteUser(this.ids).subscribe(
       _ => window.location.reload(),
       error => alert("No pudo eliminarse los clientes seleccionados")
-    )
-
+    )*/
   }
 
   selectItem(item: number){
     this.recipes?.splice(0,this.recipes.length);
-    this.userService.getUserRecipes().subscribe(
+    this.userService.getUserRecipes(item-1).subscribe(
       recipes => {
           for (let e of recipes as Recepie [])
                   this.recipes?.push(e);

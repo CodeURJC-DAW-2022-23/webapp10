@@ -106,8 +106,8 @@ export class UserService {
     return this.httpClient.get(BASE_URL + '/me/diets').pipe();
   }
 
-  getUserRecipes() {
-    return this.httpClient.get(BASE_URL + '/me/recepies').pipe();
+  getUserRecipes(n: number) {
+    return this.httpClient.get(BASE_URL + '/me/recepies' + '?page=' + n).pipe();
   }
 
   postForm(Form: Form) {
