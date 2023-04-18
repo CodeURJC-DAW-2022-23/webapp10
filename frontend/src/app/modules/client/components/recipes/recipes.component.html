@@ -21,18 +21,28 @@
                   <th>PDF</th>
                 </tr>
                 </thead>
-                <tbody>
-                <!--{{#recepies}}-->
+                <tbody *ngFor="let elem of recipes" class="colorBlackText">
                 <tr>
-                  <td>Eggs <!--{{name}}--></td>
-                  <td>Eggs <!--{{ingredients}}--></td>
-                  <td>boil the eggs <!--{{description}}--></td>
-                  <td>breakfast <!--{{kindOfRecepy}}--></td>
-                  <td><!--input type="checkbox" name="id" value="{{id}}">--></td>
-                </tr>
+                  <td>{{elem.name}}</td>
+                  <td>{{elem.ingredients}}</td>
+                  <td>{{elem.description}}</td>
+                   <td>{{elem.kindOfRecepy}}</td>
+                  <td>
+                    <label class="customcheckbox m-b-20">
+                    <input type="checkbox" id="mainCheckbox64" name="id" (click)="select(elem)">
+                    <span class="checkmark"></span>
+                    </label>
+                    </td>
                 <!--{{/recepies}}-->
                 </tbody>
               </table>
+              <button class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" id="loadMore" type="submit" (click)="download()">Download</button>
+                <ul>
+                    <li (click)="selectItem(1)">1</li>
+                    <li (click)="selectItem(2)">2</li>
+                    <li (click)="selectItem(3)">3</li>
+
+                  </ul>
             </div>
         </div>
     </div>
