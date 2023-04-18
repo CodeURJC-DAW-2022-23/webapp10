@@ -1,0 +1,31 @@
+<div class="table-responsive-vertical shadow p-4">
+  <!-- Table starts here -->
+  <div class="card-body">
+    <table id="table" class="table table-hover table-mc-light-blue">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Ingredients</th>
+        <th>Description</th>
+        <th>kindOfRecepy</th>
+      </tr>
+      </thead>
+      <tbody *ngFor="let recipe of recipes" class="colorBlackText">
+      <!--{{#recepies}}-->
+        <tr>
+          <td>{{recipe.name}}</td>
+          <td>{{recipe.ingredients}}</td>
+          <td>{{recipe.description}}</td>
+          <td>{{recipe.kindOfRecepy}}</td>
+      <!--{{/recepies}}-->
+      </tbody>
+    </table>
+    <ul>
+      <li (click)="selectItem(1)">1</li>
+      <li (click)="selectItem(2)">2</li>
+      <li (click)="selectItem(3)">3</li>
+      <li (click)="selectItem(4)">4</li>
+      <li (click)="selectItem(5)">5</li>
+    </ul>
+  </div>
+

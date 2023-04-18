@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/bootstrap/dist/css/bootstrap.css";
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;
+    font-weight: 400;
+    }
+
+a{
+    text-decoration: none;
+    }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
