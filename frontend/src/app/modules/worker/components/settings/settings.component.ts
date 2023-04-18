@@ -16,8 +16,8 @@ export class SettingsComponent {
     surname: '',
     email: '',
     encodedPassword: '',
-    image: undefined
   };
+  image: Blob | undefined = undefined;
 
   constructor(private router: Router, private httpClient: HttpClient, private userService: UserService) {
     userService.getMe().subscribe(
@@ -28,7 +28,7 @@ export class SettingsComponent {
     onImageSelected(event: Event) {
       const file = (event.target as HTMLInputElement).files && (event.target as HTMLInputElement).files![0];
       if (file) {
-        this.user.image = file;
+        this.image = file;
       }
     }
     
@@ -37,6 +37,10 @@ export class SettingsComponent {
       this.userService.updateProfile(this.user as User).subscribe(
         _ => this.router.navigate(['worker']),
         error => alert("No fue posible guardar los cambios. Inténtelo más tarde.")
+      )
+      this.userService.updateImage(this.image as Blob).subscribe(
+      _=> this.router.navigate(['Worker']),
+      error => alert("No fue posible guardar la imagen. Inténtelo más tarde.")
       )
     }
 }
