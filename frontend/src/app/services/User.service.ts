@@ -49,12 +49,16 @@ export class UserService {
     return throwError('Server error (' + error.status + '): ' + error.text());
   }
 
-  updateProfile(user: User, imageFile?: Blob){
+  updateProfile(user: User){
     return this.httpClient
-      .put(BASE_URL + '/', user)
+      .put(BASE_URL + '/me/', user)
       .pipe(catchError((error) => this.handleError(error)));
   }
-
+  updateImage(imageFile?: Blob){
+    return this.httpClient
+      .post(BASE_URL + '/me/image', imageFile)
+      .pipe(catchError((error) => this.handleError(error)));
+  }
   //adminUser
   getUserById(id: number) {
     return this.httpClient.get(BASE_URL + '/me' + id).pipe();
