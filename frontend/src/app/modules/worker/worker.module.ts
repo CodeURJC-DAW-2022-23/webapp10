@@ -11,6 +11,7 @@ import { UploadRecipeComponent } from './components/upload-recipe/upload-recipe.
 import { UploadDietComponent } from './components/upload-diet/upload-diet.component'
 
 import { FormsModule } from '@angular/forms';
+import { SettingsComponent } from './components/settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { FormsModule } from '@angular/forms';
     ClientTableComponent,
     UploadRecipeComponent,
     UploadDietComponent,
+    SettingsComponent,
   ],
   imports: [
     CommonModule,

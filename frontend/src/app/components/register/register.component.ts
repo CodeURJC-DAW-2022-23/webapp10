@@ -2,6 +2,8 @@ import { Component, EventEmitter, Output, ResolvedReflectiveFactory } from "@ang
 //import { User } from "src/app/models/User.model";
 //import { LoginService } from "src/app/services/login.service";ç
 import { Router } from "@angular/router";
+import { User } from "src/app/models/User.model";
+import { UserService } from "src/app/services/User.service";
 
 @Component({
     selector:'register',
@@ -9,29 +11,20 @@ import { Router } from "@angular/router";
     styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-  constructor(private router: Router) { }
-  //constructor(public userService : UserService) {}
+  userNew:User={
+    name: '',
+    surname: '',
+    email: '',
+    description: '',
+    userType: 'client',
+    encodedPassword: '',
+  }
+  constructor(private router: Router,public userService : UserService) { }
 
-  signIn (name: string, surname: string, nif: string, phone: string, cp: string, address: string, email: string, password: string, height: string, weight: string, medicalInfo: string) {
-
-    const user = {name : name,
-      encodedPassword: password,
-      surname : surname,
-      NIF : nif,
-      phone : phone,
-      postalCode : cp,
-      address: address,
-      email: email,
-      height: height,
-      weight:weight,
-      medicalInfo:medicalInfo,
-      //userType: "member"} as User;
-
-    //this.userService.addMembers(user).subscribe(
-    //  _ => window.location.href = "/new/log-in",
-    //  _ => _
-    //);
+  save(){
+    this.userService.registerUser(this.userNew as User).subscribe(
+      _=>this.router.navigate(['login'])
+    )
   }
 
   }
-}

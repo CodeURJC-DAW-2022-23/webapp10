@@ -24,6 +24,11 @@ export class UserService {
     return user.image ? BASE_URL + '/me/image' : user.image;
   }
 
+  registerUser(user:User){
+    return this.httpClient.post(BASE_URL + '/client/',user)
+    .pipe(catchError((error) => this.handleError(error)));;
+  }
+
   editProfile(id: number, formData: FormData) {
     return this.httpClient
       .patch(BASE_URL + '/' + id, formData, { withCredentials: true })
@@ -42,6 +47,12 @@ export class UserService {
     console.log('ERROR:');
     console.error(error);
     return throwError('Server error (' + error.status + '): ' + error.text());
+  }
+
+  updateProfile(user: User, imageFile?: Blob){
+    return this.httpClient
+      .put(BASE_URL + '/me/', user)
+      .pipe(catchError((error) => this.handleError(error)));
   }
 
   //adminUser
@@ -109,6 +120,9 @@ export class UserService {
 
   getAllRecipes(n: number) {
     return this.httpClient.get("/api/recepies" + '?page=' + n);
+  }
+  getAllRecipesByType(n: string) {
+    return this.httpClient.get("/api/recepies/type" + '?type=' + n);
   }
 
   postRecipes(recepies: Recepie) {
