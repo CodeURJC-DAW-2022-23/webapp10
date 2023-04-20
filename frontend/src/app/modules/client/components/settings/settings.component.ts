@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/User.model';
 import { UserService } from 'src/app/services/User.service';
@@ -16,7 +16,10 @@ export class SettingsComponent {
     email: '',
     encodedPassword: '',
   };
-  foto: Blob | undefined = undefined;
+
+  @ViewChild("file")
+  file: any;
+
 
   constructor(
     private router: Router,
@@ -32,17 +35,27 @@ export class SettingsComponent {
     );
   }
 
-
-
   save() {
     this.userService.updateProfile(this.user as User).subscribe(
-      (_) => this.router.navigate(['./client/settings']),
       (error) =>
         alert('No fue posible guardar los cambios. Inténtelo más tarde.')
     );
-    this.userService.updateImage(this.foto as Blob).subscribe(
-      (_) => this.router.navigate(['./client/settings']),
-      (error) => alert('No fue posible guardar la imagen. Inténtelo más tarde.')
-    );
+  }
+
+  uploadImage(){
+    const image = this.file.nativeElement.files[0]
+    if (image) {
+        let formData = new FormData();
+        formData.append("imageFile", image);
+        this.userService.updateImage(formData).subscribe(
+            (error) => alert('No fue posible guardar la imagen. Inténtelo más tarde.')
+        );
+    }
+  }
+  todo(){
+    this.save();
+    this.uploadImage();
+    this.router.navigate(['./client/diet'])
+    window.location.reload();
   }
 }

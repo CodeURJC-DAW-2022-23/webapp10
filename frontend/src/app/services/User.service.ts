@@ -54,7 +54,7 @@ export class UserService {
       .put(BASE_URL + '/me/', user)
       .pipe(catchError((error) => this.handleError(error)));
   }
-  updateImage(imageFile?: Blob){
+  updateImage(imageFile?: FormData){
     return this.httpClient
       .post(BASE_URL + '/me/image', imageFile)
       .pipe(catchError((error) => this.handleError(error)));
