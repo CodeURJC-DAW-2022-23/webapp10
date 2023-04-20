@@ -14,7 +14,7 @@ export class DietComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    this.userService.getDiets().subscribe(
+    this.userService.getUserDiet().subscribe(
       diets => this.diets = diets as Diet[],
       error => alert("No fue posible cargar las dietas del servidor. Inténtelo más tarde.")
     );

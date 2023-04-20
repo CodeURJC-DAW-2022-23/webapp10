@@ -31,6 +31,7 @@ pushForm(){
     this.formService.createForm(this.form as Form).subscribe((form:Form)=>
     localStorage.setItem('form',JSON.stringify(form)),catchError=> alert('Fallo al enviar el formulario, intentelo mas tarde')
     )
+    this.router.navigate(['client/diet']);
 }
 
 }
