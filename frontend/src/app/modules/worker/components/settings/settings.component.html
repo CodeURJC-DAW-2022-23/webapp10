@@ -22,7 +22,7 @@
             <div class="card-body">
               <div class="row">
                 <div class="col-xl-6 col-lg-5">
-                  
+
                       <div class="row">
                           <div class="col-10">
                               <div class="col">
@@ -73,7 +73,7 @@
                                 <br>
                                 <br>
                               </div>
-                          </div>                          
+                          </div>
                       </div>
                       <div class="row" style="justify-content:left; text-align:left;">
                         <button class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" id="loadMore" type="submit" (click)="save()">Save</button>
@@ -85,10 +85,10 @@
                   <div class="col-xl-6 col-lg-5">
                     <img class="img-profile rounded-circle correctsize" *ngIf="user.image; else default" [src]="user.image" title="icon">
                     <ng-template #default>
-                      <img class="img-profile rounded-circle correctsize" src="../../../../../assets/undraw_profile.svg" title="icon" >
+                      <img class="img-profile rounded-circle correctsize" src="/api/users/me/image" title="icon" >
                     </ng-template>
                   </div>
-                  
+
                   <input type="file" class="form-control-file" id="image" (change)="onImageSelected($event)">
                 </div>
               </div>

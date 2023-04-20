@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { Recepie } from 'src/app/models/Recepie.model';
 import { Router } from '@angular/router';
-import { number } from 'echarts';
+import { Recepie } from 'src/app/models/Recepie.model';
 import { UserService } from 'src/app/services/User.service';
 
 @Component({
@@ -10,43 +9,11 @@ import { UserService } from 'src/app/services/User.service';
   styleUrls: ['./recipes.component.css']
 })
 export class RecipesComponent {
-  page = 0;
-  recipes: Recepie[] | undefined;
-  ids: number[] = [];
-  item:number=0;
+  recipes: Recepie[]|undefined;
   constructor(private userService: UserService, private router: Router) {
     userService.getUserRecipes(0).subscribe(
-      recipes => this.recipes = recipes as Recepie[]
+      recipes => this.recipes = recipes as Recepie[],
+      error => alert("No fue posible cargar los clientes del servidor. Inténtelo más tarde.")
     )
   }
-
-  select(recipe: Recepie) {
-    let id = recipe.id!;
-    if (this.ids.includes(id))
-      this.ids = this.ids.filter(e => e != id);
-    else
-      this.ids.push(id);
-  }
-
-  download() {
-    /*this.userService.deleteUser(this.ids).subscribe(
-      _ => window.location.reload(),
-      error => alert("No pudo eliminarse los clientes seleccionados")
-    )*/
-  }
-
-  selectItem(item: number){
-    this.recipes?.splice(0,this.recipes.length);
-    this.userService.getUserRecipes(item-1).subscribe(
-      recipes => {
-          for (let e of recipes as Recepie [])
-                  this.recipes?.push(e);
-      },
-      error => alert("No fue posible cargar las recetas del servidor. Inténtelo más tarde.")
-  )
-
-  }
-
-
-
 }
