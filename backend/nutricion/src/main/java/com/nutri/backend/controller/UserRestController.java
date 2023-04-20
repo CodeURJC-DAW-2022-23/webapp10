@@ -304,16 +304,20 @@ public class UserRestController {
             if (diet.isPresent()) {
                 try {
                 Triplet[] diet1 = diet.get().getWeek();
-                for (Triplet aux : diet1) {
-                    Recepy recepy = recepyService.findByName((String) aux.Breakfast).orElseThrow();
-                    if (!recepies.contains(recepy))
+                String [][] dietsR = diet.get().getDietRefactored();
+                for (String [] aux: dietsR){
+                    Recepy recepy = recepyService.findByName((String) aux[0]).orElseThrow();
+                    if (!recepies.contains(recepy)){
                         recepies.add(recepy);
-                    Recepy recepy1 = recepyService.findByName((String) aux.Lunch).orElseThrow();
-                    if (!recepies.contains(recepy1))
-                        recepies.add(recepy1);
-                    Recepy recepy2 = recepyService.findByName((String) aux.Dinner).orElseThrow();
-                    if (!recepies.contains(recepy2))
-                        recepies.add(recepy2);
+                    }
+                    recepy = recepyService.findByName((String) aux[1]).orElseThrow();
+                    if (!recepies.contains(recepy)){
+                        recepies.add(recepy);
+                    }
+                    recepy = recepyService.findByName((String) aux[2]).orElseThrow();
+                    if (!recepies.contains(recepy)){
+                        recepies.add(recepy);
+                    }
                 }
             }catch (EmptyResultDataAccessException e) {
                    return new ResponseEntity<>(HttpStatus.NOT_FOUND);}
