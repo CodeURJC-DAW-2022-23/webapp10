@@ -85,7 +85,7 @@
                   <div class="col-xl-6 col-lg-5">
                     <img class="img-profile rounded-circle correctsize" *ngIf="user.image; else default" [src]="user.image" title="icon">
                     <ng-template #default>
-                      <img class="img-profile rounded-circle correctsize" src="/api/users/me/image" title="icon" >
+                      <img class="img-profile rounded-circle correctsize" src="/api/users/me/image" title="icon" style="object-fit: cover;width:100%;height:100%;">
                     </ng-template>
                   </div>
 

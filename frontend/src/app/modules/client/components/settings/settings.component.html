@@ -83,13 +83,9 @@
                 <div class="col-xl-6 col-lg-5">
                   <label for="image">Imagen de perfil:</label>
                   <div class="col-xl-6 col-lg-5">
-                    <img class="img-profile rounded-circle correctsize" *ngIf="user.image; else default" [src]="user.image" title="icon">
-                    <ng-template #default>
-                      <img class="img-profile rounded-circle correctsize" src="/api/users/me/image" title="icon" >
-                    </ng-template>
+                      <img class="img-profile rounded-circle correctsize" src="/api/users/me/image" title="icon" style="object-fit: cover;width:100%;height:100%;">
                   </div>
-
-                  <input type="file" class="form-control-file" id="image" (change)="onImageSelected($event)">
+                  <input #foto type="file"><br>
                 </div>
               </div>
             </div>
@@ -98,6 +94,5 @@
         </div>
       </div>
     </div>
-
   </div>
 </div>
