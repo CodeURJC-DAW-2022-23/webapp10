@@ -4,7 +4,6 @@ import { ClientDashboardComponent } from './components/client-dashboard/client-d
 import { FormComponent } from './components/form/form.component';
 import { DietComponent } from './components/diet/diet.component';
 import { RecipesComponent } from './components/recipes/recipes.component';
-import { ChartsComponent } from './components/charts/charts.component';
 import { SettingsComponent } from './components/settings/settings.component';
 
 const routes: Routes = [
@@ -13,7 +12,6 @@ const routes: Routes = [
   {path:'form', component:FormComponent},
   {path:'diet', component:DietComponent},
   {path:'recipes', component:RecipesComponent},
-  {path: 'charts', component:ChartsComponent},
   {path:'settings',component:SettingsComponent},
   {path:'',redirectTo:'/client/diet',pathMatch:'full'},
   ],

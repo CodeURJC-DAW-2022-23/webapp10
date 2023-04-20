@@ -40,8 +40,8 @@ export class SettingsComponent {
       (error) =>
         alert('No fue posible guardar los cambios. Inténtelo más tarde.')
     );
+    window.location.reload();
   }
-
   uploadImage(){
     const image = this.file.nativeElement.files[0]
     if (image) {
@@ -50,12 +50,8 @@ export class SettingsComponent {
         this.userService.updateImage(formData).subscribe(
             (error) => alert('No fue posible guardar la imagen. Inténtelo más tarde.')
         );
+        window.location.reload();
     }
-  }
-  todo(){
-    this.save();
-    this.uploadImage();
-    this.router.navigate(['./client/diet'])
-    window.location.reload();
+
   }
 }

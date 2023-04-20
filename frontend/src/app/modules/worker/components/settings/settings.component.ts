@@ -32,26 +32,23 @@ export class SettingsComponent {
             this.file = file;
         }
     }
-
     save() {
-        this.userService.updateProfile(this.user as User).subscribe(
-            _ => {
-                this.updateImg(this.user);
-            },
-            error => alert("No fue posible guardar los cambios. Inténtelo más tarde.")
-        );
+      this.userService.updateProfile(this.user as User).subscribe(
+        (error) =>
+          alert('No fue posible guardar los cambios. Inténtelo más tarde.')
+      );
+      window.location.reload();
     }
-
-    updateImg(user: User): void {
-      if (this.file) {
-        this.userService.updateImage(this.file).subscribe(
-          _ => {
-            this.router.navigate(["worker"]);
-          },
-          error => alert("Error uploading user image")
-        );
-      } else {
-        this.router.navigate(["worker"]);
+    uploadImage(){
+      const image = this.file.nativeElement.files[0]
+      if (image) {
+          let formData = new FormData();
+          formData.append("imageFile", image);
+          this.userService.updateImage(formData).subscribe(
+              (error) => alert('No fue posible guardar la imagen. Inténtelo más tarde.')
+          );
+          window.location.reload();
       }
+
     }
 }

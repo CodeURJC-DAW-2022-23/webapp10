@@ -80,16 +80,14 @@
                       </div>
                 </div>
                 <!-- Aquí va la imagen -->
-                <div class="col-xl-6 col-lg-5">
+                <div class="col-xl-4">
                   <label for="image">Imagen de perfil:</label>
                   <div class="col-xl-6 col-lg-5">
-                    <img class="img-profile rounded-circle correctsize" *ngIf="user.image; else default" [src]="user.image" title="icon">
-                    <ng-template #default>
                       <img class="img-profile rounded-circle correctsize" src="/api/users/me/image" title="icon" style="object-fit: cover;width:100%;height:100%;">
-                    </ng-template>
                   </div>
-
-                  <input type="file" class="form-control-file" id="image" (change)="onImageSelected($event)">
+                  <input #file type='file' name='imageFile' accept=".jpg, .jpeg" /><br>
+                  <br>
+                  <button class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" id="loadMore" type="submit" (click)="uploadImage()">Save Image</button>
                 </div>
               </div>
             </div>
@@ -98,6 +96,5 @@
         </div>
       </div>
     </div>
-
   </div>
 </div>
