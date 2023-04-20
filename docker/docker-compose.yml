@@ -1,7 +1,7 @@
 version: "3.9"
 services:
   web:
-    image: ruky00/thesmartway
+    image: ruky00/thesmartwayangular
     ports:
       - "8443:8443"
     environment:
@@ -20,3 +20,5 @@ services:
       MYSQL_DATABASE: TheSmartWay
     ports:
       - "3307:3306"
+  
+      
