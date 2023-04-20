@@ -9,13 +9,18 @@ import { Diet } from 'src/app/models/Diet.model';
 })
 export class DietComponent implements OnInit {
 
-  diets: Diet[] = [];
+  diets : Diet={
+    name:'',
+    type:'',
+    week:[],
+    dietRefactored:[['','',''],['','',''],['','',''],['','',''],['','',''],['','',''],['','','']]
+  }
 
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
     this.userService.getUserDiet().subscribe(
-      diets => this.diets = diets as Diet[],
+      diets => this.diets = diets as Diet,
       error => alert("No fue posible cargar las dietas del servidor. Inténtelo más tarde.")
     );
   }
