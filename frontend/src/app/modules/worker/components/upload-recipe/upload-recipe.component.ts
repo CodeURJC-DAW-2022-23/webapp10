@@ -25,7 +25,7 @@ export class UploadRecipeComponent {
 
   pushForm() {
     this.userService.postRecipes(this.form as Recepie).subscribe(
-      _=>this.router.navigate(['./']),
+      _=>this.router.navigate(['./worker/recipes']),
       catchError=>alert('no se pudo completar la accion')
     )
   }

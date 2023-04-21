@@ -12,7 +12,9 @@ import { LoginService } from 'src/app/services/login.service';
 export class HeaderComponent {
   showMenu:boolean= false;
   user:User | undefined;
-  constructor(private loginService: LoginService,private router:Router,private userSevice: UserService,){this.user=this.loginService.currentUser()}
+  constructor(private loginService: LoginService,private router:Router,private userSevice: UserService,){
+    this.user=this.loginService.currentUser()
+  }
 
   show(){
     this.showMenu=!this.showMenu;
