@@ -491,8 +491,11 @@ I worked on ApiRest development and helped with the app's correct starting.
 ### PREPARTING ANGULAR DEVELOPMENT
 
 The versions used on this part are:
+
 Angular CLI: 15.2.5
+
 Node: 18.15.0
+
 Package Manager: npm 9.6.4
 
 Angular: 15.2.6
