@@ -510,23 +510,23 @@ IDE PREPARATION:
 
 First, you need to install VSCode, then execute a series of commands to prepare the project.
 
-After this, you need to install Angular CLI using the command: npm install -g @angular/cli
+After this, you need to install Angular CLI using the command: ```npm install -g @angular/cli```
 
-Next, check the installed version with the command: ng version
+Next, check the installed version with the command: ```ng version```
 
-Then, install Angular: npm install @angular-devkit/build-angular
+Then, install Angular: ```npm install @angular-devkit/build-angular```
 
-Then, install Bootstrap: ng add @ng-bootstrap/ng-bootstrap
+Then, install Bootstrap: ```ng add @ng-bootstrap/ng-bootstrap```
 
-Finally, install Charts: npm install ngx-echarts -S
+Finally, install Charts: ```npm install ngx-echarts -S```
 
-To ensure that we have all the necessary dependencies installed in the project, we will use the command: npm install.
+To ensure that we have all the necessary dependencies installed in the project, we will use the command: ```npm install```
 
 To run the application, it will be necessary to configure a proxy with a file: proxy.conf.json
 
 ![image](https://user-images.githubusercontent.com/80918478/233776086-98d49766-ca65-4560-8a37-6f557da524ea.png)
 
-Finalmente para hacer el run habrá que utilizar el comando:
-ng serve --proxy-config proxy.conf.json
+Finally, to run the application, you will need to use the command:
+```ng serve --proxy-config proxy.conf.json```
 
 
