@@ -490,7 +490,7 @@ I worked on ApiRest development and helped with the app's correct starting.
 
 ### PREPARTING ANGULAR DEVELOPMENT
 
-The versions used on this part are:
+# The versions used on this part are:
 
 Angular CLI: 15.2.5
 
@@ -501,7 +501,8 @@ Package Manager: npm 9.6.4
 Angular: 15.2.6
 ... core
 
-Package Version
+# Package Version:
+
 @angular-devkit/architect 0.1502.5
 
 @angular-devkit/build-angular 15.2.5
