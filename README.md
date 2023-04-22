@@ -500,13 +500,19 @@ Angular: 15.2.6
 
 Package Version
 @angular-devkit/architect 0.1502.5
+
 @angular-devkit/build-angular 15.2.5
+
 @angular-devkit/core 15.2.5
+
 @angular-devkit/schematics 15.2.5
+
 @angular/cli 15.2.5
+
 @schematics/angular 15.2.5
 
-IDE PREPARATION:
+
+### IDE PREPARATION:
 
 First, you need to install VSCode, then execute a series of commands to prepare the project.
 
@@ -522,7 +528,7 @@ Finally, install Charts: ```npm install ngx-echarts -S```
 
 To ensure that we have all the necessary dependencies installed in the project, we will use the command: ```npm install```
 
-To run the application, it will be necessary to configure a proxy with a file: proxy.conf.json
+To run the application, it will be necessary to configure a proxy with a file: ```proxy.conf.json```
 
 ![image](https://user-images.githubusercontent.com/80918478/233776086-98d49766-ca65-4560-8a37-6f557da524ea.png)
 
