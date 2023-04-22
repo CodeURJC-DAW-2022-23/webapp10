@@ -492,28 +492,28 @@ I worked on ApiRest development and helped with the app's correct starting.
 
 #### The versions used on this part are:
 
-Angular CLI: 15.2.5
++ Angular CLI: 15.2.5
 
-Node: 18.15.0
++ Node: 18.15.0
 
-Package Manager: npm 9.6.4
++ Package Manager: npm 9.6.4
 
-Angular: 15.2.6
++ Angular: 15.2.6
 ... core
 
 #### Package Version:
 
-@angular-devkit/architect 0.1502.5
++ @angular-devkit/architect 0.1502.5
 
-@angular-devkit/build-angular 15.2.5
++ @angular-devkit/build-angular 15.2.5
 
-@angular-devkit/core 15.2.5
++ @angular-devkit/core 15.2.5
 
-@angular-devkit/schematics 15.2.5
++ @angular-devkit/schematics 15.2.5
 
-@angular/cli 15.2.5
++ @angular/cli 15.2.5
 
-@schematics/angular 15.2.5
++ @schematics/angular 15.2.5
 
 
 ### IDE PREPARATION:
