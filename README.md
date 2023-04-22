@@ -524,14 +524,7 @@ To ensure that we have all the necessary dependencies installed in the project, 
 
 To run the application, it will be necessary to configure a proxy with a file: proxy.conf.json
 
-{
-  "/api/*": {
-      "target": "https://127.0.0.1:8443/",
-      "secure": false,
-      "logLevel": "debug",
-      "changeOrigin": true
-  }
-}
+![image](https://user-images.githubusercontent.com/80918478/233776086-98d49766-ca65-4560-8a37-6f557da524ea.png)
 
 Finalmente para hacer el run habrá que utilizar el comando:
 ng serve --proxy-config proxy.conf.json
