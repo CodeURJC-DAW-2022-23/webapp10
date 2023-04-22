@@ -539,4 +539,6 @@ To run the application, it will be necessary to configure a proxy with a file: `
 Finally, to run the application, you will need to use the command:
 ```ng serve --proxy-config proxy.conf.json```
 
+### CLASS DIAGRAM AND TEMPLATES OF THE SPA
+![image](https://user-images.githubusercontent.com/80918513/233783522-d78975bd-ab8f-4f27-92b7-14f0772aa875.png)
 
