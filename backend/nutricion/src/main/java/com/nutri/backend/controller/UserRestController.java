@@ -16,6 +16,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -413,7 +414,7 @@ public class UserRestController {
             Calendar c1 = Calendar.getInstance();
             int month = c1.get(Calendar.MONTH);
             user.setEntryDate(month);
-            //setUserImage(user, "");
+            setUserImage(user, new ClassPathResource("static/images/undraw_profile.jpg").getPath());
             user.setEncodedPassword(passwordEncoder.encode(user.getEncodedPassword()));
             userService.save(user);
             URI location = fromCurrentRequest().path("/workers/{id}")
@@ -421,6 +422,49 @@ public class UserRestController {
             return ResponseEntity.created(location).body(user);
         } else {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+    @Operation(summary = "Post a new client")
+
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "201",
+                    description = "Created",
+                    content = {@Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = User.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "403",
+                    description = "Forbidden",
+                    content = @Content
+            )
+    })
+    @PostMapping("/client/")
+    @ResponseStatus(HttpStatus.CREATED)
+    public ResponseEntity<User> createMemberClient(@RequestBody User user) {
+        if (user.getUserType().equals("client")) {
+            Calendar c1 = Calendar.getInstance();
+            int month = c1.get(Calendar.MONTH);
+            user.setEntryDate(month);
+            setUserImage(user, new ClassPathResource("static/images/undraw_profile.jpg").getPath());
+            user.setEncodedPassword(passwordEncoder.encode(user.getEncodedPassword()));
+            userService.save(user);
+            URI location = fromCurrentRequest().path("/client/{id}")
+                    .buildAndExpand(user.getId()).toUri();
+            return ResponseEntity.created(location).body(user);
+        } else {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+    private void setUserImage(User user, String classpathResource){
+        try {
+            Resource image = new ClassPathResource(classpathResource);
+            user.setImage("Default");
+            user.setImageFile(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
+        } catch(Exception e){
+
         }
     }
 

@@ -46,7 +46,7 @@ public class RestSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers(HttpMethod.PUT,"/api/users/me").hasAnyRole("worker","client","admin");
         http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/users/me").hasAnyRole("worker","client","admin");
         //admin URLs
-        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/users").hasRole("admin");
+        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/users").hasAnyRole("admin","worker");
         http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/users/{id}").hasRole("admin");
         http.authorizeRequests().antMatchers(HttpMethod.POST,"/api/users/workers/").hasRole("admin");
         http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/users/admin/stats/users").hasRole("admin");
@@ -54,7 +54,6 @@ public class RestSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/users/admin/stats/earns").hasRole("admin");
         http.authorizeRequests().antMatchers(HttpMethod.DELETE,"/api/users/{id}").hasRole("admin");
         http.authorizeRequests().antMatchers(HttpMethod.DELETE,"/api/users").hasRole("admin");
-
         //Generals
         http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/users/me/image").hasAnyRole("client","worker");
         http.authorizeRequests().antMatchers(HttpMethod.POST,"/api/users/me/image").hasAnyRole("client","worker");
@@ -65,12 +64,12 @@ public class RestSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/forms/me").hasRole("client");
         //Worker URL
         http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/recepies").hasRole("worker");
+        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/recepies/type").hasRole("worker");
         http.authorizeRequests().antMatchers(HttpMethod.POST,"/api/recepies/").hasRole("worker");
         http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/diets").hasRole("worker");
         http.authorizeRequests().antMatchers(HttpMethod.POST,"/api/diets/").hasRole("worker");
         http.authorizeRequests().antMatchers(HttpMethod.DELETE,"/api/diets").hasRole("worker");
         //Personal Info
-
 
         http.authorizeRequests().anyRequest().permitAll();
 

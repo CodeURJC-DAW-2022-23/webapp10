@@ -66,6 +66,28 @@ public class RecepyRestController {
         List<Recepy> recepi= recepies.toList();
        return new ResponseEntity<>(recepi, HttpStatus.OK);
     }
+    @Operation(summary = "Get recepies in app by type")
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Found recepies",
+                    content = {@Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = Recepy.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Not found",
+                    content = @Content
+            )
+    })
+    @JsonView(Recepy.RecepyBasic.class)
+    @GetMapping("/type")
+    public ResponseEntity<List<Recepy>> getRecepiesByType(@RequestParam String type) {
+        List<Recepy> recepies= recepyService.findByKindOfRecepy(type);
+        return new ResponseEntity<>(recepies, HttpStatus.OK);
+    }
 
     @Operation(summary = "Post recepies in app")
     @ApiResponses(value = {

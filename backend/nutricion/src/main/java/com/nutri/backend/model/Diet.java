@@ -32,7 +32,15 @@ public class Diet {
         return dietRefactored;
     }
 
+    public void setDietRefactoredAPI(String [][] aux) {
+        this.dietRefactored = aux;
+    }
+
     public void setDietRefactored() {
+        DietRefactor aux = new DietRefactor();
+        this.dietRefactored = aux.setDietRefactorized(this.week);
+    }
+    public void setDietRefactoredAPI() {
         DietRefactor aux = new DietRefactor();
         this.dietRefactored = aux.setDietRefactorized(this.week);
     }
@@ -45,6 +53,21 @@ public class Diet {
         return type;
     }
 
+    public Triplet[] setDietWeekAPI(String [][] aux){
+        Triplet [] weekAux = new Triplet[7];
+        for (int i=0;i<7;i++){
+            weekAux[i]=new Triplet("","","");
+        }
+        for (int i=0;i<7;i++){
+            String aux1=aux[i][0];
+            String aux2=aux[i][1];
+            String aux3=aux[i][2];
+            weekAux[i].Breakfast=aux1;
+            weekAux[i].Lunch=aux2;
+            weekAux[i].Dinner=aux3;
+        }
+        return weekAux;
+    }
     public void setType(String type) {
         this.type = type;
     }
@@ -112,6 +135,13 @@ public class Diet {
         this.week=week;
         this.type=type;
         this.setDietRefactored();
+    }
+
+    public Diet(String name, String[][] weekR, String type){
+        this.name=name;
+        this.week=setDietWeekAPI(weekR);
+        this.type=type;
+        this.dietRefactored=weekR;
     }
 
 

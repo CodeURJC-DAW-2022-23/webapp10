@@ -3,7 +3,8 @@ package com.nutri.backend.controller;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.nutri.backend.model.Diet;
-
+import com.nutri.backend.model.Recepy;
+import com.nutri.backend.model.Triplet;
 import com.nutri.backend.model.User;
 import com.nutri.backend.service.DietService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -15,12 +16,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-
+import javax.servlet.http.HttpServletRequest;
 import java.net.URI;
-
+import java.security.Principal;
+import java.sql.Blob;
+import java.util.HashMap;
 import java.util.List;
 
 import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
@@ -73,7 +76,19 @@ public class DietRestController {
     @PostMapping("/")
     public ResponseEntity<Diet> postDiet(@RequestBody Diet diet) {
         try{
-            dietService.save(diet);
+            Diet dietNew=new Diet();
+            if (diet.getDietRefactored()!=null){
+                dietNew.setName(diet.getName());
+                dietNew.setWeek(dietNew.setDietWeekAPI(diet.getDietRefactored()));
+                dietNew.setDietRefactored();
+                dietNew.setType(diet.getType());
+            }else{
+                dietNew.setName(diet.getName());
+                dietNew.setWeek(dietNew.setDietWeekAPI(diet.getDietRefactored()));
+                dietNew.setDietRefactored();
+                dietNew.setType(diet.getType());
+            }
+            dietService.save(dietNew);
             URI location = fromCurrentRequest().path("diets/{id}")
                     .buildAndExpand(diet.getId()).toUri();
             return ResponseEntity.created(location).body(diet);
