@@ -13,7 +13,14 @@
         <tr>
           <td>{{diet.name}}</td>
           <td>{{diet.dietRefactored}}</td>
+          <td>
+            <label class="customcheckbox m-b-20">
+                <input type="checkbox" id="mainCheckbox64" name="id" (click)="select(diet)">
+                <span class="checkmark"></span>
+            </label>
+        </td>
       <!--{{/recepies}}-->
       </tbody>
+      <button class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" id="loadMore" type="submit" (click)="delete()">Eliminar</button>
     </table>
   </div>
