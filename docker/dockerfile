@@ -1,32 +1,25 @@
 # Compilation
+FROM node:16 AS angular
+WORKDIR /code
+COPY frontend/package.json /code/
+COPY frontend/src /code/src
+RUN npm install
+RUN npm run ng build -- --prod --base-href=/new/
+RUN ls -l
+
+
 
 FROM maven:3.6.3-openjdk-17 as builder
-
 WORKDIR /project
-
-# Copy of project dependencies
 COPY backend/nutricion/pom.xml /project/
-
-# Error
-#RUN mvn clean verify -e -X
-
-# Source code copy to /src
 COPY backend/nutricion/src /project/src
-
-# Compile project
+COPY --from=angular /code/dist/frontend /project/src/main/resources/static/new
 RUN mvn package
 
-# Application container
 
 FROM openjdk:17
-
 WORKDIR /usr/src/app/
-
-# Copy JAR from /project/target/ to /usr/src/app/
 COPY --from=builder /project/target/*.jar /usr/src/app/
-
-# Port 8443
 EXPOSE 8443
-# Parameter
 CMD [ "java", "-jar", "nutricion-0.0.1-SNAPSHOT.jar" ]
 
