@@ -485,3 +485,60 @@ I worked on ApiRest development and helped with the app's correct starting.
 | 3 | WorkerController.java  (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/backend/nutricion/src/main/java/com/nutri/backend/controller/WorkerController.java) |
 | 4 | UserRestController.java  (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/backend/nutricion/src/main/java/com/nutri/backend/controller/UserRestController.java) |
 | 5 | pom.xml (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/backend/nutricion/pom.xml) |
+
+## PHASE 4: IMPLEMENTATION OF THE WEB WITH SPA ARCHITECTURES
+
+### PREPARTING ANGULAR DEVELOPMENT
+
+#### The versions used on this part are:
+
++ Angular CLI: 15.2.5
+
++ Node: 18.15.0
+
++ Package Manager: npm 9.6.4
+
++ Angular: 15.2.6
+... core
+
+#### Package Version:
+
++ @angular-devkit/architect 0.1502.5
+
++ @angular-devkit/build-angular 15.2.5
+
++ @angular-devkit/core 15.2.5
+
++ @angular-devkit/schematics 15.2.5
+
++ @angular/cli 15.2.5
+
++ @schematics/angular 15.2.5
+
+
+### IDE PREPARATION:
+
+First, you need to install VSCode, then execute a series of commands to prepare the project.
+
+After this, you need to install Angular CLI using the command: ```npm install -g @angular/cli```
+
+Next, check the installed version with the command: ```ng version```
+
+Then, install Angular: ```npm install @angular-devkit/build-angular```
+
+Then, install Bootstrap: ```ng add @ng-bootstrap/ng-bootstrap```
+
+Finally, install Charts: ```npm install ngx-echarts -S```
+
+To ensure that we have all the necessary dependencies installed in the project, we will use the command: ```npm install```
+
+To run the application, it will be necessary to configure a proxy with a file: ```proxy.conf.json```
+
+![image](https://user-images.githubusercontent.com/80918478/233776086-98d49766-ca65-4560-8a37-6f557da524ea.png)
+
+Finally, to run the application, you will need to use the command:
+```ng serve --proxy-config proxy.conf.json```
+
+### CLASS DIAGRAM AND TEMPLATES OF THE SPA
+![image](https://user-images.githubusercontent.com/80918513/233783522-d78975bd-ab8f-4f27-92b7-14f0772aa875.png)
+

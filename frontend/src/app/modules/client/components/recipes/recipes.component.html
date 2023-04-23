@@ -1,40 +1,29 @@
-<div class="container-fluid">
-
-  <!-- Page Heading -->
-  <div class="d-sm-flex align-items-center justify-content-between mb-4">
-      <h1 class="h3 mb-0 mt-5 ml-5 text-gray-800">My recipes</h1>
+<div class="table-responsive-vertical shadow p-4">
+  <!-- Table starts here -->
+  <div class="card-body">
+    <table id="table" class="table table-hover table-mc-light-blue">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Ingredients</th>
+        <th>Description</th>
+        <th>kindOfRecepy</th>
+      </tr>
+      </thead>
+      <tbody *ngFor="let recipe of recipes" class="colorBlackText">
+      <!--{{#recepies}}-->
+        <tr>
+          <td>{{recipe.name}}</td>
+          <td>{{recipe.ingredients}}</td>
+          <td>{{recipe.description}}</td>
+          <td>{{recipe.kindOfRecepy}}</td>
+      <!--{{/recepies}}-->
+      </tbody>
+    </table>
+    <ul>
+      <li (click)="selectItem(1)">1</li>
+      <li (click)="selectItem(2)">2</li>
+      <li (click)="selectItem(3)">3</li>
+    </ul>
   </div>
-  <div class="row">
 
-    <!-- Area Chart -->
-    <div class="col-xl-12 col-lg-6">
-        <div class="card shadow mb-4">
-            <!-- Card Body -->
-            <div class="card-body">
-              <table id="table" class="table table-hover table-mc-light-blue">
-                <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Ingredients</th>
-                  <th>Description</th>
-                  <th>kindOfRecepy</th>
-                  <th>PDF</th>
-                </tr>
-                </thead>
-                <tbody>
-                <!--{{#recepies}}-->
-                <tr>
-                  <td>Eggs <!--{{name}}--></td>
-                  <td>Eggs <!--{{ingredients}}--></td>
-                  <td>boil the eggs <!--{{description}}--></td>
-                  <td>breakfast <!--{{kindOfRecepy}}--></td>
-                  <td><!--input type="checkbox" name="id" value="{{id}}">--></td>
-                </tr>
-                <!--{{/recepies}}-->
-                </tbody>
-              </table>
-            </div>
-        </div>
-    </div>
-  </div>
-</div>

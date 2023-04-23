@@ -49,12 +49,16 @@ export class UserService {
     return throwError('Server error (' + error.status + '): ' + error.text());
   }
 
-  updateProfile(user: User, imageFile?: Blob){
+  updateProfile(user: User){
     return this.httpClient
       .put(BASE_URL + '/me/', user)
       .pipe(catchError((error) => this.handleError(error)));
   }
-
+  updateImage(imageFile?: FormData){
+    return this.httpClient
+      .post(BASE_URL + '/me/image', imageFile)
+      .pipe(catchError((error) => this.handleError(error)));
+  }
   //adminUser
   getUserById(id: number) {
     return this.httpClient.get(BASE_URL + '/me' + id).pipe();
@@ -102,8 +106,8 @@ export class UserService {
     return this.httpClient.get(BASE_URL + '/me/diets').pipe();
   }
 
-  getUserRecipes() {
-    return this.httpClient.get(BASE_URL + '/me/recepies').pipe();
+  getUserRecipes(n: number) {
+    return this.httpClient.get(BASE_URL + '/me/recepies' + '?page=' + n).pipe();
   }
 
   postForm(Form: Form) {
@@ -139,7 +143,7 @@ export class UserService {
 
   postDiet(diet: Diet) {
     return this.httpClient
-      .post('/api/forms/', diet)
+      .post('/api/diets/', diet)
       .pipe(catchError((error) => this.handleError(error)));
   }
 

@@ -15,36 +15,20 @@
                               <label for="name1" style="font-size: 18px;"> Diet Name </label>
                           </div>
                           <div class="row">
-                              <input id="name1" name="name1" type="text" style="border-color: #5AF499;" required><br>
+                              <input [(ngModel)]="nom" id="name1" name="name1" type="text" style="border-color: #5AF499;" required><br>
                           </div>
                       </div>
-                      <datalist id="breakfast">
-                          <select>
-                            <option *ngFor="let c of breakfast" [value]="c.name" >{{c.name}}</option>
-                          </select>
-                      </datalist>
-                      <datalist id="lunch">
-                          <select>
-                            <option *ngFor="let c of lunch" [value]="c.name" >{{c.name}}</option>
-                          </select>
-                      </datalist>
-                      <datalist id="dinner">
-                          <select>
-                            <option *ngFor="let c of dinner" [value]="c.name" >{{c.name}}</option>
-                          </select>
-                      </datalist>
                       <div class="col-12" style="padding: 20px;">
                           <div class="row">
                               <label for="name1" style="font-size: 18px;" > Type of recipe </label>
                           </div>
                           <div class = "col-lg-5" aria-required="true">
-                              <input type="radio" id="Maintenence" name="type_diet" value="Maintenence">
+                              <input [(ngModel)]="des" type="radio" id="Maintenence" name="type_diet" value="Maintenence">
                               <label for="Maintenence">Maintenence</label><br>
-                              <input type="radio" id="Bulking" name="type_diet" value="Bulking">
+                              <input [(ngModel)]="des" type="radio" id="Bulking" name="type_diet" value="Bulking">
                               <label for="Bulking">Bulking</label><br>
-                              <input type="radio" id="Definition" name="type_diet" value="Cutting">
+                              <input [(ngModel)]="des" type="radio" id="Definition" name="type_diet" value="Cutting">
                               <label for="Definition">Cutting</label><br>
-
                           </div>
                       </div>
 
@@ -64,49 +48,49 @@
                               <td class="day-time">Breakfast</td>
                               <td>
                                   <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" id="brmon"
-                                          name="brmon" style="width:250px;padding:8px;">
-                                          <option *ngFor="let c of breakfast" [value]="c.name" [(ngModel)]="mb">{{c.name}}</option>
-
-                                  </select>
-                              </td>
-                              <td>
-                                  <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" id="brtue"
-                                          name="brtue" style="width:250px;padding:8px;">
-                                          <option *ngFor="let c of breakfast" [value]="c.name" [(ngModel)]="ml">{{c.name}}</option>
-
-                                  </select>
-                              </td>
-                              <td>
-                                  <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" id="brwed"
-                                          name="brwed" style="width:250px;padding:8px;">
-                                          <option *ngFor="let c of breakfast" [value]="c.name" [(ngModel)]="md">{{c.name}}</option>
-
-                                  </select>
-                              </td>
-                              <td>
-                                  <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" id="brthr"
-                                          name="brthr" style="width:250px;padding:8px;">
+                                          name="brmon" style="width:250px;padding:8px;" [(ngModel)]="mon.breakfast">
                                           <option *ngFor="let c of breakfast" [value]="c.name" >{{c.name}}</option>
 
                                   </select>
                               </td>
                               <td>
+                                  <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" id="brtue"
+                                          name="brtue" style="width:250px;padding:8px;" [(ngModel)]="tus.breakfast">
+                                          <option *ngFor="let c of breakfast" [value]="c.name" >{{c.name}}</option>
+
+                                  </select>
+                              </td>
+                              <td>
+                                  <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" id="brwed"
+                                          name="brwed" style="width:250px;padding:8px;" [(ngModel)]="wen.breakfast">
+                                          <option *ngFor="let c of breakfast" [value]="c.name" >{{c.name}}</option>
+
+                                  </select>
+                              </td>
+                              <td>
+                                  <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" id="brthr"
+                                          name="brthr" style="width:250px;padding:8px;" [(ngModel)]="thr.breakfast">
+                                          <option *ngFor="let c of breakfast" [value]="c.name" >{{c.name}} </option>
+
+                                  </select>
+                              </td>
+                              <td>
                                   <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" id="brfri"
-                                          name="brfri" style="width:250px;padding:8px;">
+                                          name="brfri" style="width:250px;padding:8px;" [(ngModel)]="fri.breakfast">
                                           <option *ngFor="let c of breakfast" [value]="c.name" >{{c.name}}</option>
 
                                   </select>
                               </td>
                               <td>
                                   <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" id="brsat"
-                                          name="brsat" style="width:250px;padding:8px;">
+                                          name="brsat" style="width:250px;padding:8px;" [(ngModel)]="sat.breakfast">
                                           <option *ngFor="let c of breakfast" [value]="c.name" >{{c.name}}</option>
 
                                   </select>
                               </td>
                               <td>
                                   <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" id="brsun"
-                                          name="brsun" style="width:250px;padding:8px;">
+                                          name="brsun" style="width:250px;padding:8px;" [(ngModel)]="sun.breakfast">
                                           <option *ngFor="let c of breakfast" [value]="c.name" >{{c.name}}</option>
                                   </select>
                               </td>
@@ -116,49 +100,49 @@
                               <td>
                                   <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
                                           id="lunmon"
-                                          name="lunmon" style="width:250px;padding:8px;">
-                                                                  <option *ngFor="let c of lunch" [value]="c.name" >{{c.name}}</option>
+                                          name="lunmon" style="width:250px;padding:8px;" [(ngModel)]="mon.lunch">
+                                          <option *ngFor="let c of lunch" [value]="c.name" >{{c.name}}</option>
                                   </select>
                               </td>
                               <td>
                                   <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
                                           id="luntue"
-                                          name="luntue" style="width:250px;padding:8px;">
-                                                                  <option *ngFor="let c of lunch" [value]="c.name" >{{c.name}}</option>
+                                          name="luntue" style="width:250px;padding:8px;" [(ngModel)]="tus.lunch">
+                                          <option *ngFor="let c of lunch" [value]="c.name" >{{c.name}}</option>
                                   </select>
                               </td>
                               <td>
                                   <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
                                           id="lunwed"
-                                          name="lunwed" style="width:250px;padding:8px;">
+                                          name="lunwed" style="width:250px;padding:8px;" [(ngModel)]="wen.lunch">
                                           <option *ngFor="let c of lunch" [value]="c.name" >{{c.name}}</option>
                                   </select>
                               </td>
                               <td>
                                   <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
                                           id="lunthr"
-                                          name="lunthr" style="width:250px;padding:8px;">
+                                          name="lunthr" style="width:250px;padding:8px;" [(ngModel)]="thr.lunch">
                                           <option *ngFor="let c of lunch" [value]="c.name" >{{c.name}}</option>
                                   </select>
                               </td>
                               <td>
                                   <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
                                           id="lunfri"
-                                          name="lunfri" style="width:250px;padding:8px;">
+                                          name="lunfri" style="width:250px;padding:8px;" [(ngModel)]="fri.lunch">
                                           <option *ngFor="let c of lunch" [value]="c.name" >{{c.name}}</option>
                                   </select>
                               </td>
                               <td>
                                   <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
                                           id="lunsat"
-                                          name="lunsat" style="width:250px;padding:8px;">
+                                          name="lunsat" style="width:250px;padding:8px;" [(ngModel)]="sat.lunch">
                                           <option *ngFor="let c of lunch" [value]="c.name" >{{c.name}}</option>
                                   </select>
                               </td>
                               <td>
                                   <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
                                           id="lunsun"
-                                          name="lunsun" style="width:250px;padding:8px;">
+                                          name="lunsun" style="width:250px;padding:8px;" [(ngModel)]="sun.lunch">
                                           <option *ngFor="let c of lunch" [value]="c.name" >{{c.name}}</option>
                                   </select>
                               </td>
@@ -168,7 +152,7 @@
                               <td>
                                   <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
                                           id="dinmon"
-                                          name="dinmon" style="width:250px;padding:8px;">
+                                          name="dinmon" style="width:250px;padding:8px;" [(ngModel)]="mon.dinner">
                                           <option *ngFor="let c of dinner" [value]="c.name" >{{c.name}}</option>
 
                                   </select>
@@ -176,7 +160,7 @@
                               <td>
                                   <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
                                           id="dintue"
-                                          name="dintue" style="width:250px;padding:8px;">
+                                          name="dintue" style="width:250px;padding:8px;" [(ngModel)]="tus.dinner">
                                           <option *ngFor="let c of dinner" [value]="c.name" >{{c.name}}</option>
 
                                   </select>
@@ -184,7 +168,7 @@
                               <td>
                                   <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
                                           id="dinwed"
-                                          name="dinwed" style="width:250px;padding:8px;">
+                                          name="dinwed" style="width:250px;padding:8px;" [(ngModel)]="wen.dinner">
                                           <option *ngFor="let c of dinner" [value]="c.name" >{{c.name}}</option>
 
                                   </select>
@@ -192,7 +176,7 @@
                               <td>
                                   <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
                                           id="dinthr"
-                                          name="dinthr" style="width:250px;padding:8px;">
+                                          name="dinthr" style="width:250px;padding:8px;" [(ngModel)]="thr.dinner">
                                           <option *ngFor="let c of dinner" [value]="c.name" >{{c.name}}</option>
 
                                   </select>
@@ -200,7 +184,7 @@
                               <td>
                                   <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
                                           id="dinfri"
-                                          name="dinfri" style="width:250px;padding:8px;">
+                                          name="dinfri" style="width:250px;padding:8px;" [(ngModel)]="fri.dinner">
                                           <option *ngFor="let c of dinner" [value]="c.name" >{{c.name}}</option>
 
                                   </select>
@@ -208,15 +192,14 @@
                               <td>
                                   <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
                                           id="dinsat"
-                                          name="dinsat" style="width:250px;padding:8px;">
+                                          name="dinsat" style="width:250px;padding:8px;" [(ngModel)]="sat.dinner">
                                           <option *ngFor="let c of dinner" [value]="c.name" >{{c.name}}</option>
-
                                   </select>
                               </td>
                               <td>
                                   <select class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
                                           id="dinsun"
-                                          name="dinsun" style="width:250px;padding:8px;">
+                                          name="dinsun" style="width:250px;padding:8px;" [(ngModel)]="sun.dinner">
                                           <option *ngFor="let c of dinner" [value]="c.name" >{{c.name}}</option>
                                   </select>
                               </td>
@@ -224,7 +207,7 @@
                           </tbody>
                       </table>
                       <div class="row" style="justify-content:center; text-align: center;">
-                          <input class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" type="submit"
+                          <input (click)="uploadDiet()" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" type="submit"
                                  value="Submit">
                       </div>
                   </form>

@@ -1,8 +1,8 @@
 <div class="container-fluid">
 
-  <!-- Page Heading -->
+  <!-- {{diets.name}} -->
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
-      <h1 class="h3 mb-2 mt-5 ml-4 text-gray-800">My diet</h1>
+      <h1 class="h3 mb-2 mt-5 ml-4 text-gray-800"></h1>
   </div>
   <div class="row">
 
@@ -14,45 +14,51 @@
             <table style="margin-bottom: 40px; margin-top: 50px; table-layout: auto; width: 100%; border: 5px solid #5AF499; overflow-x: auto;">
               <tbody>
               <tr style="height: 70px; font-weight: 600; border: 3px solid #5AF499;">
-                  <td>Time</td>
-                  <td>Monday</td>
-                  <td>Tuesday</td>
-                  <td>Wednesday</td>
-                  <td>Thursday</td>
-                  <td>Friday</td>
-                  <td>Saturday</td>
-                  <td>Sunday</td>
+                  <th>Time</th>
+                  <th>Monday</th>
+                  <th>Tuesday</th>
+                  <th>Wednesday</th>
+                  <th>Thursday</th>
+                  <th>Friday</th>
+                  <th>Saturday</th>
+                  <th>Sunday</th>
               </tr>
+              <!--{{<div *ngFor="let diet of diets">
+                <h2>{{ diets.name }}</h2>
+                <p>{{ diets.type }}</p>
+                <ul>
+                  <li *ngFor="let day of diets.week">
+                    {{ day.breakfast }} - {{ day.lunch }} - {{ day.dinner }}
+                  </li>
+                </ul>
+              </div>}}-->
 
-              <tr style="height: 50px; border: 3px solid #5AF499;">
+              <tr style="height: 50px; border: 3px solid #5AF499;" >
                   <td class="day-time">Breakfast</td>
-                  <!--{{#br}}-->
-                  <td data-title="Link PDF">
+                  <td data-title="Link PDF" *ngFor="let item of diets.dietRefactored">
                       <a style="color:#1cc88a;"
-                         target="_blank">eggs <!--{{.}}--></a>
+                         target="_blank">{{item[0]}} <!--{{.}}--></a>
                   </td>
                   <!--{{/br}}-->
               </tr>
-              <tr style="height: 50px; border: 3px solid #5AF499;">
+              <tr style="height: 50px; border: 3px solid #5AF499;" >
                   <td class="day-time" >Lunch</td>
                   <!--{{#ln}}-->
-                  <td data-title="Link PDF">
+                  <td data-title="Link PDF" *ngFor="let item of diets.dietRefactored">
                       <a style="color:#1cc88a;"
-                         target="_blank">salad<!--{{.}}--></a>
+                         target="_blank">{{item[1]}}<!--{{.}}--></a>
                   </td>
                   <!--{{/ln}}-->
               </tr>
-              <tr style="height: 50px; border: 3px solid #5AF499;">
+              <tr style="height: 50px; border: 3px solid #5AF499;" >
                   <td class="day-time">Dinner</td>
                   <!--{{#dn}}-->
-                  <td data-title="Link PDF">
+                  <td data-title="Link PDF" *ngFor="let item of diets.dietRefactored">
                       <a style="color:#1cc88a;"
-                         target="_blank">hot dog<!--{{.}}--></a>
+                         target="_blank">{{item[2]}}<!--{{.}}--></a>
                   </td>
                   <!--{{/dn}}-->
               </tr>
-
-
               </tbody>
           </table>
           </div>

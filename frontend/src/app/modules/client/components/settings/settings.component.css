@@ -1,13 +1,5 @@
-/*!
- * Start Bootstrap - SB Admin 2 v4.1.4 (https://startbootstrap.com/theme/sb-admin-2)
- * Copyright 2013-2021 Start Bootstrap
- * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-sb-admin-2/blob/master/LICENSE)
- *//*!
- * Bootstrap v4.6.0 (https://getbootstrap.com/)
- * Copyright 2011-2021 The Bootstrap Authors
- * Copyright 2011-2021 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
- */:root {
+
+*/:root {
   --blue:#4e73df;
   --indigo:#6610f2;
   --purple:#6f42c1;
@@ -242,9 +234,6 @@
  [type=button],
  [type=reset],
  [type=submit],
- button {
-  -webkit-appearance:button
- }
  [type=button]:not(:disabled),
  [type=reset]:not(:disabled),
  [type=submit]:not(:disabled),
@@ -293,7 +282,6 @@
  }
  [type=search] {
   outline-offset:-2px;
-  -webkit-appearance:none
  }
  [type=search]::-webkit-search-decoration {
   -webkit-appearance:none
@@ -3287,8 +3275,6 @@
   display:block;
   min-height:1.5rem;
   padding-left:1.5rem;
-  -webkit-print-color-adjust:exact;
-  color-adjust:exact
  }
  .custom-control-inline {
   display:inline-flex;

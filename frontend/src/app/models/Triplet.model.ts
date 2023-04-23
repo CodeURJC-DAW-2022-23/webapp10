@@ -1,5 +1,5 @@
 export interface Triplet {
-  breakfast:string;
-  lunch:string;
-  dinner:string;
+  breakfast:String;
+  lunch:String;
+  dinner:String;
 }
