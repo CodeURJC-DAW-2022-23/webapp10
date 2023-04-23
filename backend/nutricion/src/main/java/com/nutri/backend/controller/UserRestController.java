@@ -16,6 +16,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -303,16 +304,20 @@ public class UserRestController {
             if (diet.isPresent()) {
                 try {
                 Triplet[] diet1 = diet.get().getWeek();
-                for (Triplet aux : diet1) {
-                    Recepy recepy = recepyService.findByName((String) aux.Breakfast).orElseThrow();
-                    if (!recepies.contains(recepy))
+                String [][] dietsR = diet.get().getDietRefactored();
+                for (String [] aux: dietsR){
+                    Recepy recepy = recepyService.findByName((String) aux[0]).orElseThrow();
+                    if (!recepies.contains(recepy)){
                         recepies.add(recepy);
-                    Recepy recepy1 = recepyService.findByName((String) aux.Lunch).orElseThrow();
-                    if (!recepies.contains(recepy1))
-                        recepies.add(recepy1);
-                    Recepy recepy2 = recepyService.findByName((String) aux.Dinner).orElseThrow();
-                    if (!recepies.contains(recepy2))
-                        recepies.add(recepy2);
+                    }
+                    recepy = recepyService.findByName((String) aux[1]).orElseThrow();
+                    if (!recepies.contains(recepy)){
+                        recepies.add(recepy);
+                    }
+                    recepy = recepyService.findByName((String) aux[2]).orElseThrow();
+                    if (!recepies.contains(recepy)){
+                        recepies.add(recepy);
+                    }
                 }
             }catch (EmptyResultDataAccessException e) {
                    return new ResponseEntity<>(HttpStatus.NOT_FOUND);}
@@ -413,7 +418,7 @@ public class UserRestController {
             Calendar c1 = Calendar.getInstance();
             int month = c1.get(Calendar.MONTH);
             user.setEntryDate(month);
-            //setUserImage(user, "");
+            setUserImage(user, new ClassPathResource("static/images/undraw_profile.jpg").getPath());
             user.setEncodedPassword(passwordEncoder.encode(user.getEncodedPassword()));
             userService.save(user);
             URI location = fromCurrentRequest().path("/workers/{id}")
@@ -421,6 +426,49 @@ public class UserRestController {
             return ResponseEntity.created(location).body(user);
         } else {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+    @Operation(summary = "Post a new client")
+
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "201",
+                    description = "Created",
+                    content = {@Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = User.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "403",
+                    description = "Forbidden",
+                    content = @Content
+            )
+    })
+    @PostMapping("/client/")
+    @ResponseStatus(HttpStatus.CREATED)
+    public ResponseEntity<User> createMemberClient(@RequestBody User user) {
+        if (user.getUserType().equals("client")) {
+            Calendar c1 = Calendar.getInstance();
+            int month = c1.get(Calendar.MONTH);
+            user.setEntryDate(month);
+            setUserImage(user, new ClassPathResource("static/images/undraw_profile.jpg").getPath());
+            user.setEncodedPassword(passwordEncoder.encode(user.getEncodedPassword()));
+            userService.save(user);
+            URI location = fromCurrentRequest().path("/client/{id}")
+                    .buildAndExpand(user.getId()).toUri();
+            return ResponseEntity.created(location).body(user);
+        } else {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+    private void setUserImage(User user, String classpathResource){
+        try {
+            Resource image = new ClassPathResource(classpathResource);
+            user.setImage("Default");
+            user.setImageFile(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
+        } catch(Exception e){
+
         }
     }
 
