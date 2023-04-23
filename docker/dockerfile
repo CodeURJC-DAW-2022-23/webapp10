@@ -1,12 +1,10 @@
 # Compilation
 FROM node:16 AS angular
 WORKDIR /code
-COPY frontend/package.json /code/
+COPY frontend/package*.json frontend/angular.json frontend/tsconfig*.json /code/
+RUN npm install --legacy-peer-deps
 COPY frontend/src /code/src
-RUN npm install
-RUN npm run ng build -- --prod --base-href=/new/
-RUN ls -l
-
+RUN npm run build -- --configuration production --base-href=/new/
 
 
 FROM maven:3.6.3-openjdk-17 as builder
