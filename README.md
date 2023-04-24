@@ -568,3 +568,54 @@ I have worked on the docker files and done the api's related with images.
 | 3 | Register (https://github.com/CodeURJC-DAW-2022-23/webapp10/tree/main/frontend/src/app/components/register)|
 | 4 | login.service.ts  (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/frontend/src/app/services/login.service.ts)|
 | 5 | Settings (https://github.com/CodeURJC-DAW-2022-23/webapp10/tree/main/frontend/src/app/modules/client/components/settings)|
+
+#### Daniel Monje Fuente
+
+##### DESCRIPTION OF TASKS
+
+I have worked on the profile settings and image upload. Also worked on worker diets and recipies uploads.
+##### COMMITS DONE
+
+| Name | Description |
+| - | - |
+| 1 | Readme (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/bbb43f3d8b31fbb5217fd3781dbc778be591a290) |
+| 2 | Upload-recipe, recipe-table y cositas (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/36f7d9cebe8f1eb0088b51ab545f0b5920a0b043) |
+| 3 | Recipe-table cosas(https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/cc545acce5048fb95174d90d2523762c760f2fe6) |
+| 4 | Settings (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/7a43af50b5416c84490e4bb96514f3746f32db1b) |
+| 5 | Image (settings) (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/e55387cc7b165e2ae8a7374baad268143b8a5683) |
+
+##### FILES PARTICIPATED
+
+| File name | Link to github |
+| - | - |
+| 1 | user.service.ts (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/frontend/src/app/services/User.service.ts) |
+| 2 | recepie.model.ts (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/frontend/src/app/models/Recepie.model.ts) |
+| 3 | settings.component.ts (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/frontend/src/app/modules/worker/components/settings/settings.component.ts) |
+| 4 | diet.component.ts (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/frontend/src/app/modules/client/components/diet/diet.component.ts) |
+| 5 | upload-recipe.ts (https://github.com/CodeURJC-DAW-2022-23/webapp10/tree/main/frontend/src/app/modules/worker/components/upload-recipe) |
+
+#### Sara González Terroba
+
+##### DESCRIPTION OF TASKS
+
+I have worked on the module of the client from the beggining, I've created the files and implemented most of them.
+
+##### COMMITS DONE
+
+| Name | Description |
+| - | - |
+| 1 | Client components (dashboard, form, diet and recipes) (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/6f257c8448d60f090af4029751cfad249310349a) |
+| 2 | Client components changes (added charts and overall style) (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/760a8ac991d96fe57605f6d10bdb5f10cbe06cf9) |
+| 3 | Client charts (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/83a3366839318ab855dad2ce59954a81ff315b3b) |
+| 4 | Client recipes (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/83454f9ebc60a50b82b506d09ce9b0126c5a18e2) |
+| 5 | Client profile settings (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/85fecfd4d233a9b108e8306e6336bdb7524fe3b3) |
+
+##### FILES PARTICIPATED
+
+| File name | Link to github |
+| - | - |
+| 1 | client-routing.module.ts (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/AngularDevelepment/frontend/src/app/modules/client/client-routing.module.ts) |
+| 2 | client.module.ts (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/AngularDevelepment/frontend/src/app/modules/client/client.module.ts) |
+| 3 | diet.component.ts (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/AngularDevelepment/frontend/src/app/modules/client/components/diet/diet.component.ts) |
+| 4 | recipes.component.spec.ts (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/AngularDevelepment/frontend/src/app/modules/client/components/recipes/recipes.component.spec.ts) |
+| 5 | recipes.component.ts (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/AngularDevelepment/frontend/src/app/modules/client/components/recipes/recipes.component.ts) |
