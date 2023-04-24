@@ -11,6 +11,7 @@
         <div class="card shadow mb-4" style="height: 390px;">
             <!-- Card Body -->
           <div class="card-body">
+            <h1 class="h3 mb-0 mt-5 ml-5 text-gray-800">{{diets.name}}</h1>
             <table style="margin-bottom: 40px; margin-top: 50px; table-layout: auto; width: 100%; border: 5px solid #5AF499; overflow-x: auto;">
               <tbody>
               <tr style="height: 70px; font-weight: 600; border: 3px solid #5AF499;">
@@ -23,21 +24,12 @@
                   <th>Saturday</th>
                   <th>Sunday</th>
               </tr>
-              <!--{{<div *ngFor="let diet of diets">
-                <h2>{{ diets.name }}</h2>
-                <p>{{ diets.type }}</p>
-                <ul>
-                  <li *ngFor="let day of diets.week">
-                    {{ day.breakfast }} - {{ day.lunch }} - {{ day.dinner }}
-                  </li>
-                </ul>
-              </div>}}-->
-
+      
               <tr style="height: 50px; border: 3px solid #5AF499;" >
                   <td class="day-time">Breakfast</td>
                   <td data-title="Link PDF" *ngFor="let item of diets.dietRefactored">
                       <a style="color:#1cc88a;"
-                         target="_blank">{{item[0]}} <!--{{.}}--></a>
+                         target="_blank">{{item[0]}}</a>
                   </td>
                   <!--{{/br}}-->
               </tr>
@@ -46,7 +38,7 @@
                   <!--{{#ln}}-->
                   <td data-title="Link PDF" *ngFor="let item of diets.dietRefactored">
                       <a style="color:#1cc88a;"
-                         target="_blank">{{item[1]}}<!--{{.}}--></a>
+                         target="_blank">{{item[1]}}</a>
                   </td>
                   <!--{{/ln}}-->
               </tr>
@@ -55,7 +47,7 @@
                   <!--{{#dn}}-->
                   <td data-title="Link PDF" *ngFor="let item of diets.dietRefactored">
                       <a style="color:#1cc88a;"
-                         target="_blank">{{item[2]}}<!--{{.}}--></a>
+                         target="_blank">{{item[2]}}</a>
                   </td>
                   <!--{{/dn}}-->
               </tr>
