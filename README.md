@@ -541,13 +541,13 @@ Finally, to run the application, you will need to use the command:
 
 In order to deploy the application in the private cluster:
 
-1.- We connect to the machine with the command "ssh -i PrivateKey vmuser@10.100.139.190"
+1.- We connect to the machine with the command ```ssh -i PrivateKey vmuser@10.100.139.190```
 
 2.- We install Docker and Docker Compose
 
-3.- We clone the repository with the command "git clone 'URL of the repository in main fork'
+3.- We clone the repository with the command ```git clone 'URL of the repository in main fork'```
 
-4.- We deploy the application with the command "sudo docker compose up -d" 
+4.- We deploy the application with the command ``` docker compose up -d```
 
 Normal page: https://10.100.139.190:8443/
 
