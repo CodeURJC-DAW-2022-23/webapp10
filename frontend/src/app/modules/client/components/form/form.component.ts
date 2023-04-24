@@ -6,6 +6,7 @@ import { UserService } from 'src/app/services/User.service';
 import { catchError } from 'rxjs';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { User } from 'src/app/models/User.model';
 
 @Component({
   selector: 'app-form',
@@ -22,16 +23,18 @@ export class FormComponent {
     age: '',
     weight: '',
     height: '',
-    aspiration:''
+   
 }
+user: User|undefined;
 
 constructor(private router: Router,private httpClient: HttpClient,private formService: FormService){}
 
 pushForm(){
-    this.formService.createForm(this.form as Form).subscribe((form:Form)=>
-    localStorage.setItem('form',JSON.stringify(form)),catchError=> alert('Fallo al enviar el formulario, intentelo mas tarde')
+    this.formService.createForm(this.form as Form).subscribe(
+      _=>this.router.navigate(['client/diet'])
+      ,catchError=> alert('Fallo al enviar el formulario, intentelo mas tarde')
     )
-    this.router.navigate(['client/diet']);
+    console.log(this.user?.form);
 }
 
 }
