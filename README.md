@@ -619,3 +619,30 @@ I have worked on the module of the client from the beggining, I've created the f
 | 3 | diet.component.ts (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/AngularDevelepment/frontend/src/app/modules/client/components/diet/diet.component.ts) |
 | 4 | recipes.component.spec.ts (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/AngularDevelepment/frontend/src/app/modules/client/components/recipes/recipes.component.spec.ts) |
 | 5 | recipes.component.ts (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/AngularDevelepment/frontend/src/app/modules/client/components/recipes/recipes.component.ts) |
+
+#### Snezhana Borislavova Buchelska
+
+##### DESCRIPTION OF TASKS
+
+Due to technical issues with VS Code, I've worked only on few stuff,such as worker, HTML details and also Readme.
+
+##### COMMITS DONE
+
+| Name | Description |
+| - | - |
+| 1 | Diets HTML (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/604100fb6223fcfe829d0ffcec300427224ae221) |
+| 2 | Header,Recipes, Diet,Service (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/772f0ee2b8afb77fd5d6dbde89df84bcc2ae09ca) |
+| 3 | Worker (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/0734696cd38c8667d06d69c8fe2a8165738f5fd0) |
+| 4 | Auth Service (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/5d8b411d499ef8c8315f5f603bc2ab30476e2706) |
+| 5 | Diagram UML Readme (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/0f71bcb8b5dc6c43fff39f3d7d6d153d1ff46530) |
+
+##### FILES PARTICIPATED
+
+| File name | Link to github |
+| - | - |
+| 1 | diet.components.html (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/AngularDevelepment/frontend/src/app/modules/client/components/diet/diet.component.html) |
+| 2 | auth.service.ts (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/AngularDevelepment/frontend/src/app/services/auth.service.ts) |
+| 3 | recipes.component.html (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/AngularDevelepment/frontend/src/app/modules/worker/components/recipes/recipes.component.html) |
+| 4 | worker-dashboard.component.spec.ts (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/AngularDevelepment/frontend/src/app/modules/worker/components/worker-dashboard/worker-dashboard.component.spec.ts) |
+| 5 | worker.module.ts (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/AngularDevelepment/frontend/src/app/modules/worker/worker.module.ts) |
+
