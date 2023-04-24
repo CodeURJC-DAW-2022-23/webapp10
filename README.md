@@ -543,29 +543,28 @@ Finally, to run the application, you will need to use the command:
 ![image](https://user-images.githubusercontent.com/80918513/233783522-d78975bd-ab8f-4f27-92b7-14f0772aa875.png)
 
 ### MEMBERS PARTICIPATION
-
-#### Sara González Terroba
+#### Adrián Peña García
 
 ##### DESCRIPTION OF TASKS
 
-I have worked on the module of the client from the beggining, I've created the files and implemented most of them.
+I have worked on the docker files and done the api's related with images.
 
 ##### COMMITS DONE
 
 | Name | Description |
 | - | - |
-| 1 | Client components (dashboard, form, diet and recipes) (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/6f257c8448d60f090af4029751cfad249310349a) |
-| 2 | Client components changes (added charts and overall style) (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/760a8ac991d96fe57605f6d10bdb5f10cbe06cf9) |
-| 3 | Client charts (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/83a3366839318ab855dad2ce59954a81ff315b3b) |
-| 4 | Client recipes (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/83454f9ebc60a50b82b506d09ce9b0126c5a18e2) |
-| 5 | Client profile settings (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/85fecfd4d233a9b108e8306e6336bdb7524fe3b3) |
+| 1 | Recetas client and images worker and client header and settigns (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/9de929cd764712f1a2f7970eb870e14f490fc896) |
+| 2 | New diet (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/5dc4e1bb0be19090e8497441fb3b31e974c6bacb)|
+| 3 | Register component (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/77d2932d7c35f37536d694e3fd8e7a7aaf466c3b)|
+| 4 | Worker component (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/d82f2f7a84e65ba08327e13eed3ef204e49774ce)|
+| 5 | Start services and models angular (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/3d8b3c25cb92e5469e87169e799e8bf3601db2d5)|
 
 ##### FILES PARTICIPATED
 
 | File name | Link to github |
 | - | - |
-| 1 | client-routing.module.ts (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/AngularDevelepment/frontend/src/app/modules/client/client-routing.module.ts) |
-| 2 | client.module.ts (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/AngularDevelepment/frontend/src/app/modules/client/client.module.ts) |
-| 3 | diet.component.ts (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/AngularDevelepment/frontend/src/app/modules/client/components/diet/diet.component.ts) |
-| 4 | recipes.component.spec.ts (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/AngularDevelepment/frontend/src/app/modules/client/components/recipes/recipes.component.spec.ts) |
-| 5 | recipes.component.ts (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/AngularDevelepment/frontend/src/app/modules/client/components/recipes/recipes.component.ts) |
+| 1 | User.service.ts  (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/frontend/src/app/services/User.service.ts)|
+| 2 | Worker (https://github.com/CodeURJC-DAW-2022-23/webapp10/tree/main/frontend/src/app/modules/worker)|
+| 3 | Register (https://github.com/CodeURJC-DAW-2022-23/webapp10/tree/main/frontend/src/app/components/register)|
+| 4 | login.service.ts  (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/frontend/src/app/services/login.service.ts)|
+| 5 | Settings (https://github.com/CodeURJC-DAW-2022-23/webapp10/tree/main/frontend/src/app/modules/client/components/settings)|
