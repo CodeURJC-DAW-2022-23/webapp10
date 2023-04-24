@@ -542,3 +542,30 @@ Finally, to run the application, you will need to use the command:
 ### CLASS DIAGRAM AND TEMPLATES OF THE SPA
 ![image](https://user-images.githubusercontent.com/80918513/233783522-d78975bd-ab8f-4f27-92b7-14f0772aa875.png)
 
+### MEMBERS PARTICIPATION
+
+#### Sara González Terroba
+
+##### DESCRIPTION OF TASKS
+
+I have worked on the module of the client from the beggining, I've created the files and implemented most of them.
+
+##### COMMITS DONE
+
+| Name | Description |
+| - | - |
+| 1 | Client components (dashboard, form, diet and recipes) (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/6f257c8448d60f090af4029751cfad249310349a) |
+| 2 | Client components changes (added charts and overall style) (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/760a8ac991d96fe57605f6d10bdb5f10cbe06cf9) |
+| 3 | Client charts (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/83a3366839318ab855dad2ce59954a81ff315b3b) |
+| 4 | Client recipes (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/83454f9ebc60a50b82b506d09ce9b0126c5a18e2) |
+| 5 | Client profile settings (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/85fecfd4d233a9b108e8306e6336bdb7524fe3b3) |
+
+##### FILES PARTICIPATED
+
+| File name | Link to github |
+| - | - |
+| 1 | client-routing.module.ts (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/AngularDevelepment/frontend/src/app/modules/client/client-routing.module.ts) |
+| 2 | client.module.ts (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/AngularDevelepment/frontend/src/app/modules/client/client.module.ts) |
+| 3 | diet.component.ts (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/AngularDevelepment/frontend/src/app/modules/client/components/diet/diet.component.ts) |
+| 4 | recipes.component.spec.ts (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/AngularDevelepment/frontend/src/app/modules/client/components/recipes/recipes.component.spec.ts) |
+| 5 | recipes.component.ts (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/AngularDevelepment/frontend/src/app/modules/client/components/recipes/recipes.component.ts) |
