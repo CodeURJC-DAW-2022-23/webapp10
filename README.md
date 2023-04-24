@@ -547,7 +547,7 @@ Finally, to run the application, you will need to use the command:
 
 ##### DESCRIPTION OF TASKS
 
-I have worked on the docker files and done the api's related with images.
+I have worked in the worker component and client componente.
 
 ##### COMMITS DONE
 
