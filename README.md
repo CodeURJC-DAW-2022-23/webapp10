@@ -568,3 +568,28 @@ I have worked on the docker files and done the api's related with images.
 | 3 | Register (https://github.com/CodeURJC-DAW-2022-23/webapp10/tree/main/frontend/src/app/components/register)|
 | 4 | login.service.ts  (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/frontend/src/app/services/login.service.ts)|
 | 5 | Settings (https://github.com/CodeURJC-DAW-2022-23/webapp10/tree/main/frontend/src/app/modules/client/components/settings)|
+
+#### Daniel Monje Fuente
+
+##### DESCRIPTION OF TASKS
+
+I have worked on the profile settings and image upload. Also worked on worker diets and recipies uploads.
+##### COMMITS DONE
+
+| Name | Description |
+| - | - |
+| 1 | Readme (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/bbb43f3d8b31fbb5217fd3781dbc778be591a290) |
+| 2 | Upload-recipe, recipe-table y cositas (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/36f7d9cebe8f1eb0088b51ab545f0b5920a0b043) |
+| 3 | Recipe-table cosas(https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/cc545acce5048fb95174d90d2523762c760f2fe6) |
+| 4 | Settings (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/7a43af50b5416c84490e4bb96514f3746f32db1b) |
+| 5 | Image (settings) (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/e55387cc7b165e2ae8a7374baad268143b8a5683) |
+
+##### FILES PARTICIPATED
+
+| File name | Link to github |
+| - | - |
+| 1 | user.service.ts (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/frontend/src/app/services/User.service.ts) |
+| 2 | recepie.model.ts (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/frontend/src/app/models/Recepie.model.ts) |
+| 3 | settings.component.ts (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/frontend/src/app/modules/worker/components/settings/settings.component.ts) |
+| 4 | diet.component.ts (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/frontend/src/app/modules/client/components/diet/diet.component.ts) |
+| 5 | upload-recipe.ts (https://github.com/CodeURJC-DAW-2022-23/webapp10/tree/main/frontend/src/app/modules/worker/components/upload-recipe) |
