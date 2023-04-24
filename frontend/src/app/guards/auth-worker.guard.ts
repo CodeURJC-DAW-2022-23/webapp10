@@ -21,7 +21,7 @@ export class AuthWorkerGuard implements CanActivate {
         if (user.userType==='worker') {
           return true;
         } else {
-          this.router.navigate(['login']);
+          this.router.navigate(['./'+user.userType]);
           return false;
         }
       }),
