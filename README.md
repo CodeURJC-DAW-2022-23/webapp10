@@ -646,3 +646,29 @@ Due to technical issues with VS Code, I've worked only on few stuff,such as work
 | 4 | worker-dashboard.component.spec.ts (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/AngularDevelepment/frontend/src/app/modules/worker/components/worker-dashboard/worker-dashboard.component.spec.ts) |
 | 5 | worker.module.ts (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/AngularDevelepment/frontend/src/app/modules/worker/worker.module.ts) |
 
+#### Carlos Fernández López
+
+##### DESCRIPTION OF TASKS
+
+I have worked on most of the things in this sprint such as guards, admin, general components, docker and correction of other components my teammates worked on
+
+##### COMMITS DONE
+
+| Name | Description |
+| - | - |
+| 1 | router navigation (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/c3a485f1c05cfbb8ff7e5a4105819050b54c18d9) |
+| 2 | Guards, admin Component intro and other component (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/15dc4bab5e84b82af730b185873caefbe69d3a33) |
+| 3 | charts on update, next step: connect with API data (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/8d293636fa0bb1686c61c8a8b1747c8eea7430a7) |
+| 4 | finished admin stats component (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/98521e480b119be26bb3f09aba29d6c379e75d07) |
+| 5 | Correct Guard and Admin list implementation (https://github.com/CodeURJC-DAW-2022-23/webapp10/commit/955fd3199692744273153c39ab3b789998a1b22f) |
+
+##### FILES PARTICIPATED
+
+| File name | Link to github |
+| - | - |
+| 1 | admin (https://github.com/CodeURJC-DAW-2022-23/webapp10/tree/main/frontend/src/app/modules/admin) |
+| 2 | components (https://github.com/CodeURJC-DAW-2022-23/webapp10/tree/main/frontend/src/app/components) |
+| 3 | dockerfile (https://github.com/CodeURJC-DAW-2022-23/webapp10/blob/main/docker/dockerfile) |
+| 4 | guards (https://github.com/CodeURJC-DAW-2022-23/webapp10/tree/main/frontend/src/app/guards) |
+| 5 | client (https://github.com/CodeURJC-DAW-2022-23/webapp10/tree/main/frontend/src/app/modules/client) |
+
