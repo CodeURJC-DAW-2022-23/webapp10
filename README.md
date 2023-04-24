@@ -539,6 +539,22 @@ To run the application, it will be necessary to configure a proxy with a file: `
 Finally, to run the application, you will need to use the command:
 ```ng serve --proxy-config proxy.conf.json```
 
+In order to deploy the application in the private cluster:
+
+1.- We connect to the machine with the command "ssh -i PrivateKey vmuser@10.100.139.190"
+
+2.- We install Docker and Docker Compose
+
+3.- We clone the repository with the command "git clone 'URL of the repository in main fork'
+
+4.- We deploy the application with the command "sudo docker compose up -d" 
+
+Normal page: https://10.100.139.190:8443/
+
+SPA page: https://10.100.130.190:8443/new
+
+Video of the application:https://youtu.be/Z_nOpoTMvfg
+
 ### CLASS DIAGRAM AND TEMPLATES OF THE SPA
 ![image](https://user-images.githubusercontent.com/80918513/233783522-d78975bd-ab8f-4f27-92b7-14f0772aa875.png)
 
