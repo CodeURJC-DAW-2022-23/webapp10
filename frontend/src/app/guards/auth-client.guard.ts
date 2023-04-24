@@ -21,7 +21,7 @@ export class AuthClientGuard implements CanActivate {
         if (user.userType==='client') {
           return true;
         } else {
-          this.router.navigate(['login']);
+          this.router.navigate(['./'+user.userType]);
           return false;
         }
       }),
