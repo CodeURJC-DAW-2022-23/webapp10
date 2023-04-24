@@ -547,7 +547,7 @@ In order to deploy the application in the private cluster:
 
 3.- We clone the repository with the command ```git clone 'URL of the repository in main fork'```
 
-4.- We deploy the application with the command ``` docker compose up -d```
+4.- We deploy the application with the command ```sudo docker compose up -d```
 
 Normal page: https://10.100.139.190:8443/
 
